@@ -11,8 +11,8 @@
     <link href="{{ asset('css/full.css')}}" rel="stylesheet">
     <link href="{{ asset('css/half-slider.css')}}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css')}}" rel="stylesheet">
-    <script src="/vendor/components/jquery/jquery.min.js"></script>
-    <script src="/vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <title>Fédération de Secourisme du Loiret</title>
 </head>
 
@@ -27,6 +27,10 @@
 
 
 {% block body %}
+    {% include 'FrontBundle:Default:presentation.html.twig' %}
+    {% include 'FrontBundle:Default:tuiles.html.twig' %}
+    {% include 'FrontBundle:Default:carousel.html.twig' %}
+    {% include 'FrontBundle:Default:formulaire.html.twig' %}
 
 {% endblock %}
 
