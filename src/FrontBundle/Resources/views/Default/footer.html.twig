@@ -1,21 +1,13 @@
 <div class="center">
-    <img class="logo-footer" src="Images/logo2.png" alt="Logo FFSS45">
+    <img class="logo-footer" src="{{ asset('images/logo2.png') }}" alt="Logo FFSS45">
 </div>
-
-
-
 </br>
 </br>
 </br>
-
 <div class="container-fluid">
-
     <div class="row">
-
         <!--  Footer gauche -->
-
         <div class="col-md-8">
-
             <div class="col-md-6">
                 <a href="">Particuliers</a> </br>
                 </br>
@@ -25,7 +17,6 @@
                 </br>
                 <a href="">News</a> </br>
             </div>
-
             <div class="col-md-6"
             <a href="">Qui sommes-nous</a> </br>
             </br>
@@ -35,33 +26,18 @@
             </br>
             <a href="">Rejoignez-nous</a> </br>
         </div>
-
     </div>
-
-
-
     <div class="col-md-4">
-
         <a href="">Contact</a> </br>
         </br>
         </br>
         </br>
         <a href="">Réalisé par</a>
-        <a href="http://www.wildcodeschool.fr"><img src="Images/logo_small_orange_horizontal.png" class="logo_WCS"></a>
+        <a href="http://www.wildcodeschool.fr"><img src="{{ asset('images/logo_small_orange_horizontal.png') }}" class="logo_WCS"></a>
     </div>
-
-
-
 </div>
-
 </div>
-
-
 </br>
-
-
-
-
 <!-- 2eme container-->
 
 <div class="container-fluid">
@@ -82,3 +58,41 @@
 
     </div>
 </div>
+
+
+
+
+<a href="#" title="Haut de page" class="scrollup"><i class="fa fa-arrow-up"></i></a>
+
+
+
+<script>
+
+    ScrollToTop=function() {
+        var s = $(window).scrollTop();
+        if (s > 250) {
+            $('.scrollup').fadeIn();
+        } else {
+            $('.scrollup').fadeOut();
+        }
+
+        $('.scrollup').click(function () {
+            $("html, body").animate({ scrollTop: 0 }, 500);
+            return false;
+        });
+    }
+
+    StopAnimation=function() {
+        $("html, body").bind("scroll mousedown DOMMouseScroll mousewheel keyup", function(){
+            $('html, body').stop();
+        });
+    }
+
+
+    $(window).scroll(function() {
+        ScrollToTop();
+        StopAnimation();
+    });
+
+
+</script>
