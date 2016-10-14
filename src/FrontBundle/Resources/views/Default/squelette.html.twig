@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta charset="utf-8">
+    <link href="{{ asset('../vendor/twbs/bootstrap/dist/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('../web/full.css')}}" rel="stylesheet">
+    <link href="{{ asset('web/half-slider.css')}}" rel="stylesheet">
+    <link href="{{ asset('vendor/components/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet">
+    <script src="/vendor/components/jquery/jquery.min.js"></script>
+    <script src="/vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <title>Fédération de Secourisme du Loiret</title>
+</head>
+
+
+<body>
+
+<header>
+    {% block header %}
+        {% include 'FrontBundle:Default:header.html.twig' %}
+    {% endblock %}
+</header>
+
+
+{% block body %}
+
+{% endblock %}
+
+<footer>
+    {% block footer %}
+        {% include 'FrontBundle:Default:footer.html.twig' %}
+    {% endblock %}
+</footer>
+</body>
+</html>
