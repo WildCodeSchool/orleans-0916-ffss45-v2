@@ -341,10 +341,6 @@ h3{
     position: static !important;
 }
 
-.collapse.in{
-    background-color: white;
-}
-
 li.menu a {
     color: white;
 }
@@ -354,5 +350,9 @@ li.menu a {
 }
 
 .titrenav{
-    color: black;
+    color: white !important;
+}
+
+.open{
+    background-color: transparent;
 }
