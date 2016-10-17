@@ -1,12 +1,10 @@
 .tuiles {
-    padding-bottom: 50px;
-    background: #E9E9E9;
+    padding-top: 70px;
+    padding-bottom: 70px;
 }
 .row.no-gutter {
     margin-left: 5px;
     margin-right: 5px;
-
-
 }
 .row.no-gutter [class*='col-']:not(:first-child),
 .row.no-gutter [class*='col-']:not(:last-child) {
@@ -63,17 +61,24 @@ figure.espace {
     z-index: 1;
 }
 .espace h2,
-.espace p {
+.espace p
+{
     margin: 0;
     width: 100%;
     opacity: 0;
 }
-.espace h2 {
-    padding: 0 30px;
+.espace h2{
+    padding: 0px 30px;
     display: inline-block;
     font-weight: 400;
     text-transform: uppercase;
+    position:relative;
+    top:10%;
+    transform: translateY(-90%);
+    -webkit-transform: translateY(-90%);
+    -ms-transform: translateY(-90%);
 }
+
 .espace p {
     padding: 0 50px;
     font-size: 0.8em;
@@ -106,6 +111,7 @@ figure.espace {
 .espace.hover figcaption h2 {
     opacity: 1;
 }
+
 .espace:hover figcaption p,
 .espace.hover figcaption p {
     opacity: 0.7;
