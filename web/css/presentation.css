@@ -15,6 +15,7 @@
 .presentation{
     padding: 40px 50px;
     font-size: x-large;
+    font-family: "Oswald", sans-serif;
 }
 
 .identity{
@@ -22,10 +23,11 @@
     border-left: 15px solid rgb(255, 228, 14);
     padding: 25px;
 }
-
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
 h2.lead{
     font-weight: bold;
     font-size: x-large;
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
 }
 
 p.lead{
@@ -40,7 +42,7 @@ a.job{
 }
 
 .more{
-    font-family: 'Questrial', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .information{
