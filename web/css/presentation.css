@@ -1,5 +1,6 @@
 .job{
-    color: rgb(51, 51, 51);
+    color: #0078A8;
+    text-decoration: underline;
 }
 .job:hover{
     color: rgb(255, 228, 14);
