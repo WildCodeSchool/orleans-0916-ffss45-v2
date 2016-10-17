@@ -1,10 +1,11 @@
 .job{
     color: #0078a8;
     text-decoration: underline;
+    font-weight: bold;
 }
 
 .job:visited{
-    color: #0078a8;
+    color: #3689CE;
     text-decoration: underline;
 }
 
@@ -14,7 +15,7 @@
 
 .presentation{
     padding: 40px 50px;
-    font-size: x-large;
+   font-size: x-large;
     font-family: "Oswald", sans-serif;
 }
 
@@ -22,37 +23,39 @@
     font-weight: bold;
     border-left: 15px solid rgb(255, 228, 14);
     padding: 25px;
+    font-family: 'Raleway', Arial, sans-serif;
 }
+
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
 h2.lead{
     font-weight: bold;
-    font-size: x-large;
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
+    font-size: 1em;
+    font-family: 'Raleway', Arial, sans-serif;
 }
 
 p.lead{
     font-family: 'Trirong', serif;
-    font-size: 30px;
+    font-size: 1.2em;
     text-align: center;
-}
-
-a.job{
-    font-weight: bold;
-
 }
 
 .more{
     font-family: Arial, Helvetica, sans-serif;
+    margin-top: 20px;
+    font-size: 1em;
 }
 
 .information{
-    margin-top: 100px;
+    margin-top: 30px;
     margin-left: -10%;
-    width: auto;
     padding: 10px 0px 10px 70px;
-    background: #E9E9E9;;
+    background: rgb(255, 228, 14);
+    font-size: 0.8em;
+
 }
 
 
-
+.chiffres{
+    margin-top: 30px;
+}
 
