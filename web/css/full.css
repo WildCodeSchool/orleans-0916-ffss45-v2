@@ -5,6 +5,11 @@
     color: white;
 }
 
+.container-fluid{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
 .navbar-default .navbar-brand{
     color: white;
 }
@@ -64,7 +69,9 @@
     .presentation{
         padding: 0px;
     }
-    
+    .contact{
+        padding-top: 15px;
+    }
 }
 
 .tuile{
@@ -79,13 +86,6 @@
 
 ul {
     list-style-type:none;
-}
-
-@media screen and (max-device-width: 836px){
-    .contact{
-        padding-top: 15px;
-    }
-
 }
 
 footer{
@@ -106,13 +106,8 @@ footer{
     z-index: 10;
 }
 
-
-
 .logo_WCS {
-
-
     width:60px;
-
 }
 
 .navbar.fixed {
@@ -132,7 +127,7 @@ footer{
     background-color: white ;
     width: 80vw;
     margin-top: 3%;
-    font-size: 15px;
+    font-size: 11px;
 }
 
 .submenu.pros{
@@ -145,7 +140,7 @@ footer{
     background-color: white ;
     width: 80vw;
     margin-top: 2.8%;
-    font-size: 15px;
+    font-size: 11px;
 
 }
 
@@ -159,7 +154,7 @@ footer{
     background-color: white ;
     width: 25vw;
     margin-top: 2%;
-    font-size: 15px;
+    font-size: 11px;
 }
 
 
@@ -300,6 +295,11 @@ h3{
 
 .scrollup:hover {
     color: white;
+}
+
+.menu-header{
+    font-size: 15px;
+    padding-bottom: 5px;
 }
 
 .menu-header.incendie{

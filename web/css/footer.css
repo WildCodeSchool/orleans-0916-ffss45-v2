@@ -1,0 +1,74 @@
+
+
+footer{
+    text-align: center;
+    border-top: 2px solid gainsboro;
+    background:linear-gradient(#253571, #2c3f87, #526bc7);
+    color: white;
+    font-weight: bold;
+    border-style: outset;
+}
+
+
+
+.logo-footer {
+
+
+    width:70px;
+    margin-top: -30px;
+    margin-left: -40px;
+    position: absolute;
+    left: 50%;
+    z-index: 10;
+
+}
+
+
+
+.logo_WCS {
+
+
+    width:60px;
+
+}
+
+
+
+
+.scrollup {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    display: none;
+    color: white;
+    background-color: #3a3f51;
+    border: 1px solid #3a3f51;
+    font-size: 20px;
+    text-align: center;
+    line-height: 37px;
+}
+
+.scrollup:hover {
+    color: white;
+}
+
+.scrollup {
+    width: 40px;
+    height: 40px;
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    display: none;
+    color: white;
+    background-color: #3a3f51;
+    border: 1px solid #3a3f51;
+    font-size: 20px;
+    text-align: center;
+    line-height: 37px;
+}
+ 
+.scrollup:hover {
+    color: white;
+}

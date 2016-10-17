@@ -1,0 +1,117 @@
+.tuiles {
+    padding-bottom: 50px;
+    background: #E9E9E9;
+}
+.row.no-gutter {
+    margin-left: 5px;
+    margin-right: 5px;
+
+
+}
+.row.no-gutter [class*='col-']:not(:first-child),
+.row.no-gutter [class*='col-']:not(:last-child) {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
+figure.espace {
+    font-family: 'Raleway', Arial, sans-serif;
+    color: #fff;
+    position: relative;
+    float: left;
+    overflow: hidden;
+    margin: 10px 1%;
+    width: 100%;
+    color: #000000;
+    text-align: center;
+}
+.espace * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.6s ease;
+    transition: all 0.6s ease;
+}
+.espace img {
+    opacity: 1;
+    width: 100%;
+    -webkit-transition: opacity 0.35s;
+    transition: opacity 0.35s;
+}
+.espace:after {
+    background: #ffffff;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    content: '';
+    opacity: 0.75;
+    -webkit-transform: skew(-45deg) scaleX(0);
+    transform: skew(-45deg) scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+.espace figcaption {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    z-index: 1;
+}
+.espace h2,
+.espace p {
+    margin: 0;
+    width: 100%;
+    opacity: 0;
+}
+.espace h2 {
+    padding: 0 30px;
+    display: inline-block;
+    font-weight: 400;
+    text-transform: uppercase;
+}
+.espace p {
+    padding: 0 50px;
+    font-size: 0.8em;
+    font-weight: 500;
+}
+.espace a {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: 1;
+}
+.espace:hover:after,
+.espace.hover:after {
+    -webkit-transform: skew(-45deg) scaleX(1);
+    transform: skew(-45deg) scaleX(1);
+    transition: all 400ms cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.espace:hover figcaption h2,
+.espace.hover figcaption h2,
+.espace:hover figcaption p,
+.esapce.hover figcaption p {
+    -webkit-transform: translate3d(0%, 0%, 0);
+    transform: translate3d(0%, 0%, 0);
+    -webkit-transition-delay: 0.2s;
+    transition-delay: 0.2s;
+}
+.espace:hover figcaption h2,
+.espace.hover figcaption h2 {
+    opacity: 1;
+}
+.espace:hover figcaption p,
+.espace.hover figcaption p {
+    opacity: 0.7;
+}
+
+
+
+
+

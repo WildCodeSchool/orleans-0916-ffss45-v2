@@ -1,0 +1,64 @@
+.formulaire{
+    background: rgb(26, 23, 27);
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+ul {
+    list-style-type:none;
+}
+
+.form-group{
+    color: rgb(141, 144, 147);
+    font-size: 18px;
+}
+
+h1.contact1{
+    color: white;
+    font-family: 'Lobster', cursive;
+}
+
+.contact2{
+    font-size: 22px;
+    color: rgb(141, 144, 147);
+    font-family: 'Quicksand', sans-serif;
+}
+
+.wrapper         {width:100%;height:100%;margin:0 auto;background:#ffffff}
+.h_iframe        {position:relative;}
+.h_iframe .ratio {display:block;width:100%;height:auto;}
+.h_iframe iframe {position:absolute;top:0;left:0;width:100%; height:100%;}
+
+iframe, object, embed {
+    max-width: 100%;
+}
+
+.myIframe {
+    position: relative;
+    padding-bottom: 65.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: auto;
+    -webkit-overflow-scrolling:touch; //<<--- THIS IS THE KEY
+    border: solid black 1px;
+}
+.myIframe iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+h3.iframe{
+    position: absolute;
+    top: 0  ;
+    left: 35%;
+}
+
+h3.iframe:hover{
+    color: rgb(225, 0, 26);
+}
+
+
+
