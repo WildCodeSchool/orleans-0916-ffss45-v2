@@ -35,7 +35,7 @@ ul {
     background-color: white ;
     width: 80vw;
     margin-top: 3%;
-    font-size: 11px;
+    font-size: 14px;
 }
 
 .submenu.pros{
@@ -48,7 +48,7 @@ ul {
     background-color: white ;
     width: 80vw;
     margin-top: 2.8%;
-    font-size: 11px;
+    font-size: 14px;
 
 }
 
@@ -62,7 +62,7 @@ ul {
     background-color: white ;
     width: 25vw;
     margin-top: 2%;
-    font-size: 11px;
+    font-size: 14px;
 }
 
 
@@ -72,8 +72,8 @@ ul {
 }
 
 .menu:hover{
-    text-decoration: underline;
-
+    background-color: white;
+    color: black;
 }
 
 li.menu a:hover{
@@ -142,7 +142,9 @@ a {
 }
 
 .submenu{
-    border: 1px solid lightgrey;
+    border-right: 1px solid lightgrey;
+    border-left: 1px solid lightgrey;
+    border-bottom: 1px solid lightgrey;
 }
 
 .menu ul{
