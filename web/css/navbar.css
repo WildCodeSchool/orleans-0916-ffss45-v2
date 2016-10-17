@@ -14,100 +14,8 @@
     color: white;
 }
 
-
-#carousel{
-    padding-top: 40px;
-}
-
-.carousel-caption{
-    background: rgba(0,0,0,.45);
-    backdrop-filter: grayscale(1) contrast(3) blur(1px);
-}
-
-.row.no-gutter {
-    margin-left: 0;
-    margin-right: 0;
-}
-
-.row.no-gutter [class*='col-']:not(:first-child),
-.row.no-gutter [class*='col-']:not(:last-child) {
-    padding-right: 0;
-    padding-left: 0;
-}
-
-.formation{
-    padding: 20px;
-    height: 200px;
-    color: grey;
-    background: rgb(227, 224, 207);
-}
-
-.formulaire{
-    margin-top: 50px;
-    margin-bottom: 50px;
-
-}
-
-.presentation{
-    padding-top: 30px;
-    padding-bottom: 50px;
-}
-
-.presentation h3{
-    text-align: center;
-}
-
-.presentation h4{
-    text-align: center;
-}
-
-.presentation .btn{
-    margin-left: 40%;
-}
-
-@media screen and (max-device-width: 836px){
-    .presentation{
-        padding: 0px;
-    }
-    .contact{
-        padding-top: 15px;
-    }
-}
-
-.tuile{
-    padding-bottom: 50px;
-}
-
-.contact{
-    text-align: center;
-    margin-top: 20%;
-
-}
-
 ul {
     list-style-type:none;
-}
-
-footer{
-    text-align: center;
-    border-top: 2px solid gainsboro;
-    background:linear-gradient(#253571, #2c3f87, #526bc7);
-    color: white;
-    font-weight: bold;
-    border-style: outset;
-}
-
-.logo-footer {
-    width:70px;
-    margin-top: -30px;
-    margin-left: -40px;
-    position: absolute;
-    left: 50%;
-    z-index: 10;
-}
-
-.logo_WCS {
-    width:60px;
 }
 
 .navbar.fixed {
@@ -244,57 +152,6 @@ a {
 
 .menu a{
     color: black;
-}
-
-.map{
-    height: 400px;
-    width: 400px;
-}
-
-h3{
-    font-weight: bold;
-}
-
-.img_pres{
-    height: 400px;
-}
-
-.scrollup {
-    width: 40px;
-    height: 40px;
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
-    display: none;
-    color: white;
-    background-color: #3a3f51;
-    border: 1px solid #3a3f51;
-    font-size: 20px;
-    text-align: center;
-    line-height: 37px;
-}
-
-.scrollup:hover {
-    color: white;
-}
-
-.scrollup {
-    width: 40px;
-    height: 40px;
-    position: fixed;
-    bottom: 50px;
-    right: 50px;
-    display: none;
-    color: white;
-    background-color: #3a3f51;
-    border: 1px solid #3a3f51;
-    font-size: 20px;
-    text-align: center;
-    line-height: 37px;
-}
-
-.scrollup:hover {
-    color: white;
 }
 
 .menu-header{
