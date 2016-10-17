@@ -1,7 +1,7 @@
 .formulaire{
-    background: rgb(26, 23, 27);
     padding-top: 30px;
     padding-bottom: 30px;
+    color: black;
 }
 
 ul {
@@ -9,18 +9,16 @@ ul {
 }
 
 .form-group{
-    color: rgb(141, 144, 147);
     font-size: 18px;
 }
 
 h1.contact1{
-    color: white;
+    color: black;
     font-family: 'Lobster', cursive;
 }
 
 .contact2{
     font-size: 22px;
-    color: rgb(141, 144, 147);
     font-family: 'Quicksand', sans-serif;
 }
 
@@ -56,9 +54,14 @@ h3.iframe{
     left: 35%;
 }
 
-h3.iframe:hover{
-    color: rgb(225, 0, 26);
+.liencarte{
+    color: black;
 }
+
+.liencarte:visited{
+    color: black;
+}
+
 
 
 
