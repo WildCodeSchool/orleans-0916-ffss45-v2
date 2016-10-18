@@ -29,23 +29,45 @@ class BaseCommuneController extends Controller
         $baseCommune = new BaseCommune();
 
         $form = $this->createFormBuilder($baseCommune)
-            ->add('nomManif', TextType::class)
-            ->add('presentationManif', TextareaType::class)
-            ->add('dateJour1', DateType::class)
+            ->add('nomManif', TextType::class, array(
+                'label'=>'Nom de la manifestation',
+                  ))
+            ->add('presentationManif', TextareaType::class, array(
+                'label'=>'Courte description de la manifestation',
+                  ))
+            ->add('dateJour1', DateType::class, array(
+                'label'=>'Date et heure du premier jour',
+                  ))
             ->add('heureJour1',TimeType::class, array(
                 'input'  => 'datetime',
-                'widget' => 'choice',))
-            ->add('dateJour2', DateType::class)
+                'widget' => 'choice',
+                'label'=>' ',
+                  ))
+            ->add('dateJour2', DateType::class, array(
+                'label'=>'Date et heure du deuxième jour',
+                  ))
             ->add('heureJour2',TimeType::class, array(
-                    'input'  => 'datetime',
-                    'widget' => 'choice',))
-            ->add('dateJour3', DateType::class)
+                'input'  => 'datetime',
+                'widget' => 'choice',
+                'label'=>' ',
+                  ))
+            ->add('dateJour3', DateType::class, array(
+                'label'=>'Date et heure du troisième jour',
+                  ))
             ->add('heureJour3',TimeType::class, array(
-                    'input'  => 'datetime',
-                    'widget' => 'choice',))
-            ->add('adresseManif', TextType::class)
-            ->add('villeManif', TextType::class)
-            ->add('pompiersLieu', TextType::class)
+                'input'  => 'datetime',
+                'widget' => 'choice',
+                'label'=>' ',
+                  ))
+            ->add('adresseManif', TextType::class, array(
+                'label'=>'Adresse de la manifestation',
+                  ))
+            ->add('villeManif', TextType::class, array(
+                'label'=>'Ville',
+                  ))
+            ->add('pompiersLieu', TextType::class, array(
+
+            ))
             ->add('pompiersDist', NumberType::class)
             ->add('pompiersDelai', TimeType::class, array(
                 'input'  => 'datetime',
@@ -63,7 +85,24 @@ class BaseCommuneController extends Controller
             ->add('telChef', NumberType::class)
             ->add('mailChef', EmailType::class)
             ->add('nomSiteWeb', TextType::class)
+            ->add('save', SubmitType::class, array('label' => 'Envoyer'))
             ->getForm();
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            // $form->getData() holds the submitted values
+            // but, the original `$task` variable has also been updated
+            $baseCommune = $form->getData();
+
+            // ... perform some action, such as saving the task to the database
+            // for example, if Task is a Doctrine entity, save it!
+            // $em = $this->getDoctrine()->getManager();
+            // $em->persist($task);
+            // $em->flush();
+
+            return $this->redirectToRoute('task_success');
+        }
+
 
         return $this->render('@Front/Default/form.html.twig', array(
             'form' => $form->createView(),
