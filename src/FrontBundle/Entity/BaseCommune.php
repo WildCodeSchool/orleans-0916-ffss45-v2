@@ -1,11 +1,16 @@
 <?php
 namespace FrontBundle\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 
-
-
+/**
+* @ORM\Entity(repositoryClass="FrontBundle\Repository\BaseCommuneRepository")
+*/
 class BaseCommune
 {
+    /**
+     * @ORM\Id
+     */
 
     protected $nomManif;
     protected $presentationManif;

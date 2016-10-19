@@ -112,15 +112,16 @@ class BaseCommuneController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             // $form->getData() holds the submitted values
             // but, the original `$task` variable has also been updated
-            $form->getData();
+            $essai=$form->getData();
 
             // ... perform some action, such as saving the task to the database
             // for example, if Task is a Doctrine entity, save it!
-            $baseCommune = $this->getDoctrine()->getManager()->persist($baseCommune);
+            $essai2 = $this->getDoctrine()->getManager();
+            $essai2->persist($essai);
 
             // $em->flush();
 
-            return $this->forward('FrontBundle:Controller:TestController.php', $baseCommune);
+            return $this->forward('FrontBundle:Controller:TestController.php', $essai);
         }
 
 
