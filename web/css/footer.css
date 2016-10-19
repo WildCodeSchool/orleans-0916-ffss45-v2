@@ -1,9 +1,10 @@
-
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
 footer{
     text-align: center;
     background-color:#253571;
     color: white;
     font-weight: bold;
+    font-family: 'Raleway', Arial, sans-serif;
 }
 
 .logo-footer {
