@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Agenda list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Datededebut</th>
+                <th>Datedefin</th>
+                <th>Heurededebutam</th>
+                <th>Heuredefinam</th>
+                <th>Heurededebutpm</th>
+                <th>Heuredefinpm</th>
+                <th>Adresse</th>
+                <th>Typeformation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for agenda in agendas %}
+            <tr>
+                <td><a href="{{ path('agenda_show', { 'id': agenda.id }) }}">{{ agenda.id }}</a></td>
+                <td>{% if agenda.dateDeDebut %}{{ agenda.dateDeDebut|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if agenda.dateDeFin %}{{ agenda.dateDeFin|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if agenda.heureDeDebutAm %}{{ agenda.heureDeDebutAm|date('H:i:s') }}{% endif %}</td>
+                <td>{% if agenda.heureDeFinAm %}{{ agenda.heureDeFinAm|date('H:i:s') }}{% endif %}</td>
+                <td>{% if agenda.heureDeDebutPm %}{{ agenda.heureDeDebutPm|date('H:i:s') }}{% endif %}</td>
+                <td>{% if agenda.heureDeFinPm %}{{ agenda.heureDeFinPm|date('H:i:s') }}{% endif %}</td>
+                <td>{{ agenda.adresse }}</td>
+                <td>{{ agenda.typeFormation }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('agenda_show', { 'id': agenda.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('agenda_edit', { 'id': agenda.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('agenda_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
