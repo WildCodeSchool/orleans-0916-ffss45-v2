@@ -16,6 +16,9 @@ use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Doctrine\Common\Collections\ArrayCollection;
+
+
 
 class BaseCommuneController extends Controller
 {
@@ -66,25 +69,42 @@ class BaseCommuneController extends Controller
                 'label'=>'Ville',
                   ))
             ->add('pompiersLieu', TextType::class, array(
-
-            ))
-            ->add('pompiersDist', NumberType::class)
+                  'label'=>'Adresse des pompiers'
+                  ))
+            ->add('pompiersDist', NumberType::class, array(
+                'label'=>' Distance de la caserne'
+                  ))
             ->add('pompiersDelai', TimeType::class, array(
                 'input'  => 'datetime',
-                'widget' => 'choice',))
-            ->add('urgencesLieu', TextType::class)
-            ->add('urgencesDist', NumberType::class)
+                'widget' => 'choice',
+                'label'=>'Délai avant intervention'))
+            ->add('urgencesLieu', TextType::class, array(
+                'label'=>'Adresse des urgences',
+                  ))
+            ->add('urgencesDist', NumberType::class, array(
+                'label'=>'Distance des Urgences',
+                  ))
             ->add('urgencesDelai', TimeType::class, array(
                 'input'  => 'datetime',
-                'widget' => 'choice',))
-            ->add('raisonSociale', TextType::class)
-            ->add('nomRep', TextType::class)
-            ->add('telRep', NumberType::class)
-            ->add('mailRep', EmailType::class)
-            ->add('nomChef', TextType::class)
-            ->add('telChef', NumberType::class)
-            ->add('mailChef', EmailType::class)
-            ->add('nomSiteWeb', TextType::class)
+                'widget' => 'choice',
+                'label'=> 'Délai'
+                  ))
+            ->add('raisonSociale', TextType::class, array(
+                'label'=>'Raison sociale'
+                  ))
+            ->add('nomRep', TextType::class, array(
+                'label'=>'Nom du représentant',
+                  ))
+            ->add('telRep', NumberType::class, array(
+                'label'=>'téléphone'
+                  ))
+            ->add('mailRep', EmailType::class, array(
+                'label'=>'mail'
+                  ))
+            ->add('nomChef', TextType::class, array(
+                'label'=>'Nom du Chef de projet'
+                  ))
+
             ->add('save', SubmitType::class, array('label' => 'Envoyer'))
             ->getForm();
 
@@ -92,15 +112,15 @@ class BaseCommuneController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             // $form->getData() holds the submitted values
             // but, the original `$task` variable has also been updated
-            $baseCommune = $form->getData();
+            $form->getData();
 
             // ... perform some action, such as saving the task to the database
             // for example, if Task is a Doctrine entity, save it!
-            // $em = $this->getDoctrine()->getManager();
-            // $em->persist($task);
+            $baseCommune = $this->getDoctrine()->getManager()->persist($baseCommune);
+
             // $em->flush();
 
-            return $this->redirectToRoute('task_success');
+            return $this->forward('FrontBundle:Controller:TestController.php', $baseCommune);
         }
 
 

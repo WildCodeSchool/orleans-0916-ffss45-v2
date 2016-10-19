@@ -1,3 +1,8 @@
+formulaire:
+    resource: "@FormulaireBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 front:
     resource: "@FrontBundle/Controller/"
     type:     annotation

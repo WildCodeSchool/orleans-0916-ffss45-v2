@@ -3,8 +3,10 @@ namespace FrontBundle\Entity;
 
 
 
+
 class BaseCommune
 {
+
     protected $nomManif;
     protected $presentationManif;
     protected $dateJour1;
@@ -41,6 +43,7 @@ class BaseCommune
     /**
      * @param mixed $nomManif
      */
+
     public function setNomManif($nomManif)
     {
         $this->nomManif = $nomManif;
