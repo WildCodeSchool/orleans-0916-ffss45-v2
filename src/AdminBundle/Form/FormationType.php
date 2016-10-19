@@ -19,6 +19,7 @@ class FormationType extends AbstractType
             ->add('nomCourt')
             ->add('categorie')
             ->add('descriptif')
+            ->add('typeFormation')
         ;
     }
     

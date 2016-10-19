@@ -161,27 +161,4 @@ class Formation
     {
         return $this->descriptif;
     }
-
-    /**
-     * Set typeFormation
-     *
-     * @param \AdminBundle\Entity\Agenda $typeFormation
-     * @return Formation
-     */
-    public function setTypeFormation(\AdminBundle\Entity\Agenda $typeFormation = null)
-    {
-        $this->typeFormation = $typeFormation;
-
-        return $this;
-    }
-
-    /**
-     * Get typeFormation
-     *
-     * @return \AdminBundle\Entity\Agenda 
-     */
-    public function getTypeFormation()
-    {
-        return $this->typeFormation;
-    }
 }

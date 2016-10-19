@@ -247,44 +247,4 @@ class Agenda
         return $this->adresse;
     }
 
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->agenda = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add agenda
-     *
-     * @param \AdminBundle\Entity\Formation $agenda
-     * @return Agenda
-     */
-    public function addAgenda(\AdminBundle\Entity\Formation $agenda)
-    {
-        $this->agenda[] = $agenda;
-
-        return $this;
-    }
-
-    /**
-     * Remove agenda
-     *
-     * @param \AdminBundle\Entity\Formation $agenda
-     */
-    public function removeAgenda(\AdminBundle\Entity\Formation $agenda)
-    {
-        $this->agenda->removeElement($agenda);
-    }
-
-    /**
-     * Get agenda
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAgenda()
-    {
-        return $this->agenda;
-    }
 }

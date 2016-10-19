@@ -14,7 +14,6 @@
                 <th>Heurededebutpm</th>
                 <th>Heuredefinpm</th>
                 <th>Adresse</th>
-                <th>Typeformation</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -29,14 +28,13 @@
                 <td>{% if agenda.heureDeDebutPm %}{{ agenda.heureDeDebutPm|date('H:i:s') }}{% endif %}</td>
                 <td>{% if agenda.heureDeFinPm %}{{ agenda.heureDeFinPm|date('H:i:s') }}{% endif %}</td>
                 <td>{{ agenda.adresse }}</td>
-                <td>{{ agenda.typeFormation }}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('agenda_show', { 'id': agenda.id }) }}">show</a>
+                            <button><a href="{{ path('agenda_show', { 'id': agenda.id }) }}">show</a></button>
                         </li>
                         <li>
-                            <a href="{{ path('agenda_edit', { 'id': agenda.id }) }}">edit</a>
+                            <button><a href="{{ path('agenda_edit', { 'id': agenda.id }) }}">edit</a></button>
                         </li>
                     </ul>
                 </td>

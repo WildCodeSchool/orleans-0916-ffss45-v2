@@ -22,9 +22,6 @@ class AgendaType extends AbstractType
             ->add('heureDeDebutPm', 'time')
             ->add('heureDeFinPm', 'time')
             ->add('adresse')
-            ->add('typeFormation')
-            ->add('save', 'submit')
-            ->add('delete', 'submit')
         ;
     }
     
