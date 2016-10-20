@@ -1,9 +1,12 @@
 <?php
-
 namespace FrontBundle\Entity;
+
+
+
 
 class BaseCommune
 {
+
 
     protected $nomManif;
     protected $presentationManif;

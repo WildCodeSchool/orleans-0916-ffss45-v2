@@ -1,0 +1,60 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Agenda</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ agenda.id }}</td>
+            </tr>
+            <tr>
+                <th>Datededebut</th>
+                <td>{% if agenda.dateDeDebut %}{{ agenda.dateDeDebut|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datedefin</th>
+                <td>{% if agenda.dateDeFin %}{{ agenda.dateDeFin|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Heurededebutam</th>
+                <td>{% if agenda.heureDeDebutAm %}{{ agenda.heureDeDebutAm|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Heuredefinam</th>
+                <td>{% if agenda.heureDeFinAm %}{{ agenda.heureDeFinAm|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Heurededebutpm</th>
+                <td>{% if agenda.heureDeDebutPm %}{{ agenda.heureDeDebutPm|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Heuredefinpm</th>
+                <td>{% if agenda.heureDeFinPm %}{{ agenda.heureDeFinPm|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Adresse</th>
+                <td>{{ agenda.adresse }}</td>
+            </tr>
+            <tr>
+                <th>Typeformation</th>
+                <td>{{ agenda.typeFormation }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('agenda_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('agenda_edit', { 'id': agenda.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,7 +1,9 @@
-formulaire:
-    resource: "@FormulaireBundle/Controller/"
+admin:
+    resource: "@AdminBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /admin
+
+
 
 front:
     resource: "@FrontBundle/Controller/"
