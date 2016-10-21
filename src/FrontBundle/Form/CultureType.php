@@ -109,6 +109,35 @@ class CultureType extends AbstractType
                 ),
                 'choices_as_values' => true,
             ))
+            ->add('capaciteSite', NumberType::class, array(
+                'label'=> 'Capacité du site',
+            ))
+            ->add('superficieSite', NumberType::class, array(
+                'label'=> 'Superficie du site',
+            ))
+            ->add('accesPublic', NumberType::class, array(
+                'label'=> 'Nombre d\'accès pour le public',
+            ))
+            ->add('nbScene', NumberType::class, array(
+                'label'=> 'Nombre de scènes',
+            ))
+            ->add('simulScene', ChoiceType::class, array(
+                'label'=> "Est-ce que les scènes peuvent jouer simultanément ?",
+                'choices'=>array(
+                    'Oui'=>'oui',
+                    'Non'=>'non',
+                ),
+                'choices_as_values' => true,
+            ))
+            ->add('installTemp', ChoiceType::class, array(
+                'label'=> "Mettez vous en place des aménagements temporaires ?",
+                'choices'=>array(
+                    'Tente'=>'tente',
+                    'Scène'=>'scène',
+                    'Autre'=>'autre',
+                ),
+                'choices_as_values' => true,
+            ))
             ->add('save', SubmitType::class, array('label' => 'Envoyer'))
         ;
     }
