@@ -27,21 +27,12 @@ class TestDeuxController extends Controller
     {
 
 
-        $form3 = $this->createFormBuilder($baseCommune)
+        $form3 = $this->createFormBuilder($baseCommune);
 
 
-            ->add('telRep', NumberType::class, array(
-                'label'=>'téléphone'
-            ))
-            ->add('mailRep', EmailType::class, array(
-                'label'=>'mail'
-            ))
-            ->add('nomChef', TextType::class, array(
-                'label'=>'Nom du Chef de projet'
-            ))
 
-            ->add('save', SubmitType::class, array('label' => 'Envoyer'))
-            ->getForm();
+
+
         if ($form3->isSubmitted() && $form3->isValid()) {
 
         }

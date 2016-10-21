@@ -14,23 +14,25 @@ use Symfony\Component\Routing\Annotation\Route;
 class BaseCommuneController extends Controller
 {
     /**
-     * @Route("/formulaire")
+     * @Route("/formulaire", name="formulaire")
      */
 
 
     public function newFormAction (Request $request)
-    {
-        $form = $this->createForm(BaseCommuneType::class);
+    {   $culture='';
+
+        $baseCommune= New BaseCommune();
+        $form = $this->createForm(BaseCommuneType::class, $baseCommune);
 
         $form->handleRequest($request);
 
 
-      /*   if ($form->isSubmitted() && $form->isValid()) {
+       if ($form->isSubmitted() && $form->isValid()) {
 
-            return $this->forward('FrontBundle:Test:newForm2', array('route'=>'/src/FrontBundle/Controller/TestController.php'), array('baseCommune'=>$baseCommune));
-        }*/
+            return $this->forward('FrontBundle:Culture:newForm', array('baseCommune'=>$baseCommune));
+        }
 
-
+        dump($baseCommune, $culture);
         return $this->render('@Front/Default/form.html.twig', array(
             'form' => $form->createView(),
         ));
