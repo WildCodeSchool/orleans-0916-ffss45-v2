@@ -28,11 +28,18 @@ class BaseCommuneController extends Controller
 
 
        if ($form->isSubmitted() && $form->isValid()) {
+           $fp=fopen('essai.txt','w+');
+           fwrite($fp, $baseCommune->getAdresseManif().' '.$baseCommune->getMailChef());
+       /*    foreach ($baseCommune as $key=>$value){
+
+           }*/
+           fclose($fp);
+
 
             return $this->forward('FrontBundle:Culture:newForm', array('baseCommune'=>$baseCommune));
         }
 
-        dump($baseCommune, $culture);
+        dump($baseCommune);
         return $this->render('@Front/Default/form.html.twig', array(
             'form' => $form->createView(),
         ));
