@@ -29,7 +29,7 @@ class TestDeuxController extends Controller
 
         $form3 = $this->createFormBuilder($baseCommune);
 
-
+var_dump($baseCommune); exit();
 
 
 

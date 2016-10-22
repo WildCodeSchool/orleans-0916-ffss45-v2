@@ -1,25 +1,26 @@
 <?php
-
+/**
+ * Created by PhpStorm.
+ * User: sylvain
+ * Date: 22/10/16
+ * Time: 23:04
+ */
 
 namespace FrontBundle\Controller;
 
-use FrontBundle\Entity\BaseCommune;
-use FrontBundle\Form\BaseCommuneType;
-use FrontBundle\Form\CreatePosteSecoursStep1;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use FrontBundle\Entity\PosteSecours;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use FrontBundle\Form\CreatePosteSecoursFlow;
 
-
-class BaseCommuneController extends Controller
+class PosteSecoursController extends Controller
 {
-    /**
-     * @Route("/formulaire", name="formulaire")
-     */
-    public function createPosteSecoursAction (Request $request)
-    {   
 
+    /**
+     * @Route("/steps", name="formulaire_step")
+     */
+    public function createPosteSecoursAction()
+    {
         $formData = new PosteSecours(); // Your form data class. Has to be an object, won't work properly with an array.
 
         $flow = $this->get('form.flow.createPosteSecours'); // must match the flow's service id
@@ -41,15 +42,13 @@ class BaseCommuneController extends Controller
 
                 $flow->reset(); // remove step data from the session
 
-                return $this->redirect($this->generateUrl('home')); // redirect when done
+                return $this->redirect($this->generateUrl('formulaire')); // redirect when done
             }
         }
 
-        return $this->render('MyCompanyMyBundle:PosteSecours:createPosteSecours.html.twig', array(
+        return $this->render('FrontBundle:PosteSecours:createPosteSecours.html.twig', array(
             'form' => $form->createView(),
             'flow' => $flow,
         ));
-
     }
-
 }

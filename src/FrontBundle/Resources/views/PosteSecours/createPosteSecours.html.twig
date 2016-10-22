@@ -1,0 +1,20 @@
+{# in src/MyCompany/MyBundle/Resources/views/Vehicle/createVehicle.html.twig #}
+<div>
+    Steps:
+    {% include 'CraueFormFlowBundle:FormFlow:stepList.html.twig' %}
+</div>
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {% if flow.getCurrentStepNumber() == 1 %}
+        <div>
+            When selecting four wheels you have to choose the engine in the next step.<br />
+        </div>
+    {% endif %}
+
+    {{ form_rest(form) }}
+
+    {% include 'CraueFormFlowBundle:FormFlow:buttons.html.twig' %}
+{{ form_end(form) }}
+
+Some CSS is needed to render the buttons correctly. The easiest way would be to let Assetic load the provided file in your base template:

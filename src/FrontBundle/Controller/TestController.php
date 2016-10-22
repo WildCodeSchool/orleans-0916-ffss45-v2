@@ -12,27 +12,27 @@ use Symfony\Component\Routing\Annotation\Route;
 class TestController extends Controller
 {
     /**
-     * @Route("/formulaire/test/", name="test")
+     * @Route("/medecin", name="test")
      */
 
-    public function newFormDeuxAction ($baseCommune, $culture, Request $request)
+    public function medecinAction ($baseCommune, Request $request)
     {
 
-        $deux = $this->createFormBuilder(MedecinType::class);
+        $form = $this->createFormBuilder(MedecinType::class, $baseCommune);
 
 
 
 
-        $deux->handleRequest($request);
+        $form->handleRequest($request);
 
 
-        if ($deux->isSubmitted() && $deux->isValid() && !empty($deux)) {
+        if ($form->isSubmitted() && $form->isValid()) {
             return $this->forward('FrontBundle:TestDeux:newForm3', array('baseCommune'=>$baseCommune));
         }
-        dump($baseCommune, $culture);
+        dump($baseCommune);
 
         return $this->render('@Front/Default/form2.html.twig', array(
-            'form2' => $deux->createView(),
+            'form2' => $form->createView(),
         ));
     }
 

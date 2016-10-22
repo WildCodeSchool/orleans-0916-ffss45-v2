@@ -25,23 +25,29 @@ class CultureController extends Controller
 
     public function newFormAction ($baseCommune, Request $request)
     {
-        $culture = new Culture();
+        //$culture = new Culture();
 
-        $form3 = $this->createForm(CultureType::class, $culture);
+        $baseCommune->setTypeCulture('zzzz');
+        $form = $this->createFormBuilder(CultureType::class, $baseCommune);
 
-        $form3->handleRequest($request);
+        $form->handleRequest($request);
 
 
-          if ($form3->isSubmitted() && $form3->isValid()) {
+        //dump($form);
 
-              return $this->forward('FrontBundle:Test:newFormDeux',array('baseCommune'=>$baseCommune,
-                  'culture'=>$culture));
+          if ($request) {
+
+              return $this->forward('FrontBundle:Test:medecin',array('baseCommune'=>$baseCommune));
+          }
+          elseif ($request) {
+              dump($form->getErrors());
+exit();
           }
 
 
         return $this->render('@Front/Default/form2.html.twig', array(
-            'form' => $form3->createView(),
-            dump($baseCommune, $culture) ));
+            'form' => $form->createView(),
+             ));
 
     }
 
