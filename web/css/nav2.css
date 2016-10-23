@@ -1,16 +1,12 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
 
-body{
-    font-family: 'Lato', sans-serif;
-    font-weight:300;
-}
+
 .dropdown-large {
     position: static !important;
 }
 .dropdown-menu-large {
     margin-left: 16px;
     margin-right: 16px;
-    padding: 20px 0px;
+    padding: 20px 20px;
 }
 .dropdown-menu-large > li > ul {
     padding: 0;
@@ -48,8 +44,8 @@ body{
     cursor: not-allowed;
 }
 .dropdown-menu-large .dropdown-header {
-    color: #428bca;
     font-size: 18px;
+    color: black;
 }
 @media (max-width: 768px) {
     .dropdown-menu-large {
@@ -65,4 +61,42 @@ body{
     .dropdown-menu-large .dropdown-header {
         padding: 3px 15px !important;
     }
+}
+
+.dropdown-header.incendie{
+    color: #ee1d23;
+}
+
+.dropdown-header.sportif{
+    color: #feca0a;
+}
+
+.dropdown-header.formateurs{
+    color: #f47d28;
+}
+
+.dropdown-header.aquatique{
+    color: #00aadd;
+}
+
+.dropdown-header.equipe{
+    color: #223e7a;
+}
+
+.dropdown-header.sante{
+    color: #dd4d9c;
+}
+
+.dropdown-header.debut{
+    color: grey;
+}
+
+.dropdown-header.travail{
+    color: #7bc142;
+}
+
+.navbar-nav{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
 }

@@ -45,16 +45,15 @@ class Formation
     private $nomCourt;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="categorie", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Categories", inversedBy="nomCategorie")
+     * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
      */
     private $categorie;
 
     /**
-     * @var string
+     * @var text
      *
-     * @ORM\Column(name="descriptif", type="string", length=255)
+     * @ORM\Column(name="descriptif", type="text")
      */
     private $descriptif;
 
@@ -116,7 +115,7 @@ class Formation
     }
 
     /**
-     * Set categorie
+     * Set categories_id
      *
      * @param string $categorie
      * @return Formation
@@ -133,7 +132,7 @@ class Formation
      *
      * @return string
      */
-    public function getCategorie()
+    public function getCategorie_Id()
     {
         return $this->categorie;
     }

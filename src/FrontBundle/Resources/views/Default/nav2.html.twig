@@ -19,7 +19,7 @@
     </div>
 
     <div class="collapse navbar-collapse js-navbar-collapse ">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav ">
             <li class="dropdown dropdown-large">
                 <a href="#">Présentation</a>
             </li>
@@ -29,46 +29,47 @@
                 <ul class="dropdown-menu dropdown-menu-large row">
                     <li class="col-sm-3">
                         <ul>
-                            <li class="dropdown-header">Pour débuter</li>
-                            <li><a href="#">IPS</a></li>
-                            <li><a href="#">PSC1</a></li>
+                            <li class="dropdown-header debut">Pour Débuter</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationDebutList'
+                            )) }}
                             <li class="divider"></li>
-                            <li><img class=img-responsive" src="{{ asset('images/Initiations2.JPG') }}"/></li>
+                            <li><img class="img-responsive" src="{{ asset('images/Formateur_PSE_petit.jpg') }}"/></li>
+                        </ul>
+                    </li>
+                    <li class="col-sm-3">
+                        <ul>
+                            <li class="dropdown-header equipe">Secours en équipe</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationEquipeList'
+                            )) }}
+                            <li class="divider"></li>
+                            <li class="dropdown-header sportif">Secours sportif</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationSportifList'
+                            )) }}
 
                         </ul>
                     </li>
                     <li class="col-sm-3">
                         <ul>
-                            <li class="dropdown-header">Secours en équipe</li>
-                            <li><a href="#">PSE1</a></li>
-                            <li><a href="#">PSE2</a></li>
-                            <li><a href="#">FCPSE1</a></li>
-                            <li><a href="#">FCPSE2</a></li>
-                            <li><a href="#">Chef d'équipe</a></li>
-                            <li><a href="#">Chef de poste</a></li>
+                            <li class="dropdown-header formateurs">Formateur</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationFormateurList'
+                            )) }}
                             <li class="divider"></li>
-                            <li class="dropdown-header">Secours sportif</li>
-                            <li><a href="#">PSS1</a>
+                            <li class="dropdown-header incendie">Incendie</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationIncendieList'
+                            )) }}
                         </ul>
                     </li>
                     <li class="col-sm-3">
                         <ul>
-                            <li class="dropdown-header">Formateur</li>
-                            <li><a href="#">Formateur PSC</a></li>
-                            <li><a href="#">Formateur PS</a></li>
-                            <li><a href="#">Formateur SST</a></li>
-                            <li><a href="#">Formateur EPI</a></li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Incendie</li>
-                            <li><a href="#">SSIAP</a></li>
-                        </ul>
-                    </li>
-                    <li class="col-sm-3">
-                        <ul>
-                            <li class="dropdown-header">Aquatique</li>
-                            <li><a href="#">BNSSA</a></li>
-                            <li><a href="#">BSB</a></li>
-                            <li><a href="#">Permis Bateau</a></li>
+                            <li class="dropdown-header aquatique">Aquatique</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationAquaList'
+                            )) }}
                         </ul>
                     </li>
 
@@ -77,126 +78,92 @@
 
             </li>
             <li class="dropdown dropdown-large">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-
-                <ul class="dropdown-menu dropdown-menu-large row">
-                    <li class="col-sm-6">
-                        <ul>
-                            <li class="dropdown-header">Sword of Truths</li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Theme/Character</li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-
-                        </ul>
-                    </li>
-                    <li class="col-sm-6">
-                        <ul>
-                            <li class="dropdown-header">by brand</li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li class="divider"></li>
-                            <li><img class"img-responsive" src="http://placehold.it/200x150"/></li>
-                        </ul>
-                    </li>
-
-
-                </ul>
-
-            </li>
-
-            <li class="dropdown dropdown-large">
-                <a href="#">Some link</a>
-            </li>
-            <li class="dropdown dropdown-large">
-                <a href="#">Some link</a>
-            </li>
-
-            <li class="dropdown dropdown-large">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Professionnels<b class="caret"></b></a>
 
                 <ul class="dropdown-menu dropdown-menu-large row">
                     <li class="col-sm-3">
                         <ul>
-                            <li class="dropdown-header">Sword of Truths</li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
+                            <li class="dropdown-header sante">Santé</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationSanteList'
+                            )) }}
                             <li class="divider"></li>
-                            <li class="dropdown-header">Theme/Character</li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
+                            <li><img class="img-responsive" src="{{ asset('images/Formateur_PSE_petit.jpg') }}"/></li>
+                        </ul>
+                    </li>
+                    <li class="col-sm-3">
+                        <ul>
+                            <li class="dropdown-header equipe">Secours en équipe</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationEquipeList'
+                            )) }}
+                            <li class="divider"></li>
+                            <li class="dropdown-header sportif">Secours sportif</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationSportifList'
+                            )) }}
+                        </ul>
+                    </li>
+                    <li class="col-sm-3">
+                        <ul>
+                            <li class="dropdown-header formateurs">Formateur</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationFormateurList'
+                            )) }}
+                            <li class="divider"></li>
+                            <li class="dropdown-header incendie">Incendie</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationIncendieList'
+                            )) }}
+                        </ul>
+                    </li>
+                    <li class="col-sm-3">
+                        <ul>
+                            <li class="dropdown-header aquatique">Aquatique</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationAquaList'
+                            )) }}
+                            <li class="divider"></li>
+                            <li class="dropdown-header travail">Secours au travail</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationTravailList'
+                            )) }}
+                        </ul>
+                    </li>
 
-                        </ul>
-                    </li>
-                    <li class="col-sm-3">
-                        <ul>
-                            <li class="dropdown-header">by brand</li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li class="divider"></li>
-                            <li><img class"img-responsive" src="http://placehold.it/200x150"/></li>
-                        </ul>
-                    </li>
-                    <li class="col-sm-3">
-                        <ul>
-                            <li class="dropdown-header">Sword of Truths</li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li class="divider"></li>
-                            <li class="dropdown-header">Theme/Character</li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-
-                        </ul>
-                    </li>
-                    <li class="col-sm-3">
-                        <ul>
-                            <li class="dropdown-header">by brand</li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li><a href="#">Example</a></li>
-                            <li class="divider"></li>
-                            <li><img class"img-responsive" src="http://placehold.it/200x150"/></li>
-                        </ul>
-                    </li>
 
                 </ul>
 
             </li>
+            <li class="dropdown dropdown-large">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Poste de secours<b class="caret"></b></a>
 
+                <ul class="dropdown-menu dropdown-menu-large row">
+                    <li class="col-sm-6">
+                        <ul>
+                            <li class="dropdown-header">Notre expertise</li>
+                            <li><a href="#">En apprendre plus</a></li>
+                            <li class="divider"></li>
+                            <li><img class="img-responsive" src="{{ asset('images/Secouristes_ffss45_petit.JPG') }}"/></li>
+                        </ul>
+                    </li>
+                    <li class="col-sm-6">
+                        <ul>
+                            <li class="dropdown-header">Demander une prestation</li>
+                            <li><a href="#">Evènement sportif</a></li>
+                            <li><a href="#">Evènement culturel</a></li>
+                            <li><a href="#">Rassemblement de personnes</a></li>
+                        </ul>
+                    </li>
+                </ul>
 
-
+            </li>
+            <li class="dropdown dropdown-large">
+                <a href="#">Contact</a>
+            </li>
+            <li class="dropdown dropdown-large">
+                <a href="#">Rejoignez nous</a>
+            </li>
         </ul>
 
     </div><!-- /.nav-collapse -->
