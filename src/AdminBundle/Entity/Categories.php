@@ -3,6 +3,7 @@
 namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Categories
@@ -29,10 +30,21 @@ class Categories
     private $nomCategorie;
 
     /**
+     * @ORM\OneToMany(targetEntity="Formation", mappedBy="categorie")
+     */
+
+    private $formations;
+    public function __construct()
+    {
+        $this->formations = new ArrayCollection();
+    }
+
+    /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
+
     public function getId()
     {
         return $this->id;
