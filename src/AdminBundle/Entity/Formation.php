@@ -34,8 +34,7 @@ class Formation
     private $nomLong;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Agenda", inversedBy="agenda")
-     * @ORM\JoinColumn(name="type_formation_id", referencedColumnName="id")
+     *
      */
     private $typeFormation;
 

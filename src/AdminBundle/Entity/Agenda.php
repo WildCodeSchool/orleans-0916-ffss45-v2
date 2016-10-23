@@ -71,7 +71,9 @@ class Agenda
     private $adresse;
 
     /**
-     * @ORM\OneToMany(targetEntity="Formation", mappedBy="typeFormation")
+     * @var int
+     *
+     * @ORM\Column(name="agenda", type="integer")
      */
     private $agenda;
 
