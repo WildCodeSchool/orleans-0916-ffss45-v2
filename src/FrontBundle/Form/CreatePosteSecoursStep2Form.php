@@ -26,7 +26,7 @@ class CreatePosteSecoursStep2Form extends AbstractType
     {
         $builder
             ->add('typeManifSportive', ChoiceType::class, array(
-                'label'=> 'type manifestation sportice',
+                'label'=> 'type manifestation sportive',
                 'choices'=>array(
                     'Aquatique'=>'aqua',
                     'Football'=>'foot',

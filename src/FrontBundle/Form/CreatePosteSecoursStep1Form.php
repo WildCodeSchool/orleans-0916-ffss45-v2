@@ -23,13 +23,14 @@ class CreatePosteSecoursStep1Form extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nomManif')
-            ->add('descriptionManif')
+            ->add('nomManif', TextType::class, array('label'=>'Nom de la manifestation'))
+            ->add('descriptionManif', TextType::class, array('label'=>'Brève description de la manifestation'))
             ->add('typeManif', ChoiceType::class, array(
                 'label'=> 'Votre manifestation',
                 'choices'=>array(
                     'Culture'=>'culture',
                     'Sport'=>'sport',
+                    'Rassemblement de personnes'=>'personnes'
                 ),
                 'choices_as_values' => true,)
             )

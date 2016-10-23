@@ -31,49 +31,49 @@ class PosteSecours
     /**
      * @var string
      *
-     * @ORM\Column(name="descriptionManif", type="text")
+     * @ORM\Column(name="descriptionManif", type="text", nullable=true)
      */
     private $descriptionManif;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="typeManif", type="string", length=255)
+     * @ORM\Column(name="typeManif", type="string", length=255, nullable=true)
      */
     private $typeManif;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="typeManifSportive", type="string", length=255)
+     * @ORM\Column(name="typeManifSportive", type="string", length=255, nullable=true)
      */
     private $typeManifSportive;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="taillePiscine", type="integer")
+     * @ORM\Column(name="taillePiscine", type="integer", nullable=true)
      */
     private $taillePiscine;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="tailleStade", type="string", length=255)
+     * @ORM\Column(name="tailleStade", type="string", length=255, nullable=true)
      */
     private $tailleStade;
 
     /**
      * @var int
      *
-     * @ORM\Column(name="nbScene", type="integer")
+     * @ORM\Column(name="nbScene", type="integer", nullable=true)
      */
     private $nbScene;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="commentaire", type="text")
+     * @ORM\Column(name="commentaire", type="text", nullable=true)
      */
     private $commentaire;
 
@@ -92,7 +92,7 @@ class PosteSecours
      * Set nomManif
      *
      * @param string $nomManif
-     * @return PosteTravail
+     * @return PosteSecours
      */
     public function setNomManif($nomManif)
     {
@@ -115,7 +115,7 @@ class PosteSecours
      * Set descriptionManif
      *
      * @param string $descriptionManif
-     * @return PosteTravail
+     * @return PosteSecours
      */
     public function setDescriptionManif($descriptionManif)
     {
@@ -138,7 +138,7 @@ class PosteSecours
      * Set typeManif
      *
      * @param string $typeManif
-     * @return PosteTravail
+     * @return PosteSecours
      */
     public function setTypeManif($typeManif)
     {
@@ -161,7 +161,7 @@ class PosteSecours
      * Set typeManifSportive
      *
      * @param string $typeManifSportive
-     * @return PosteTravail
+     * @return PosteSecours
      */
     public function setTypeManifSportive($typeManifSportive)
     {
@@ -184,7 +184,7 @@ class PosteSecours
      * Set taillePiscine
      *
      * @param integer $taillePiscine
-     * @return PosteTravail
+     * @return PosteSecours
      */
     public function setTaillePiscine($taillePiscine)
     {
@@ -207,7 +207,7 @@ class PosteSecours
      * Set tailleStade
      *
      * @param string $tailleStade
-     * @return PosteTravail
+     * @return PosteSecours
      */
     public function setTailleStade($tailleStade)
     {
@@ -230,7 +230,7 @@ class PosteSecours
      * Set nbScene
      *
      * @param integer $nbScene
-     * @return PosteTravail
+     * @return PosteSecours
      */
     public function setNbScene($nbScene)
     {
@@ -253,7 +253,7 @@ class PosteSecours
      * Set commentaire
      *
      * @param string $commentaire
-     * @return PosteTravail
+     * @return PosteSecours
      */
     public function setCommentaire($commentaire)
     {
