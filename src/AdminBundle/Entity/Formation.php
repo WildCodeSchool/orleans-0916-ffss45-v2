@@ -62,7 +62,7 @@ class Formation
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -85,7 +85,7 @@ class Formation
     /**
      * Get nomLong
      *
-     * @return string 
+     * @return string
      */
     public function getNomLong()
     {
@@ -108,7 +108,7 @@ class Formation
     /**
      * Get nomCourt
      *
-     * @return string 
+     * @return string
      */
     public function getNomCourt()
     {
@@ -131,7 +131,7 @@ class Formation
     /**
      * Get categorie
      *
-     * @return string 
+     * @return string
      */
     public function getCategorie()
     {
@@ -154,33 +154,10 @@ class Formation
     /**
      * Get descriptif
      *
-     * @return string 
+     * @return string
      */
     public function getDescriptif()
     {
         return $this->descriptif;
-    }
-
-    /**
-     * Set typeFormation
-     *
-     * @param \AdminBundle\Entity\Agenda $typeFormation
-     * @return Formation
-     */
-    public function setTypeFormation(\AdminBundle\Entity\Agenda $typeFormation = null)
-    {
-        $this->typeFormation = $typeFormation;
-
-        return $this;
-    }
-
-    /**
-     * Get typeFormation
-     *
-     * @return \AdminBundle\Entity\Agenda 
-     */
-    public function getTypeFormation()
-    {
-        return $this->typeFormation;
     }
 }
