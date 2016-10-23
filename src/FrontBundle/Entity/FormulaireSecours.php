@@ -344,9 +344,9 @@ class FormulaireSecours
     private $typeSportAutre;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="ageSportif", type="string", length=255, nullable=true)
+     * @ORM\Column(name="ageSportif", type="integer", nullable=true)
      */
     private $ageSportif;
 
@@ -1638,7 +1638,7 @@ class FormulaireSecours
     /**
      * Get ageSportif
      *
-     * @return string 
+     * @return integer
      */
     public function getAgeSportif()
     {

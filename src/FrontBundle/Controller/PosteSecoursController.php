@@ -8,7 +8,7 @@
 
 namespace FrontBundle\Controller;
 
-use FrontBundle\Entity\PosteSecours;
+use FrontBundle\Entity\FormulaireSecours;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use FrontBundle\Form\CreatePosteSecoursFlow;
@@ -21,7 +21,7 @@ class PosteSecoursController extends Controller
      */
     public function createPosteSecoursAction()
     {
-        $formData = new PosteSecours(); // Your form data class. Has to be an object, won't work properly with an array.
+        $formData = new FormulaireSecours(); // Your form data class. Has to be an object, won't work properly with an array.
 
         $flow = $this->get('form.flow.createPosteSecours'); // must match the flow's service id
         $flow->bind($formData);
