@@ -42,17 +42,17 @@ class CreatePosteSecoursFlow extends FormFlow {
             ),
             array(
                 'label' => 'confirmation',
-                'form_type' => 'FrontBundle\Form\CreatePosteSecoursStep4Form',
+                'form_type' => 'FrontBundle\Form\CreatePosteSecoursStep12Form',
                 'skip' => function($estimatedCurrentStepNumber, FormFlowInterface $flow) {
-                    return $estimatedCurrentStepNumber > 2 && $flow->getFormData()->getTypeManifSportive()!='aqua';
+                    return $estimatedCurrentStepNumber > 2 && $flow->getFormData()->getTypeEvtCulturel()!='';
                 },
             ),
             array(
                 'label' => 'confirmation',
-                'form_type' => 'FrontBundle\Form\CreatePosteSecoursStep5Form',
+                'form_type' => 'FrontBundle\Form\CreatePosteSecoursStep12Form',
                 'skip' => function($estimatedCurrentStepNumber, FormFlowInterface $flow) {
-                    return $estimatedCurrentStepNumber > 2 && $flow->getFormData()->getTypeManifSportive()!='foot';
-                },
+                    return $estimatedCurrentStepNumber > 2 && $flow->getFormData()->getTypeEvtCulturel()!='';
+                }
             ),
         );
     }

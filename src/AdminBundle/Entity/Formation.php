@@ -115,7 +115,7 @@ class Formation
     }
 
     /**
-     * Set categories_id
+     * Set categorie
      *
      * @param string $categorie
      * @return Formation
@@ -132,7 +132,7 @@ class Formation
      *
      * @return string
      */
-    public function getCategorie_Id()
+    public function getCategorie()
     {
         return $this->categorie;
     }
