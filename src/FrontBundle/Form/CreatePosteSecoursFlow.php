@@ -21,14 +21,14 @@ class CreatePosteSecoursFlow extends FormFlow {
             ),
             array(
                 'label' => 'manifestation sportive',
-                'form_type' => 'FrontBundle\Form\CreatePosteSecoursStep2Form',
+                'form_type' => 'FrontBundle\Form\CreatePosteSecoursStep3Form',
                 'skip' => function($estimatedCurrentStepNumber, FormFlowInterface $flow) {
                     return $estimatedCurrentStepNumber > 1 && $flow->getFormData()->getTypeManif()!='sport';
                 },
             ),
             array(
                 'label' => 'manifestation culturelle',
-                'form_type' => 'FrontBundle\Form\CreatePosteSecoursStep3Form',
+                'form_type' => 'FrontBundle\Form\CreatePosteSecoursStep2Form',
                 'skip' => function($estimatedCurrentStepNumber, FormFlowInterface $flow) {
                     return $estimatedCurrentStepNumber > 1 && $flow->getFormData()->getTypeManif()!='culture';
                 },
