@@ -30,11 +30,11 @@ class CreatePosteSecoursStep3Form extends AbstractType
     {
         $builder
             ->add('typeRdP', ChoiceType::class, array(
-            'label'=> 'Type d\'évènement culturel',
+            'label'=> 'Type de rassemblement',
             'choices'=>array(
                 'Brocante'=>'brocante',
                 'Foire'=>'foire',
-                'Séminaire ou soirée d\entreprise'=>'séminaire ou entreprise',
+                'Séminaire ou soirée d\'entreprise'=>'séminaire ou entreprise',
                 'Soirée ou gala étudiant'=>'soirée gala étudiant',
                 'Comice agricole'=>'comice agricole',
                 'Féria'=>'féria',

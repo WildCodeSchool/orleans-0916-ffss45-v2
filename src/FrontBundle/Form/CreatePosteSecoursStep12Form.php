@@ -27,7 +27,7 @@ class CreatePosteSecoursStep12Form extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('medecin', ChoiceType::class, array('label'=>'La règlementatation ou votre structure souhaite la présence d\'un médecin sur place',
+            ->add('medecin', ChoiceType::class, array('label'=>'La règlementation ou votre structure souhaite la présence d\'un médecin sur place',
                 'choices'=> array(
                     'Oui'=>'oui',
                     'Non'=>'non',),

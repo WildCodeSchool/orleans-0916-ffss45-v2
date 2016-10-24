@@ -84,7 +84,7 @@ class CreatePosteSecoursFlow extends FormFlow {
             ),
             array(
                 'label' => 'autre type de sport',
-                'form_type' => 'FrontBundle\Form\CreatePosteSecoursStep9Form',
+                'form_type' => 'FrontBundle\Form\CreatePosteSecoursStep11Form',
                 'skip' => function($estimatedCurrentStepNumber, FormFlowInterface $flow) {
                     return $estimatedCurrentStepNumber > 2 && $flow->getFormData()->getTypeEvtSportif()!='autre';
                 },
@@ -93,7 +93,7 @@ class CreatePosteSecoursFlow extends FormFlow {
                 'label' => 'confirmation',
                 'form_type' => 'FrontBundle\Form\CreatePosteSecoursStep12Form',
                 'skip' => function($estimatedCurrentStepNumber, FormFlowInterface $flow) {
-                    return $estimatedCurrentStepNumber > 2 && $flow->getFormData()->getTypeEvtCulturel()!='';
+                    return $estimatedCurrentStepNumber > 2 && !$flow->getFormData()->getTypeEvtCulturel()!='';
                 }
             ),
         );
