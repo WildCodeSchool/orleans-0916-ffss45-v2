@@ -8,7 +8,7 @@
 
 namespace FrontBundle\Form;
 
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\AbstractType;
@@ -23,7 +23,7 @@ class CreatePosteSecoursStep6Form extends AbstractType
      * @param array $options
      */
 
-    //Formulaire courses pédestres
+    //Formulaire sports collectifs
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -44,18 +44,13 @@ class CreatePosteSecoursStep6Form extends AbstractType
                     'Loisirs'=>'loisirs'),
                 'choices_as_values' => true,
             ))
-            ->add('nbTerrains')
-            ->add('signaleur', ChoiceType::class, array('label'=>'Présence de signaleur',
+            ->add('nbTerrains', IntegerType::class, array('label'=>'Nombre de terrains'))
+            ->add('catSportif', ChoiceType::class, array('label'=>'Vos sportifs sont en catégorie',
                 'choices'=> array(
-                    'Oui'=>'oui',
-                    'Non'=>'non'),
-                'choices_as_values' => true,
-            ))
-            ->add('typePiste', ChoiceType::class, array('label'=>'Type de voie',
-                'choices'=> array(
-                    'Piste'=>'piste',
-                    'Chemin privé'=>'chemin privé',
-                    'Voie publique'=>'voie publique'),
+                    'Jeunes'=>'jeunes',
+                    'Espoirs'=>'espoirs',
+                    'Séniors'=>'séniors',
+                    'Vétérans'=>'vétérans'),
                 'choices_as_values' => true,
             ))
             ->add('commentaire', TextareaType::class, array('label'=>'Commentaire'))
