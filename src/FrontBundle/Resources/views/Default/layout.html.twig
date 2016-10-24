@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -6,20 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
     <meta charset="utf-8">
     <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <link href="{{ asset('css/navbar.css')}}" rel="stylesheet">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
     <link href="{{ asset('css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('https://fonts.googleapis.com/css?family=Montserrat|Lato')}}" rel="stylesheet">
 
 
-  {% block stylesheets %}
-    <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/formulaire.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/espaces.css') }}" rel="stylesheet">
-    <link href="{{ asset ('css/presentation.css') }}" rel="stylesheet">
-      <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Lobster|Open+Sans+Condensed:300|PT+Sans|Questrial|Quicksand|Trirong" rel="stylesheet">
-  {% endblock %}
+    {% block stylesheets %}
+
+    {% endblock %}
 
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
@@ -44,20 +43,21 @@
 {% endblock %}
 
 
-    {% block footer %}
+{% block footer %}
 
-        {% include 'FrontBundle:Default:footer.html.twig' %}
-    {% endblock %}
+    {% include 'FrontBundle:Default:footer.html.twig' %}
+{% endblock %}
 
 </body>
+
 {% block javascript %}
-        <script>
-        /* Demo purposes only */
-        $(".hover").mouseleave(
-        function () {
-        $(this).removeClass("hover");
-        }
-        );
+    <script>
+
+
+
+
     </script>
+
 {% endblock %}
+
 </html>
