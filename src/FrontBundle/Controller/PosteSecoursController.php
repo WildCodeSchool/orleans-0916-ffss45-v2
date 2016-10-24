@@ -17,7 +17,7 @@ class PosteSecoursController extends Controller
 {
 
     /**
-     * @Route("/steps", name="formulaire_step")
+     * @Route("/formulaire", name="formulaire")
      */
     public function createPosteSecoursAction()
     {

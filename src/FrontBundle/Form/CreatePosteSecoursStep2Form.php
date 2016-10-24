@@ -112,7 +112,7 @@ class CreatePosteSecoursStep2Form extends AbstractType
                     'Autre'=>'autre',
                 ),
                 'choices_as_values' => true,))
-            ->add('save', SubmitType::class, array('label' => 'Envoyer'))
+            ->add('save', SubmitType::class, array('label' => 'Suivant'))
         ;
     }
 
