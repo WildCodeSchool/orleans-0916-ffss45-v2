@@ -1,9 +1,6 @@
 {# in src/MyCompany/MyBundle/Resources/views/Vehicle/createVehicle.html.twig #}
 {% extends 'FrontBundle:Default:squelette.html.twig' %}
 {% block body %}
-<div>
-    {% include 'CraueFormFlowBundle:FormFlow:stepList.html.twig' %}
-</div>
 
 {{ form_start(form) }}
     {{ form_errors(form) }}
@@ -15,10 +12,10 @@
 
     {% include 'CraueFormFlowBundle:FormFlow:buttons.html.twig' with {
     craue_formflow_button_label_finish: 'Envoyer',
-    craue_formflow_button_label_reset: 'Recommencer',
     craue_formflow_button_label_next: 'Suivant',
     craue_formflow_button_label_finish: 'Terminer',
     craue_formflow_button_label_back: 'Précédent',
+    craue_formflow_button_class_reset: 'hidden-xs hidden-md hidden-sm hidden-lg'
     } %}
 {{ form_end(form) }}
 
