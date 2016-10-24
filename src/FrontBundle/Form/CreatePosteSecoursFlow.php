@@ -21,7 +21,7 @@ class CreatePosteSecoursFlow extends FormFlow {
             ),
             array(
                 'label' => 'manifestation sportive',
-                'form_type' => 'FrontBundle\Form\CreatePosteSecoursStep3Form',
+                'form_type' => 'FrontBundle\Form\CreatePosteSecoursStep4Form',
                 'skip' => function($estimatedCurrentStepNumber, FormFlowInterface $flow) {
                     return $estimatedCurrentStepNumber > 1 && $flow->getFormData()->getTypeManif()!='sport';
                 },

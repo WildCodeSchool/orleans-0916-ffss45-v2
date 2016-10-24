@@ -8,7 +8,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -42,7 +41,7 @@ class CreatePosteSecoursStep1Form extends AbstractType
             ->add('mailRep', TextType::class, array('label'=>'Mail du représentant légal'))
             ->add('nomChef', TextType::class, array('label'=>'Nom du chef de projet'))
             ->add('telChef', NumberType::class, array('label'=>'Téléphone du chef de projet'))
-            ->add('mailChef', TextType::class, array('label'=>'Mail du chef de projet'))
+            ->add('mailChef', EmailType::class, array('label'=>'Mail du chef de projet'))
             ->add('siteWeb', TextType::class, array('label'=>'Site web de la manifestation'))
             ->add('typeManif', ChoiceType::class, array(
                 'label'=> 'Votre manifestation',
