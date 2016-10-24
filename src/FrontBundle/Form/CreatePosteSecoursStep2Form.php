@@ -25,11 +25,29 @@ class CreatePosteSecoursStep2Form extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('typeManifSportive', ChoiceType::class, array(
-                'label'=> 'type manifestation sportive',
+            ->add('typeEvtCulturel', ChoiceType::class, array(
+                'label'=> 'Type d\'évènement culturel',
                 'choices'=>array(
-                    'Aquatique'=>'aqua',
-                    'Football'=>'foot',
+                    'Concert'=>'concert',
+                    'Festival'=>'festival',
+                    'Théâtre'=>'theatre',
+                    'Autre'=>'autre',
+                ),
+                'choices_as_values' => true,))
+            ->add('prixEvt', ChoiceType::class, array(
+                'label'=> 'Votre évènement est',
+                'choices'=>array(
+                    'Gratuit'=>'gratuit',
+                    'Payant'=>'payant',
+                ),
+                    'choices_as_values' => true,))
+            ->add('typeEvtCulturel', ChoiceType::class, array(
+                'label'=> 'Type d\'évènement culturel',
+                'choices'=>array(
+                    'Concert'=>'concert',
+                    'Festival'=>'festival',
+                    'Théâtre'=>'theatre',
+                    'Autre'=>'autre',
                 ),
                 'choices_as_values' => true,))
 
@@ -43,7 +61,7 @@ class CreatePosteSecoursStep2Form extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'FrontBundle\Entity\PosteSecours'
+            'data_class' => 'FrontBundle\Entity\FormulaireSecours'
         ));
     }
 
