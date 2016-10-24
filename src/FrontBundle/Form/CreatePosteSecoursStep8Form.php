@@ -14,7 +14,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class CreatePosteSecoursStep8Form extends AbstractType
 {
@@ -68,7 +67,6 @@ class CreatePosteSecoursStep8Form extends AbstractType
                 'choices_as_values' => true,
             ))
             ->add('commentaire', TextareaType::class, array('label'=>'Commentaire'))
-            ->add('save', SubmitType::class, array('label' => 'Suivant'))
         ;
     }
     public function configureOptions(OptionsResolver $resolver)

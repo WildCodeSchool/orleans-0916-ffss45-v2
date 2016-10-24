@@ -14,7 +14,6 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class CreatePosteSecoursStep12Form extends AbstractType
 {
@@ -77,7 +76,6 @@ class CreatePosteSecoursStep12Form extends AbstractType
                 'choices_as_values' => true,
             ))
             ->add('infosCompl', TextareaType::class, array('label'=>'Infos complémentaires'))
-            ->add('save', SubmitType::class, array('label' => 'Envoyer'))
         ;
     }
     public function configureOptions(OptionsResolver $resolver)
