@@ -42,7 +42,7 @@ class PosteSecoursController extends Controller
 
                 $flow->reset(); // remove step data from the session
 
-                return $this->redirect($this->generateUrl('formulaire')); // redirect when done
+                return $this->redirect($this->generateUrl('')); // redirect when done
             }
         }
 
