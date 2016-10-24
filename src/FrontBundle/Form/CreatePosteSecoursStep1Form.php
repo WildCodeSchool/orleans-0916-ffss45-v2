@@ -20,6 +20,9 @@ class CreatePosteSecoursStep1Form extends AbstractType
      * @param FormBuilderInterface $builder
      * @param array $options
      */
+
+    //Etape de base commune à tous les formulaires
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

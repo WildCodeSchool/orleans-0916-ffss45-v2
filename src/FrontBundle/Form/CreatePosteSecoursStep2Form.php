@@ -22,6 +22,8 @@ class CreatePosteSecoursStep2Form extends AbstractType
      * @param array $options
      */
 
+    //Etape formulaire pour évènements culturels
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
