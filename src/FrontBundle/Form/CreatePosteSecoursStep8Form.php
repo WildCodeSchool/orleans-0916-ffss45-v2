@@ -16,23 +16,22 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class CreatePosteSecoursStep7Form extends AbstractType
+class CreatePosteSecoursStep8Form extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
 
-    //Formulaire sports individuels
+    //Formulaire sports collectifs
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('typeSportIndiv', ChoiceType::class, array('label'=>'Type de sport individuel',
+            ->add('typeSportMeca', ChoiceType::class, array('label'=>'Type de sport mécanique',
                 'choices'=> array(
-                    'Tennis'=>'tennis',
-                    'Judo'=>'judo',
-                    'Karate'=>'karate',
-                    'BMX'=>'bmx',
+                    'Voiture'=>'voiture',
+                    'Motocross'=>'motocross',
+                    'Moto vitesse'=>'moto vitesse',
                     'Autre'=>'autre'),
                 'choices_as_values' => true,
             ))
@@ -54,6 +53,20 @@ class CreatePosteSecoursStep7Form extends AbstractType
                     'Vétérans'=>'vétérans'),
                 'choices_as_values' => true,
             ))
+            ->add('commissaire', ChoiceType::class, array('label'=>'Présence d\'un commissaire de piste ?',
+                'choices'=> array(
+                    'Oui'=>'oui',
+                    'Non'=>'non',
+                    ),
+                'choices_as_values' => true,
+            ))
+            ->add('protection', ChoiceType::class, array('label'=>'Une protection du public est-elle prévue ?',
+                'choices'=> array(
+                    'Oui'=>'oui',
+                    'Non'=>'non',
+                ),
+                'choices_as_values' => true,
+            ))
             ->add('commentaire', TextareaType::class, array('label'=>'Commentaire'))
             ->add('save', SubmitType::class, array('label' => 'Envoyer'))
         ;
@@ -66,6 +79,6 @@ class CreatePosteSecoursStep7Form extends AbstractType
     }
     public function getBlockPrefix()
     {
-        return 'createPosteSecoursStep7';
+        return 'createPosteSecoursStep8';
     }
 }
