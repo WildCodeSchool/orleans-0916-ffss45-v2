@@ -16,22 +16,22 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-class CreatePosteSecoursStep8Form extends AbstractType
+class CreatePosteSecoursStep9Form extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
 
-    //Formulaire sports mecaniques
+    //Formulaire sports aquatiques
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('typeSportMeca', ChoiceType::class, array('label'=>'Type de sport mécanique',
+            ->add('typeSportAqua', ChoiceType::class, array('label'=>'Type de sport aquatique',
                 'choices'=> array(
-                    'Voiture'=>'voiture',
-                    'Motocross'=>'motocross',
-                    'Moto vitesse'=>'moto vitesse',
+                    'Natation'=>'natation',
+                    'Canoé'=>'canoe',
+                    'Triathlon'=>'triathlon',
                     'Autre'=>'autre'),
                 'choices_as_values' => true,
             ))
@@ -53,17 +53,17 @@ class CreatePosteSecoursStep8Form extends AbstractType
                     'Vétérans'=>'vétérans'),
                 'choices_as_values' => true,
             ))
-            ->add('commissaire', ChoiceType::class, array('label'=>'Présence d\'un commissaire de piste ?',
+            ->add('dispositifSecu', ChoiceType::class, array('label'=>'Présence d\'un dispositf de sécurité',
                 'choices'=> array(
                     'Oui'=>'oui',
                     'Non'=>'non',
                     ),
                 'choices_as_values' => true,
             ))
-            ->add('protection', ChoiceType::class, array('label'=>'Une protection du public est-elle prévue ?',
+            ->add('typePlanEau', ChoiceType::class, array('label'=>'Type de plan d\'eau',
                 'choices'=> array(
-                    'Oui'=>'oui',
-                    'Non'=>'non',
+                    'Fermé'=>'fermé',
+                    'Ouvert'=>'ouvert',
                 ),
                 'choices_as_values' => true,
             ))
@@ -79,6 +79,6 @@ class CreatePosteSecoursStep8Form extends AbstractType
     }
     public function getBlockPrefix()
     {
-        return 'createPosteSecoursStep8';
+        return 'createPosteSecoursStep9';
     }
 }
