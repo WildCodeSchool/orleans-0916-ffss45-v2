@@ -1,0 +1,4 @@
+{% for actuality in actualities %}
+    <li>{{ actualite.titre}} {{ actualite.contenu }} <img src="{{ asset('upload/' ~ actuality.image) }}" alt=""/>
+        {{ actualite.date|date("m/d/Y") }} <a href="{{ path('delete_actu', {'id':actuality.id}) }}">delete</a></li>
+{% endfor %}

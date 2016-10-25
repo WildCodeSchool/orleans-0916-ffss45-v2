@@ -1,0 +1,9 @@
+{% extends 'squelette.html.twig' %}
+{% block content %}
+    <div id="sidebar">
+        {{ render(controller(
+        'DojoBundle:Actuality:actuOnly'
+        )) }}
+    </div>
+{{ form(form) }}
+{% endblock %}
