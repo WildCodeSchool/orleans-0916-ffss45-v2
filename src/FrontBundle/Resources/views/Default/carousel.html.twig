@@ -20,7 +20,7 @@
                             <p class="animated fadeInUp"><a href="#" class="btn btn-transparent btn-rounded btn-large">En savoir plus</a></p>
                         </div>
                     </div>
-                    <div class="item"><img src="{{ asset('images/IMG_4468.JPG')}}" alt=""/>
+                    <div class="item">{{ render(controller('ActualiteBundle:Actualite:findLastActu')) }}
                         <div class="carousel-caption">
                             <h2 class="animated bounceInDown">Titre 2</h2>
                             <p class="animated bounceInUp">Lorem ipsum dolor sit amet consectetur adipisicing elit</p>

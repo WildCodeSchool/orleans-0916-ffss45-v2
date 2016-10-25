@@ -73,5 +73,13 @@ class ActualiteController extends Controller
 
         return $this->render('@Actualite/Default/actuOnly.html.twig', array('actualites'=>$actualites));
     }
+
+    public function findLastActuAction()
+    {
+        $actualites = $this->getDoctrine()
+            ->getRepository('ActualiteBundle:Actualite')
+            ->findBy(array(), array('id'=>'DESC'), array(0,1));
+        return $this->render('@Actualite/Default/lastActu.html.twig', array('actualites'=>$actualites));
+    }
 }
 
