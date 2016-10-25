@@ -27,17 +27,15 @@ class Formation
     private $id;
 
     /**
+     * @ORM\OneToMany(targetEntity="Agenda", mappedBy="agendas")
+     */
+    private $formation;
+    /**
      * @var string
      *
      * @ORM\Column(name="nom_long", type="string", length=255)
      */
     private $nomLong;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Agenda", inversedBy="agenda")
-     * @ORM\JoinColumn(name="type_formation_id", referencedColumnName="id")
-     */
-    private $typeFormation;
 
     /**
      * @var string
@@ -163,25 +161,18 @@ class Formation
     }
 
     /**
-     * Set typeFormation
-     *
-     * @param \AdminBundle\Entity\Agenda $typeFormation
-     * @return Formation
+     * @param mixed $formation
      */
-    public function setTypeFormation(\AdminBundle\Entity\Agenda $typeFormation = null)
+    public function setFormation($formation)
     {
-        $this->typeFormation = $typeFormation;
-
-        return $this;
+        $this->formation = $formation;
     }
 
     /**
-     * Get typeFormation
-     *
-     * @return \AdminBundle\Entity\Agenda 
+     * @return mixed
      */
-    public function getTypeFormation()
+    public function getFormation()
     {
-        return $this->typeFormation;
+        return $this->formation;
     }
 }
