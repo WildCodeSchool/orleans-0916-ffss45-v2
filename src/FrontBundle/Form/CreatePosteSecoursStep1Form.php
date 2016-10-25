@@ -3,6 +3,7 @@
 namespace FrontBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TimeType;
@@ -25,7 +26,7 @@ class CreatePosteSecoursStep1Form extends AbstractType
     {
         $builder
             ->add('nomManif', TextType::class, array('label'=>'Nom de la manifestation'))
-            ->add('PresentationManif', TextType::class, array('label'=>'Brève description de la manifestation'))
+            ->add('PresentationManif', TextareaType::class, array('label'=>'Brève description de la manifestation'))
             ->add('dateDebutManif', DateType::class, array('label'=>'Date du début de la manifestation'))
             ->add('heureDebutManif', TimeType::class, array('label'=>'Heure du début de la manifestation'))
             ->add('dateFinManif', DateType::class, array('label'=>'Date de fin de la manifestation'))
