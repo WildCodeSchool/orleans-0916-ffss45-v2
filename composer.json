@@ -23,7 +23,8 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "components/font-awesome": "v4.6.3",
         "twbs/bootstrap": "v3.3.7",
-        "components/jquery": "^3.1"
+        "components/jquery": "^3.1",
+        "craue/formflow-bundle": "~3.0@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",

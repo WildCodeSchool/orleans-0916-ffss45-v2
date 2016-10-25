@@ -34,8 +34,7 @@ class Formation
     private $nomLong;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Agenda", inversedBy="agenda")
-     * @ORM\JoinColumn(name="type_formation_id", referencedColumnName="id")
+     *
      */
     private $typeFormation;
 
@@ -46,16 +45,15 @@ class Formation
     private $nomCourt;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="categorie", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Categories", inversedBy="formations")
+     * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
      */
     private $categorie;
 
     /**
-     * @var string
+     * @var text
      *
-     * @ORM\Column(name="descriptif", type="string", length=255)
+     * @ORM\Column(name="descriptif", type="text")
      */
     private $descriptif;
 
@@ -63,7 +61,7 @@ class Formation
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -86,7 +84,7 @@ class Formation
     /**
      * Get nomLong
      *
-     * @return string 
+     * @return string
      */
     public function getNomLong()
     {
@@ -109,7 +107,7 @@ class Formation
     /**
      * Get nomCourt
      *
-     * @return string 
+     * @return string
      */
     public function getNomCourt()
     {
@@ -132,7 +130,7 @@ class Formation
     /**
      * Get categorie
      *
-     * @return string 
+     * @return string
      */
     public function getCategorie()
     {
@@ -155,33 +153,10 @@ class Formation
     /**
      * Get descriptif
      *
-     * @return string 
+     * @return string
      */
     public function getDescriptif()
     {
         return $this->descriptif;
-    }
-
-    /**
-     * Set typeFormation
-     *
-     * @param \AdminBundle\Entity\Agenda $typeFormation
-     * @return Formation
-     */
-    public function setTypeFormation(\AdminBundle\Entity\Agenda $typeFormation = null)
-    {
-        $this->typeFormation = $typeFormation;
-
-        return $this;
-    }
-
-    /**
-     * Get typeFormation
-     *
-     * @return \AdminBundle\Entity\Agenda 
-     */
-    public function getTypeFormation()
-    {
-        return $this->typeFormation;
     }
 }

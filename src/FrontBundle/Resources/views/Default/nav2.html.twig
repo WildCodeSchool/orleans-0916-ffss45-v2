@@ -1,0 +1,167 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="hidden-xs" id="test">
+            <img class="img-responsive center-block" src="{{ asset('images/ff.png') }}" alt="">
+        </div>
+    </div>
+</div>
+
+
+<nav class="navbar navbar-default navbar-static ">
+    <div class="navbar-header">
+        <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+
+    </div>
+
+    <div class="collapse navbar-collapse js-navbar-collapse ">
+        <ul class="nav navbar-nav ">
+            <li class="dropdown dropdown-large">
+                <a href="#">Présentation</a>
+            </li>
+            <li class="dropdown dropdown-large">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Particuliers<b class="caret"></b></a>
+
+                <ul class="dropdown-menu dropdown-menu-large row">
+                    <li class="col-sm-3">
+                        <ul>
+                            <li class="dropdown-header debut">Pour Débuter</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationDebutList'
+                            )) }}
+                            <li class="divider"></li>
+                            <li><img class="img-responsive" src="{{ asset('images/Formateur_PSE_petit.jpg') }}"/></li>
+                        </ul>
+                    </li>
+                    <li class="col-sm-3">
+                        <ul>
+                            <li class="dropdown-header equipe">Secours en équipe</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationEquipeList'
+                            )) }}
+                            <li class="divider"></li>
+                            <li class="dropdown-header sportif">Secours sportif</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationSportifList'
+                            )) }}
+
+                        </ul>
+                    </li>
+                    <li class="col-sm-3">
+                        <ul>
+                            <li class="dropdown-header formateurs">Formateur</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationFormateurList'
+                            )) }}
+                            <li class="divider"></li>
+                            <li class="dropdown-header incendie">Incendie</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationIncendieList'
+                            )) }}
+                        </ul>
+                    </li>
+                    <li class="col-sm-3">
+                        <ul>
+                            <li class="dropdown-header aquatique">Aquatique</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationAquaList'
+                            )) }}
+                        </ul>
+                    </li>
+
+
+                </ul>
+
+            </li>
+            <li class="dropdown dropdown-large">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Professionnels<b class="caret"></b></a>
+
+                <ul class="dropdown-menu dropdown-menu-large row">
+                    <li class="col-sm-3">
+                        <ul>
+                            <li class="dropdown-header sante">Santé</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationSanteList'
+                            )) }}
+                            <li class="divider"></li>
+                            <li><img class="img-responsive" src="{{ asset('images/Formateur_PSE_petit.jpg') }}"/></li>
+                        </ul>
+                    </li>
+                    <li class="col-sm-3">
+                        <ul>
+                            <li class="dropdown-header equipe">Secours en équipe</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationEquipeList'
+                            )) }}
+                            <li class="divider"></li>
+                            <li class="dropdown-header sportif">Secours sportif</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationSportifList'
+                            )) }}
+                        </ul>
+                    </li>
+                    <li class="col-sm-3">
+                        <ul>
+                            <li class="dropdown-header formateurs">Formateur</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationFormateurList'
+                            )) }}
+                            <li class="divider"></li>
+                            <li class="dropdown-header incendie">Incendie</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationIncendieList'
+                            )) }}
+                        </ul>
+                    </li>
+                    <li class="col-sm-3">
+                        <ul>
+                            <li class="dropdown-header aquatique">Aquatique</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationAquaList'
+                            )) }}
+                            <li class="divider"></li>
+                            <li class="dropdown-header travail">Secours au travail</li>
+                            {{ render(controller(
+                            'AdminBundle:Nav:formationTravailList'
+                            )) }}
+                        </ul>
+                    </li>
+
+
+                </ul>
+
+            </li>
+            <li class="dropdown dropdown-large">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Poste de secours<b class="caret"></b></a>
+
+                <ul class="dropdown-menu dropdown-menu-large row">
+                    <li class="col-sm-6">
+                        <ul>
+                            <li class="dropdown-header">Notre expertise</li>
+                            <li><a href="#">En apprendre plus</a></li>
+                            <li class="divider"></li>
+                            <li><img class="img-responsive" src="{{ asset('images/Secouristes_ffss45_petit.JPG') }}"/></li>
+                        </ul>
+                    </li>
+                    <li class="col-sm-6">
+                        <ul>
+                            <li class="dropdown-header"><a href="{{path('formulaire') }}" >Demander une prestation</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+            </li>
+            <li class="dropdown dropdown-large">
+                <a href="#">Contact</a>
+            </li>
+            <li class="dropdown dropdown-large">
+                <a href="#">Rejoignez nous</a>
+            </li>
+        </ul>
+
+    </div><!-- /.nav-collapse -->
+</nav>
