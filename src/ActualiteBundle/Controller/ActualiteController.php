@@ -10,34 +10,22 @@ use Symfony\Component\HttpFoundation\Request;
 use ActualiteBundle\Entity\Actualite;
 class ActualiteController extends Controller
 {
-    /**
-     * @Route("/actu/list", name="list_actu")
-     */
-    public function indexAction()
-    {
-
-        return $this->render('ActualiteBundle:Default:index.html.twig');
-    }
 
     /**
      * @Route("/actu/{id}/delete", name="delete_actu")
      * @ParamConverter("actuality", class="ActualiteBundle:Actualite")
      *
      */
-    public function deleteAction(Actualite $actuality)
+    public function deleteAction(Actualite $actualite)
     {
 
-//        $actuality = $this->getDoctrine()
-//            ->getRepository('ActualiteBundle:Actualite')
-//            ->findOneById($id);
-
         $em = $this->getDoctrine()->getManager();
-        $em->remove($actuality);
+        $em->remove($actualite);
         $em->flush();
-        return $this->redirectToRoute('list_actu');
+        return $this->redirectToRoute('actu');
     }
     /**
-     * @Route("/actu/add", name="add_actu")
+     * @Route("/admin/actu", name="actu")
      */
     public function addAction( Request $request)
     {
@@ -49,22 +37,22 @@ class ActualiteController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             // $form->getData() holds the submitted values
             // but, the original `$task` variable has also been updated
-            $actuality = $form->getData();
-            $file = $actuality->getImage();
+            $actualite = $form->getData();
+            $file = $actualite->getImage();
             $fileName = md5(uniqid()).'.'.$file->guessExtension();
             $file->move(
                 $this->getParameter('upload_directory'),
                 $fileName
             );
-            $actuality->setImage($fileName);
+            $actualite->setImage($fileName);
 
             // ... perform some action, such as saving the task to the database
             //for example, if Task is a Doctrine entity, save it!
             $em = $this->getDoctrine()->getManager();
-            $em->persist($actuality);
+            $em->persist($actualite);
             $em->flush();
 
-            return $this->redirectToRoute('list_actu');
+            return $this->redirectToRoute('actu');
         }
 
         return $this->render('@Actualite/Default/add.html.twig', array('form'=>$form->createView(),
@@ -78,12 +66,12 @@ class ActualiteController extends Controller
      */
     public function actuOnlyAction()
     {
-        $actualities = $this->getDoctrine()
+        $actualites = $this->getDoctrine()
             ->getRepository('ActualiteBundle:Actualite')
             ->findAll();
 
 
-        return $this->render('@Actualite/Default/actuOnly.html.twig', array('actualities'=>$actualities));
+        return $this->render('@Actualite/Default/actuOnly.html.twig', array('actualites'=>$actualites));
     }
 }
 
