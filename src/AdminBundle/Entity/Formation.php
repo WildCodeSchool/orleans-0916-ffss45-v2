@@ -36,12 +36,7 @@ class Formation
     /**
      *
      */
-    private $typeFormation;
 
-    /**
-     * @var string
-     * @ORM\Column(name="nom_court", type="string", length=255)
-     */
     private $nomCourt;
 
     /**
@@ -51,7 +46,7 @@ class Formation
     private $categorie;
 
     /**
-     * @var text
+     * @var string
      *
      * @ORM\Column(name="descriptif", type="text")
      */
