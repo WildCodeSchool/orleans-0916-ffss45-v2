@@ -41,8 +41,8 @@ class CreatePosteSecoursStep1Form extends AbstractType
             ->add('mailRep', TextType::class, array('label'=>'Mail du représentant légal'))
             ->add('nomChef', TextType::class, array('label'=>'Nom du chef de projet'))
             ->add('telChef', NumberType::class, array('label'=>'Téléphone du chef de projet'))
-            ->add('mailChef', EmailType::class, array('label'=>'Mail du chef de projet'))
-            ->add('siteWeb', TextType::class, array('label'=>'Site web de la manifestation'))
+            ->add('mailChef', EmailType::class, array('label'=>'Mail du chef de projet',))
+            ->add('siteWeb', TextType::class, array('label'=>'Site web de la manifestation','required'=>false))
             ->add('typeManif', ChoiceType::class, array(
                 'label'=> 'Votre manifestation',
                 'choices'=>array(

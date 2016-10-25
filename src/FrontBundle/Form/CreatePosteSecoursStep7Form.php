@@ -37,7 +37,7 @@ class CreatePosteSecoursStep7Form extends AbstractType
             ))
             ->add('niveauCompet', ChoiceType::class, array('label'=>'Niveau de la compétition',
                 'choices'=> array(
-                    'International'=>'intertenational',
+                    'International'=>'international',
                     'National'=>'national',
                     'Régional'=>'régional',
                     'Départemental'=>'départemental',
@@ -53,7 +53,7 @@ class CreatePosteSecoursStep7Form extends AbstractType
                     'Vétérans'=>'vétérans'),
                 'choices_as_values' => true,
             ))
-            ->add('commentaire', TextareaType::class, array('label'=>'Commentaire'))
+            ->add('commentaire', TextareaType::class, array('label'=>'Commentaire','required'=>false))
         ;
     }
     public function configureOptions(OptionsResolver $resolver)

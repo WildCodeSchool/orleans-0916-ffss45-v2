@@ -32,9 +32,10 @@ class CreatePosteSecoursStep12Form extends AbstractType
                     'Non'=>'non',),
                 'choices_as_values' => true,
             ))
-            ->add('nomMed', TextType::class, array('label'=>'Nom du médecin'))
-            ->add('prenomMed', TextType::class, array('label'=>'Prénom du médecin'))
-            ->add('contactMed', TextType::class, array('label'=>'Contact du médecin'))
+            ->add('nomMed', TextType::class, array('label'=>'Si oui et que vous en avez déja un, nom du médecin','required'=>false))
+            ->add('prenomMed', TextType::class, array('label'=>'Prénom du médecin','required'=>false))
+            ->add('contactMed', TextType::class, array('label'=>'Contact du médecin','required'=>false))
+            ->add('speMed', TextType::class, array('label'=>'Spécialité', 'required'=>false))
             ->add('prestaMed', ChoiceType::class, array('label'=>'Je souhaite que la FFSS me propose une prestation médicale',
                 'choices'=> array(
                     'Oui'=>'oui',
@@ -75,7 +76,7 @@ class CreatePosteSecoursStep12Form extends AbstractType
                 ),
                 'choices_as_values' => true,
             ))
-            ->add('infosCompl', TextareaType::class, array('label'=>'Infos complémentaires'))
+            ->add('infosCompl', TextareaType::class, array('label'=>'Infos complémentaires','required'=>false))
         ;
     }
     public function configureOptions(OptionsResolver $resolver)

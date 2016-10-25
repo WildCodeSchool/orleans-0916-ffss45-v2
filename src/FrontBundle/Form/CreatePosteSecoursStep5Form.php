@@ -37,7 +37,7 @@ class CreatePosteSecoursStep5Form extends AbstractType
                 'choices_as_values' => true,
             ))
             ->add('distParcours1', NumberType::class, array('label'=>'Distance du parcours 1 en km'))
-            ->add('distParcours2', NumberType::class, array('label'=>'Distance du parcours 2 en km'))
+            ->add('distParcours2', NumberType::class, array('label'=>'Distance du parcours 2 en km','required'=>false))
             ->add('obstacles', ChoiceType::class, array('label'=>'Présence d\'obstacles',
                 'choices'=> array(
                     'Oui'=>'oui',
@@ -57,7 +57,7 @@ class CreatePosteSecoursStep5Form extends AbstractType
                     'Voie publique'=>'voie publique'),
                 'choices_as_values' => true,
             ))
-            ->add('commentaire', TextareaType::class, array('label'=>'Commentaire'))
+            ->add('commentaire', TextareaType::class, array('label'=>'Commentaire','required'=>false))
         ;
     }
     public function configureOptions(OptionsResolver $resolver)

@@ -34,7 +34,7 @@ class CreatePosteSecoursStep4Form extends AbstractType
                     'Non'=>'non'),
                 'choices_as_values' => true,
                     ))
-            ->add('regleFed',TextareaType::class, array('label'=>'Si oui, merci de préciser les obligations réglementaires'))
+            ->add('regleFed',TextareaType::class, array('label'=>'Si oui, merci de préciser les obligations réglementaires','required'=>false))
             ->add('nbSportifs', NumberType::class, array('label'=>'Nombre de sportifs'))
             ->add('nbPublicInsta', NumberType::class, array('label'=>'Nombre de public attendu en instantné'))
             ->add('licenceSportif', ChoiceType::class, array('label'=>'Les sportifs sont-ils licenciés ?',

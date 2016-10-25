@@ -30,7 +30,7 @@ class CreatePosteSecoursStep11Form extends AbstractType
             ->add('typeSportAutre', TextType::class, array('label'=>'Type de sport'))
             ->add('niveauCompet', ChoiceType::class, array('label'=>'Niveau de la compétition',
                 'choices'=> array(
-                    'International'=>'intertenational',
+                    'International'=>'international',
                     'National'=>'national',
                     'Régional'=>'régional',
                     'Départemental'=>'départemental',
@@ -38,7 +38,7 @@ class CreatePosteSecoursStep11Form extends AbstractType
                 'choices_as_values' => true,
             ))
            ->add('ageSportif', NumberType::class, array('label'=>'Age moyen des pratiquants'))
-            ->add('commentaire', TextareaType::class, array('label'=>'Commentaire'))
+            ->add('commentaire', TextareaType::class, array('label'=>'Commentaire','required'=>false))
         ;
     }
     public function configureOptions(OptionsResolver $resolver)
