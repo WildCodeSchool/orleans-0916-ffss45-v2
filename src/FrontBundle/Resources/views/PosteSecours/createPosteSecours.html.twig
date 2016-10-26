@@ -1,6 +1,7 @@
 {# in src/MyCompany/MyBundle/Resources/views/Vehicle/createVehicle.html.twig #}
-{% extends 'FrontBundle:Default:squelette.html.twig' %}
+{% extends '@Front/Default/frontLayout.html.twig' %}
 {% block stylesheets %}
+    {{ parent() }}
     <link href="{{ asset('css/posteSecours.css') }}" rel="stylesheet">
 {% endblock %}
 {% block body %}
