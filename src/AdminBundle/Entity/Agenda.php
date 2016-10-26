@@ -289,4 +289,18 @@ class Agenda
     {
         return $this->agenda;
     }
+
+    /**
+     * Set agenda
+     *
+     * @param integer $agenda
+     *
+     * @return Agenda
+     */
+    public function setAgenda($agenda)
+    {
+        $this->agenda = $agenda;
+
+        return $this;
+    }
 }
