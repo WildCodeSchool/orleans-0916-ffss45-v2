@@ -14,7 +14,7 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('FrontBundle:Default:index.html.twig');
+        return $this->render('@Front/Default/acceuil.html.twig');
 
 
     }

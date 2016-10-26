@@ -18,6 +18,7 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new FrontBundle\FrontBundle(),
             new AdminBundle\AdminBundle(),
+            new ActualiteBundle\ActualiteBundle(),
             new Craue\FormFlowBundle\CraueFormFlowBundle(),
 
         );
