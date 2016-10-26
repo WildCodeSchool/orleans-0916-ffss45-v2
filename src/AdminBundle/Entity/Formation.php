@@ -159,7 +159,7 @@ class Formation
     {
         return $this->descriptif;
     }
-<<<<<<< HEAD
+
 
     /**
      * @param mixed $formation
@@ -176,6 +176,5 @@ class Formation
     {
         return $this->formation;
     }
-=======
->>>>>>> 13a67ca401330444f6aa6501780e5e381e94e934
+
 }
