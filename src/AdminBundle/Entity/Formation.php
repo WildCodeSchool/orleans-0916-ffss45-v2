@@ -34,9 +34,10 @@ class Formation
     private $nomLong;
 
     /**
+     * @var string
      *
+     * @ORM\Column(name="nom_court", type="string", length=255)
      */
-
     private $nomCourt;
 
     /**
