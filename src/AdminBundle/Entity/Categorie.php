@@ -9,7 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Categories
  *
  * @ORM\Table(name="categorie")
- * @ORM\Entity(repositoryClass="AdminBundle\Repository\CategoriesRepository")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\CategorieRepository")
  */
 class Categorie
 {
@@ -34,6 +34,7 @@ class Categorie
      */
 
     private $formations;
+
     public function __construct()
     {
         $this->formations = new ArrayCollection();

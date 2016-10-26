@@ -4,6 +4,7 @@ namespace AdminBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Agenda
  *
@@ -74,6 +75,7 @@ class Agenda
      * @ORM\Column(name="adresse", type="string", length=255)
      */
     private $adresse;
+
 
 
 
@@ -274,4 +276,19 @@ class Agenda
         return $this->formation;
     }
 
+    /**
+     * @param string $remarque
+     */
+    public function setRemarque($remarque)
+    {
+        $this->remarque = $remarque;
+    }
+
+    /**
+     * @return string
+     */
+    public function getRemarque()
+    {
+        return $this->remarque;
+    }
 }
