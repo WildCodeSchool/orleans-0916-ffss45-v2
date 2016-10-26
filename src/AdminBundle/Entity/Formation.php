@@ -27,9 +27,9 @@ class Formation
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Agenda", mappedBy="agendas")
+     * @ORM\OneToMany(targetEntity="Agenda", mappedBy="formation")
      */
-    private $formation;
+    private $agendas;
     /**
      * @var string
      *
@@ -37,21 +37,21 @@ class Formation
      */
     private $nomLong;
 
+
     /**
      * @var string
-     *
      * @ORM\Column(name="nom_court", type="string", length=255)
      */
     private $nomCourt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Categories", inversedBy="formations")
+     * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="formations")
      * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
      */
     private $categorie;
 
     /**
-     * @var string
+     * @var text
      *
      * @ORM\Column(name="descriptif", type="text")
      */
@@ -162,19 +162,50 @@ class Formation
 
 
     /**
-     * @param mixed $formation
+     * @param mixed $agendas
      */
-    public function setFormation($formation)
+    public function setAgendas($agendas)
     {
-        $this->formation = $formation;
+        $this->agendas = $agendas;
     }
 
     /**
      * @return mixed
      */
-    public function getFormation()
+    public function getAgendas()
     {
-        return $this->formation;
+        return $this->agendas;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->agendas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add agenda
+     *
+     * @param \AdminBundle\Entity\Agenda $agenda
+     *
+     * @return Formation
+     */
+    public function addAgenda(\AdminBundle\Entity\Agenda $agenda)
+    {
+        $this->agendas[] = $agenda;
+
+        return $this;
+    }
+
+    /**
+     * Remove agenda
+     *
+     * @param \AdminBundle\Entity\Agenda $agenda
+     */
+    public function removeAgenda(\AdminBundle\Entity\Agenda $agenda)
+    {
+        $this->agendas->removeElement($agenda);
     }
 
 }

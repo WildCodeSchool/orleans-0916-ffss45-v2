@@ -10,24 +10,20 @@
         <meta name="author" content="">
 
         <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
-        <link href="{{ asset('css/navbar.css')}}" rel="stylesheet">
-        <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
+
+        <link href="{{ asset('css/font-awesome.min.css')}}" rel="stylesheet">
         <link href="{{ asset('css/font-awesome.min.css')}}" rel="stylesheet">
 
         {% block stylesheets %}
-            <link href="{{ asset('css/carousel.css') }}" rel="stylesheet">
-            <link href="{{ asset('css/formulaire.css') }}" rel="stylesheet">
-            <link href="{{ asset('css/espaces.css') }}" rel="stylesheet">
-            <link href="{{ asset ('css/presentation.css') }}" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Lobster|Open+Sans+Condensed:300|PT+Sans|Questrial|Quicksand|Trirong" rel="stylesheet">
         {% endblock %}
 
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}" />
 
         <script src="{{ asset('js/jquery.min.js') }}"></script>
         <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}{% endblock %}</title>
 
     </head>
 
@@ -37,7 +33,7 @@
 
     <header>
         {% block header %}
-            {% include 'FrontBundle:Default:header.html.twig' %}
+
         {% endblock %}
     </header>
 
@@ -45,13 +41,15 @@
 
     {% block footer %}
 
-        {% include 'FrontBundle:Default:footer.html.twig' %}
+
     {% endblock %}
 
 
     </body>
 
-    {% block javascripts %}{% endblock %}
+    {% block javascripts %}
+
+    {% endblock %}
 
 
 </html>

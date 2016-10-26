@@ -18,7 +18,10 @@ class AppKernel extends Kernel
             new AppBundle\AppBundle(),
             new FrontBundle\FrontBundle(),
             new AdminBundle\AdminBundle(),
+            new ActualiteBundle\ActualiteBundle(),
             new Craue\FormFlowBundle\CraueFormFlowBundle(),
+
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {

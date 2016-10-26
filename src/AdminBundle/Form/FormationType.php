@@ -5,6 +5,9 @@ namespace AdminBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use AdminBundle\Form\AgendaType;
 
 class FormationType extends AbstractType
 {
@@ -17,10 +20,19 @@ class FormationType extends AbstractType
         $builder
             ->add('nomLong')
             ->add('nomCourt')
-            ->add('categorie')
+            ->add('categorie', EntityType::class, array('class'=>'AdminBundle:Categories',
+                                                        'choice_label'=>'nomCategorie',
+                                                        'required'=>false,
+                                                        ))
             ->add('descriptif')
-            ->add('typeFormation')
-        ;
+            ->add('agendas', CollectionType::class, array(
+                // each entry in the array will be an "email" field
+                'entry_type'   => EntityType::class,
+                // these options are passed to each "email" type
+                'entry_options'  => array('class'=>'AdminBundle:Agenda',
+                                                        'choice_label'=>'nomCategorie',
+                    )
+                ));
     }
     
     /**

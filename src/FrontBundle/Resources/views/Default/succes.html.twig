@@ -1,5 +1,6 @@
-{% extends 'FrontBundle:Default:squelette.html.twig' %}
+{% extends '@Front/Default/frontLayout.html.twig' %}
 {% block stylesheets %}
+    {{ parent() }}
     <link href="{{ asset('css/succes.css') }}" rel="stylesheet">
 {% endblock %}
 
@@ -10,7 +11,7 @@
             <div class="col-xs-12">
                 <p>Formulaire envoyé avec succès !
                     <br>
-                    <a href="{{path('acceuil') }}">retour à l'acceuil</a><br>
+                    <a href="{{path('page_acceuil') }}">retour à l'acceuil</a><br>
                     <i class="fa fa-check-square fa-5x" aria-hidden="true"></i></p>
             </div>
         </div>

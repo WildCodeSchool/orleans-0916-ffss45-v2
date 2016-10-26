@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{%  block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/listFormation.css') }}">
+{% endblock %}
+
+{%  block body %}
+
+        {% for category, tab in formations %}
+            <h1>{{ category }}</h1>
+             <div class="row">
+            {%  for key,formation in tab %}
+                <div class="col-lg-6">
+                    <h2>{{ formation.nomCourt }}</h2>
+                    <p>{{ formation.nomLong }}</p>
+                </div>
+            {% endfor %}
+             </div>
+        {% else %}
+            Pas de categories
+        {% endfor %}
+
+
+{% endblock %}

@@ -4,6 +4,8 @@ imports:
     - { resource: services.yml }
     - { resource: "@FrontBundle/Resources/config/services.yml" }
     - { resource: "@AdminBundle/Resources/config/services.yml" }
+    - { resource: "@ActualiteBundle/Resources/config/services.yml" }
+
 
    
 
