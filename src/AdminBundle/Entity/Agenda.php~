@@ -71,7 +71,9 @@ class Agenda
     private $adresse;
 
     /**
-     * @ORM\OneToMany(targetEntity="Formation", mappedBy="typeFormation")
+     * @var int
+     *
+     * @ORM\Column(name="agenda", type="integer")
      */
     private $agenda;
 
@@ -247,4 +249,57 @@ class Agenda
         return $this->adresse;
     }
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->agenda = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add agenda
+     *
+     * @param \AdminBundle\Entity\Formation $agenda
+     * @return Agenda
+     */
+    public function addAgenda(\AdminBundle\Entity\Formation $agenda)
+    {
+        $this->agenda[] = $agenda;
+
+        return $this;
+    }
+
+    /**
+     * Remove agenda
+     *
+     * @param \AdminBundle\Entity\Formation $agenda
+     */
+    public function removeAgenda(\AdminBundle\Entity\Formation $agenda)
+    {
+        $this->agenda->removeElement($agenda);
+    }
+
+    /**
+     * Get agenda
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAgenda()
+    {
+        return $this->agenda;
+    }
+
+    /**
+     * Set agenda
+     *
+     * @param integer $agenda
+     * @return Agenda
+     */
+    public function setAgenda($agenda)
+    {
+        $this->agenda = $agenda;
+
+        return $this;
+    }
 }

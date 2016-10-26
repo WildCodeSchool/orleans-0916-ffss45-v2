@@ -27,15 +27,19 @@ class Formation
     private $id;
 
     /**
+     * @ORM\OneToMany(targetEntity="Agenda", mappedBy="formation")
+     */
+    private $agendas;
+    /**
      * @var string
      *
      * @ORM\Column(name="nom_long", type="string", length=255)
      */
     private $nomLong;
 
+
     /**
      * @var string
-     *
      * @ORM\Column(name="nom_court", type="string", length=255)
      */
     private $nomCourt;
@@ -47,7 +51,7 @@ class Formation
     private $categorie;
 
     /**
-     * @var string
+     * @var text
      *
      * @ORM\Column(name="descriptif", type="text")
      */
@@ -154,5 +158,21 @@ class Formation
     public function getDescriptif()
     {
         return $this->descriptif;
+    }
+
+    /**
+     * @param mixed $agendas
+     */
+    public function setAgendas($agendas)
+    {
+        $this->agendas = $agendas;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAgendas()
+    {
+        return $this->agendas;
     }
 }

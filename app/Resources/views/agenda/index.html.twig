@@ -1,51 +1,96 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Agenda list</h1>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Datededebut</th>
-                <th>Datedefin</th>
-                <th>Heurededebutam</th>
-                <th>Heuredefinam</th>
-                <th>Heurededebutpm</th>
-                <th>Heuredefinpm</th>
-                <th>Adresse</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for agenda in agendas %}
-            <tr>
-                <td><a href="{{ path('agenda_show', { 'id': agenda.id }) }}">{{ agenda.id }}</a></td>
-                <td>{% if agenda.dateDeDebut %}{{ agenda.dateDeDebut|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if agenda.dateDeFin %}{{ agenda.dateDeFin|date('Y-m-d') }}{% endif %}</td>
-                <td>{% if agenda.heureDeDebutAm %}{{ agenda.heureDeDebutAm|date('H:i:s') }}{% endif %}</td>
-                <td>{% if agenda.heureDeFinAm %}{{ agenda.heureDeFinAm|date('H:i:s') }}{% endif %}</td>
-                <td>{% if agenda.heureDeDebutPm %}{{ agenda.heureDeDebutPm|date('H:i:s') }}{% endif %}</td>
-                <td>{% if agenda.heureDeFinPm %}{{ agenda.heureDeFinPm|date('H:i:s') }}{% endif %}</td>
-                <td>{{ agenda.adresse }}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <button><a href="{{ path('agenda_show', { 'id': agenda.id }) }}">show</a></button>
-                        </li>
-                        <li>
-                            <button><a href="{{ path('agenda_edit', { 'id': agenda.id }) }}">edit</a></button>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('agenda_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+{% block stylesheets %}
+    <link href="{{ asset('css/agenda.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/admin_agenda.css')}}" rel="stylesheet">
+    <link href="{{ asset('responsive-nav.css')}}" rel="stylesheet">
 {% endblock %}
+
+{% block body %}
+
+    <nav class="menu-left">
+
+        <header>
+            <img src="{{'images/logo2.png'}}" alt="logo FFSS45" class="logo_header"> {# logo n'apparaît pas#}
+
+        </header>
+        <ul>
+            <li class="active"><a href="#"><span class="glyphicon glyphicon-dashboard"></span> Dashboard</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-th-list"></span> Agenda</a></li>
+            <li><a href="/admin/formation/index.html.twig"><span class="glyphicon glyphicon-tasks"></span> Formation</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-globe"></span> Evènements</a></li>
+        </ul>
+
+    </nav>
+
+    <div class="content-center">
+        <header>
+            <div class="top">
+                <h1>La Fédération Française de Sécurité et de Secourisme 45</h1>
+            </div>
+            <div class="row use">   {# problème niveau width#}
+                <div class="col-md-offset-1 col-md-1">
+                    <a href="{{ path('agenda_new') }}"><span class="glyphicon glyphicon-plus"></span></a>
+                </div>
+                <div class="col-md-offset-1 col-md-1">
+                    <a href="#"><span class="glyphicon glyphicon-edit"></span></a></div> {# lien ne marche pas #}
+                <div class="col-md-offset-1 col-md-1">
+                    <a href="#"><span class="glyphicon glyphicon-eye-open"></span></a></div> {# lien ne marche pas #}
+                <div class="col-md-offset-5 col-md-1">
+                    <a href="#" data-title="Sign out"><i class="fa fa-sign-out"></i></a>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-body">
+                <div class="table-title">
+                    <h2>Agenda list</h2>
+                </div>
+                <table class="table-fill">
+                    <thead>
+                    <tr>
+                        <th class="text-left">Id</th>
+                        <th class="text-left">Date/début</th>
+                        <th class="text-left">Date/fin</th>
+                        <th class="text-left">Heure/début AM</th>
+                        <th class="text-left">Heure/fin AM</th>
+                        <th class="text-left">Heure/début PM</th>
+                        <th class="text-left">Heure/fin PM</th>
+                        <th class="text-left">Adresse</th>
+                        <th class="text-left">Formation</th>
+                        <th class="text-left">Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-hover">
+                    {% for agenda in agendas %}
+                        <tr>
+                            <td class="text-left"><a href="{{ path('agenda_show', { 'id': agenda.id }) }}">{{ agenda.id }}</a></td>
+                            <td class="text-left">{% if agenda.dateDeDebut %}{{ agenda.dateDeDebut|date('Y-m-d') }}{% endif %}</td>
+                            <td class="text-left">{% if agenda.dateDeFin %}{{ agenda.dateDeFin|date('Y-m-d') }}{% endif %}</td>
+                            <td class="text-left">{% if agenda.heureDeDebutAm %}{{ agenda.heureDeDebutAm|date('H:i:s') }}{% endif %}</td>
+                            <td class="text-left">{% if agenda.heureDeFinAm %}{{ agenda.heureDeFinAm|date('H:i:s') }}{% endif %}</td>
+                            <td class="text-left">{% if agenda.heureDeDebutPm %}{{ agenda.heureDeDebutPm|date('H:i:s') }}{% endif %}</td>
+                            <td class="text-left">{% if agenda.heureDeFinPm %}{{ agenda.heureDeFinPm|date('H:i:s') }}{% endif %}</td>
+                            <td class="text-left">{{ agenda.adresse }}</td>
+                            {#   <td>{{ agenda.formation.nomCourt }}</td>#}
+                            <td>
+                                <ul>
+                                    <li>
+                                        <a href="{{ path('agenda_show', { 'id': agenda.id }) }}">show</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ path('agenda_edit', { 'id': agenda.id }) }}">edit</a>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        <div class="content-footer"></div>
+    </div>
+
+
+
+    {% endblock %}

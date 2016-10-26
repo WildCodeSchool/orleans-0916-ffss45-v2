@@ -20,7 +20,11 @@
                 <td><a href="{{ path('formation_show', { 'id': formation.id }) }}">{{ formation.id }}</a></td>
                 <td>{{ formation.nomLong }}</td>
                 <td>{{ formation.nomCourt }}</td>
-                <td>{{ formation.categorie }}</td>
+               <td>
+                    {% if formation.categorie.nomCategorie is defined %}
+                      {{ formation.categorie.nomCategorie }}
+                    {% endif %}
+                </td>
                 <td>{{ formation.descriptif }}</td>
                 <td>
                     <ul>
