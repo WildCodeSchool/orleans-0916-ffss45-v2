@@ -1,0 +1,9 @@
+
+{% block body %}
+    <div id="sidebar">
+        {{ render(controller(
+        'ActualiteBundle:Actualite:actuOnly'
+        )) }}
+    </div>
+{{ form(form) }}
+{% endblock %}

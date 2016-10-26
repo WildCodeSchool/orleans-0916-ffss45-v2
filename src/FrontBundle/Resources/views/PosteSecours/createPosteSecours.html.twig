@@ -1,0 +1,36 @@
+{# in src/MyCompany/MyBundle/Resources/views/Vehicle/createVehicle.html.twig #}
+{% extends 'FrontBundle:Default:squelette.html.twig' %}
+{% block stylesheets %}
+    <link href="{{ asset('css/posteSecours.css') }}" rel="stylesheet">
+{% endblock %}
+{% block body %}
+    <div class="container-fluid poste">
+        <div class="row">
+            <div class="col-xs-12 col-sm-offset-1 col-sm-4">
+
+
+    {% include 'CraueFormFlowBundle:FormFlow:stepList.html.twig' %}
+            </div>
+            <div class="col-xs-12 col-sm-7">
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {% if flow.getCurrentStepNumber() == 1 %}
+    {% endif %}
+
+    {{ form_rest(form) }}
+
+    {% include 'CraueFormFlowBundle:FormFlow:buttons.html.twig' with {
+    craue_formflow_button_label_finish: 'Envoyer',
+    craue_formflow_button_label_next: 'Suivant',
+    craue_formflow_button_label_finish: 'Terminer',
+    craue_formflow_button_label_back: 'Précédent',
+    craue_formflow_button_class_reset: 'hidden-xs hidden-md hidden-sm hidden-lg',
+    craue_formflow_button_class_back: 'pull-left',
+    } %}
+{{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -96,6 +96,21 @@
 
 
 </script>
+    <script>
+        $(window).scroll(function (event) {
+            // A chaque fois que l'utilisateur va scroller
+            var y = $(this).scrollTop(); // On récupérer la valeur du scroll vertical
+            var hauteur = document.getElementById('test').scrollHeight; // on récupère la "hauteur de la bannière
+            //si scroll > à bannière on ajoute la class
+            if (y >= hauteur) {
+                $('.firstnav').addClass('fixed');
+            } else {
+                // sinon, on l'enlève
+                $('.firstnav').removeClass('fixed');
+            }
+        });
+
+    </script>
     </div>
 </footer>
 

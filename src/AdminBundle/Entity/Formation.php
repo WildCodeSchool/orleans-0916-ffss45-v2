@@ -39,21 +39,21 @@ class Formation
 
     /**
      * @var string
+     *
      * @ORM\Column(name="nom_court", type="string", length=255)
      */
     private $nomCourt;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="categorie", type="string", length=255)
+     * @ORM\ManyToOne(targetEntity="Categories", inversedBy="formations")
+     * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
      */
     private $categorie;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="descriptif", type="string", length=255)
+     * @ORM\Column(name="descriptif", type="text")
      */
     private $descriptif;
 
@@ -61,7 +61,7 @@ class Formation
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -84,7 +84,7 @@ class Formation
     /**
      * Get nomLong
      *
-     * @return string 
+     * @return string
      */
     public function getNomLong()
     {
@@ -107,7 +107,7 @@ class Formation
     /**
      * Get nomCourt
      *
-     * @return string 
+     * @return string
      */
     public function getNomCourt()
     {
@@ -130,7 +130,7 @@ class Formation
     /**
      * Get categorie
      *
-     * @return string 
+     * @return string
      */
     public function getCategorie()
     {
@@ -153,12 +153,13 @@ class Formation
     /**
      * Get descriptif
      *
-     * @return string 
+     * @return string
      */
     public function getDescriptif()
     {
         return $this->descriptif;
     }
+<<<<<<< HEAD
 
     /**
      * @param mixed $formation
@@ -175,4 +176,6 @@ class Formation
     {
         return $this->formation;
     }
+=======
+>>>>>>> 13a67ca401330444f6aa6501780e5e381e94e934
 }
