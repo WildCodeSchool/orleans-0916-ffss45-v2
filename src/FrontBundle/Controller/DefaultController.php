@@ -10,7 +10,7 @@ use AdminBundle\Entity\Formation;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="acceuil")
+     * @Route("/")
      */
     public function indexAction()
     {

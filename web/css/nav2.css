@@ -100,3 +100,14 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+@media screen and (min-width: 838px){
+    .navbar.fixed {
+        position: fixed;
+        top: 0;
+        z-index: 1000;
+        margin-right: 15px;
+        width:100%;
+    }
+}
+

@@ -1,0 +1,20 @@
+{% if actualites %}
+{% for actualite in actualites %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12">
+                <ul><
+                    <li>{{ actualite.titre}}</li>
+                    <li>{{ actualite.contenu }}</li>
+                    <li>{{ actualite.date|date("m/d/Y") }}</li>
+                </ul>
+            </div>
+            <div class="col-xs-12">
+                 <img src="{{ asset('upload/' ~ actualite.image) }} " class="img-responsive" alt=""/>
+            </div>
+         <a href="{{ path('delete_actu', {'id':actualite.id}) }}">delete</a></li>
+        </div>
+    </div>
+{% endfor %}
+
+{% endif %}
