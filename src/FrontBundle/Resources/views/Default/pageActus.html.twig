@@ -4,15 +4,20 @@
 
 {% endblock %}
 {% block body %}
-{% for actualite in actualites %}
-    <div class="container-fluid actualites">
-        <div class="row">
-            <div class="col-xs-offset-3 col-xs-9">
-                <h2>{{ actualite.titre }}</h2>
-            </div>
-            <div class="col-xs-offset-1 col-xs-4">
-                <p></p>
+    {% for actualite in actualites %}
+        <div class="container-fluid actualites">
+            <div class="row">
+                <div class="col-xs-offset-3 col-xs-9">
+                    <h2>{{ actualite.titre }}</h2>
+                </div>
+                <div class="col-xs-offset-1 col-xs-4">
+                    <p>{{ actualite.contenu }}</p><br>
+                    <p>{{ actualite.auteur }}</p>
+                </div>
+                <div class="col-xs-offset-1 col-xs-5">
+                    <img src="{{ asset('upload/' ~ actualite.image) }}" alt="" class="img-responsive">
+                </div>
             </div>
         </div>
-    </div>
+    {% endfor %}
 {% endblock %}
