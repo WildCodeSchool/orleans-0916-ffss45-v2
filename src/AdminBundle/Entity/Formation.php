@@ -160,6 +160,7 @@ class Formation
         return $this->descriptif;
     }
 
+
     /**
      * @param mixed $agendas
      */
@@ -206,4 +207,5 @@ class Formation
     {
         $this->agendas->removeElement($agenda);
     }
+
 }

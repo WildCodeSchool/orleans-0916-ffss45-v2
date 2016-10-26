@@ -21,6 +21,7 @@ class AppKernel extends Kernel
             new ActualiteBundle\ActualiteBundle(),
             new Craue\FormFlowBundle\CraueFormFlowBundle(),
 
+
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
