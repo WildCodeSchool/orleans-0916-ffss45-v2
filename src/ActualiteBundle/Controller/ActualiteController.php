@@ -78,7 +78,7 @@ class ActualiteController extends Controller
     {
         $actualites = $this->getDoctrine()
             ->getRepository('ActualiteBundle:Actualite')
-            ->findBy(array(), array('id'=>'DESC'), array(0,1));
+            ->findBy(array(), array('id'=>'DESC'), 3);
         return $this->render('@Actualite/Default/lastActu.html.twig', array('actualites'=>$actualites));
     }
 }
