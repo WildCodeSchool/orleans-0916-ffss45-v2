@@ -273,5 +273,5 @@ class Agenda
     {
         return $this->formation;
     }
-    
+
 }
