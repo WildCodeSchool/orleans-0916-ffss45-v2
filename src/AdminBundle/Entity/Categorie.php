@@ -8,10 +8,10 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Categories
  *
- * @ORM\Table(name="categories")
+ * @ORM\Table(name="categorie")
  * @ORM\Entity(repositoryClass="AdminBundle\Repository\CategoriesRepository")
  */
-class Categories
+class Categorie
 {
     /**
      * @var int
@@ -54,7 +54,7 @@ class Categories
      * Set nomCategorie
      *
      * @param string $nomCategorie
-     * @return Categories
+     * @return Categorie
      */
     public function setNomCategorie($nomCategorie)
     {
@@ -71,5 +71,38 @@ class Categories
     public function getNomCategorie()
     {
         return $this->nomCategorie;
+    }
+
+    /**
+     * Add formations
+     *
+     * @param \AdminBundle\Entity\Formation $formations
+     * @return Categorie
+     */
+    public function addFormation(\AdminBundle\Entity\Formation $formations)
+    {
+        $this->formations[] = $formations;
+
+        return $this;
+    }
+
+    /**
+     * Remove formations
+     *
+     * @param \AdminBundle\Entity\Formation $formations
+     */
+    public function removeFormation(\AdminBundle\Entity\Formation $formations)
+    {
+        $this->formations->removeElement($formations);
+    }
+
+    /**
+     * Get formations
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFormations()
+    {
+        return $this->formations;
     }
 }
