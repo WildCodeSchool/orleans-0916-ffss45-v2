@@ -1,6 +1,4 @@
-.navbar{
 
-}
 
 .dropdown-large {
     position: static !important;
@@ -103,10 +101,13 @@
     margin-right: auto;
 }
 
-.navbar.fixed {
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-    margin-right: 15px;
-    width:100%;
+@media screen and (min-width: 838px){
+    .navbar.fixed {
+        position: fixed;
+        top: 0;
+        z-index: 1000;
+        margin-right: 15px;
+        width:100%;
+    }
 }
+
