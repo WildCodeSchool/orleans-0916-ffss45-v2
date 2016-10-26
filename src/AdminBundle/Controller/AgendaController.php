@@ -131,10 +131,13 @@ class AgendaController extends Controller
      */
     private function createDeleteForm(Agenda $agenda)
     {
+
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('agenda_delete', array('id' => $agenda->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
+
+
+
 }

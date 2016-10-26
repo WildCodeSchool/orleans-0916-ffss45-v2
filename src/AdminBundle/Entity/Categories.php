@@ -72,4 +72,6 @@ class Categories
     {
         return $this->nomCategorie;
     }
+
+
 }

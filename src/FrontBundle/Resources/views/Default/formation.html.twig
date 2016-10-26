@@ -1,15 +1,178 @@
 {% extends 'FrontBundle:Default:squelette.html.twig' %}
 
 {% block stylesheets %}
-    <link href="{{ asset('css/formation.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/formations.css')}}" rel="stylesheet">
 {% endblock %}
 
+
+
 {% block body %}
+    <div class="container-fluid">
+        <div class="box box-1">
+            <div class="box-content">
+                <div class="row">
+                    <div class="col-md-9">
+                        <h1 class="text-center">Agent de Servive de Sécurité Incendie et d'assistance à Personnes</h1>
+                    </div>
+                    <div class="col-md-3">
+                        <img class="box-image" src="{{ asset('images/SSIAP.png') }}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="box box-2">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>PUBLIC VISÉ <i class="fa fa-comment"></i></h2>
+                    <p>Toute personne souhaitant se former aux bases de la sécurité incendie.</p>
+                    <h2>Objectifs visé <i class="fa fa-crosshairs"></i></h2>
+                    <p>Les agents seront à même d’intervenir dans les contextes suivants : fumées, incendie, évacuation
+                        des occupants, prise en charge d’une victime, non-respect des consignes, levée de doute.</p>
+                    <h2>Validation de la formation <i class="fa fa-check"></i></h2>
+                    <p>Examen en fin de formation : épreuve écrite (QCM de 30 questions) et pratique (Ronde avec anomalies et sinistres)</p>
+
+                </div>
+                <div class="col-md-6">
+                    <h2>RÔLES ET MISSION DES AGENTS  <span class="glyphicon">&#xe067;</span> : </h2>
+                    <ul>
+                        <li>- Etre titulaire du PSC 1 ou SST (moins de 2 ans), ou PSE 1 (1 as), à jour.</li>
+                        <li>- Satisfaire à l'évacuation, réalisée par le centre de formation.</li>
+                        <li>- Présenter un certificat à l'adaptitude médicale datant de moins de 3 mois.</li>
+                    </ul>
+                    <h2>Actualisation <i class="fa fa-refresh"></i> :</h2>
+                    <p>Tous les 3 ans (2 ans pour le secourisme).</p>
+                    <h2>Durée de la formation <i class="fa fa-hourglass-o" aria-hidden="true"></i>
+                    </h2>
+                    <p>67 heures de face à face pédagogique</p>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="container formation">
+            <h2>Contenu de la formation</h2>
+            <figure class="snip1084 one">
+                <figcaption>
+                    <h2>SÉCURITÉ   <span>INCENDIE</span></h2>
+                    <p>Principes de classement des établissements</p>
+                    <p>Fondamentaux et principes généraux de sécurité incendie</p>
+                    <p>Desserte des bâtiments</p>
+                    <p>Cloisonnement d’isolation des risques</p>
+                    <p>Évacuation du public et des occupants</p>
+                    <p>Désenfumage </p>
+                    <p>Éclairage de sécurité</p>
+                    <p>Présentation des différens moyens de secours</p>
+                </figcaption>
+
+            </figure>
+            <figure class="snip1084 two">
+                <figcaption>
+                    <h2>RÔLES ET MISSION DES AGENTS   <span>DE SÉCURITÉ INCENDIE</span></h2>
+                    <p>Le service de sécurité </p>
+                    <p>Présentation des consignes de sécurité et main courante</p>
+                    <p>Poste de sécurité</p>
+                    <p>Rondes de sécurité et surveillance des travaux</p>
+                    <p>Mise en oeuvre des moyens d’extinction</p>
+                    <p>Appel et réception des services publics de secours</p>
+                    <p>Éclairage de sécurité</p>
+                    <p>sensibilisation des occupants</p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+            <figure class="snip1084 three">
+                <figcaption>
+                    <h2>INSTALLATIONS    <span>TECHNIQUES</span></h2>
+                    <p>Principes de classement des établissements</p>
+                    <p>Fondamentaux et principes généraux de sécurité incendie</p>
+                    <p>Desserte des bâtiments</p>
+                    <p>Cloisonnement d’isolation des risques</p>
+                    <p>Évacuation du public et des occupants</p>
+                    <p>Désenfumage </p>
+                    <p>Éclairage de sécurité</p>
+                    <p>Présentation des différens moyens de secours</p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+            <figure class="snip1084 four">
+                <figcaption>
+                    <h2>LE FEU ET   <span>SES CONSEQUENCES</span></h2>
+                    <p>Le feu | Comportement</p>
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+            <figure class="snip1084 five">
+                <figcaption>
+                    <h2>CONCRETISATION   <span>DES ACQUIS</span></h2>
+                    <p>Visites applicatives | Mise en situation d'intervention</p>
+
+                </figcaption>
+                <a href="#"></a>
+            </figure>
+        </div>
 
 
-    <h1>Agent de Servive de Sécurité Incendie et d'assistance à Personnes</h1>
-    <h2>SSIAP 1</h2>
-    <img class="tof" src="{{ asset('images/SSIAP.png') }}"/>
 
 
+
+
+    <div class="container">
+
+        <h2>AGENDA</h2>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>DATE Début</th>
+                <th>DATE Fin</th>
+                <th>HEURE Début AM</th>
+                <th>HEURE Fin AM</th>
+                <th>HEURE Début PM</th>
+                <th>HEURE Fin PM</th>
+                <th>ADRESSE</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>12/12/2016</td>
+                <td>31/12/2016</td>
+                <td>9h00</td>
+                <td>12h00</td>
+                <td>13h30</td>
+                <td>18h</td>
+                <td>10 avenue de la justice, 45000 Orléans</td>
+            </tr>
+            <tr>
+                <td>Mary</td>
+                <td>Moe</td>
+                <td>Moe</td>
+                <td>Moe</td>
+                <td>Moe</td>
+                <td>Moe</td>
+                <td>mary@example.com</td>
+            </tr>
+            <tr>
+                <td>July</td>
+                <td>Dooley</td>
+                <td>Dooley</td>
+                <td>Dooley</td>
+                <td>Dooley</td>
+                <td>Dooley</td>
+                <td>july@example.com</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+{% endblock %}
+
+
+{% block javascript %}
+    <script>
+/* Demo purposes only */
+$("figure").mouseleave(
+function() {
+$(this).removeClass("hover");
+}
+);
+</script>
 {% endblock %}

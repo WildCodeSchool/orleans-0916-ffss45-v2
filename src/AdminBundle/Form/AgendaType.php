@@ -5,6 +5,7 @@ namespace AdminBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class AgendaType extends AbstractType
 {
@@ -22,6 +23,8 @@ class AgendaType extends AbstractType
             ->add('heureDeDebutPm', 'time')
             ->add('heureDeFinPm', 'time')
             ->add('adresse')
+           /* ->add('formation', EntityType::class, array('class'=>'AdminBundle:Formation',
+                                                        'choice_label'=>'nomCourt'))*/
         ;
     }
     
