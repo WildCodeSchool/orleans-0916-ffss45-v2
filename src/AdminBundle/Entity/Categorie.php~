@@ -32,8 +32,8 @@ class Categorie
     /**
      * @ORM\OneToMany(targetEntity="Formation", mappedBy="categorie")
      */
-    private $formations;
 
+    private $formations;
     public function __construct()
     {
         $this->formations = new ArrayCollection();

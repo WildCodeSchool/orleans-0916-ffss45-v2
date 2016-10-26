@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Formationpublics list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for formationPublic in formationPublics %}
+            <tr>
+                <td><a href="{{ path('formationpublic_show', { 'id': formationPublic.id }) }}">{{ formationPublic.id }}</a></td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('formationpublic_show', { 'id': formationPublic.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('formationpublic_edit', { 'id': formationPublic.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('formationpublic_new') }}">Create a new formationPublic</a>
+        </li>
+    </ul>
+{% endblock %}

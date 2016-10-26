@@ -175,4 +175,35 @@ class Formation
     {
         return $this->agendas;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->agendas = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add agenda
+     *
+     * @param \AdminBundle\Entity\Agenda $agenda
+     *
+     * @return Formation
+     */
+    public function addAgenda(\AdminBundle\Entity\Agenda $agenda)
+    {
+        $this->agendas[] = $agenda;
+
+        return $this;
+    }
+
+    /**
+     * Remove agenda
+     *
+     * @param \AdminBundle\Entity\Agenda $agenda
+     */
+    public function removeAgenda(\AdminBundle\Entity\Agenda $agenda)
+    {
+        $this->agendas->removeElement($agenda);
+    }
 }
