@@ -27,6 +27,10 @@ class Formation
     private $id;
 
     /**
+     * @ORM\OneToMany(targetEntity="Agenda", mappedBy="agendas")
+     */
+    private $formation;
+    /**
      * @var string
      *
      * @ORM\Column(name="nom_long", type="string", length=255)
@@ -155,4 +159,22 @@ class Formation
     {
         return $this->descriptif;
     }
+
+
+    /**
+     * @param mixed $formation
+     */
+    public function setFormation($formation)
+    {
+        $this->formation = $formation;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFormation()
+    {
+        return $this->formation;
+    }
+
 }
