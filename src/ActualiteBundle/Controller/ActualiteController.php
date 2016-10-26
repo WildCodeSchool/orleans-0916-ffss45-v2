@@ -81,5 +81,7 @@ class ActualiteController extends Controller
             ->findBy(array(), array('id'=>'DESC'), 3);
         return $this->render('@Actualite/Default/lastActu.html.twig', array('actualites'=>$actualites));
     }
+
+
 }
 
