@@ -26,6 +26,11 @@ class Agenda
      */
     private $formation;
     /**
+     * @ORM\ManyToOne(targetEntity="Formation", inversedBy="formation")
+     * @ORM\JoinColumn(name="formation_id", referencedColumnName="id")
+     */
+    private $agendas;
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="date_de_debut", type="date")
@@ -271,5 +276,21 @@ class Agenda
     public function getFormation()
     {
         return $this->formation;
+    }
+
+    /**
+     * @param mixed $agendas
+     */
+    public function setAgendas($agendas)
+    {
+        $this->agendas = $agendas;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getAgendas()
+    {
+        return $this->agendas;
     }
 }
