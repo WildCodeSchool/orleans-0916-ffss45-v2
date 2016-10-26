@@ -27,9 +27,9 @@ class Formation
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="Agenda", mappedBy="agendas")
+     * @ORM\OneToMany(targetEntity="Agenda", mappedBy="formation")
      */
-    private $formation;
+    private $agendas;
     /**
      * @var string
      *
@@ -160,21 +160,50 @@ class Formation
         return $this->descriptif;
     }
 
-
     /**
-     * @param mixed $formation
+     * @param mixed $agendas
      */
-    public function setFormation($formation)
+    public function setAgendas($agendas)
     {
-        $this->formation = $formation;
+        $this->agendas = $agendas;
     }
 
     /**
      * @return mixed
      */
-    public function getFormation()
+    public function getAgendas()
     {
-        return $this->formation;
+        return $this->agendas;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->agendas = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
+    /**
+     * Add agenda
+     *
+     * @param \AdminBundle\Entity\Agenda $agenda
+     *
+     * @return Formation
+     */
+    public function addAgenda(\AdminBundle\Entity\Agenda $agenda)
+    {
+        $this->agendas[] = $agenda;
+
+        return $this;
+    }
+
+    /**
+     * Remove agenda
+     *
+     * @param \AdminBundle\Entity\Agenda $agenda
+     */
+    public function removeAgenda(\AdminBundle\Entity\Agenda $agenda)
+    {
+        $this->agendas->removeElement($agenda);
+    }
 }

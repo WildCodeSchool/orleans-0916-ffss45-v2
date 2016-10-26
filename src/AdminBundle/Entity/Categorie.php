@@ -6,10 +6,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
 /**
- * Categorie
+ * Categories
  *
  * @ORM\Table(name="categorie")
- * @ORM\Entity(repositoryClass="AdminBundle\Repository\CategorieRepository")
+ * @ORM\Entity(repositoryClass="AdminBundle\Repository\CategoriesRepository")
  */
 class Categorie
 {
@@ -21,13 +21,6 @@ class Categorie
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
-
-    /**
-     * @ORM\OneToMany(targetEntity="FormationPublic", mappedBy="formationPublics")
-     */
-    private $formationPublics;
-
-
 
     /**
      * @var string
@@ -80,70 +73,33 @@ class Categorie
         return $this->nomCategorie;
     }
 
-
-
     /**
-     * Add formationPublic
+     * Add formations
      *
-     * @param \AdminBundle\Entity\FormationPublic $formationPublic
-     *
+     * @param \AdminBundle\Entity\Formation $formations
      * @return Categorie
      */
-    public function addFormationPublic(\AdminBundle\Entity\FormationPublic $formationPublic)
+    public function addFormation(\AdminBundle\Entity\Formation $formations)
     {
-        $this->formationPublics[] = $formationPublic;
+        $this->formations[] = $formations;
 
         return $this;
     }
 
     /**
-     * Remove formationPublic
+     * Remove formations
      *
-     * @param \AdminBundle\Entity\FormationPublic $formationPublic
+     * @param \AdminBundle\Entity\Formation $formations
      */
-    public function removeFormationPublic(\AdminBundle\Entity\FormationPublic $formationPublic)
+    public function removeFormation(\AdminBundle\Entity\Formation $formations)
     {
-        $this->formationPublics->removeElement($formationPublic);
-    }
-
-    /**
-     * Get formationPublics
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getFormationPublics()
-    {
-        return $this->formationPublics;
-    }
-
-    /**
-     * Add formation
-     *
-     * @param \AdminBundle\Entity\Formation $formation
-     *
-     * @return Categorie
-     */
-    public function addFormation(\AdminBundle\Entity\Formation $formation)
-    {
-        $this->formations[] = $formation;
-
-        return $this;
-    }
-
-    /**
-     * Remove formation
-     *
-     * @param \AdminBundle\Entity\Formation $formation
-     */
-    public function removeFormation(\AdminBundle\Entity\Formation $formation)
-    {
-        $this->formations->removeElement($formation);
+        $this->formations->removeElement($formations);
     }
 
     /**
      * Get formations
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \Doctrine\Common\Collections\Collection 
      */
     public function getFormations()
     {

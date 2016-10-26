@@ -20,6 +20,11 @@ class Agenda
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
+    /**
+     * @ORM\ManyToOne(targetEntity="Formation", inversedBy="agendas")
+     * @ORM\JoinColumn(name="formation_id", referencedColumnName="id")
+     */
+    private $formation;
 
     /**
      * @var \DateTime
@@ -70,12 +75,7 @@ class Agenda
      */
     private $adresse;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="agenda", type="integer")
-     */
-    private $agenda;
+
 
 
 
@@ -257,36 +257,21 @@ class Agenda
         $this->agenda = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-    /**
-     * Add agenda
-     *
-     * @param \AdminBundle\Entity\Formation $agenda
-     * @return Agenda
-     */
-    public function addAgenda(\AdminBundle\Entity\Formation $agenda)
-    {
-        $this->agenda[] = $agenda;
 
-        return $this;
+    /**
+     * @param mixed $formation
+     */
+    public function setFormation($formation)
+    {
+        $this->formation = $formation;
     }
 
     /**
-     * Remove agenda
-     *
-     * @param \AdminBundle\Entity\Formation $agenda
+     * @return mixed
      */
-    public function removeAgenda(\AdminBundle\Entity\Formation $agenda)
+    public function getFormation()
     {
-        $this->agenda->removeElement($agenda);
+        return $this->formation;
     }
 
-    /**
-     * Get agenda
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getAgenda()
-    {
-        return $this->agenda;
-    }
 }

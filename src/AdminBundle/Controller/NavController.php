@@ -20,7 +20,7 @@ class NavController extends Controller
             ->findBy(array('categorie'=>'1'));
 
 
-        return $this->render('@Admin/navContent.html.twig', array('formations'=>$formations));
+        return $this->render('@Front/Default/navContent.html.twig', array('formations'=>$formations));
     }
 
     public function formationEquipeListAction()
@@ -30,7 +30,7 @@ class NavController extends Controller
             ->findBy(array('categorie'=>'3'));
 
 
-        return $this->render('@Admin/navContent.html.twig', array('formations'=>$formations));
+        return $this->render('@Front/Default/navContent.html.twig', array('formations'=>$formations));
     }
     public function formationIncendieListAction()
     {
@@ -39,7 +39,7 @@ class NavController extends Controller
             ->findBy(array('categorie'=>'7'));
 
 
-        return $this->render('@Admin/navContent.html.twig', array('formations'=>$formations));
+        return $this->render('@Front/Default/navContent.html.twig', array('formations'=>$formations));
     }
 
     public function formationSanteListAction()
@@ -49,7 +49,7 @@ class NavController extends Controller
             ->findBy(array('categorie'=>'6'));
 
 
-        return $this->render('@Admin/navContent.html.twig', array('formations'=>$formations));
+        return $this->render('@Front/Default/navContent.html.twig', array('formations'=>$formations));
     }
 
     public function formationSportifListAction()
@@ -59,7 +59,7 @@ class NavController extends Controller
             ->findBy(array('categorie'=>'4'));
 
 
-        return $this->render('@Admin/navContent.html.twig', array('formations'=>$formations));
+        return $this->render('@Front/Default/navContent.html.twig', array('formations'=>$formations));
     }
 
     public function formationFormateurListAction()
@@ -69,7 +69,7 @@ class NavController extends Controller
             ->findBy(array('categorie'=>'5'));
 
 
-        return $this->render('@Admin/navContent.html.twig', array('formations'=>$formations));
+        return $this->render('@Front/Default/navContent.html.twig', array('formations'=>$formations));
     }
 
     public function formationAquaListAction()
@@ -79,7 +79,7 @@ class NavController extends Controller
             ->findBy(array('categorie'=>'8'));
 
 
-        return $this->render('@Admin/navContent.html.twig', array('formations'=>$formations));
+        return $this->render('@Front/Default/navContent.html.twig', array('formations'=>$formations));
     }
 
     public function formationTravailListAction()
@@ -89,6 +89,6 @@ class NavController extends Controller
             ->findBy(array('categorie'=>'9'));
 
 
-        return $this->render('@Admin/navContent.html.twig', array('formations'=>$formations));
+        return $this->render('@Front/Default/navContent.html.twig', array('formations'=>$formations));
     }
 }

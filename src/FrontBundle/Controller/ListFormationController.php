@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AdminBundle\Entity\Formation;
 use AdminBundle\Entity\Categorie;
+use AdminBundle\Entity\FormationPublic;
 
 class ListFormationController extends Controller
 {
@@ -17,8 +18,8 @@ class ListFormationController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-       // $categories = $em->getRepository('AdminBundle:FormationType')->findByType($typeFormation);
-        $categories = $em->getRepository('AdminBundle:Categorie')->findAll();
+        $categories = $em->getRepository('AdminBundle:FormationType')->findByType($typeFormation);
+        //$categories = $em->getRepository('AdminBundle:Categorie')->findAll();
         foreach ($categories as $categorie) {
             $nomCategorie = $categorie->getNomCategorie();
             $formations[$nomCategorie] = $em->getRepository('AdminBundle:Formation')->findByCategorie(array($categorie));

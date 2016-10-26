@@ -24,7 +24,7 @@ class FormationPublic
     /**
      * @var string
      * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="formationPublics")
-     * @ORM\JoinColumn(name="type_id", referencedColumnName="id")
+     * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
      */
     private $category;
 
