@@ -1,4 +1,4 @@
-{% extends 'FrontBundle:Default:index.html.twig' %}
+{% extends 'FrontBundle:Default:frontLayout.html.twig' %}
 
 {% block stylesheets %}
     <link href="{{ asset('css/formations.css')}}" rel="stylesheet">
@@ -7,12 +7,12 @@
 
 
 {% block body %}
-    <div class="container-fluid">
+     <div class="container-fluid">
         <div class="box box-1">
             <div class="box-content">
                 <div class="row">
                     <div class="col-md-9">
-                        <h1 class="text-center">Agent de Servive de Sécurité Incendie et d'assistance à Personnes</h1>
+                        <h1 class="text-center">{{ formation.nomLong }}</h1>
                     </div>
                     <div class="col-md-3">
                         <img class="box-image" src="{{ asset('images/SSIAP.png') }}" />
@@ -111,9 +111,12 @@
 
     <div class="container">
         <h2>AGENDA</h2>
-        {{ render(controller(
-        'AdminBundle:Formation:formationEquipeList'
-        )) }}
+       {% for agenda in formation.agendas %}
+           {{ agenda.dateDeDebut|date('d-m-Y') }}
+           {{ agenda.dateDeFin |date('d-m-Y')}}
+           {{ agenda.heureDeDebutAm |date('H:i')}}
+           {{ agenda.heureDeFinAm |date('H:i')}}
+        {% endfor %}
     </div>
 
 

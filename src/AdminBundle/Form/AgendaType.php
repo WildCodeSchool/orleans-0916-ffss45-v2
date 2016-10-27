@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class AgendaType extends AbstractType
 {
@@ -25,7 +26,9 @@ class AgendaType extends AbstractType
             ->add('adresse')
             ->add('formation', EntityType::class, array('class'=>'AdminBundle:Formation',
                                                         'choice_label'=>'nomCourt'))
-            ->add('remarque')
+            ->add('remarque', choiceType::class, array('required' => false))
+
+
         ;
 
     }

@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use AdminBundle\Form\AgendaType;
 
 class FormationType extends AbstractType
@@ -30,7 +31,15 @@ class FormationType extends AbstractType
                 'entry_type'   => AgendaType::class,
                 // these options are passed to each "email" type
                     )
-                );
+                )
+            ->add ('publicVise')
+            ->add ('objectifVise')
+            ->add ('dureeFormation')
+            ->add ('contenuFormation')
+            ->add ('methodePedagogique', choiceType::class, array('required' => false))
+            ->add ('validation')
+        ;
+
     }
     
     /**
