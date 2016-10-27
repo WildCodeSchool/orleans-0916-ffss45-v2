@@ -1,19 +1,20 @@
 <?php
 
-namespace ActualiteBundle\Controller;
+namespace AdminBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
-use ActualiteBundle\Form\ActualiteType;
+use AdminBundle\Form\ActualiteType;
 use Symfony\Component\HttpFoundation\Request;
-use ActualiteBundle\Entity\Actualite;
+use AdminBundle\Entity\Actualite;
+
 class ActualiteController extends Controller
 {
 
     /**
      * @Route("/actu/{id}/delete", name="delete_actu")
-     * @ParamConverter("actuality", class="ActualiteBundle:Actualite")
+     * @ParamConverter("actuality", class="AdminBundle:Actualite")
      *
      */
     public function deleteAction(Actualite $actualite)
@@ -25,7 +26,7 @@ class ActualiteController extends Controller
         return $this->redirectToRoute('actu');
     }
     /**
-     * @Route("/admin/actu", name="actu")
+     * @Route("/actu", name="actu")
      */
     public function addAction( Request $request)
     {
@@ -55,7 +56,7 @@ class ActualiteController extends Controller
             return $this->redirectToRoute('actu');
         }
 
-        return $this->render('@Actualite/Default/add.html.twig', array('form'=>$form->createView(),
+        return $this->render('@Admin/Default/add.html.twig', array('form'=>$form->createView(),
             )
         );
     }
@@ -67,19 +68,19 @@ class ActualiteController extends Controller
     public function actuOnlyAction()
     {
         $actualites = $this->getDoctrine()
-            ->getRepository('ActualiteBundle:Actualite')
+            ->getRepository('AdminBundle:Actualite')
             ->findAll();
 
 
-        return $this->render('@Actualite/Default/actuOnly.html.twig', array('actualites'=>$actualites));
+        return $this->render('@Admin/Default/actuOnly.html.twig', array('actualites'=>$actualites));
     }
 
     public function findLastActuAction()
     {
         $actualites = $this->getDoctrine()
-            ->getRepository('ActualiteBundle:Actualite')
+            ->getRepository('AdminBundle:Actualite')
             ->findBy(array(), array('id'=>'DESC'), 3);
-        return $this->render('@Actualite/Default/lastActu.html.twig', array('actualites'=>$actualites));
+        return $this->render('@Admin/Default/lastActu.html.twig', array('actualites'=>$actualites));
     }
 
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace ActualiteBundle\Form;
+namespace AdminBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -35,7 +35,7 @@ class ActualiteType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ActualiteBundle\Entity\Actualite'
+            'data_class' => 'AdminBundle\Entity\Actualite'
         ));
     }
 }
