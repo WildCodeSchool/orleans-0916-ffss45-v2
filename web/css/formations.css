@@ -1,6 +1,294 @@
-.box-image{
-    width: 15em;
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
+@import url("http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
+*, *:before, *:after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+
+.cercle    {
+    padding-top: 3em;
+    font-size: 7em;
+    -moz-transform:rotate(15deg); //firefox
+    -webkit-transform:rotate(15deg); //Chrome, Safari
+    -o-transform:rotate(15deg); //Opera
+
+}
+
+.row{
+    margin: 0;
+}
+p {
+    margin: 0 0 20px;
+    line-height: 1.5;
+    font-size: 2em;
+}
+
+main {
+    min-width: 320px;
+    max-width: 80%;
+    padding: 50px;
+    margin: 0 auto;
+    background: #fff;
+}
+
+section {
+    display: none;
+    padding: 20px 0 0;
+    border-top: 1px solid #ddd;
+}
+
+input {
+    display: none;
+}
+
+label {
+    display: inline-block;
+    margin: 0 0 -1px;
+    padding: 15px 25px;
+    font-weight: 600;
+    text-align: center;
+    border: 1px solid transparent;
+}
+
+label:before {
+    font-family: fontawesome;
+    font-weight: normal;
+    margin-right: 10px;
+}
+
+label[for*='1']:before {
+    content: '\f1cb';
+}
+
+label[for*='2']:before {
+    content: '\f17d';
+}
+
+label[for*='3']:before {
+    content: '\f16b';
+}
+
+label[for*='4']:before {
+    content: '\f1a9';
+}
+
+label:hover {
+    color: #888;
+    cursor: pointer;
+}
+
+input:checked + label {
+    color: #555;
+    border: 1px solid #ddd;
+    border-top: 5px solid rgb(255, 203, 0);
+    border-bottom: 1px solid #fff;
+}
+
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2,
+#tab3:checked ~ #content3,
+#tab4:checked ~ #content4 {
+    display: block;
+}
+
+@media screen and (max-width: 650px) {
+    label {
+        font-size: 0;
+    }
+
+    label:before {
+        margin: 0;
+        font-size: 18px;
+    }
+}
+@media screen and (max-width: 400px) {
+    label {
+        padding: 15px;
+    }
+}
+
+@charset "UTF-8";
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+html,body {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    line-height: 1.42em;
+    color:#A7A1AE;
+    background-color:#1F2739;
+    height: 100%;
+    font-size: 1.2em;
+    font: 14px/1 'Open Sans', sans-serif;
+
+
+}
+
+h1 {
+    font-size:4.5em;
+    font-weight: 300;
+    line-height:1em;
+    text-align: center;
+    color: #4DC3FA;
+    padding: 150px 0;
+    font-weight: 400;
+    text-align: center;
+}
+
+h2 {
+    font-size:3em;
+    font-weight: 300;
+    text-align: center;
+    display: block;
+    line-height:1em;
+    padding-bottom: 2em;
+    color: #FB667A;
+}
+
+h2 a {
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #FB667A;
+    text-decoration: none;
+}
+
+.agenda{
+    padding: 100px 50px 0 300px;
+}
+
+.blue { color: #185875; }
+.yellow { color: #FFF842; }
+
+.container th h3 {
+    font-weight: bold;
+    font-size: 2em;
+    text-align: left;
+    color: #185875;
+}
+
+.container td {
+    font-weight: normal;
+    font-size: 1.5em;
+    -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+    -moz-box-shadow: 0 2px 2px -2px #0E1119;
+    box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.container {
+    text-align: left;
+    overflow: hidden;
+    width: 98%;
+    margin: 0 auto;
+    display: table;
+    padding: 0 0 5em 0;
+}
+
+.container td, .container th {
+    padding-bottom: 2%;
+    padding-top: 1%;
+    padding-left:1%;
+}
+
+/* Background-color of the odd rows */
+.container tr:nth-child(odd) {
+    background-color: #323C50;
+}
+
+/* Background-color of the even rows */
+.container tr:nth-child(even) {
+    background-color: #2C3446;
+}
+
+.container th {
+    background-color: #1F2739;
+}
+
+.container td:first-child { color: #FB667A; }
+
+.container tr:hover {
+    background-color: #464A52;
+    -webkit-box-shadow: 0 6px 6px -6px #0E1119;
+    -moz-box-shadow: 0 6px 6px -6px #0E1119;
+    box-shadow: 0 6px 6px -6px #0E1119;
+}
+
+.container td:hover {
+    background-color: #FFF842;
+    color: #403E10;
+    font-weight: bold;
+
+    box-shadow: #7F7C21 -1px 1px, #7F7C21 2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+    transform: translate3d(6px, -6px, 0);
+
+    transition-delay: 0s;
+    transition-duration: 0.4s;
+    transition-property: all;
+    transition-timing-function: linear;
+}
+
+@media (max-width: 800px) {
+    .container td:nth-child(5),
+    .container th:nth-child(5) { display: none; }
+}
+
+.button {
+    outline: none;
+    border: none;
+    padding: 20px;
+    display: block;
+    margin: 50px auto;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: transparent;
+    position: relative;
+    border: 2px solid #fff;
+    transition: all 0.5s ease;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    -ms-transition: all 0.5s ease;
+    color: #fff;
+}
+
+.button:hover {
+    border-color: #F44336;
+    color: #F44336;
+    animation: shakeThatBooty 0.3s linear 1;
+    -webkit-animation: shakeThatBooty 0.3s linear 1;
+    -moz-animation: shakeThatBooty 0.3s linear 1;
+    -o-animation: shakeThatBooty 0.3s linear 1;
+    -ms-animation: shakeThatBooty 0.3s linear 1;
+}
+
+@keyframes shakeThatBooty {
+    33% {
+        transform: rotateZ(10deg);
+        -webkit-transform: rotateZ(10deg);
+        -moz-transform: rotateZ(10deg);
+        -o-transform: rotateZ(10deg);
+        -ms-transform: rotateZ(10deg);
+    }
+    67% {
+        transform: rotateZ(-10deg);
+        -webkit-transform: rotateZ(-10deg);
+        -moz-transform: rotateZ(-10deg);
+        -o-transform: rotateZ(-10deg);
+        -ms-transform: rotateZ(-10deg);
+    }
+    100% {
+        transform: rotateZ(10deg);
+        -webkit-transform: rotateZ(10deg);
+        -moz-transform: rotateZ(10deg);
+        -o-transform: rotateZ(10deg);
+        -ms-transform: rotateZ(10deg);
+    }
+}
+
+
+
+
+/*
+
 
 .box-2{
   width: 70%;
@@ -161,3 +449,4 @@ figure.snip1084.hover:after {
     transform: scale(1);
 }
 
+*/
