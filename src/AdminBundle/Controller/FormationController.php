@@ -138,16 +138,17 @@ class FormationController extends Controller
         ;
     }
 
+
     /**
-     * @Route("/actu/list/actuonly", name="list_actuonly")
+     * @Route("/formation/{id}/", name="formation_type")
      */
-    public function formationAction()
+    public function showAgendaAction()
     {
-        $formation = $this->getDoctrine()
-            ->getRepository('AdminjoBundle:Agenda')
+        $agendas = $this->getDoctrine()
+            ->getRepository('AdminBundle:Agenda')
             ->findAll();
 
 
-        return $this->render('FrontBundle:Formation:formation.html.twig', array('formation'=>$agendas));
+        return $this->render('@Formation/formation.html.twig', array('agenda'=>$agendas));
     }
 }
