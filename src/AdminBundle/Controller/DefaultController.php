@@ -14,16 +14,6 @@ class DefaultController extends Controller
     {
         return $this->render('AdminBundle:Default:index.html.twig');
     }
-
-    /**
-     * @Route("/formation")
-     */
-    public function formationAction()
-    {
-        return $this->render('FrontBundle:Default:formation.html.twig');
-    }
-
-
 }
 
 

@@ -19,15 +19,6 @@ class DefaultController extends Controller
 
 
     }
-    /**
-     * @Route("/page3")
-     */
-    public function page3Action()
-    {
-        return $this->render('FrontBundle:Default:formation.html.twig');
-
-
-    }
 
 
     /**
@@ -42,5 +33,14 @@ class DefaultController extends Controller
             ->findAll();
 
         return $this->render('@Front/Default/pageActus.html.twig', array('actualites'=>$actualites));
+    }
+
+    /**
+     * @Route("/formation/{id}")
+     */
+    public function showAction(Formation $formation)
+    {
+        return $this->render('FrontBundle:Default:formation.html.twig', array('formation'=> $formation));
+
     }
 }
