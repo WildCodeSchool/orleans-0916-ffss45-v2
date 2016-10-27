@@ -55,14 +55,14 @@ class ActualiteController extends Controller
             return $this->redirectToRoute('actu');
         }
 
-        return $this->render('@Actualite/Default/add.html.twig', array('form'=>$form->createView(),
+        return $this->render(':Actus:actus.html.twig', array('form'=>$form->createView(),
             )
         );
     }
 
 
     /**
-     * @Route("/actu/list/actuonly", name="list_actuonly")
+     * @Route("/actu/list/", name="list_actuonly")
      */
     public function actuOnlyAction()
     {
@@ -71,7 +71,7 @@ class ActualiteController extends Controller
             ->findAll();
 
 
-        return $this->render('@Actualite/Default/actuOnly.html.twig', array('actualites'=>$actualites));
+        return $this->render(':Actus:actus.html.twig', array('actualites'=>$actualites));
     }
 
     public function findLastActuAction()

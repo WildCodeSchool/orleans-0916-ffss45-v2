@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/agenda.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/admin_agenda.css')}}" rel="stylesheet">
+    <link href="{{ asset('responsive-nav.css')}}" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+
+    <nav class="menu-left">
+
+        <header>
+            <img src="{{'images/logo2.png'}}" alt="logo FFSS45" class="logo_header"> {# logo n'apparaît pas#}
+
+        </header>
+        <ul>
+            <li class="active"><a href="#"><span class="glyphicon glyphicon-dashboard"></span>Actualites</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-th-list"></span>Agendas</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-globe"></span>Formations</a></li>
+        </ul>
+
+    </nav>
+
+    <div class="content-center">
+        <header>
+            <div class="top">
+                <h1>La Fédération Française de Sécurité et de Secourisme 45</h1>
+            </div>
+            <div class="row use">   {# problème niveau width#}
+                <div class="col-md-offset-1 col-md-1">
+                    <a href="}"><span class="glyphicon glyphicon-plus"></span></a>
+                </div>
+                <div class="col-md-offset-1 col-md-1">
+                    <a href="#"><span class="glyphicon glyphicon-edit"></span></a></div> {# lien ne marche pas #}
+                <div class="col-md-offset-1 col-md-1">
+                    <a href="#"><span class="glyphicon glyphicon-eye-open"></span></a></div> {# lien ne marche pas #}
+                <div class="col-md-offset-5 col-md-1">
+                    <a href="#" data-title="Sign out"><i class="fa fa-sign-out"></i></a>
+                </div>
+            </div>
+        </header>
+
+        <div class="content-body">
+            <div class="table-title">
+                <h2>Agenda list</h2>
+            </div>
+            <table class="table-fill">
+                <thead>
+                <tr>
+                    <th class="text-left">Date</th>
+                    <th class="text-left">Titre</th>
+                    <th class="text-left">Auteur</th>
+                    <th class="text-left">Contenu</th>
+                    <th class="text-left">Image</th>
+                </tr>
+                </thead>
+                <tbody class="table-hover">
+                {% for actualite in actualites %}
+                    <tr>
+                        <td class="text-left">{% if actualite.date %}{{ actualite.date|date("m/d/Y") }}{% endif %}</td>
+                        <td class="text-left">{% if actualite.titre %}{{ actualite.titre }}{% endif %}</td>
+                        <td class="text-left">{% if actualite.auteur %}{{ actualite.auteur }}{% endif %}</td>
+                        <td class="text-left">{% if actualite.contenu %}{{ actualite.contenu }}{% endif %}</td>
+                        <td class="text-left">{% if actualite.image %}<img src="{{ asset('upload/' ~ actualite.image) }} " class="img-responsive" alt=""/>{% endif %}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href=""><span class="glyphicon glyphicon-eye-open"></span></a>
+                                </li>
+                                <li>
+                                    <a href=""><span class="glyphicon glyphicon-edit"></span></a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="content-footer"></div>
+    </div>
+
+
+
+{% endblock %}
