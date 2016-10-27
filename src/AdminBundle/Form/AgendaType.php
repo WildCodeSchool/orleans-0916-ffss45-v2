@@ -25,7 +25,7 @@ class AgendaType extends AbstractType
             ->add('adresse')
             ->add('formation', EntityType::class, array('class'=>'AdminBundle:Formation',
                                                         'choice_label'=>'nomCourt'))
-            /*->add('remarque', TextType::class)*/
+            ->add('remarque')
         ;
 
     }

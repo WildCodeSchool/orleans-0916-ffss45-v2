@@ -58,6 +58,7 @@
                         <th class="text-left">Heure/fin PM</th>
                         <th class="text-left">Adresse</th>
                         <th class="text-left">Formation</th>
+                        <th class="text-left">Remarque</th>
                         <th class="text-left">Actions</th>
                     </tr>
                     </thead>
@@ -73,14 +74,14 @@
                             <td class="text-left">{% if agenda.heureDeFinPm %}{{ agenda.heureDeFinPm|date('H:i:s') }}{% endif %}</td>
                             <td class="text-left">{{ agenda.adresse }}</td>
                             <td class="text-left">{{ agenda.formation.nomCourt }}</td>
-                           {#<td class="text-left">{{ agenda.remarque }}</td>#}
+                            <td class="text-left">{{ agenda.remarque }}</td>
                             <td>
                                 <ul>
                                     <li>
-                                        <a href="{{ path('agenda_show', { 'id': agenda.id }) }}">show</a>
+                                        <a href="{{ path('agenda_show', { 'id': agenda.id }) }}"><span class="glyphicon glyphicon-eye-open"></span></a>
                                     </li>
                                     <li>
-                                        <a href="{{ path('agenda_edit', { 'id': agenda.id }) }}">edit</a>
+                                        <a href="{{ path('agenda_edit', { 'id': agenda.id }) }}"><span class="glyphicon glyphicon-edit"></span></a>
                                     </li>
                                 </ul>
                             </td>

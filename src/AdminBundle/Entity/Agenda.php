@@ -77,6 +77,11 @@ class Agenda
     private $adresse;
 
 
+    /**
+     * @var string
+     * @ORM\Column(name="remarque", type="string", length=255)
+     */
+    private $remarque;
 
 
 

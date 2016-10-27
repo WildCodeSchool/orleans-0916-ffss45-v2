@@ -20,7 +20,7 @@ class DefaultController extends Controller
      */
     public function pageFormationAction()
     {
-        return $this->render('AdminBundle:Default:formation.html.twig');
+        return $this->render('FrontBundle:Default:formation.html.twig');
     }
 
 

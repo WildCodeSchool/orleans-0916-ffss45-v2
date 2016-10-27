@@ -58,6 +58,8 @@ class Formation
     private $descriptif;
 
 
+
+
     /**
      * Get id
      *
@@ -207,5 +209,6 @@ class Formation
     {
         $this->agendas->removeElement($agenda);
     }
+
 
 }

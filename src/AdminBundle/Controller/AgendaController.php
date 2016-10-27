@@ -139,5 +139,17 @@ class AgendaController extends Controller
     }
 
 
+    /**
+     * @Route("/formation/{id}/", name="formation_type")
+     */
+    public function showAgendaAction()
+    {
+        $agendas = $this->getDoctrine()
+            ->getRepository('AdminBundle:Agenda')
+            ->findAll();
+
+
+        return $this->render('@Formation/formation.html.twig', array('agenda'=>$agendas));
+    }
 
 }
