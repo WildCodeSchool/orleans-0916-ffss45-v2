@@ -33,7 +33,7 @@ class Formation
     /**
      * @var string
      *
-     * @ORM\Column(name="nom_long", type="string", length=255)
+     * @ORM\Column(name="nom_long", type="string", length=255)page3
      */
     private $nomLong;
 
@@ -49,7 +49,6 @@ class Formation
      * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
      */
     private $categorie;
-
     /**
      * @var text
      *
@@ -57,8 +56,47 @@ class Formation
      */
     private $descriptif;
 
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="publicVise", type="text")
+     */
+    private $publicVise;
 
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="objectifVise", type="text")
+     */
+    private $objectifVise;
 
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="dureeFormation", type="text")
+     */
+    private $dureeFormation;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="contenuFormation", type="text")
+     */
+    private $contenuFormation;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="methodePedagogique", type="text")
+     */
+    private $methodePedagogique;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="validation", type="text")
+     */
+    private $validation;
 
     /**
      * Get id
@@ -210,5 +248,99 @@ class Formation
         $this->agendas->removeElement($agenda);
     }
 
+    /**
+     * @param text $publicVise
+     */
+    public function setPublicVise($publicVise)
+    {
+        $this->publicVise = $publicVise;
+    }
 
+    /**
+     * @return text
+     */
+    public function getPublicVise()
+    {
+        return $this->publicVise;
+    }
+
+    /**
+     * @return text
+     */
+    public function getObjectifVise()
+    {
+        return $this->objectifVise;
+    }
+
+    /**
+     * @param text $objectifVise
+     */
+    public function setObjectifVise($objectifVise)
+    {
+        $this->objectifVise = $objectifVise;
+    }
+
+    /**
+     * @param text $dureeFormation
+     */
+    public function setDureeFormation($dureeFormation)
+    {
+        $this->dureeFormation = $dureeFormation;
+    }
+
+    /**
+     * @return text
+     */
+    public function getDureeFormation()
+    {
+        return $this->dureeFormation;
+    }
+
+    /**
+     * @param text $contenuFormation
+     */
+    public function setContenuFormation($contenuFormation)
+    {
+        $this->contenuFormation = $contenuFormation;
+    }
+
+    /**
+     * @return text
+     */
+    public function getContenuFormation()
+    {
+        return $this->contenuFormation;
+    }
+
+    /**
+     * @param text $methodePedagogique
+     */
+    public function setMethodePedagogique($methodePedagogique)
+    {
+        $this->methodePedagogique = $methodePedagogique;
+    }
+
+    /**
+     * @return text
+     */
+    public function getMethodePedagogique()
+    {
+        return $this->methodePedagogique;
+    }
+
+    /**
+     * @param text $validation
+     */
+    public function setValidation($validation)
+    {
+        $this->validation = $validation;
+    }
+
+    /**
+     * @return text
+     */
+    public function getValidation()
+    {
+        return $this->validation;
+    }
 }

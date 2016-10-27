@@ -7,10 +7,15 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nomlong</th>
-                <th>Nomcourt</th>
-                <th>Categorie</th>
-                <th>Descriptif</th>
+                <th>Nom long</th>
+                <th>Nom court</th>
+                <th>Catégorie</th>
+                <th>Public Visé</th>
+                <th>Objectif Visé</th>
+                <th>Durée Formation</th>
+                <th>Contenu Formation</th>
+                <th>Méthode Pédologique</th>
+                <th>Validation</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -26,6 +31,12 @@
                     {% endif %}
                 </td>
                 <td>{{ formation.descriptif }}</td>
+                <td>{{ formation.publicVise }}</td>
+                <td>{{ formation.objectifVise }}</td>
+                <td>{{ formation.dureeFormation }}</td>
+                <td>{{ formation.contenuFormation }}</td>
+                <td>{{ formation.methodePedagogique }}</td>
+                <td>{{ formation.validation }}</td>
                 <td>
                     <ul>
                         <li>
