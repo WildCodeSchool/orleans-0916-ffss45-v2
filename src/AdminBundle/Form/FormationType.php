@@ -7,8 +7,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use AdminBundle\Form\AgendaType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class FormationType extends AbstractType
 {
@@ -36,7 +36,7 @@ class FormationType extends AbstractType
             ->add ('objectifVise')
             ->add ('dureeFormation')
             ->add ('contenuFormation')
-            ->add ('methodePedagogique', choiceType::class, array('required' => false))
+            ->add('methodePedagogique', TextAreaType::class, array( 'required' => false,))
             ->add ('validation')
         ;
 

@@ -3,6 +3,7 @@
 namespace AdminBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -26,10 +27,12 @@ class AgendaType extends AbstractType
             ->add('adresse')
             ->add('formation', EntityType::class, array('class'=>'AdminBundle:Formation',
                                                         'choice_label'=>'nomCourt'))
-            ->add('remarque', choiceType::class, array('required' => false))
+            ->add('remarque', TextareaType::class, array( 'required' => false,))
+
 
 
         ;
+
 
     }
     
