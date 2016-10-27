@@ -25,7 +25,7 @@ class ActualiteController extends Controller
         return $this->redirectToRoute('actu');
     }
     /**
-     * @Route("/actu", name="actu")
+     * @Route("/actu/add", name="actu")
      */
     public function addAction( Request $request)
     {
@@ -62,7 +62,7 @@ class ActualiteController extends Controller
 
 
     /**
-     * @Route("/actu/list/", name="list_actuonly")
+     * @Route("/actu", name="list_actuonly")
      */
     public function actuOnlyAction()
     {
