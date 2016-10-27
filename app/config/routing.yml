@@ -1,5 +1,4 @@
 
-
 admin:
     resource: "@AdminBundle/Controller/"
     type:     annotation
@@ -15,3 +14,9 @@ front:
 app:
     resource: "@AppBundle/Controller/"
     type:     annotation
+
+
+actualite:
+    resource: "@ActualiteBundle/Controller/"
+    type:     annotation
+    prefix:   /admin

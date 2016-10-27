@@ -25,7 +25,7 @@ class ActualiteController extends Controller
         return $this->redirectToRoute('actu');
     }
     /**
-     * @Route("/admin/actu", name="actu")
+     * @Route("/actu", name="actu")
      */
     public function addAction( Request $request)
     {
