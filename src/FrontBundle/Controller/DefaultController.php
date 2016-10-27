@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use AdminBundle\Entity\Formation;
-use ActualiteBundle\Entity\Actualite;
+use AdminBundle\Entity\Actualite;
 
 class DefaultController extends Controller
 {
