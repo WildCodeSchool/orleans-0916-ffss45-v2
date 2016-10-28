@@ -36,7 +36,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/formation/{id}")
+     * @Route("/formation/{nomCourt}", name="formation")
      */
     public function showAction(Formation $formation)
     {

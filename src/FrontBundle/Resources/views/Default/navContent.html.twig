@@ -3,9 +3,9 @@
 
     <li class="col-sm-3">
         <ul>
-            <li class="dropdown-header sante">{{ category }}</li>
+            <li class="dropdown-header">{{ category }}</li>
     {%  for key,formation in tab %}
-            <li><a href="/formation/{{ formation.nomCourt }}" title="accédez à la formation"> {{ formation.nomCourt }}</a></li>
+            <li><a href="{{ path('formation', {'nomCourt':formation.nomCourt}) }}" title="accédez à la formation"> {{ formation.nomCourt }}</a></li>
     {% endfor %}
             <li class="divider"></li>
         </ul>

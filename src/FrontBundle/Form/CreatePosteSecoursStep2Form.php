@@ -64,7 +64,7 @@ class CreatePosteSecoursStep2Form extends AbstractType
                 'choices'=>array(
                     ''=>'vide',
                     'Sur la voie publique'=>'voie publique',
-                    'dans un site public aménagé'=>'site public',
+                    'Dans un site public aménagé'=>'site public',
                     'Dans un site privé aménagé'=>'site privé',
                 ),
                 'choices_as_values' => true,))
