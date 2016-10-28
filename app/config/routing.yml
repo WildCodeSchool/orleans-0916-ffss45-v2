@@ -1,3 +1,7 @@
+actualite_actualite:
+    resource: "@ActualiteBundle/Controller/ActualiteController.php"
+    type:     annotation
+
 
 admin:
     resource: "@AdminBundle/Controller/"
