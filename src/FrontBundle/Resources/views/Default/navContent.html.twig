@@ -5,7 +5,7 @@
         <ul>
             <li class="dropdown-header sante">{{ category }}</li>
     {%  for key,formation in tab %}
-            <li>{{ formation.nomCourt }}</li>
+            <li><a href="/formation/{{ formation.nomCourt }}" title="accédez à la formation"> {{ formation.nomCourt }}</a></li>
     {% endfor %}
             <li class="divider"></li>
         </ul>
