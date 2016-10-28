@@ -55,7 +55,7 @@ class ActualiteController extends Controller
             return $this->redirectToRoute('actu');
         }
 
-        return $this->render(':Actus:actus.html.twig', array('form'=>$form->createView(),
+        return $this->render('@Actualite/Default/add.html.twig', array('form'=>$form->createView(),
             )
         );
     }
