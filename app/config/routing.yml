@@ -1,3 +1,7 @@
+front_formulaire_secours:
+    resource: "@FrontBundle/Controller/FormulaireSecoursController.php"
+    type:     annotation
+
 actualite_actualite:
     resource: "@ActualiteBundle/Controller/ActualiteController.php"
     type:     annotation
