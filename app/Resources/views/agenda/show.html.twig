@@ -1,45 +1,41 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Agenda</h1>
-
-    <table>
-        <tbody>
+<div class="content-body">
+    <div class="table-title">
+        <h2>Agenda show</h2>
+    </div>
+    <table class="table-fill">
+        <thead>
+        <tr>
+            <th class="text-left">Id</th>
+            <th class="text-left">Date/début</th>
+            <th class="text-left">Date/fin</th>
+            <th class="text-left">Heure/début AM</th>
+            <th class="text-left">Heure/fin AM</th>
+            <th class="text-left">Heure/début PM</th>
+            <th class="text-left">Heure/fin PM</th>
+            <th class="text-left">Adresse</th>
+            <th class="text-left">Formation</th>
+            <th class="text-left">Remarque</th>
+            <th class="text-left">Actions</th>
+        </tr>
+        </thead>
+        <tbody class="table-hover">
             <tr>
-                <th>Id</th>
-                <td>{{ agenda.id }}</td>
-            </tr>
-            <tr>
-                <th>Datededebut</th>
-                <td>{% if agenda.dateDeDebut %}{{ agenda.dateDeDebut|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Datedefin</th>
-                <td>{% if agenda.dateDeFin %}{{ agenda.dateDeFin|date('Y-m-d') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Heurededebutam</th>
-                <td>{% if agenda.heureDeDebutAm %}{{ agenda.heureDeDebutAm|date('H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Heuredefinam</th>
-                <td>{% if agenda.heureDeFinAm %}{{ agenda.heureDeFinAm|date('H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Heurededebutpm</th>
-                <td>{% if agenda.heureDeDebutPm %}{{ agenda.heureDeDebutPm|date('H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Heuredefinpm</th>
-                <td>{% if agenda.heureDeFinPm %}{{ agenda.heureDeFinPm|date('H:i:s') }}{% endif %}</td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ agenda.adresse }}</td>
-            </tr>
-            <tr>
-                <th>Formation</th>
-                <td>{{ agenda.formation.nomCourt }}</td>
+                <td class="text-left"><td>{{ agenda.id }}</td>
+                <td class="text-left">{% if agenda.dateDeDebut %}{{ agenda.dateDeDebut|date('Y-m-d') }}{% endif %}</td>
+                <td class="text-left">{% if agenda.dateDeFin %}{{ agenda.dateDeFin|date('Y-m-d') }}{% endif %}</td>
+                <td class="text-left">{% if agenda.heureDeDebutAm %}{{ agenda.heureDeDebutAm|date('H:i:s') }}{% endif %}</td>
+                <td class="text-left">{% if agenda.heureDeFinAm %}{{ agenda.heureDeFinAm|date('H:i:s') }}{% endif %}</td>
+                <td class="text-left">{% if agenda.heureDeDebutPm %}{{ agenda.heureDeDebutPm|date('H:i:s') }}{% endif %}</td>
+                <td class="text-left">{% if agenda.heureDeFinPm %}{{ agenda.heureDeFinPm|date('H:i:s') }}{% endif %}</td>
+                <td class="text-left">{{ agenda.adresse }}</td>
+                <td class="text-left">{{ agenda.formation.nomCourt }}</td>
+                <td>
+                    <a href="{{ path('agenda_index') }}">Back to the list</a>
+                    <a href="{{ path('agenda_edit', { 'id': agenda.id }) }}">Edit</a>
+                </td>
             </tr>
         </tbody>
     </table>

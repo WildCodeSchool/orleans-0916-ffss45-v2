@@ -1,6 +1,7 @@
 {% extends 'FrontBundle:Default:frontLayout.html.twig' %}
 
 {% block stylesheets %}
+    {{ parent() }}
     <link href="{{ asset('css/formations.css')}}" rel="stylesheet">
 {% endblock %}
 
@@ -96,6 +97,7 @@
     </div>
 
 {% endblock %}
+
 
 
 {% block javascript %}
