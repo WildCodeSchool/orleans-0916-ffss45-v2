@@ -5,8 +5,6 @@
         </div>
     </div>
 </div>
-
-
 <nav class="navbar navbar-default navbar-static firstnav">
     <div class="navbar-header">
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
@@ -15,9 +13,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-
     </div>
-
     <div class="collapse navbar-collapse js-navbar-collapse">
         <ul class="nav navbar-nav ">
             <li class="dropdown dropdown-large">
@@ -25,119 +21,18 @@
             </li>
             <li class="dropdown dropdown-large">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Particuliers<b class="caret"></b></a>
-
                 <ul class="dropdown-menu dropdown-menu-large row">
-                    <li class="col-sm-3">
-                        <ul>
-                            <li class="dropdown-header debut">Pour Débuter</li>
-                            {{ render(controller(
-                            'AdminBundle:Nav:formationDebutList'
-                            )) }}
-                            <li class="divider"></li>
-                            <li><img class="img-responsive" src="{{ asset('images/Formateur_PSE_petit.jpg') }}"/></li>
-                        </ul>
-                    </li>
-                    <li class="col-sm-3">
-                        <ul>
-                            <li class="dropdown-header equipe">Secours en équipe</li>
-                            {{ render(controller(
-                            'AdminBundle:Nav:formationEquipeList'
-                            )) }}
-                            <li class="divider"></li>
-                            <li class="dropdown-header sportif">Secours sportif</li>
-                            {{ render(controller(
-                            'AdminBundle:Nav:formationSportifList'
-                            )) }}
-
-                        </ul>
-                    </li>
-                    <li class="col-sm-3">
-                        <ul>
-                            <li class="dropdown-header formateurs">Formateur</li>
-                            {{ render(controller(
-                            'AdminBundle:Nav:formationFormateurList'
-                            )) }}
-                            <li class="divider"></li>
-                            <li class="dropdown-header incendie">Incendie</li>
-                            {{ render(controller(
-                            'AdminBundle:Nav:formationIncendieList'
-                            )) }}
-                        </ul>
-                    </li>
-                    <li class="col-sm-3">
-                        <ul>
-                            <li class="dropdown-header aquatique">Aquatique</li>
-                            {{ render(controller(
-                            'AdminBundle:Nav:formationAquaList'
-                            )) }}
-                        </ul>
-                    </li>
-
-
+                    {{ render(controller('AdminBundle:Nav:navParticulier')) }}
                 </ul>
-
             </li>
             <li class="dropdown dropdown-large">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Professionnels<b class="caret"></b></a>
-
                 <ul class="dropdown-menu dropdown-menu-large row">
-                    <li class="col-sm-3">
-                        <ul>
-                            <li class="dropdown-header sante">Santé</li>
-                            {{ render(controller(
-                            'AdminBundle:Nav:formationSanteList'
-                            )) }}
-                            <li class="divider"></li>
-                            <li><img class="img-responsive" src="{{ asset('images/Formateur_PSE_petit.jpg') }}"/></li>
-                        </ul>
-                    </li>
-                    <li class="col-sm-3">
-                        <ul>
-                            <li class="dropdown-header equipe">Secours en équipe</li>
-                            {{ render(controller(
-                            'AdminBundle:Nav:formationEquipeList'
-                            )) }}
-                            <li class="divider"></li>
-                            <li class="dropdown-header sportif">Secours sportif</li>
-                            {{ render(controller(
-                            'AdminBundle:Nav:formationSportifList'
-                            )) }}
-                        </ul>
-                    </li>
-                    <li class="col-sm-3">
-                        <ul>
-                            <li class="dropdown-header formateurs">Formateur</li>
-                            {{ render(controller(
-                            'AdminBundle:Nav:formationFormateurList'
-                            )) }}
-                            <li class="divider"></li>
-                            <li class="dropdown-header incendie">Incendie</li>
-                            {{ render(controller(
-                            'AdminBundle:Nav:formationIncendieList'
-                            )) }}
-                        </ul>
-                    </li>
-                    <li class="col-sm-3">
-                        <ul>
-                            <li class="dropdown-header aquatique">Aquatique</li>
-                            {{ render(controller(
-                            'AdminBundle:Nav:formationAquaList'
-                            )) }}
-                            <li class="divider"></li>
-                            <li class="dropdown-header travail">Secours au travail</li>
-                            {{ render(controller(
-                            'AdminBundle:Nav:formationTravailList'
-                            )) }}
-                        </ul>
-                    </li>
-
-
+                    {{ render(controller('AdminBundle:Nav:navPro')) }}
                 </ul>
-
             </li>
             <li class="dropdown dropdown-large">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Poste de secours<b class="caret"></b></a>
-
                 <ul class="dropdown-menu dropdown-menu-large row">
                     <li class="col-sm-6">
                         <ul>
@@ -153,7 +48,6 @@
                         </ul>
                     </li>
                 </ul>
-
             </li>
             <li class="dropdown dropdown-large">
                 <a href="#">Contact</a>
