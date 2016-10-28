@@ -1,6 +1,7 @@
 {% extends 'FrontBundle:Default:frontLayout.html.twig' %}
 
 {% block stylesheets %}
+    {{ parent() }}
     <link href="{{ asset('css/formations.css')}}" rel="stylesheet">
 {% endblock %}
 
@@ -45,7 +46,7 @@
         <label for="tab5"><i class="fa fa-list fa-3x" ></i><h2>Méthode pédagogique</h2></label>#}
 
          <section id="content1">
-             <p><p>{{ formation.objectifVise }}</p></p>
+             <p>{{ formation.objectifVise }}</p>
          </section>
 
          <section id="content2">
