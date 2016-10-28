@@ -10,85 +10,41 @@ namespace AdminBundle\Controller;
 
 use AdminBundle\Entity\Formation;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AdminBundle\Entity\FormationPublic;
+use AdminBundle\Entity\Categorie;
 
 class NavController extends Controller
 {
-    public function formationDebutListAction()
+
+    public function navProAction($typeFormation = 'professionnel')
     {
-        $formations = $this->getDoctrine()
-            ->getRepository('AdminBundle:Formation')
-            ->findBy(array('categorie'=>'1'));
-
-
+        $formations='';
+        // $typeFormation='';
+        $em = $this->getDoctrine()->getManager();
+        $typeFormations = $em->getRepository('AdminBundle:FormationPublic')->findByType($typeFormation);
+        foreach($typeFormations as $typeFormation) {
+            $categorie = $typeFormation->getCategorie();
+            $nomCategorie = $categorie->getNomCategorie();
+            $formations[$nomCategorie] = $em->getRepository('AdminBundle:Formation')->findByCategorie(array($categorie));
+        }
         return $this->render('@Front/Default/navContent.html.twig', array('formations'=>$formations));
+
+
     }
 
-    public function formationEquipeListAction()
+    public function navParticulierAction($typeFormation = 'particulier')
     {
-        $formations = $this->getDoctrine()
-            ->getRepository('AdminBundle:Formation')
-            ->findBy(array('categorie'=>'3'));
-
-
+        $formations='';
+        // $typeFormation='';
+        $em = $this->getDoctrine()->getManager();
+        $typeFormations = $em->getRepository('AdminBundle:FormationPublic')->findByType($typeFormation);
+        foreach($typeFormations as $typeFormation) {
+            $categorie = $typeFormation->getCategorie();
+            $nomCategorie = $categorie->getNomCategorie();
+            $formations[$nomCategorie] = $em->getRepository('AdminBundle:Formation')->findByCategorie(array($categorie));
+        }
         return $this->render('@Front/Default/navContent.html.twig', array('formations'=>$formations));
-    }
-    public function formationIncendieListAction()
-    {
-        $formations = $this->getDoctrine()
-            ->getRepository('AdminBundle:Formation')
-            ->findBy(array('categorie'=>'7'));
 
 
-        return $this->render('@Front/Default/navContent.html.twig', array('formations'=>$formations));
-    }
-
-    public function formationSanteListAction()
-    {
-        $formations = $this->getDoctrine()
-            ->getRepository('AdminBundle:Formation')
-            ->findBy(array('categorie'=>'6'));
-
-
-        return $this->render('@Front/Default/navContent.html.twig', array('formations'=>$formations));
-    }
-
-    public function formationSportifListAction()
-    {
-        $formations = $this->getDoctrine()
-            ->getRepository('AdminBundle:Formation')
-            ->findBy(array('categorie'=>'4'));
-
-
-        return $this->render('@Front/Default/navContent.html.twig', array('formations'=>$formations));
-    }
-
-    public function formationFormateurListAction()
-    {
-        $formations = $this->getDoctrine()
-            ->getRepository('AdminBundle:Formation')
-            ->findBy(array('categorie'=>'5'));
-
-
-        return $this->render('@Front/Default/navContent.html.twig', array('formations'=>$formations));
-    }
-
-    public function formationAquaListAction()
-    {
-        $formations = $this->getDoctrine()
-            ->getRepository('AdminBundle:Formation')
-            ->findBy(array('categorie'=>'8'));
-
-
-        return $this->render('@Front/Default/navContent.html.twig', array('formations'=>$formations));
-    }
-
-    public function formationTravailListAction()
-    {
-        $formations = $this->getDoctrine()
-            ->getRepository('AdminBundle:Formation')
-            ->findBy(array('categorie'=>'9'));
-
-
-        return $this->render('@Front/Default/navContent.html.twig', array('formations'=>$formations));
     }
 }

@@ -87,7 +87,7 @@ class Formation
     /**
      * @var text
      *
-     * @ORM\Column(name="methodePedagogique", type="text")
+     * @ORM\Column(name="methodePedagogique", type="text", nullable=true)
      */
     private $methodePedagogique;
 

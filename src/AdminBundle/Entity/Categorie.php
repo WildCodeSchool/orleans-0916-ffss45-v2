@@ -30,7 +30,7 @@ class Categorie
     private $nomCategorie;
 
     /**
-     * @ORM\OneToMany(targetEntity="Formation", mappedBy="categorie")
+     * @ORM\OneToMany(targetEntity="Formation", mappedBy="categories")
      */
     private $formations;
 

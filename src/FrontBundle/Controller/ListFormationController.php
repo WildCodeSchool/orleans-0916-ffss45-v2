@@ -20,15 +20,10 @@ class ListFormationController extends Controller
         // $typeFormation='';
         $em = $this->getDoctrine()->getManager();
         $typeFormations = $em->getRepository('AdminBundle:FormationPublic')->findByType($typeFormation);
-        //  var_dump($typeFormations);
         foreach($typeFormations as $typeFormation) {
             $categorie = $typeFormation->getCategorie();
-            //$typeFormation and $categorie-> findAll($formations);
-            // $categories = $em->getRepository('AdminBundle:Categorie')->findAll();
-            //foreach ($categories as $categorie) {
             $nomCategorie = $categorie->getNomCategorie();
             $formations[$nomCategorie] = $em->getRepository('AdminBundle:Formation')->findByCategorie(array($categorie));
-            //}
         }
         return $this->render('FrontBundle:ListFormation:index.html.twig', array('formations'=>$formations));
 
