@@ -1,22 +1,77 @@
-{% extends 'base.html.twig' %}
+{% extends '@Front/Default/frontLayout.html.twig' %}
 
 {%  block stylesheets %}
+
+
+    {{ parent() }}
+
+
+
     <link rel="stylesheet" href="{{ asset('css/listFormation.css') }}">
 {% endblock %}
 
 {%  block body %}
 
         {% for category, tab in formations %}
-            <h1>{{ category }}</h1>
+
+           <div class="categorie" <h1>{{ category }}</h1>
+           </div>
+
              <div class="row">
             {%  for key,formation in tab %}
+
+
+
                 <div class="col-lg-6">
+                    <div class="bloc_formation"
                     <h2>{{ formation.nomCourt }}</h2>
                     <p>{{ formation.nomLong }}</p>
+
+
+</div>
+
+
+
+
+
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    Launch demo modal
+                </button>
+
+                <!-- Modal -->
+
+                <div class="modal fade" id="myModal" tabindex="-17" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel"> ????</h4>
+                            </div>
+                            <div class="modal-body">
+                                ...
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+
+
+
+</div>
+
+
+
             {% endfor %}
              </div>
         {% else %}
             Pas de categories
         {% endfor %}
+
+
+
 {% endblock %}
