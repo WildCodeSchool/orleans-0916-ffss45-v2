@@ -8,7 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use ActualiteBundle\Form\ActualiteType;
 use Symfony\Component\HttpFoundation\Request;
 use ActualiteBundle\Entity\Actualite;
-class ActualiteController extends Controller
+class ActualiteMaisonController extends Controller
 {
 
     /**
