@@ -4,14 +4,16 @@ namespace FrontBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+
 use AdminBundle\Entity\Formation;
 use ActualiteBundle\Entity\Actualite;
+
 
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="page_acceuil")
+     * @Route("/", name="page_accueil_principale")
      */
     public function indexAction()
     {
@@ -32,7 +34,7 @@ class DefaultController extends Controller
             ->getRepository('ActualiteBundle:Actualite')
             ->findAll();
 
-        return $this->render('@Front/Default/pageActus.html.twig', array('actualites'=>$actualites));
+        return $this->render('@Front/Default/pageActus.html.twig', array('actualites' => $actualites));
     }
 
     /**
@@ -40,7 +42,13 @@ class DefaultController extends Controller
      */
     public function showAction(Formation $formation)
     {
-        return $this->render('FrontBundle:Default:formation.html.twig', array('formation'=> $formation));
+        return $this->render('FrontBundle:Default:formation.html.twig', array('formation' => $formation));
 
     }
+
+    /**
+     * @Route("/", name="contact")
+     */
+
+
 }

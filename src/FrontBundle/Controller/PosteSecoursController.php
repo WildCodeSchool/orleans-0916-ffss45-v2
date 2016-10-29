@@ -41,14 +41,14 @@ class PosteSecoursController extends Controller
 
 
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('Hello Email')
+                    ->setSubject('Vous avez une nouvelle demande de Poste de Secours')
                     ->setFrom('houssemaine.j@gmail.com')
                     ->setTo('asakura45@gmail.com')
                     ->setBody(
                         $this->renderView(
-                        // app/Resources/views/Emails/registration.html.twig
-                            '@Front/PosteSecours/eMailPosteSecours.html.twig',
-                            array('em' => $em)
+
+                            '@Front/PosteSecours/eMailPosteSecours.html.twig'
+
                         ),
                         'text/html'
                     )
