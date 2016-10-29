@@ -38,8 +38,33 @@ class PosteSecoursController extends Controller
                 // flow finished
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($formData);
-                $em->flush();
 
+
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('Hello Email')
+                    ->setFrom('houssemaine.j@gmail.com')
+                    ->setTo('asakura45@gmail.com')
+                    ->setBody(
+                        $this->renderView(
+                        // app/Resources/views/Emails/registration.html.twig
+                            '@Front/PosteSecours/eMailPosteSecours.html.twig',
+                            array('em' => $em)
+                        ),
+                        'text/html'
+                    )
+                    /*
+                     * If you also want to include a plaintext version of the message
+                    ->addPart(
+                        $this->renderView(
+                            'Emails/registration.txt.twig',
+                            array('name' => $name)
+                        ),
+                        'text/plain'
+                    )
+                    */
+                ;
+                $this->get('mailer')->send($message);
+                $em->flush();
                 $flow->reset(); // remove step data from the session
 
                 return $this->redirect($this->generateUrl('succes')); // redirect when done
