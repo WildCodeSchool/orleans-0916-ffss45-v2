@@ -1,7 +1,7 @@
 .formulaire{
-    padding-top: 30px;
     padding-bottom: 30px;
     color: black;
+    font-family: Bebasneue, sans-serif;
 }
 
 ul {
@@ -12,14 +12,8 @@ ul {
     font-size: 18px;
 }
 
-h1.contact1{
-    color: black;
-    font-family: 'Lobster', cursive;
-}
-
 .contact2{
     font-size: 22px;
-    font-family: 'Quicksand', sans-serif;
 }
 
 .wrapper         {width:100%;height:100%;margin:0 auto;background:#ffffff}
@@ -62,6 +56,26 @@ h3.iframe{
     color: black;
 }
 
+.contact{
+    text-align: center;
+}
 
+#form input {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
+.formulaire h3{
+    font-weight: bold;
+}
 
+.facebook{
+    text-decoration: underline;
+    font-size: 28px;
+}
+
+textarea{
+    width:100%;
+    height: 150px;
+}
