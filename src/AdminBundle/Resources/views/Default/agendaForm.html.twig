@@ -1,0 +1,36 @@
+<div class="agenda_form">
+    <fieldset>
+        {{ form_errors(form.dateDeDebut) }}
+        {{ form_label(form.dateDeDebut) }}
+        {{ form_widget(form.dateDeDebut) }}
+
+        {{ form_errors(form.dateDeFin) }}
+        {{ form_label(form.dateDeFin) }}
+        {{ form_widget(form.dateDeFin) }}
+
+    </fieldset>
+    <fieldset>
+        {{ form_errors(form.heureDeDebutAm) }}
+        {{ form_label(form.heureDeDebutAm, 'Heure début matinée') }}
+        {{ form_widget(form.heureDeDebutAm) }}
+
+        {{ form_errors(form.heureDeFinAm) }}
+        {{ form_label(form.heureDeFinAm, 'Heure fin matinée') }}
+        {{ form_widget(form.heureDeFinAm) }}
+    </fieldset>
+    <fieldset>
+        {{ form_errors(form.heureDeDebutPm) }}
+        {{ form_label(form.heureDeDebutAm, 'Heure début après-midi') }}
+        {{ form_widget(form.heureDeDebutPm) }}
+
+        {{ form_errors(form.heureDeFinPm) }}
+        {{ form_label(form.heureDeFinPm, 'Heure fin après-midi') }}
+        {{ form_widget(form.heureDeFinPm) }}
+    </fieldset>
+
+    <fieldset>
+        {{ form_row(form.adresse) }}
+        {{ form_row(form.remarque) }}
+
+    </fieldset>
+</div>

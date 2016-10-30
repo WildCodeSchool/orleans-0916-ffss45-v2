@@ -50,3 +50,11 @@ h2 {
 .edit-formation textarea {
     min-height:8em;
 }
+
+.agenda_form .form-inline {
+    display:inline-block;
+}
+
+.agenda_form fieldset {
+    margin-top:1em;
+}

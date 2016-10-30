@@ -1,5 +1,5 @@
 {% extends 'AdminBundle::adminLayout.html.twig' %}
-{% form_theme edit_form 'bootstrap_3_horizontal_layout.html.twig' %}
+{% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
 {% block body %}
 
 <div class="container-fluid">
@@ -10,8 +10,9 @@
 #}
 
     {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <div class="row">
+    {{ include('AdminBundle:Default:agendaForm.html.twig', {'form':edit_form}) }}
+
+    <div class="row">
             <div class="col-sm-4 col-sm-offset-4">
                 <input class="btn btn-info  btn-lg btn-block" type="submit" value="Edit" />
             </div>
@@ -23,7 +24,7 @@
             <input class="btn btn-danger pull-right" type="submit" value="Delete">
         {{ form_end(delete_form) }}
 
-        <a class="btn btn-primary" href="{{ path('agenda_index') }}">Back to the list</a>
+        <a class="btn btn-primary" href="{{ path('formation_agendas', {'id':agenda.formation.id}) }}">Retour aux agendas</a>
 
     </div>
 {% endblock %}
