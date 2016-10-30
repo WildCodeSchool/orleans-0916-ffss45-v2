@@ -24,17 +24,21 @@ class DefaultController extends Controller
         $contact = new Contact();
 
         $form = $this->createFormBuilder($contact)
-            ->add('nom', TextType::class)
-            ->add('prenom', TextType::class)
-            ->add('email', EmailType::class)
-            ->add('message', TextareaType::class)
+            ->add('nom', TextType::class, array('label'=>false,'attr'=>array('placeholder'=>'Votre nom')
+                ))
+            ->add('prenom', TextType::class, array('label'=>false,'attr'=>array('placeholder'=>'Votre prénom')
+            ))
+            ->add('email', EmailType::class, array('label'=>false,'attr'=>array('placeholder'=>'Votre email')
+            ))
+            ->add('message', TextareaType::class, array('label'=>false,'attr'=>array('placeholder'=>'Votre demande')
+            ))
             ->add('save', SubmitType::class, array('label' => 'Envoyer'))
             ->getForm();
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-      
+
             $contact = $form->getData();
 
             $message = \Swift_Message::newInstance()
