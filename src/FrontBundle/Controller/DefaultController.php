@@ -5,9 +5,13 @@ namespace FrontBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-
 use AdminBundle\Entity\Formation;
 use ActualiteBundle\Entity\Actualite;
+use FrontBundle\Entity\Contact;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 
 class DefaultController extends Controller
@@ -15,12 +19,45 @@ class DefaultController extends Controller
     /**
      * @Route("/", name="page_accueil_principale")
      */
-    public function indexAction()
+    public function contactAction(Request $request)
     {
-        return $this->render('@Front/Default/acceuil.html.twig');
+        $contact = new Contact();
 
+        $form = $this->createFormBuilder($contact)
+            ->add('nom', TextType::class)
+            ->add('prenom', TextType::class)
+            ->add('email', EmailType::class)
+            ->add('message', TextareaType::class)
+            ->add('save', SubmitType::class, array('label' => 'Envoyer'))
+            ->getForm();
 
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+      
+            $contact = $form->getData();
+
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Vous avez une nouvelle demande de contact')
+                ->setFrom('houssemaine.j@gmail.com')
+                ->setTo('asakura45@gmail.com')
+                ->setBody(
+                    $this->renderView(
+                        'emailContact.html.twig',
+                        array('contact'=>$contact)
+
+                    ),
+                    'text/html'
+                );
+            $this->get('mailer')->send($message);
+
+            return $this->redirect($this->generateUrl('succes'));
+        }
+        return $this->render('@Front/Default/acceuil.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
+
 
 
     /**
@@ -46,9 +83,6 @@ class DefaultController extends Controller
 
     }
 
-    /**
-     * @Route("/", name="contact")
-     */
 
 
 }

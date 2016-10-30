@@ -8,7 +8,6 @@
 
 namespace FrontBundle\Entity;
 
-use Symfony\Component\Routing\Annotation\Route;
 
 
 class Contact
