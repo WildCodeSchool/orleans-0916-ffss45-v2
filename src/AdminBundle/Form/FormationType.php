@@ -26,18 +26,20 @@ class FormationType extends AbstractType
                                                         'required'=>false,
                                                         ))
             ->add('descriptif')
-            ->add('agendas', CollectionType::class, array(
-                // each entry in the array will be an "email" field
-                'entry_type'   => AgendaType::class,
-                // these options are passed to each "email" type
-                    )
-                )
             ->add ('publicVise')
             ->add ('objectifVise')
             ->add ('dureeFormation')
             ->add ('contenuFormation')
             ->add('methodePedagogique', TextAreaType::class, array( 'required' => false,))
             ->add ('validation')
+/*            ->add('agendas', CollectionType::class, array(
+                    // each entry in the array will be an "email" field
+                    'entry_type'   => AgendaType::class,
+                    'allow_add'    => true,
+                    // these options are passed to each "email" type
+
+                )
+            )*/
         ;
 
     }
