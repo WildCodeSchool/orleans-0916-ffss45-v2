@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
 /**
  * Formationpublic controller.
  *
- * @Route("formationpublic")
+ * @Route("/admin/formationpublic")
  */
 class FormationPublicController extends Controller
 {

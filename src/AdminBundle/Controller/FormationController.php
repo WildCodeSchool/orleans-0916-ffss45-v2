@@ -12,7 +12,7 @@ use AdminBundle\Form\FormationType;
 /**
  * Formation controller.
  *
- * @Route("/formation")
+ * @Route("/admin/formation")
  */
 class FormationController extends Controller
 {

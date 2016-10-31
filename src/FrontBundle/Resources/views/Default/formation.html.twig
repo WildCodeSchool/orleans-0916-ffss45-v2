@@ -8,94 +8,96 @@
 
 
 {% block body %}
-     <div class="container-fluid">
+     <div class="container-fluid page">
          <div class="row">
-            <div class="col-md-8">
-                <h1 class="text-center">{{ formation.nomLong }}</h1>
-            </div>
-            <div class="col-md-4">
-                <div class="nomCourt">{{ formation.nomCourt }}</div>
+            <div class="col-md-12">
+                <h1 class="page-title"><strong>{{ formation.nomLong }}</strong><span class="nomCourt"> - {{ formation.nomCourt }}</span></h1>
             </div>
         </div>
+
+        <main>
+            <div class="row box">
+                <div class="col-md-6">
+                    <h2>Public Visé</h2>
+                    <p>{{ formation.publicVise }}</p>
+                </div>
+                <div class="col-md-6">
+                    <h2>Objectif Visé</h2>
+                    <p>{{ formation.objectifVise }}</p>
+                </div>
+            </div>
+
+                 <input id="tab1" type="radio" name="tabs" checked>
+                 <label for="tab1"><i class="fa fa-refresh fa-2x"></i><h3>Actualisation</h3></label>
+
+                 <input id="tab2" type="radio" name="tabs">
+                 <label for="tab2"><i class="fa fa-check fa-2x"></i><h3>Validation de la formation </h3></label>
+
+                 <input id="tab3" type="radio" name="tabs">
+                 <label for="tab3"><i class="fa fa-hourglass-o fa-2x"></i><h3>Durée de la formation</h3></label>
+
+                 <input id="tab4" type="radio" name="tabs">
+                 <label for="tab4"><i class="fa fa-list fa-2x" ></i><h3>Contenu de la formation</h3></label>
+
+                 <input id="tab5" type="radio" name="tabs">
+                 <label for="tab5"><i class="fa fa-user fa-2x" ></i><h3>Méthode pédagogique</h3></label>
+
+                 <section id="content1">
+                     <p>{{ formation.objectifVise }}</p>
+                 </section>
+
+                 <section id="content2">
+                     <p>{{ formation.validation }}</p>
+                 </section>
+
+                 <section id="content3">
+                     <p>{{ formation.dureeFormation }}</p>
+                 </section>
+
+                 <section id="content4">
+                     <p>{{ formation.contenuFormation }}</p>
+                 </section>
+                <section id="content5">
+                    <p>{{ formation.methodePedagogique }}</p>
+                </section>
+        </main>
+
+        <div class="container">
+            <h2 class="text-left agenda"><span >Agenda</span></h2>
+            <table class="container">
+                <thead>
+                <tr>
+                    <th><h4>Date de début</h4></th>
+                    <th><h4>Date de fin</h4></th>
+                    <th><h4>Heure de début AM</h4></th>
+                    <th><h4>Heure de fin PM</h4></th>
+                    <th><h4>Heure de début PM</h4></th>
+                    <th><h4>Heure de fin PM</h4></th>
+                    <th><h4>Adresse</h4></th>
+                    <th><h4>Remarque</h4></th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for agenda in formation.agendas %}
+                        <tr>
+                            <td>{{ agenda.dateDeDebut|date('d-m-Y') }}</td>
+                            <td>{{ agenda.dateDeFin |date('d-m-Y')}}</td>
+                            <td>{{ agenda.heureDeDebutAm |date('H:i')}}</td>
+                            <td>{{ agenda.heureDeFinAm |date('H:i')}}</td>
+                            <td>{{ agenda.heureDeDebutPm |date('H:i')}}</td>
+                            <td>{{ agenda.heureDeFinPm |date('H:i')}}</td>
+                            <td>{{ agenda.adresse }}</td>
+                            <td>{{ agenda.remarque }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <button class="button"><span>Je m'inscris !</span></button>
+
+
+        </div>
+
      </div>
-    <main>
-        <div class="row box">
-            <div class="col-md-6">
-                <h2>Public Visé</h2>
-                <p>{{ formation.publicVise }}</p>
-            </div>
-            <div class="col-md-6">
-                <h2>Objectif Visé</h2>
-                <p>{{ formation.objectifVise }}</p>
-            </div>
-        </div>
-         <input id="tab1" type="radio" name="tabs" checked>
-         <label for="tab1"><i class="fa fa-refresh fa-3x"></i><h2>Actualisation</h2></label>
-
-         <input id="tab2" type="radio" name="tabs">
-         <label for="tab2"><i class="fa fa-check fa-3x"></i><h2>Validation de la formation</h2></label>
-
-         <input id="tab3" type="radio" name="tabs">
-         <label for="tab3"><i class="fa fa-hourglass-o fa-3x"></i><h2>Durée de la formation</h2></label>
-
-         <input id="tab4" type="radio" name="tabs">
-         <label for="tab4"><i class="fa fa-list fa-3x" ></i><h2>Contenu de la formation</h2></label>
-
-
-       {# <input id="tab5" type="radio" name="tabs">
-        <label for="tab5"><i class="fa fa-list fa-3x" ></i><h2>Méthode pédagogique</h2></label>#}
-
-         <section id="content1">
-             <p>{{ formation.objectifVise }}</p>
-         </section>
-
-         <section id="content2">
-             <p>{{ formation.validation }}</p>
-         </section>
-
-         <section id="content3">
-             <p>{{ formation.dureeFormation }}</p>
-         </section>
-
-         <section id="content4">
-             <p>{{ formation.contenuFormation }}</p>
-         </section>
-    </main>
-    <div class="container">
-        <h2 class="text-left agenda"><span >Agenda</span></h2>
-        <table class="container">
-            <thead>
-            <tr>
-                <th><h3>Date de début</h3></th>
-                <th><h3>Date de fin</h3></th>
-                <th><h3>Heure de début AM</h3></th>
-                <th><h3>Heure de fin PM</h3></th>
-                <th><h3>Heure de début PM</h3></th>
-                <th><h3>Heure de fin PM</h3></th>
-                <th><h3>Adresse</h3></th>
-                <th><h3>Remarque</h3></th>
-            </tr>
-            </thead>
-            <tbody>
-                {% for agenda in formation.agendas %}
-                    <tr>
-                        <td>{{ agenda.dateDeDebut|date('d-m-Y') }}</td>
-                        <td>{{ agenda.dateDeFin |date('d-m-Y')}}</td>
-                        <td>{{ agenda.heureDeDebutAm |date('H:i')}}</td>
-                        <td>{{ agenda.heureDeFinAm |date('H:i')}}</td>
-                        <td>{{ agenda.heureDeDebutPm |date('H:i')}}</td>
-                        <td>{{ agenda.heureDeFinPm |date('H:i')}}</td>
-                        <td>{{ agenda.adresse }}</td>
-                        <td>{{ agenda.remarque }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <button class="button">Je m'inscris !</button>
-
-
-    </div>
-
 {% endblock %}
 
 
