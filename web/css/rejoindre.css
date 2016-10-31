@@ -1,0 +1,14 @@
+#form input {
+    width: 50%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+textarea{
+    width:50%;
+    height: 150px;
+}
+
+.rejoindre{
+    text-align: center;
+}

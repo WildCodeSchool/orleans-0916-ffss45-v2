@@ -4,10 +4,12 @@
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('dist/summernote.css') }}">
 {% endblock %}
 {% block js %}
     {{ parent() }}
     <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
+    <script src="{{ asset('dist/summernote.min.js') }}"></script>
 
 {% endblock %}
 {% block header %}
@@ -39,7 +41,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown dropdown-large">
-                    <a href="/logout">Deconnection</a>
+                    <a href="/logout">Deconnexion</a>
                 </li>
             </ul>
 

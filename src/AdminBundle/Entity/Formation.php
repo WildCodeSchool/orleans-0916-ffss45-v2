@@ -99,6 +99,13 @@ class Formation
     private $validation;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string")
+     */
+    private $photo;
+
+    /**
      * Get id
      *
      * @return integer
@@ -342,5 +349,21 @@ class Formation
     public function getValidation()
     {
         return $this->validation;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param string $photo
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
     }
 }
