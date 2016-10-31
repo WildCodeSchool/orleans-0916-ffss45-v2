@@ -1,7 +1,7 @@
-{% extends 'base.html.twig' %}
+{% extends 'AdminBundle::adminLayout.html.twig' %}
 
 {% block body %}
-    <h1>FormulaireSecours</h1>
+    <h1>Demande de Poste de Secours</h1>
 
     <table>
         <tbody>
@@ -10,131 +10,131 @@
                 <td>{{ formulaireSecour.id }}</td>
             </tr>
             <tr>
-                <th>Nommanif</th>
+                <th>Nom de la manifestation</th>
                 <td>{{ formulaireSecour.nomManif }}</td>
             </tr>
             <tr>
-                <th>Presentationmanif</th>
+                <th>Presentation brève de la manif</th>
                 <td>{{ formulaireSecour.presentationManif }}</td>
             </tr>
             <tr>
-                <th>Datedebutmanif</th>
+                <th>Date début manif</th>
                 <td>{% if formulaireSecour.dateDebutManif %}{{ formulaireSecour.dateDebutManif|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Datefinmanif</th>
+                <th>Date fin manif</th>
                 <td>{% if formulaireSecour.dateFinManif %}{{ formulaireSecour.dateFinManif|date('Y-m-d') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Heuredebutmanif</th>
+                <th>Heure début manif</th>
                 <td>{% if formulaireSecour.heureDebutManif %}{{ formulaireSecour.heureDebutManif|date('H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Heurefinmanif</th>
+                <th>Heure fin manif</th>
                 <td>{% if formulaireSecour.heureFinManif %}{{ formulaireSecour.heureFinManif|date('H:i:s') }}{% endif %}</td>
             </tr>
             <tr>
-                <th>Adressemanif</th>
+                <th>Adresse manif</th>
                 <td>{{ formulaireSecour.adresseManif }}</td>
             </tr>
             <tr>
-                <th>Villemanif</th>
+                <th>Ville manif</th>
                 <td>{{ formulaireSecour.villeManif }}</td>
             </tr>
             <tr>
-                <th>Pompierslieu</th>
+                <th>Adresse pompiers les + proches</th>
                 <td>{{ formulaireSecour.pompiersLieu }}</td>
             </tr>
             <tr>
-                <th>Urgenceslieu</th>
+                <th>Adresse urgences les + proches</th>
                 <td>{{ formulaireSecour.urgencesLieu }}</td>
             </tr>
             <tr>
-                <th>Raisonsociale</th>
+                <th>Raison sociale</th>
                 <td>{{ formulaireSecour.raisonSociale }}</td>
             </tr>
             <tr>
-                <th>Nomrep</th>
+                <th>Nom représentant</th>
                 <td>{{ formulaireSecour.nomRep }}</td>
             </tr>
             <tr>
-                <th>Telrep</th>
+                <th>Téléphone représentant</th>
                 <td>{{ formulaireSecour.telRep }}</td>
             </tr>
             <tr>
-                <th>Mailrep</th>
+                <th>Mail représentant</th>
                 <td>{{ formulaireSecour.mailRep }}</td>
             </tr>
             <tr>
-                <th>Nomchef</th>
+                <th>Nom chef de projet</th>
                 <td>{{ formulaireSecour.nomChef }}</td>
             </tr>
             <tr>
-                <th>Telchef</th>
+                <th>Téléphone chef de projet</th>
                 <td>{{ formulaireSecour.telChef }}</td>
             </tr>
             <tr>
-                <th>Mailchef</th>
+                <th>Mail chef de projet</th>
                 <td>{{ formulaireSecour.mailChef }}</td>
             </tr>
             <tr>
-                <th>Siteweb</th>
+                <th>Site web</th>
                 <td>{{ formulaireSecour.siteWeb }}</td>
             </tr>
             <tr>
-                <th>Typemanif</th>
+                <th>Type de manifestation</th>
                 <td>{{ formulaireSecour.typeManif }}</td>
             </tr>
             <tr>
-                <th>Federation</th>
+                <th>Federation sportive</th>
                 <td>{{ formulaireSecour.federation }}</td>
             </tr>
             <tr>
-                <th>Reglefed</th>
+                <th>Obligations réglementaires fédération</th>
                 <td>{{ formulaireSecour.regleFed }}</td>
             </tr>
             <tr>
-                <th>Nbsportifs</th>
+                <th>Nombre de sportifs</th>
                 <td>{{ formulaireSecour.nbSportifs }}</td>
             </tr>
             <tr>
-                <th>Nbpublicinsta</th>
+                <th>Nombre de public en instantané</th>
                 <td>{{ formulaireSecour.nbPublicInsta }}</td>
             </tr>
             <tr>
-                <th>Licencesportif</th>
+                <th>les sportifs sont licenciés ?</th>
                 <td>{{ formulaireSecour.licenceSportif }}</td>
             </tr>
             <tr>
-                <th>Certifmedical</th>
+                <th>Certificat médical ?</th>
                 <td>{{ formulaireSecour.certifMedical }}</td>
             </tr>
             <tr>
-                <th>Typeevtsportif</th>
+                <th>Type évènement sportif</th>
                 <td>{{ formulaireSecour.typeEvtSportif }}</td>
             </tr>
             <tr>
-                <th>Typecourse</th>
+                <th>Type de course</th>
                 <td>{{ formulaireSecour.typeCourse }}</td>
             </tr>
             <tr>
-                <th>Distparcours1</th>
+                <th>Distance parcours 1</th>
                 <td>{{ formulaireSecour.distParcours1 }}</td>
             </tr>
             <tr>
-                <th>Distparcours2</th>
+                <th>Distance parcours 2</th>
                 <td>{{ formulaireSecour.distParcours2 }}</td>
             </tr>
             <tr>
-                <th>Obstacles</th>
+                <th>Présence obstacles ?</th>
                 <td>{{ formulaireSecour.obstacles }}</td>
             </tr>
             <tr>
-                <th>Signaleur</th>
+                <th>Présence de signaleur</th>
                 <td>{{ formulaireSecour.signaleur }}</td>
             </tr>
             <tr>
-                <th>Typepiste</th>
+                <th>Type de piste</th>
                 <td>{{ formulaireSecour.typePiste }}</td>
             </tr>
             <tr>
@@ -142,175 +142,175 @@
                 <td>{{ formulaireSecour.commentaire }}</td>
             </tr>
             <tr>
-                <th>Typesportco</th>
+                <th>Type de sport collectif</th>
                 <td>{{ formulaireSecour.typeSportCo }}</td>
             </tr>
             <tr>
-                <th>Niveaucompet</th>
+                <th>Niveau de competition</th>
                 <td>{{ formulaireSecour.niveauCompet }}</td>
             </tr>
             <tr>
-                <th>Nbterrains</th>
+                <th>Nombre de terrains</th>
                 <td>{{ formulaireSecour.nbTerrains }}</td>
             </tr>
             <tr>
-                <th>Catsportif</th>
+                <th>Catégorie de sportif</th>
                 <td>{{ formulaireSecour.catSportif }}</td>
             </tr>
             <tr>
-                <th>Typesportindiv</th>
+                <th>Type de sport individuel</th>
                 <td>{{ formulaireSecour.typeSportIndiv }}</td>
             </tr>
             <tr>
-                <th>Typesportmeca</th>
+                <th>Type de sport mécanique</th>
                 <td>{{ formulaireSecour.typeSportMeca }}</td>
             </tr>
             <tr>
-                <th>Commissaire</th>
+                <th>Présence de commissaire ?</th>
                 <td>{{ formulaireSecour.commissaire }}</td>
             </tr>
             <tr>
-                <th>Protection</th>
+                <th>Protection du public prévue ?</th>
                 <td>{{ formulaireSecour.protection }}</td>
             </tr>
             <tr>
-                <th>Typesportaqua</th>
+                <th>Type de sport aquatique</th>
                 <td>{{ formulaireSecour.typeSportAqua }}</td>
             </tr>
             <tr>
-                <th>Dispositifsecu</th>
+                <th>Présence dispositif de sécurité ?</th>
                 <td>{{ formulaireSecour.dispositifSecu }}</td>
             </tr>
             <tr>
-                <th>Typeplaneau</th>
+                <th>Type de plan d'eau</th>
                 <td>{{ formulaireSecour.typePlanEau }}</td>
             </tr>
             <tr>
-                <th>Typesportequestre</th>
+                <th>Type de sport équestre</th>
                 <td>{{ formulaireSecour.typeSportEquestre }}</td>
             </tr>
             <tr>
-                <th>Typesportautre</th>
+                <th>Type de sport autre</th>
                 <td>{{ formulaireSecour.typeSportAutre }}</td>
             </tr>
             <tr>
-                <th>Agesportif</th>
+                <th>Age des sportifs</th>
                 <td>{{ formulaireSecour.ageSportif }}</td>
             </tr>
             <tr>
-                <th>Typeevtculturel</th>
+                <th>Type évènement culturel</th>
                 <td>{{ formulaireSecour.typeEvtCulturel }}</td>
             </tr>
             <tr>
-                <th>Prixevt</th>
+                <th>Evènement gratuit ou payant</th>
                 <td>{{ formulaireSecour.prixEvt }}</td>
             </tr>
             <tr>
-                <th>Evtintext</th>
+                <th>Intérieur ou extérieur</th>
                 <td>{{ formulaireSecour.evtIntExt }}</td>
             </tr>
             <tr>
-                <th>Typesalle</th>
+                <th>Type de salle</th>
                 <td>{{ formulaireSecour.typeSalle }}</td>
             </tr>
             <tr>
-                <th>Typesite</th>
+                <th>Type de site</th>
                 <td>{{ formulaireSecour.typeSite }}</td>
             </tr>
             <tr>
-                <th>Nbpersototal</th>
+                <th>Nombre de personnes au total</th>
                 <td>{{ formulaireSecour.nbPersoTotal }}</td>
             </tr>
             <tr>
-                <th>Typesiege</th>
+                <th>Type de siege</th>
                 <td>{{ formulaireSecour.typeSiege }}</td>
             </tr>
             <tr>
-                <th>Typepublic</th>
+                <th>Type de public</th>
                 <td>{{ formulaireSecour.typePublic }}</td>
             </tr>
             <tr>
-                <th>Capacitesite</th>
+                <th>Capacite du site</th>
                 <td>{{ formulaireSecour.capaciteSite }}</td>
             </tr>
             <tr>
-                <th>Superficiesite</th>
+                <th>Superficie du site</th>
                 <td>{{ formulaireSecour.superficieSite }}</td>
             </tr>
             <tr>
-                <th>Nbacces</th>
+                <th>Nombre d'acces</th>
                 <td>{{ formulaireSecour.nbAcces }}</td>
             </tr>
             <tr>
-                <th>Nbscene</th>
+                <th>Nombre de scènes</th>
                 <td>{{ formulaireSecour.nbScene }}</td>
             </tr>
             <tr>
-                <th>Simulscene</th>
+                <th>Scènes jouent en simultané ?</th>
                 <td>{{ formulaireSecour.simulScene }}</td>
             </tr>
             <tr>
-                <th>Amenagtemp</th>
+                <th>Aménagements temporaires</th>
                 <td>{{ formulaireSecour.amenagTemp }}</td>
             </tr>
             <tr>
-                <th>Typerdp</th>
+                <th>Type de rassemblement de personnes</th>
                 <td>{{ formulaireSecour.typeRdP }}</td>
             </tr>
             <tr>
-                <th>Animation</th>
+                <th>Animations</th>
                 <td>{{ formulaireSecour.animation }}</td>
             </tr>
             <tr>
-                <th>Mvtpublic</th>
+                <th>Le public assiste</th>
                 <td>{{ formulaireSecour.mvtPublic }}</td>
             </tr>
             <tr>
-                <th>Medecin</th>
+                <th>Présence de médecin souhaitée ?</th>
                 <td>{{ formulaireSecour.medecin }}</td>
             </tr>
             <tr>
-                <th>Nommed</th>
+                <th>Nom de votre médecin</th>
                 <td>{{ formulaireSecour.nomMed }}</td>
             </tr>
             <tr>
-                <th>Spemed</th>
+                <th>Spécialité de votre médecin</th>
                 <td>{{ formulaireSecour.speMed }}</td>
             </tr>
             <tr>
-                <th>Contactmed</th>
+                <th>Contact de votre médecin</th>
                 <td>{{ formulaireSecour.contactMed }}</td>
             </tr>
             <tr>
-                <th>Prenommed</th>
+                <th>Prénom de votre médecin</th>
                 <td>{{ formulaireSecour.prenomMed }}</td>
             </tr>
             <tr>
-                <th>Piecesecours</th>
+                <th>Pièce prévue pour le poste de secours</th>
                 <td>{{ formulaireSecour.pieceSecours }}</td>
             </tr>
             <tr>
-                <th>Repassecours</th>
+                <th>Repas pris en charge pour les secours</th>
                 <td>{{ formulaireSecour.repasSecours }}</td>
             </tr>
             <tr>
-                <th>Prestamed</th>
+                <th>Souhaitez vous une prestation médicale ?</th>
                 <td>{{ formulaireSecour.prestaMed }}</td>
             </tr>
             <tr>
-                <th>Telsite</th>
+                <th>Ligne téléphonique disponible sur le site ?</th>
                 <td>{{ formulaireSecour.telSite }}</td>
             </tr>
             <tr>
-                <th>Communicationsecours</th>
+                <th>Moyen de communication pour joindre secours</th>
                 <td>{{ formulaireSecour.communicationSecours }}</td>
             </tr>
             <tr>
-                <th>Autressecours</th>
+                <th>Autres secours présents</th>
                 <td>{{ formulaireSecour.autresSecours }}</td>
             </tr>
             <tr>
-                <th>Infoscompl</th>
+                <th>Infos complémentaires</th>
                 <td>{{ formulaireSecour.infosCompl }}</td>
             </tr>
         </tbody>
@@ -318,14 +318,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('formulairesecours_index') }}">Back to the list</a>
+            <a href="{{ path('formulairesecours_index') }}">Retour à la liste</a>
         </li>
         <li>
-            <a href="{{ path('formulairesecours_edit', { 'id': formulaireSecour.id }) }}">Edit</a>
+            <a href="{{ path('formulairesecours_edit', { 'id': formulaireSecour.id }) }}">Editer</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Supprimer">
             {{ form_end(delete_form) }}
         </li>
     </ul>

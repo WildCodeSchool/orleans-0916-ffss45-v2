@@ -1,15 +1,23 @@
 {% extends 'AdminBundle::adminLayout.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
 {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
 {% block body %}
     <h1>Ajout d'une nouvelle actualité</h1>
     <div class="container">
         {{ form_start(form) }}
-        {{ form_widget(form) }}
+
+            {{ form_row(form.titre) }}
+            {{ form_row(form.contenu) }}
+            {{ form_row(form.auteur) }}
+            {{ form_row(form.date) }}
+            {{ form_row(form.image) }}
 
 
-        <div class="row">
+        <div class="row" >
             <div class="col-sm-4 col-sm-offset-4">
-                <input class="btn btn-success  btn-lg btn-block" type="submit" value="Create" />
+                <input class="btn btn-success  btn-lg btn-block" type="submit" value="Créer" />
             </div>
         </div>
 
@@ -17,4 +25,7 @@
 
         <a class="btn btn-primary" href="{{ path('actualite_index') }}">Retour à la liste</a>
     </div>
+   <script> $(document).ready(function() {
+    $('#actualite_titre, #actualite_contenu, #actualite_auteur').summernote();
+    });</script>
 {% endblock %}
