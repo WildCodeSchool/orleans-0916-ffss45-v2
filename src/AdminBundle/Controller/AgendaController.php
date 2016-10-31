@@ -12,7 +12,7 @@ use AdminBundle\Form\AgendaType;
 /**
  * Agenda controller.
  *
- * @Route("/admin/agenda")
+ * @Route("/agenda")
  */
 class AgendaController extends Controller
 {

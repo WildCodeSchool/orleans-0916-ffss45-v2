@@ -13,11 +13,11 @@
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
     line-height: 1;
-    padding: 1% 5%;
+    padding-top: 3em;
     font-weight: bold;
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
-    text-align: left;
-    margin: 3em;
+    text-align: center;
+    margin:0;
     color: black;
 }
 
@@ -79,7 +79,7 @@ label:hover {
 input:checked + label {
     color: rgb(255, 203, 0);
     border: 1px solid #ddd;
-    border-top: 10px solid rgb(255, 203, 0);
+    border-top: 6px solid rgb(255, 203, 0);
     border-bottom: 2px solid #fff;
 }
 
@@ -113,7 +113,7 @@ html,body {
     font-weight: 300;
     height: 100%;
     font: 14px/1 'Open Sans', sans-serif;
-    font-size: 1.2em;
+    font-size: 1em;
 
 }
 

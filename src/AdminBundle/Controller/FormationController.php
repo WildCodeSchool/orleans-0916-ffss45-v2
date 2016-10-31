@@ -14,7 +14,7 @@ use AdminBundle\Form\AgendaType;
 /**
  * Formation controller.
  *
- * @Route("/admin/formation")
+ * @Route("/formation")
  */
 class FormationController extends Controller
 {
