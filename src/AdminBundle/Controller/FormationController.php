@@ -49,10 +49,28 @@ class FormationController extends Controller
 
         // form pour ajouter un nouvel agenda à la formation sélectionnée
         $agenda = new Agenda();
+        $agenda->setPhoto(
+            new File($this->getParameter('brochures_directory').'/'.$agenda->getPhoto())
+            );
         $form = $this->createForm(AgendaType::class, $agenda);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $file = $agenda->getPhoto();
+            // Generate a unique name for the file before saving it
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            // Move the file to the directory where brochures are stored
+            $file->move(
+                $this->getParameter('upload_directory'),
+                $fileName
+            );
+
+            // Update the 'brochure' property to store the PDF file name
+            // instead of its contents
+            $agenda->setPhoto($fileName);
+
+
             $agenda->setFormation($formation);
             $em->persist($agenda);
             $em->flush();
