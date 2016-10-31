@@ -1,19 +1,19 @@
-{% extends 'base.html.twig' %}
+{% extends 'AdminBundle::adminLayout.html.twig' %}
 
 {% block body %}
-    <h1>Actualite list</h1>
-
-    <table>
+<div class="container">
+    <h1>Liste des actualités
+    </h1>
+    <table class="table table-hover table-condensed table-striped">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Contenu</th>
-                <th>Auteur</th>
-                <th>Date</th>
-                <th>Image</th>
-                <th>Actions</th>
-            </tr>
+        <tr>
+            <th>id</th>
+            <th>Titre</th>
+            <th>Contenu</th>
+            <th>Auteur</th>
+            <th>Date</th>
+            <th>Image</th>
+        </tr>
         </thead>
         <tbody>
         {% for actualite in actualites %}
@@ -23,14 +23,14 @@
                 <td>{{ actualite.contenu }}</td>
                 <td>{{ actualite.auteur }}</td>
                 <td>{% if actualite.date %}{{ actualite.date|date('Y-m-d') }}{% endif %}</td>
-                <td>{{ actualite.image }}</td>
+                <td class="text-left">{% if actualite.image %}<img src="{{ asset('upload/' ~ actualite.image) }} " class="img-responsive" alt=""/>{% endif %}</td>
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('actualite_show', { 'id': actualite.id }) }}">show</a>
+                            <a href="{{ path('actualite_show', { 'id': actualite.id }) }}">voir</a>
                         </li>
                         <li>
-                            <a href="{{ path('actualite_edit', { 'id': actualite.id }) }}">edit</a>
+                            <a href="{{ path('actualite_edit', { 'id': actualite.id }) }}">mettre à jour</a>
                         </li>
                     </ul>
                 </td>

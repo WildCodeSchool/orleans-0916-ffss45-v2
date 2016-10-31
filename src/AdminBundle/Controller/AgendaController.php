@@ -83,12 +83,17 @@ class AgendaController extends Controller
      */
     public function editAction(Request $request, Agenda $agenda)
     {
+        $em = $this->getDoctrine()->getManager();
+
+        //recupération des agendas en cours pour une formation
+        $formation = $agenda->getFormation();
+        $agendas = $em->getRepository('AdminBundle:Agenda')->findByFormation($formation);
+
         $deleteForm = $this->createDeleteForm($agenda);
         $editForm = $this->createForm('AdminBundle\Form\AgendaType', $agenda);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($agenda);
             $em->flush();
 
@@ -97,6 +102,7 @@ class AgendaController extends Controller
 
         return $this->render('agenda/edit.html.twig', array(
             'agenda' => $agenda,
+            'agendas' => $agendas,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -112,14 +118,14 @@ class AgendaController extends Controller
     {
         $form = $this->createDeleteForm($agenda);
         $form->handleRequest($request);
-
+        $formation = $agenda->getFormation();
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($agenda);
             $em->flush();
         }
 
-        return $this->redirectToRoute('agenda_index');
+        return $this->redirectToRoute('formation_agendas', array('formation', $formation->getId()));
     }
 
     /**

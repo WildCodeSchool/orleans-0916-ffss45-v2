@@ -1,6 +1,24 @@
+{% extends 'AdminBundle::adminLayout.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+
+{% block body %}
+    <h1>Agendas de {{ formation.nomCourt }}</h1>
+    <div class="container-fluid">
+        {{ include ('AdminBundle:Default:listAgenda.html.twig') }}
+        <h2>Ajouter un nouvel agenda</h2>
+        {{ form_start(form) }}
+            {{ include('AdminBundle:Default:agendaForm.html.twig') }}
+
+        </div>
+      {#  {{ form_widget(form) }}#}
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <input class="btn btn-success  btn-lg btn-block" type="submit" value="Create" />
+            </div>
+        </div>
+    {{ form_end(form) }}
+    <a class="btn btn-primary btn-sm   " href="{{ path('formation_index') }}">Retour aux formations</a>
 
 
 
-
-{{ form ((agenda)) }}
-
+{% endblock %}

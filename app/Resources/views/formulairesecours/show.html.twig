@@ -1,0 +1,332 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>FormulaireSecours</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ formulaireSecour.id }}</td>
+            </tr>
+            <tr>
+                <th>Nommanif</th>
+                <td>{{ formulaireSecour.nomManif }}</td>
+            </tr>
+            <tr>
+                <th>Presentationmanif</th>
+                <td>{{ formulaireSecour.presentationManif }}</td>
+            </tr>
+            <tr>
+                <th>Datedebutmanif</th>
+                <td>{% if formulaireSecour.dateDebutManif %}{{ formulaireSecour.dateDebutManif|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Datefinmanif</th>
+                <td>{% if formulaireSecour.dateFinManif %}{{ formulaireSecour.dateFinManif|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Heuredebutmanif</th>
+                <td>{% if formulaireSecour.heureDebutManif %}{{ formulaireSecour.heureDebutManif|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Heurefinmanif</th>
+                <td>{% if formulaireSecour.heureFinManif %}{{ formulaireSecour.heureFinManif|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Adressemanif</th>
+                <td>{{ formulaireSecour.adresseManif }}</td>
+            </tr>
+            <tr>
+                <th>Villemanif</th>
+                <td>{{ formulaireSecour.villeManif }}</td>
+            </tr>
+            <tr>
+                <th>Pompierslieu</th>
+                <td>{{ formulaireSecour.pompiersLieu }}</td>
+            </tr>
+            <tr>
+                <th>Urgenceslieu</th>
+                <td>{{ formulaireSecour.urgencesLieu }}</td>
+            </tr>
+            <tr>
+                <th>Raisonsociale</th>
+                <td>{{ formulaireSecour.raisonSociale }}</td>
+            </tr>
+            <tr>
+                <th>Nomrep</th>
+                <td>{{ formulaireSecour.nomRep }}</td>
+            </tr>
+            <tr>
+                <th>Telrep</th>
+                <td>{{ formulaireSecour.telRep }}</td>
+            </tr>
+            <tr>
+                <th>Mailrep</th>
+                <td>{{ formulaireSecour.mailRep }}</td>
+            </tr>
+            <tr>
+                <th>Nomchef</th>
+                <td>{{ formulaireSecour.nomChef }}</td>
+            </tr>
+            <tr>
+                <th>Telchef</th>
+                <td>{{ formulaireSecour.telChef }}</td>
+            </tr>
+            <tr>
+                <th>Mailchef</th>
+                <td>{{ formulaireSecour.mailChef }}</td>
+            </tr>
+            <tr>
+                <th>Siteweb</th>
+                <td>{{ formulaireSecour.siteWeb }}</td>
+            </tr>
+            <tr>
+                <th>Typemanif</th>
+                <td>{{ formulaireSecour.typeManif }}</td>
+            </tr>
+            <tr>
+                <th>Federation</th>
+                <td>{{ formulaireSecour.federation }}</td>
+            </tr>
+            <tr>
+                <th>Reglefed</th>
+                <td>{{ formulaireSecour.regleFed }}</td>
+            </tr>
+            <tr>
+                <th>Nbsportifs</th>
+                <td>{{ formulaireSecour.nbSportifs }}</td>
+            </tr>
+            <tr>
+                <th>Nbpublicinsta</th>
+                <td>{{ formulaireSecour.nbPublicInsta }}</td>
+            </tr>
+            <tr>
+                <th>Licencesportif</th>
+                <td>{{ formulaireSecour.licenceSportif }}</td>
+            </tr>
+            <tr>
+                <th>Certifmedical</th>
+                <td>{{ formulaireSecour.certifMedical }}</td>
+            </tr>
+            <tr>
+                <th>Typeevtsportif</th>
+                <td>{{ formulaireSecour.typeEvtSportif }}</td>
+            </tr>
+            <tr>
+                <th>Typecourse</th>
+                <td>{{ formulaireSecour.typeCourse }}</td>
+            </tr>
+            <tr>
+                <th>Distparcours1</th>
+                <td>{{ formulaireSecour.distParcours1 }}</td>
+            </tr>
+            <tr>
+                <th>Distparcours2</th>
+                <td>{{ formulaireSecour.distParcours2 }}</td>
+            </tr>
+            <tr>
+                <th>Obstacles</th>
+                <td>{{ formulaireSecour.obstacles }}</td>
+            </tr>
+            <tr>
+                <th>Signaleur</th>
+                <td>{{ formulaireSecour.signaleur }}</td>
+            </tr>
+            <tr>
+                <th>Typepiste</th>
+                <td>{{ formulaireSecour.typePiste }}</td>
+            </tr>
+            <tr>
+                <th>Commentaire</th>
+                <td>{{ formulaireSecour.commentaire }}</td>
+            </tr>
+            <tr>
+                <th>Typesportco</th>
+                <td>{{ formulaireSecour.typeSportCo }}</td>
+            </tr>
+            <tr>
+                <th>Niveaucompet</th>
+                <td>{{ formulaireSecour.niveauCompet }}</td>
+            </tr>
+            <tr>
+                <th>Nbterrains</th>
+                <td>{{ formulaireSecour.nbTerrains }}</td>
+            </tr>
+            <tr>
+                <th>Catsportif</th>
+                <td>{{ formulaireSecour.catSportif }}</td>
+            </tr>
+            <tr>
+                <th>Typesportindiv</th>
+                <td>{{ formulaireSecour.typeSportIndiv }}</td>
+            </tr>
+            <tr>
+                <th>Typesportmeca</th>
+                <td>{{ formulaireSecour.typeSportMeca }}</td>
+            </tr>
+            <tr>
+                <th>Commissaire</th>
+                <td>{{ formulaireSecour.commissaire }}</td>
+            </tr>
+            <tr>
+                <th>Protection</th>
+                <td>{{ formulaireSecour.protection }}</td>
+            </tr>
+            <tr>
+                <th>Typesportaqua</th>
+                <td>{{ formulaireSecour.typeSportAqua }}</td>
+            </tr>
+            <tr>
+                <th>Dispositifsecu</th>
+                <td>{{ formulaireSecour.dispositifSecu }}</td>
+            </tr>
+            <tr>
+                <th>Typeplaneau</th>
+                <td>{{ formulaireSecour.typePlanEau }}</td>
+            </tr>
+            <tr>
+                <th>Typesportequestre</th>
+                <td>{{ formulaireSecour.typeSportEquestre }}</td>
+            </tr>
+            <tr>
+                <th>Typesportautre</th>
+                <td>{{ formulaireSecour.typeSportAutre }}</td>
+            </tr>
+            <tr>
+                <th>Agesportif</th>
+                <td>{{ formulaireSecour.ageSportif }}</td>
+            </tr>
+            <tr>
+                <th>Typeevtculturel</th>
+                <td>{{ formulaireSecour.typeEvtCulturel }}</td>
+            </tr>
+            <tr>
+                <th>Prixevt</th>
+                <td>{{ formulaireSecour.prixEvt }}</td>
+            </tr>
+            <tr>
+                <th>Evtintext</th>
+                <td>{{ formulaireSecour.evtIntExt }}</td>
+            </tr>
+            <tr>
+                <th>Typesalle</th>
+                <td>{{ formulaireSecour.typeSalle }}</td>
+            </tr>
+            <tr>
+                <th>Typesite</th>
+                <td>{{ formulaireSecour.typeSite }}</td>
+            </tr>
+            <tr>
+                <th>Nbpersototal</th>
+                <td>{{ formulaireSecour.nbPersoTotal }}</td>
+            </tr>
+            <tr>
+                <th>Typesiege</th>
+                <td>{{ formulaireSecour.typeSiege }}</td>
+            </tr>
+            <tr>
+                <th>Typepublic</th>
+                <td>{{ formulaireSecour.typePublic }}</td>
+            </tr>
+            <tr>
+                <th>Capacitesite</th>
+                <td>{{ formulaireSecour.capaciteSite }}</td>
+            </tr>
+            <tr>
+                <th>Superficiesite</th>
+                <td>{{ formulaireSecour.superficieSite }}</td>
+            </tr>
+            <tr>
+                <th>Nbacces</th>
+                <td>{{ formulaireSecour.nbAcces }}</td>
+            </tr>
+            <tr>
+                <th>Nbscene</th>
+                <td>{{ formulaireSecour.nbScene }}</td>
+            </tr>
+            <tr>
+                <th>Simulscene</th>
+                <td>{{ formulaireSecour.simulScene }}</td>
+            </tr>
+            <tr>
+                <th>Amenagtemp</th>
+                <td>{{ formulaireSecour.amenagTemp }}</td>
+            </tr>
+            <tr>
+                <th>Typerdp</th>
+                <td>{{ formulaireSecour.typeRdP }}</td>
+            </tr>
+            <tr>
+                <th>Animation</th>
+                <td>{{ formulaireSecour.animation }}</td>
+            </tr>
+            <tr>
+                <th>Mvtpublic</th>
+                <td>{{ formulaireSecour.mvtPublic }}</td>
+            </tr>
+            <tr>
+                <th>Medecin</th>
+                <td>{{ formulaireSecour.medecin }}</td>
+            </tr>
+            <tr>
+                <th>Nommed</th>
+                <td>{{ formulaireSecour.nomMed }}</td>
+            </tr>
+            <tr>
+                <th>Spemed</th>
+                <td>{{ formulaireSecour.speMed }}</td>
+            </tr>
+            <tr>
+                <th>Contactmed</th>
+                <td>{{ formulaireSecour.contactMed }}</td>
+            </tr>
+            <tr>
+                <th>Prenommed</th>
+                <td>{{ formulaireSecour.prenomMed }}</td>
+            </tr>
+            <tr>
+                <th>Piecesecours</th>
+                <td>{{ formulaireSecour.pieceSecours }}</td>
+            </tr>
+            <tr>
+                <th>Repassecours</th>
+                <td>{{ formulaireSecour.repasSecours }}</td>
+            </tr>
+            <tr>
+                <th>Prestamed</th>
+                <td>{{ formulaireSecour.prestaMed }}</td>
+            </tr>
+            <tr>
+                <th>Telsite</th>
+                <td>{{ formulaireSecour.telSite }}</td>
+            </tr>
+            <tr>
+                <th>Communicationsecours</th>
+                <td>{{ formulaireSecour.communicationSecours }}</td>
+            </tr>
+            <tr>
+                <th>Autressecours</th>
+                <td>{{ formulaireSecour.autresSecours }}</td>
+            </tr>
+            <tr>
+                <th>Infoscompl</th>
+                <td>{{ formulaireSecour.infosCompl }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('formulairesecours_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('formulairesecours_edit', { 'id': formulaireSecour.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

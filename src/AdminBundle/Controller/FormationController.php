@@ -7,7 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AdminBundle\Entity\Formation;
+use AdminBundle\Entity\Agenda;
 use AdminBundle\Form\FormationType;
+use AdminBundle\Form\AgendaType;
 
 /**
  * Formation controller.
@@ -31,6 +33,57 @@ class FormationController extends Controller
         return $this->render('formation/index.html.twig', array(
             'formations' => $formations,
         ));
+    }
+
+    /**
+     * Lists all Formation entities.
+     *
+     * @Route("/agendas/{id}", name="formation_agendas")
+     */
+    public function agendasAction(Formation $formation, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        //recupération des agendas en cours pour une formation
+        $agendas = $em->getRepository('AdminBundle:Agenda')->findByFormation($formation);
+
+        // form pour ajouter un nouvel agenda à la formation sélectionnée
+        $agenda = new Agenda();
+        $agenda->setPhoto(
+            new File($this->getParameter('brochures_directory').'/'.$agenda->getPhoto())
+            );
+        $form = $this->createForm(AgendaType::class, $agenda);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $file = $agenda->getPhoto();
+            // Generate a unique name for the file before saving it
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            // Move the file to the directory where brochures are stored
+            $file->move(
+                $this->getParameter('upload_directory'),
+                $fileName
+            );
+
+            // Update the 'brochure' property to store the PDF file name
+            // instead of its contents
+            $agenda->setPhoto($fileName);
+
+
+            $agenda->setFormation($formation);
+            $em->persist($agenda);
+            $em->flush();
+
+            return $this->redirectToRoute('formation_agendas', array('id' => $formation->getId()));
+        }
+
+
+        return $this->render('AdminBundle:Default:agenda.html.twig', array(
+            'formation' => $formation,
+            'agendas' => $agendas,
+             'form' => $form->createView(),
+       ));
     }
 
     /**
