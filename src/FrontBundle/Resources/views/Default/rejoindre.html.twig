@@ -1,10 +1,17 @@
 {% extends '@Front/Default/frontLayout.html.twig' %}
+
+
 {% block stylesheets %}
-{{ parent() }}
+    {{ parent() }}
+    <link href="{{ asset('css/rejoindre.css') }}" rel="stylesheet">
+
 {% endblock %}
 {% block title %}
     Rejoindre la FFSS
 {% endblock %}
 {% block body %}
+    <div class="rejoindre">
+    <h1>Rejoindre la FFSS 45</h1>
     {{ form(form) }}
+    </div>
 {% endblock %}
