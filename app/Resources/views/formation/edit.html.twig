@@ -7,6 +7,9 @@
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
+        {% if img  %}
+            <img class="image_upload img-responsive" src="{{ asset('/upload/' ~ img) }}"/>
+        {% endif %}
         <div class="row">
             <div class="col-sm-4 col-sm-offset-4">
                 <input class="btn btn-info  btn-lg btn-block" type="submit" value="Edit" />

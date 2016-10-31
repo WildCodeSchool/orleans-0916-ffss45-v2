@@ -58,3 +58,7 @@ h2 {
 .agenda_form fieldset {
     margin-top:1em;
 }
+
+.image_upload {
+    width:250px;
+}
