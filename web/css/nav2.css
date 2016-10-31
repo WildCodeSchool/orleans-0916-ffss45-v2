@@ -10,6 +10,9 @@
 
 .dropdown-large {
     position: static !important;
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 20px;
 }
 .dropdown-menu-large {
     margin-left: 16px;
@@ -71,38 +74,6 @@
     }
 }
 
-.dropdown-header.incendie{
-    color: #ee1d23;
-}
-
-.dropdown-header.sportif{
-    color: #feca0a;
-}
-
-.dropdown-header.formateurs{
-    color: #f47d28;
-}
-
-.dropdown-header.aquatique{
-    color: #00aadd;
-}
-
-.dropdown-header.equipe{
-    color: #223e7a;
-}
-
-.dropdown-header.sante{
-    color: #dd4d9c;
-}
-
-.dropdown-header.debut{
-    color: grey;
-}
-
-.dropdown-header.travail{
-    color: #7bc142;
-}
-
 .navbar-nav{
     text-align: center;
     margin-left: auto;
@@ -118,4 +89,3 @@
         width:100%;
     }
 }
-
