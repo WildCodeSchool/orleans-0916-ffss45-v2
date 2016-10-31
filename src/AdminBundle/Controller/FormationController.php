@@ -10,7 +10,7 @@ use AdminBundle\Entity\Formation;
 use AdminBundle\Entity\Agenda;
 use AdminBundle\Form\FormationType;
 use AdminBundle\Form\AgendaType;
-
+use Symfony\Component\HttpFoundation\File\File;
 /**
  * Formation controller.
  *
@@ -49,15 +49,12 @@ class FormationController extends Controller
 
         // form pour ajouter un nouvel agenda à la formation sélectionnée
         $agenda = new Agenda();
-        $agenda->setPhoto(
-            new File($this->getParameter('brochures_directory').'/'.$agenda->getPhoto())
-            );
         $form = $this->createForm(AgendaType::class, $agenda);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $file = $agenda->getPhoto();
+            $file = $formation->getPhoto();
             // Generate a unique name for the file before saving it
             $fileName = md5(uniqid()).'.'.$file->guessExtension();
             // Move the file to the directory where brochures are stored
@@ -66,10 +63,7 @@ class FormationController extends Controller
                 $fileName
             );
 
-            // Update the 'brochure' property to store the PDF file name
-            // instead of its contents
-            $agenda->setPhoto($fileName);
-
+            $formation->setPhoto($fileName);
 
             $agenda->setFormation($formation);
             $em->persist($agenda);
@@ -137,10 +131,26 @@ class FormationController extends Controller
     public function editAction(Request $request, Formation $formation)
     {
         $deleteForm = $this->createDeleteForm($formation);
+        if ($formation->getPhoto()) {
+            $formation->setPhoto(
+                new File($this->getParameter('upload_directory').'/'.$formation->getPhoto())
+            );
+        }
         $editForm = $this->createForm('AdminBundle\Form\FormationType', $formation);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $file = $formation->getPhoto();
+            // Generate a unique name for the file before saving it
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            // Move the file to the directory where brochures are stored
+            $file->move(
+                $this->getParameter('upload_directory'),
+                $fileName
+            );
+
+            $formation->setPhoto($fileName);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($formation);
             $em->flush();
@@ -150,6 +160,7 @@ class FormationController extends Controller
 
         return $this->render('formation/edit.html.twig', array(
             'formation' => $formation,
+            'img'=>basename($formation->getPhoto()),
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));

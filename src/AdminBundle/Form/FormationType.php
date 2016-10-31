@@ -26,7 +26,6 @@ class FormationType extends AbstractType
                                                         'choice_label'=>'nomCategorie',
                                                         'required'=>false,
                                                         ))
-            ->add('photo', FileType::class)
             ->add('descriptif')
             ->add ('publicVise')
             ->add ('objectifVise')
@@ -34,6 +33,7 @@ class FormationType extends AbstractType
             ->add ('contenuFormation')
             ->add('methodePedagogique', TextAreaType::class, array( 'required' => false,))
             ->add ('validation')
+            ->add('photo', FileType::class)
 
         ;
 
