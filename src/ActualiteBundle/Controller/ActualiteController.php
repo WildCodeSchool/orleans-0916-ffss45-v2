@@ -46,6 +46,14 @@ class ActualiteController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $actualite = $form->getData();
+            $file = $actualite->getImage();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move(
+                $this->getParameter('upload_directory'),
+                $fileName
+            );
+            $actualite->setImage($fileName);
             $em = $this->getDoctrine()->getManager();
             $em->persist($actualite);
             $em->flush();
