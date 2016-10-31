@@ -92,14 +92,23 @@ class ActualiteController extends Controller
      */
     public function editAction(Request $request, Actualite $actualite)
     {
+
         $actualite->setImage(
             new File($this->getParameter('upload_directory').$actualite->getImage())
         );
+
         $deleteForm = $this->createDeleteForm($actualite);
         $editForm = $this->createForm('ActualiteBundle\Form\ActualiteType', $actualite);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $file = $actualite->getImage();
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            $file->move(
+                $this->getParameter('upload_directory'),
+                $fileName
+            );
+            $actualite->setImage($fileName);
             $em = $this->getDoctrine()->getManager();
             $em->persist($actualite);
             $em->flush();

@@ -1,13 +1,18 @@
 {% extends 'AdminBundle::adminLayout.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{ asset('css/summernote.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/summernote.min.js') }}"></script>
+{% endblock %}
 {% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
 {% block body %}
     <h1>Ajout d'une nouvelle actualité</h1>
-    <div class="container">
+    <div class="container" id="summernote">
         {{ form_start(form) }}
         {{ form_widget(form) }}
 
 
-        <div class="row">
+        <div class="row" >
             <div class="col-sm-4 col-sm-offset-4">
                 <input class="btn btn-success  btn-lg btn-block" type="submit" value="Créer" />
             </div>
@@ -17,4 +22,7 @@
 
         <a class="btn btn-primary" href="{{ path('actualite_index') }}">Retour à la liste</a>
     </div>
+   <script> $(document).ready(function() {
+    $('#summernote').summernote();
+    });</script>
 {% endblock %}
