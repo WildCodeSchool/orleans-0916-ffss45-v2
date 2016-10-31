@@ -18,11 +18,14 @@
             {#<link href="{{ asset('css/admin_agenda.css')}}" rel="stylesheet">#}
             <link href="{{ asset('responsive-nav.css')}}" rel="stylesheet">
         {% endblock %}
+        {% block js %}
+            <script src="{{ asset('js/jquery.min.js') }}"></script>
+            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+        {% endblock %}
 
         <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}" />
 
-        <script src="{{ asset('js/jquery.min.js') }}"></script>
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
         <title>{% block title %}Admin{% endblock %}</title>
 

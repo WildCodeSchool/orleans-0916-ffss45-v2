@@ -3,8 +3,13 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/bootstrap-datepicker.min.css') }}">
 {% endblock %}
+{% block js %}
+    {{ parent() }}
+    <script src="{{ asset('js/bootstrap-datepicker.min.js') }}"></script>
 
+{% endblock %}
 {% block header %}
 
     <nav class="navbar navbar-default navbar-static firstnav">

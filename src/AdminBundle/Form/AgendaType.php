@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class AgendaType extends AbstractType
 {
@@ -18,7 +19,7 @@ class AgendaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateDeDebut', 'date')
+            ->add('dateDeDebut', DateType::class)
             ->add('dateDeFin', 'date')
             ->add('heureDeDebutAm', 'time')
             ->add('heureDeFinAm', 'time')

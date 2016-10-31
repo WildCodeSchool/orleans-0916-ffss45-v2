@@ -3,6 +3,7 @@
 namespace AdminBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -25,6 +26,7 @@ class FormationType extends AbstractType
                                                         'choice_label'=>'nomCategorie',
                                                         'required'=>false,
                                                         ))
+            ->add('photo', FileType::class)
             ->add('descriptif')
             ->add ('publicVise')
             ->add ('objectifVise')
@@ -32,14 +34,7 @@ class FormationType extends AbstractType
             ->add ('contenuFormation')
             ->add('methodePedagogique', TextAreaType::class, array( 'required' => false,))
             ->add ('validation')
-/*            ->add('agendas', CollectionType::class, array(
-                    // each entry in the array will be an "email" field
-                    'entry_type'   => AgendaType::class,
-                    'allow_add'    => true,
-                    // these options are passed to each "email" type
 
-                )
-            )*/
         ;
 
     }

@@ -1,5 +1,6 @@
 <div class="agenda_form">
     <fieldset>
+
         {{ form_errors(form.dateDeDebut) }}
         {{ form_label(form.dateDeDebut) }}
         {{ form_widget(form.dateDeDebut) }}
@@ -33,4 +34,7 @@
         {{ form_row(form.remarque) }}
 
     </fieldset>
+    <script>
+        $('#dp3).datepicker()
+    </script>
 </div>
