@@ -1,11 +1,31 @@
+@font-face {
+    font-family: myFont;
+    src: url(/web/fonts/BebasNeue.otf);
+}
+
 h1{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-top: 3px solid #FEEF0E;
+    border-bottom: 3px solid #FEEF0E;
+    color: #001BB2;
+    font-weight: bold;
     text-align: center;
 }
 
 h2{
     text-decoration: underline;
+    font-size: 40px;
 }
 
 .actualites{
     margin-bottom: 40px;
+    text-align: center;
+}
+
+p{
+    font-size: 20px;
+    font-family: myFont;
+
 }
