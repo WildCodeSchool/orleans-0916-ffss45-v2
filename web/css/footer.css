@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
+
 footer{
     text-align: center;
     background-color:#253571;
@@ -56,5 +57,9 @@ footer{
 }
  
 .scrollup:hover {
+    color: white;
+}
+
+footer a:visited{
     color: white;
 }
