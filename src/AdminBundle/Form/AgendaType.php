@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class AgendaType extends AbstractType
 {
@@ -18,15 +19,15 @@ class AgendaType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateDeDebut', 'date')
+            ->add('dateDeDebut', DateType::class)
             ->add('dateDeFin', 'date')
             ->add('heureDeDebutAm', 'time')
             ->add('heureDeFinAm', 'time')
             ->add('heureDeDebutPm', 'time')
             ->add('heureDeFinPm', 'time')
             ->add('adresse')
-            ->add('formation', EntityType::class, array('class'=>'AdminBundle:Formation',
-                                                        'choice_label'=>'nomCourt'))
+          //  ->add('formation', EntityType::class, array('class'=>'AdminBundle:Formation',
+          //                                              'choice_label'=>'nomCourt'))
             ->add('remarque', TextareaType::class, array( 'required' => false,))
 
 

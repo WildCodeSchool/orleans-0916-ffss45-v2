@@ -2,40 +2,23 @@
     <div class="container-fluid">
         <div class="row formulaire">
             <!--formulaire-->
-            <div class="col-md-offset-1 col-md-3 col-sm-6 col-xs-12">
-                <h1 class="contact1">Contactez-nous</h1>
-                <form>
-                    <div id="form">
-                        <div class="form-group">
-                            <label for="nom">Nom</label>
-                            <input type="text" class="form-control" id="nom" placeholder="Nom">
-                        </div>
-                        <div class="form-group">
-                            <label for="prenom">Prénom</label>
-                            <input type="text" class="form-control" id="prenom" placeholder="Prénom">
-                        </div>
-                        <div class="form-group">
-                            <label for="Email">E-mail</label>
-                            <input type="email" class="form-control" id="Email" placeholder="Email">
-                        </div>
-                        <textarea class="form-control" rows="3" placeholder="Quelle est votre demande ?"></textarea><br>
-                        <button type="submit" class="btn btn-default center-block">Envoyer</button>
-                    </div>
-                </form>
+            <div class="col-md-offset-1 col-md-3 col-sm-6 col-xs-12 contact" id="formulaire_contact">
+                <h3>Contactez-nous !</h3>
+                {{ form(form) }}
             </div>
             <!--infos contact-->
             <div class="col-md-4 col-sm-6 col-xs-12">
                 <div class="contact2">
                     <ul class="text-center">
-                        <li><h3><strong>FFSS 45 - Secouristes du Loiret</strong></h3></li>
-                        <li class="glyphicon glyphicon-map-marker"> 15 Quai du Roi,</li>
+                        <li><h3>FFSS 45 - Secouristes du Loiret</h3></li>
+                        <li><span class="glyphicon glyphicon-map-marker"></span>15 Quai du Roi</li>
                         <li>45000 Orléans</li>
-                        <li class="glyphicon glyphicon-earphone"> 02.38.43.12.73</li>
-                        <li><h3>Suivez-nous</h3></li>
-                        <li><i class="fa fa-3x fa-facebook-square" aria-hidden="true"></i></li>
-                        <div class="hidden-lg hidden-sm hidden-md col-xs-12">
+                        <li><span class="glyphicon glyphicon-earphone"></span>02.38.43.12.73</li>
+                        <li class="facebook">Suivez-nous</li>
+                        <li><a href="https://www.facebook.com/ffss45"><i class="fa fa-3x fa-facebook-square" aria-hidden="true"></i></a></li>
+                        <li><div class="hidden-lg hidden-sm hidden-md col-xs-12">
                             <a class="text-center liencarte" href="http://www.openstreetmap.org/?mlat=47.89969&mlon=1.92325#map=19/47.89969/1.92325">Voir sur la carte</a>
-                        </div>
+                        </div></li>
                     </ul>
                 </div>
             </div>

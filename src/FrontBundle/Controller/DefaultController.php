@@ -4,21 +4,64 @@ namespace FrontBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use AdminBundle\Entity\Formation;
 use ActualiteBundle\Entity\Actualite;
+use FrontBundle\Entity\Contact;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
 
 class DefaultController extends Controller
 {
     /**
-     * @Route("/", name="page_acceuil")
+     * @Route("/", name="page_accueil_principale")
      */
-    public function indexAction()
+    public function contactAction(Request $request)
     {
-        return $this->render('@Front/Default/acceuil.html.twig');
+        $contact = new Contact();
 
+        $form = $this->createFormBuilder($contact)
+            ->add('nom', TextType::class, array('label'=>false,'attr'=>array('placeholder'=>'Votre nom')
+                ))
+            ->add('prenom', TextType::class, array('label'=>false,'attr'=>array('placeholder'=>'Votre prénom')
+            ))
+            ->add('email', EmailType::class, array('label'=>false,'attr'=>array('placeholder'=>'Votre email')
+            ))
+            ->add('message', TextareaType::class, array('label'=>false,'attr'=>array('placeholder'=>'Votre demande')
+            ))
+            ->add('save', SubmitType::class, array('label' => 'Envoyer'))
+            ->getForm();
 
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $contact = $form->getData();
+
+            $message = \Swift_Message::newInstance()
+                ->setSubject('Vous avez une nouvelle demande de contact')
+                ->setFrom('houssemaine.j@gmail.com')
+                ->setTo('asakura45@gmail.com')
+                ->setBody(
+                    $this->renderView(
+                        'emailContact.html.twig',
+                        array('contact'=>$contact)
+
+                    ),
+                    'text/html'
+                );
+            $this->get('mailer')->send($message);
+
+            return $this->redirect($this->generateUrl('succes'));
+        }
+        return $this->render('@Front/Default/acceuil.html.twig', array(
+            'form' => $form->createView(),
+        ));
     }
+
 
 
     /**
@@ -32,17 +75,18 @@ class DefaultController extends Controller
             ->getRepository('ActualiteBundle:Actualite')
             ->findAll();
 
-        return $this->render('@Front/Default/pageActus.html.twig', array('actualites'=>$actualites));
+        return $this->render('@Front/Default/pageActus.html.twig', array('actualites' => $actualites));
     }
 
     /**
-     * @Route("/formation/{id}")
+     * @Route("/formation/{nomCourt}", name="formation")
      */
     public function showAction(Formation $formation)
     {
-        return $this->render('FrontBundle:Default:formation.html.twig', array('formation'=> $formation));
+        return $this->render('FrontBundle:Default:formation.html.twig', array('formation' => $formation));
 
     }
+
 
 
     /**
@@ -54,4 +98,8 @@ class DefaultController extends Controller
 
 
     }
+
+
+
 }
+

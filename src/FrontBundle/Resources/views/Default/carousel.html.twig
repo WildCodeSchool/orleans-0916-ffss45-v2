@@ -1,11 +1,12 @@
 <div class="container-fluid carousel">
     <div class="row">
         <div class="col-md-12">
-            <h1 class="identity">Ici aussi, on garde un oeil sur vous !</h1>
+            <h1 class="identity"><span class="glyphicon glyphicon-triangle-right"></span>Ici aussi, on garde un oeil sur vous !</h1>
         </div>
 
         <div class="col-lg-12" id="carousel">
-         {{ render(controller('ActualiteBundle:Actualite:findLastActu')) }}
+
+         {{ render(controller('ActualiteBundle:ActualiteMaison:findLastActu')) }}
 
         </div>
     </div>

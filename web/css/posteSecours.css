@@ -68,9 +68,20 @@ margin-bottom: 10px;
 }
 .poste{
     padding-top: 20px;
-    font-family: Morningtype;
+    font-family: Bebasneue , sans-serif;
 }
 
 .navbar{
     margin-bottom: 0px;
+}
+
+h1{
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+    border-top: 3px solid #FEEF0E;
+    border-bottom: 3px solid #FEEF0E;
+    color: #001BB2;
+    text-align: center;
+    font-weight: bold;
 }

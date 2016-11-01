@@ -1,12 +1,14 @@
-{# in src/MyCompany/MyBundle/Resources/views/Vehicle/createVehicle.html.twig #}
+
 {% extends '@Front/Default/frontLayout.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('css/posteSecours.css') }}" rel="stylesheet">
 {% endblock %}
+{% block title %}Demander un poste de secours{% endblock %}
 {% block body %}
     <div class="container-fluid poste">
         <div class="row">
+            <h1>Demander un poste de secours</h1>
             <div class="col-xs-12 col-sm-offset-1 col-sm-4">
 
 

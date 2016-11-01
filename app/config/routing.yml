@@ -1,3 +1,11 @@
+front_formulaire_secours:
+    resource: "@FrontBundle/Controller/FormulaireSecoursController.php"
+    type:     annotation
+
+actualite_actualite:
+    resource: "@ActualiteBundle/Controller/ActualiteController.php"
+    type:     annotation
+
 
 admin:
     resource: "@AdminBundle/Controller/"
@@ -20,3 +28,7 @@ actualite:
     resource: "@ActualiteBundle/Controller/"
     type:     annotation
     prefix:   /admin
+
+# app/config/routing.yml
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

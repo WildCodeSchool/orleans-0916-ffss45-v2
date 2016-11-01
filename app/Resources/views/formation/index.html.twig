@@ -1,60 +1,32 @@
-{% extends 'base.html.twig' %}
+{% extends 'AdminBundle::adminLayout.html.twig' %}
 
 {% block body %}
-    <h1>Formation list</h1>
-
-    <table>
+<div class="container">
+    <h1>Liste des formations
+    </h1>
+    <table class="table table-hover table-condensed table-striped">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Nom long</th>
                 <th>Nom court</th>
                 <th>Catégorie</th>
-                <th>Public Visé</th>
-                <th>Objectif Visé</th>
-                <th>Durée Formation</th>
-                <th>Contenu Formation</th>
-                <th>Méthode Pédologique</th>
-                <th>Validation</th>
-                <th>Actions</th>
+                <th>Agendas</th>
             </tr>
         </thead>
         <tbody>
         {% for formation in formations %}
             <tr>
-                <td><a href="{{ path('formation_show', { 'id': formation.id }) }}">{{ formation.id }}</a></td>
-                <td>{{ formation.nomLong }}</td>
-                <td>{{ formation.nomCourt }}</td>
-               <td>
-                    {% if formation.categorie.nomCategorie is defined %}
-                      {{ formation.categorie.nomCategorie }}
-                    {% endif %}
-                </td>
-                <td>{{ formation.descriptif }}</td>
-                <td>{{ formation.publicVise }}</td>
-                <td>{{ formation.objectifVise }}</td>
-                <td>{{ formation.dureeFormation }}</td>
-                <td>{{ formation.contenuFormation }}</td>
-                <td>{{ formation.methodePedagogique }}</td>
-                <td>{{ formation.validation }}</td>
+                <td><a href="{{ path('formation_edit', { 'id': formation.id }) }}">{{ formation.nomCourt }}</a></td>
+                <td>{{ formation.categorie.nomCategorie }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('formation_show', { 'id': formation.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('formation_edit', { 'id': formation.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                    <a href="{{ path('formation_agendas', { 'id': formation.id }) }}"><i title="agendas" class="fa fa-calendar fa-lg"></i></a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('formation_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+    <a class="btn btn-success  " href="{{ path('formation_new') }}"><i class="fa fa-plus"></i> Create a new entry</a>
+
+
+</div>
 {% endblock %}

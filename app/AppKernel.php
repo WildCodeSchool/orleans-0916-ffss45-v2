@@ -20,7 +20,7 @@ class AppKernel extends Kernel
             new AdminBundle\AdminBundle(),
             new ActualiteBundle\ActualiteBundle(),
             new Craue\FormFlowBundle\CraueFormFlowBundle(),
-
+            new FOS\UserBundle\FOSUserBundle(),
 
         );
 

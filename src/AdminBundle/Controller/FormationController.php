@@ -7,8 +7,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AdminBundle\Entity\Formation;
+use AdminBundle\Entity\Agenda;
 use AdminBundle\Form\FormationType;
-
+use AdminBundle\Form\AgendaType;
+use Symfony\Component\HttpFoundation\File\File;
 /**
  * Formation controller.
  *
@@ -31,6 +33,51 @@ class FormationController extends Controller
         return $this->render('formation/index.html.twig', array(
             'formations' => $formations,
         ));
+    }
+
+    /**
+     * Lists all Formation entities.
+     *
+     * @Route("/agendas/{id}", name="formation_agendas")
+     */
+    public function agendasAction(Formation $formation, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        //recupération des agendas en cours pour une formation
+        $agendas = $em->getRepository('AdminBundle:Agenda')->findByFormation($formation);
+
+        // form pour ajouter un nouvel agenda à la formation sélectionnée
+        $agenda = new Agenda();
+        $form = $this->createForm(AgendaType::class, $agenda);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $file = $formation->getPhoto();
+            // Generate a unique name for the file before saving it
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            // Move the file to the directory where brochures are stored
+            $file->move(
+                $this->getParameter('upload_directory'),
+                $fileName
+            );
+
+            $formation->setPhoto($fileName);
+
+            $agenda->setFormation($formation);
+            $em->persist($agenda);
+            $em->flush();
+
+            return $this->redirectToRoute('formation_agendas', array('id' => $formation->getId()));
+        }
+
+
+        return $this->render('AdminBundle:Default:agenda.html.twig', array(
+            'formation' => $formation,
+            'agendas' => $agendas,
+             'form' => $form->createView(),
+       ));
     }
 
     /**
@@ -84,10 +131,26 @@ class FormationController extends Controller
     public function editAction(Request $request, Formation $formation)
     {
         $deleteForm = $this->createDeleteForm($formation);
+        if ($formation->getPhoto()) {
+            $formation->setPhoto(
+                new File($this->getParameter('upload_directory').'/'.$formation->getPhoto())
+            );
+        }
         $editForm = $this->createForm('AdminBundle\Form\FormationType', $formation);
         $editForm->handleRequest($request);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $file = $formation->getPhoto();
+            // Generate a unique name for the file before saving it
+            $fileName = md5(uniqid()).'.'.$file->guessExtension();
+            // Move the file to the directory where brochures are stored
+            $file->move(
+                $this->getParameter('upload_directory'),
+                $fileName
+            );
+
+            $formation->setPhoto($fileName);
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($formation);
             $em->flush();
@@ -97,6 +160,7 @@ class FormationController extends Controller
 
         return $this->render('formation/edit.html.twig', array(
             'formation' => $formation,
+            'img'=>basename($formation->getPhoto()),
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));

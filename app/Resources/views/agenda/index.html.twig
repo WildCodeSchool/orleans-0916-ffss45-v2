@@ -1,10 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-    <link href="{{ asset('css/agenda.css')}}" rel="stylesheet">
-    <link href="{{ asset('css/admin_agenda.css')}}" rel="stylesheet">
-    <link href="{{ asset('responsive-nav.css')}}" rel="stylesheet">
-{% endblock %}
+
 
 {% block body %}
 
@@ -76,14 +72,8 @@
                             <td class="text-left">{{ agenda.formation.nomCourt }}</td>
                             <td class="text-left">{{ agenda.remarque }}</td>
                             <td>
-                                <ul>
-                                    <li>
-                                        <a href="{{ path('agenda_show', { 'id': agenda.id }) }}"><span class="glyphicon glyphicon-eye-open"></span></a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('agenda_edit', { 'id': agenda.id }) }}"><span class="glyphicon glyphicon-edit"></span></a>
-                                    </li>
-                                </ul>
+                                <a href="{{ path('agenda_show', { 'id': agenda.id }) }}"><span class="glyphicon glyphicon-eye-open"></span></a>
+                                <a href="{{ path('agenda_edit', { 'id': agenda.id }) }}"><span class="glyphicon glyphicon-edit"></span></a>
                             </td>
                         </tr>
                     {% endfor %}

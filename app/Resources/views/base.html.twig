@@ -10,20 +10,22 @@
         <meta name="author" content="">
 
         <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
-
         <link href="{{ asset('css/font-awesome.min.css')}}" rel="stylesheet">
         <link href="{{ asset('css/font-awesome.min.css')}}" rel="stylesheet">
 
         {% block stylesheets %}
-            <link href="https://fonts.googleapis.com/css?family=EB+Garamond|Lobster|Open+Sans+Condensed:300|PT+Sans|Questrial|Quicksand|Trirong" rel="stylesheet">
+
+        {% endblock %}
+        {% block js %}
+            <script src="{{ asset('js/jquery.min.js') }}"></script>
+            <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
         {% endblock %}
 
         <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}" />
 
-        <script src="{{ asset('js/jquery.min.js') }}"></script>
-        <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
-        <title>{% block title %}{% endblock %}</title>
+        <title>{% block title %}Admin{% endblock %}</title>
 
     </head>
 

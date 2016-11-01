@@ -1,34 +1,24 @@
+{% block stylesheets %}
 
-
+        <link href="{{ asset('css/espaces.css')}}" rel="stylesheet">
+{% endblock %}
+<div class="col-md-12">
+    <h1 class="identity"><span class="glyphicon glyphicon-triangle-right"></span>Accédez à nos espaces</h1>
+</div>
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
-            <figure class="snip1566">
-                <img src="{{ asset('images/particulier.png') }}" class="img-responsive" alt ="image espace particuliers">
-                <figcaption>
-                    <p class="lead">Accès à votre demande de formation</p>
-                </figcaption>
-                <a href="#"></a>
-            </figure>
+        <div class="col-md-4 col-sm-6 col-xs-12 col-centered">
+            <a href="#"><img src="{{ asset('images/particulier.png') }}" class="img-responsive" alt ="image espace particuliers"> </a>
+            <p class="lead">Accès à votre demande de formation</p>
         </div>
-        <div class="col-md-4">
-            <figure class="snip1566">
-                <img src="{{ asset('images/pro.png') }}" class="img-responsive" alt ="image espace professionnels">
-                <figcaption>
-                    <p class="lead">Accès à votre demande de formation</p>
-                </figcaption>
-                <a href="#"></a>
-            </figure>
+        <div class="col-md-4 col-sm-6 col-xs-12 col-centered">
+            <a href=""><img src="{{ asset('images/pro.png') }}" class="img-responsive" alt ="image espace professionnels"></a>
+            <p class="lead">Accès à votre demande de formation</p>
         </div>
-        <div class="col-md-4">
-            <figure class="snip1566">
-                <img src="{{ asset('images/secours.png') }}" class="img-responsive" alt ="image espace poste de secours">
-                <figcaption>
-                    <p class="lead">“ Vous organisez un évènement?<br /> Demandez un dispositif de secours ”</p>
-                </figcaption>
-                <a href="#"></a>
-            </figure>
+        <div class="col-md-4  col-xs-12 col-centered">
+            <a href="{{ path('formulaire') }}"><img src="{{ asset('images/secours.png') }}" class="img-responsive" alt ="image espace poste de secours"></a>
+            <p class="lead">“ Vous organisez un évènement?<br /> Demandez un dispositif de secours ”</p>
         </div>
     </div>
 </div>
-
+</div>

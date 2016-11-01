@@ -1,0 +1,36 @@
+<table class="table table-striped table-hover ">
+    <thead>
+    <tr>
+        <th class="text-left">Date/début</th>
+        <th class="text-left">Date/fin</th>
+        <th class="text-left">Heure/début AM</th>
+        <th class="text-left">Heure/fin AM</th>
+        <th class="text-left">Heure/début PM</th>
+        <th class="text-left">Heure/fin PM</th>
+        <th class="text-left">Adresse</th>
+        <th class="text-left">Formation</th>
+        <th class="text-left">Remarque</th>
+        <th class="text-left">Actions</th>
+    </tr>
+    </thead>
+    <tbody class="">
+    {% for agenda in agendas %}
+        <tr>
+            <td class="">{% if agenda.dateDeDebut %}{{ agenda.dateDeDebut|date('Y-m-d') }}{% endif %}</td>
+            <td class="">{% if agenda.dateDeFin %}{{ agenda.dateDeFin|date('Y-m-d') }}{% endif %}</td>
+            <td class="">{% if agenda.heureDeDebutAm %}{{ agenda.heureDeDebutAm|date('H:i:s') }}{% endif %}</td>
+            <td class="">{% if agenda.heureDeFinAm %}{{ agenda.heureDeFinAm|date('H:i:s') }}{% endif %}</td>
+            <td class="">{% if agenda.heureDeDebutPm %}{{ agenda.heureDeDebutPm|date('H:i:s') }}{% endif %}</td>
+            <td class="">{% if agenda.heureDeFinPm %}{{ agenda.heureDeFinPm|date('H:i:s') }}{% endif %}</td>
+            <td class="">{{ agenda.adresse }}</td>
+            <td class="">{{ agenda.formation.nomCourt }}</td>
+            <td class="">{{ agenda.remarque }}</td>
+            <td>
+                <a href="{{ path('agenda_edit', { 'id': agenda.id }) }}"><i title="Modifier l'agenda" class="fa fa-edit fa-lg"></i></a>
+            </td>
+        </tr>
+    {% else %}
+        <tr><td>Pas d'agenda</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
