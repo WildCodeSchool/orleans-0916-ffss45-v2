@@ -89,4 +89,17 @@ class DefaultController extends Controller
 
 
 
+    /**
+     * @Route("/mentions-legales", name="mentionsLegales")
+     */
+    public function mentionsLegalesAction()
+    {
+        return $this->render('@Front/Default/mentionsLegales.html.twig');
+
+
+    }
+
+
+
 }
+

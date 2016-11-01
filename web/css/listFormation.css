@@ -6,6 +6,8 @@
     border-width:3px;
     border-radius:5px;
     font-size:30px;
+    color:black;
+
 
 }
 
@@ -20,15 +22,37 @@
 
 }
 
-
-
-
 .bloc_formation {
     border: 2px solid black;
     margin-top:15%;
     margin-left:20%;
     margin-right:20%;
-    margin-bottom:20%;
+    margin-bottom:5%;
+
 
 }
 
+.bloc_formation_full{
+    border: 2px solid black;
+    margin-top:-180px;
+    margin-left:-80px;
+    display:none;
+    position: absolute;
+    z-index: 15;
+
+}
+
+.bloc_formation:hover .bloc_formation_full{
+    display:block;
+    background-color:grey;
+
+}
+.bloc_formation_full a{
+    color:black;
+    text-decoration: none;
+
+}
+
+.btn-primary{
+    margin-bottom:40px;
+}

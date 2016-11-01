@@ -56,7 +56,7 @@
 }
 .dropdown-menu-large .dropdown-header {
     font-size: 18px;
-    color: black;
+    color: #253571;
 }
 @media (max-width: 768px) {
     .dropdown-menu-large {
@@ -92,4 +92,14 @@
 
 .navbar{
     margin-bottom: 0px;
+}
+
+.joinButton{
+    font-weight: bold;
+    background-color: yellow;
+    color: black;
+    border: 2px solid black;
+}
+i.fa.fa-arrow-up{
+    color: white;
 }

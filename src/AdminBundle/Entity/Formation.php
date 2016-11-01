@@ -56,6 +56,15 @@ class Formation
      */
     private $descriptif;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string")
+     */
+    private $photo;
+
+
     /**
      * @var text
      *
@@ -98,12 +107,7 @@ class Formation
      */
     private $validation;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="photo", type="string")
-     */
-    private $photo;
+
 
     /**
      * Get id
