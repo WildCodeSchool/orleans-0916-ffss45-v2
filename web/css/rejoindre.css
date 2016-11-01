@@ -13,6 +13,8 @@ textarea{
     text-align: center;
     padding-bottom: 40px;
     font-family: Bebasneue, sans-serif;
+    background-color: #e3e3e3;
+
 }
 
 select{
@@ -24,12 +26,11 @@ button{
 }
 
 h1{
-    padding-top: 20px;
+    margin-top: 0;
+    padding-top: 40px;
     padding-bottom: 20px;
     margin-bottom: 20px;
-    border-top: 3px solid #FEEF0E;
     border-bottom: 3px solid #FEEF0E;
     color: #001BB2;
     font-weight: bold;
-
 }
