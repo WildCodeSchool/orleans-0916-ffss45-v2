@@ -9,16 +9,22 @@
     {% for actualite in actualites %}
         <div class="container-fluid actualites">
             <div class="row">
-                <div class="col-xs-offset-3 col-xs-9">
+                <div class="col-xs-12">
                     <h2>{{ actualite.titre }}</h2>
                 </div>
-                <div class="col-xs-offset-1 col-xs-4">
-                    <p>{{ actualite.contenu }}</p><br>
-                    <p>{{ actualite.auteur }}{{ actualite.date|date('d-m-Y') }}</p>
-                </div>
-                <div class="col-xs-offset-1 col-xs-5">
+                <div class="col-xs-12">
                     <img src="{{ asset('upload/' ~ actualite.image) }}" alt="" class="img-responsive">
                 </div>
+                <div class="col-xs-offset-2 col-xs-8">
+                    <p>{{ actualite.contenu }}</p><br>
+                </div>
+                <div class="col-xs-offset-2 col-xs-2">
+                    <p>{{ actualite.auteur }}</p>
+                </div>
+                <div class="col-xs-offset-4 col-xs-2">
+                    <p>{{ actualite.date|date('d-m-Y') }}</p>
+                </div>
+
             </div>
         </div>
     {% endfor %}
