@@ -129,7 +129,7 @@ h2 {
 
 .agenda{
     padding: 100px 50px 40px 300px;
-    color: white;
+    color: black;
 }
 
 .container th h3 {
@@ -211,17 +211,19 @@ h2 {
 }
 
 .button {
-    outline: none;
+    text-decoration: none;
+    width: 200px;
     border: #4DC3FA;
     padding: 20px;
     display: block;
+    text-align: center;
     margin: 100px auto;
     cursor: pointer;
     font-size: 1.2em;
     color: #223E7A;
     background-color: transparent;
     position: relative;
-    border: 3px solid #4DC3FA;
+    border: 3px solid #223E7A;
     transition: all 0.5s ease;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
@@ -237,6 +239,7 @@ h2 {
     -moz-animation: shakeThatBooty 0.3s linear 1;
     -o-animation: shakeThatBooty 0.3s linear 1;
     -ms-animation: shakeThatBooty 0.3s linear 1;
+    text-decoration: none;
 }
 
 @keyframes shakeThatBooty {
