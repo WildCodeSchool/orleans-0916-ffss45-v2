@@ -43,4 +43,15 @@ class DefaultController extends Controller
         return $this->render('FrontBundle:Default:formation.html.twig', array('formation'=> $formation));
 
     }
+
+
+    /**
+     * @Route("/mentions-legales", name="mentionsLegales")
+     */
+    public function mentionsLegalesAction()
+    {
+        return $this->render('@Front/Default/mentionsLegales.html.twig');
+
+
+    }
 }

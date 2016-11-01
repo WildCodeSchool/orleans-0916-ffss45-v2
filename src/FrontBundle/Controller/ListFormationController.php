@@ -12,7 +12,7 @@ use AdminBundle\Entity\FormationPublic;
 class ListFormationController extends Controller
 {
     /**
-     * @Route("/formations/{typeFormation}", name="acceuil")
+     * @Route("/formations/{typeFormation}", name="espace_formation")
      */
     public function indexAction($typeFormation)
     {

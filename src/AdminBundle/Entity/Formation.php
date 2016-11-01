@@ -56,6 +56,15 @@ class Formation
      */
     private $descriptif;
 
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="photo", type="string")
+     */
+    private $photo;
+
+
     /**
      * @var text
      *
@@ -342,5 +351,21 @@ class Formation
     public function getValidation()
     {
         return $this->validation;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhoto()
+    {
+        return $this->photo;
+    }
+
+    /**
+     * @param string $photo
+     */
+    public function setPhoto($photo)
+    {
+        $this->photo = $photo;
     }
 }
