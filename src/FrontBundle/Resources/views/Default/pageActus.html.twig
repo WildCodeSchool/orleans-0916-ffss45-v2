@@ -2,13 +2,13 @@
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/actualites.css') }}">
-{% block title %}Actualités{% endblock %}
 {% endblock %}
+    {% block title %}Actualités{% endblock %}
 {% block body %}
     <h1>Actualités de l'association</h1>
     {% for actualite in actualites %}
         <div class="container-fluid actualites">
-            <div class="row">
+            <div class="row customrow">
                 <div class="col-xs-12">
                     <h2>{{ actualite.titre }}</h2>
                 </div>

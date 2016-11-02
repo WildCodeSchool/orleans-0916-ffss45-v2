@@ -42,8 +42,8 @@ class PosteSecoursController extends Controller
 
                 $message = \Swift_Message::newInstance()
                     ->setSubject('Vous avez une nouvelle demande de Poste de Secours')
-                    ->setFrom('houssemaine.j@gmail.com')
-                    ->setTo('asakura45@gmail.com')
+                    ->setFrom('site@secourisme45.com')
+                    ->setTo('site@secourisme45.com')
                     ->setBody(
                         $this->renderView(
 

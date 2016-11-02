@@ -8,7 +8,7 @@
 
 
 {% block body %}
-     <div class="container-fluid page">
+     <div class="container-fluid page {{ formation.categorie.nomCategorie }}">
          <div class="row">
             <div class="col-md-12">
                 <h1 class="page-title"><strong>{{ formation.nomLong }}</strong><span class="nomCourt"> - {{ formation.nomCourt }}</span></h1>
@@ -34,7 +34,7 @@
                  <label for="tab2"><i class="fa fa-check fa-2x"></i><h3>Validation de la formation </h3></label>
 
                  <input id="tab3" type="radio" name="tabs">
-                 <label for="tab3"><i class="fa fa-hourglass-o fa-2x"></i><h3>Durée de la formation</h3></label>
+                 <label for="tab3"><i class="fa fa-hourglass-o fa-2x"></i><h3>Durée</h3></label>
 
                  <input id="tab4" type="radio" name="tabs">
                  <label for="tab4"><i class="fa fa-list fa-2x" ></i><h3>Contenu de la formation</h3></label>
@@ -92,7 +92,8 @@
                     {% endfor %}
                 </tbody>
             </table>
-            <button class="button"><span>Je m'inscris !</span></button>
+
+            <a class="button" href="{{ path('page_accueil_principale') }}#formulaire_contact"><span>Je m'inscris !</span></a>
 
 
         </div>

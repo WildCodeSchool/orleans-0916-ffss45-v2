@@ -1,12 +1,12 @@
  <div class="container-fluid">
   <div class="row-fluid">
       <div class="hidden-xs" id="test">
-          <a href="{{ path('page_accueil_principale') }}"><img class="img-responsive center-block" src="{{ asset('images/ff.png') }}" alt=""></a>
+          <a href="{{ path('page_accueil_principale') }}"><img class="img-responsive center-block" src="{{ asset('images/bannièreFFSS45.jpg') }}" alt=""></a>
       </div>
   </div>
 </div>
-<nav class="navbar navbar-default navbar-static firstnav">
-    
+<nav class="navbar navbar-default firstnav">
+
     <div class="navbar-header">
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -38,7 +38,7 @@
                     <li class="col-sm-6">
                         <ul>
                             <li class="dropdown-header">Notre expertise</li>
-                            <li><a href="#">En apprendre plus</a></li>
+                            <li><a href="{{ path('secoursCivil') }}">En apprendre plus</a></li>
                             <li class="divider"></li>
                             <li><img class="img-responsive" src="{{ asset('images/Secouristes_ffss45_petit.JPG') }}"/></li>
                         </ul>
@@ -53,10 +53,8 @@
             <li class="dropdown dropdown-large">
                 <a href="{{ path('page_accueil_principale') }}#formulaire_contact">Contact</a>
             </li>
-            <li class="dropdown dropdown-large">
-                <a href="{{ path('page_rejoindre') }}" class="joinButton">Rejoignez nous</a>
-            </li>
         </ul>
-        </div>
-    </div><!-- /.nav-collapse -->
+                <a href="{{ path('page_rejoindre') }}" class="joinButton navbar-link navbar-right">Rejoignez nous</a>
+    </div>
+    <!-- /.nav-collapse -->
 </nav>

@@ -1,14 +1,15 @@
-{% extends 'base.html.twig' %}
+{# app/Resources/TwigBundle/views/Exception/error404.html.twig #}
+{% extends 'AdminBundle::adminLayout.html.twig' %}
 
-{% block body %}
-    <h1>Page not found</h1>
+{% block content%}
+    <h1>Phello1</h1>
 
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         {# ... #}
     {% endif %}
 
     <p>
-        Cette page n'existe pas !
-        Retour à la page d'<a href="{{ path('page_accueil_principale') }}">accueil</a>.
+        The requested page couldn't be located. Checkout for any URL
+        misspelling or <a href="{{ path('homepage') }}">return to the homepage</a>.
     </p>
 {% endblock %}

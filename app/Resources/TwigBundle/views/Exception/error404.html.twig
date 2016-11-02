@@ -1,0 +1,25 @@
+{% extends 'AdminBundle::adminLayout.html.twig' %}
+
+
+
+
+
+{% block body %}
+
+    <div class="container">
+        <h1>hello</h1>
+
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {# ... #}
+            {% endif %}
+
+        <p>
+            Cette page n'existe pas !
+            Retour à la page d'<a href="{{ path('page_accueil_principale') }}">accueil</a>.
+        </p>
+    </div>
+
+{% endblock %}
+
+
+
