@@ -4,6 +4,10 @@
     background-image: linear-gradient(105deg,rgba(34, 62, 122, 1) 40%, transparent 40%);
     background-color: white;
     padding-top: 8em;
+    font-weight: 300;
+    height: 100%;
+    font: 14px/1 'Open Sans', sans-serif;
+    font-size: 1em;
 }
 .page-title {
     right: 0;
@@ -107,14 +111,6 @@ input:checked + label {
     }
 }
 
-
-html,body {
-    font-weight: 300;
-    height: 100%;
-    font: 14px/1 'Open Sans', sans-serif;
-    font-size: 1em;
-
-}
 
 h2 {
     color: #223E7A;
