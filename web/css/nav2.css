@@ -78,6 +78,7 @@
     text-align: center;
     margin-left: auto;
     margin-right: auto;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 @media screen and (min-width: 838px){
@@ -95,10 +96,14 @@
 }
 
 .joinButton{
+    position: relative;
+    margin-top: 5px;
     font-weight: bold;
     background-color: yellow;
     color: black;
-    border: 2px solid black;
+    font-size: 25px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
 }
 i.fa.fa-arrow-up{
     color: white;
