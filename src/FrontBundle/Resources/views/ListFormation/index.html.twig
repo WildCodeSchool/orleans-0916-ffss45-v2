@@ -11,22 +11,36 @@
             <h1>{{ category }}</h1>
         </div>
 
-        <div class="row">
+        <div class="row formation_row">
             {%  for key,formation in tab %}
-                <div class="col-lg-6">
+                <div class="col-lg-6 hidden-xs">
                     <div class="bloc_formation">
                         <h1>{{ formation.nomCourt }}</h1>
-                        <p>{{ formation.nomLong }}</p>
+                        <h2>{{ formation.nomLong }}</h2>
 
-                        <a href="#">
+                        <a href="{{ path('formation', {'nomCourt':formation.nomCourt}) }}">
                         <div class="bloc_formation_full">
                             <h1>{{ formation.nomCourt }}</h1>
-                            <p>{{ formation.nomLong }}</p>
+                            <h2>{{ formation.nomLong }}</h2>
+                            <img class="img-responsive photo_formation center-block" src="{{ asset('upload/' ~ formation.photo) }}" alt=""/>
                             <p> {{ formation.descriptif }}</p>
                         </a>
                         </div>
                     </div>
                 </div>
+
+
+
+                <div class="col-xs-12 hidden-lg hidden-md hidden-sm">
+                <a href="{{ path('formation', {'nomCourt':formation.nomCourt}) }}">
+                    <div class="bloc_formation_mobil">
+                        <h1>{{ formation.nomCourt }}</h1>
+                        <h2>{{ formation.nomLong }}</h2>
+                    </div>
+                </a>
+                </div>
+
+
             {% endfor %}
          </div>
     {% else %}
