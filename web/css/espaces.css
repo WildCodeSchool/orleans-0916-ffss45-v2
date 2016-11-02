@@ -1,11 +1,13 @@
-
+.body{
+    font-size: 0.8em;
+}
 .row-centered {
     text-align:center;
 }
 .col-centered {
     display:inline-block;
     float:none;
-    max-width: 600px;
+    max-width: 400px;
 }
 
 .identity{
@@ -21,7 +23,7 @@ figure.snip1279 {
     margin: 10px 1%;
     min-width: 230px;
     max-width: 315px;
-    max-height: 325px;
+    max-height: 220px;
     width: 100%;
     color: #000000;
     text-align: center;
