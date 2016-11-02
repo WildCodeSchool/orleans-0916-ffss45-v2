@@ -36,6 +36,9 @@
     color: black;
 }
 
+.nomCourt {
+    padding-top: 4em;
+}
 
 
 .box{
@@ -45,7 +48,6 @@
 
 .row{
     margin: 0px;
-    padding-top: 1em;
 }
 p {
     margin: 0 0 30px;
