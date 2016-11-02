@@ -1,9 +1,75 @@
 {% extends '@Front/Default/frontLayout.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/secourscivil.css') }}">
 {% endblock %}
 {% block title %}Mission de Secours Civil{% endblock %}
 {% block body %}
-
-
+    <div class="container-fluid secourscivil">
+        <div class="row customrow">
+            <div class="col-xs-12">
+                <h1>Missions de sécurité civile</h1>
+            </div>
+            <div class="col-xs-offset-3 col-xs-6">
+                <p class="introduction">
+                    Les secouristes du Loiret (FFSS45) disposent de moyens humains et matériels pour venir assister ou secourir la population.<br>
+                    Elles est agréée à la Sécurité Civile. Elle participe aux missions suivantes:
+                </p>
+            </div>
+         </div>
+        <div class="row customrow">
+            <div class="col-xs-offset-2 col-xs-4">
+                <h3>Opérations de secours</h3>
+                    <p>Intervenir en urgence, lors de missions de secours aux côtés des secours publics SAMU et Sapeurs-Pompiers. Venir surveiller, intervenir, protéger vos moments de loisirs dans l’eau.</p>
+            </div>
+            <div class="col-xs-4">
+                <h3>Dispositif Prévisionnel de Secours</h3>
+                    <p>Mise en place de dispositifs de secours adaptés à la manifestation pour assurer la sécurité des acteurs et du public (concerts, événements sportifs, festivités ...).</p>
+            </div>
+        </div>
+        <div class="row customrow">
+            <div class="col-xs-offset-2 col-xs-4 actionbloc">
+                    <h3>Actions de soutien et d’encadrement aux populations sinistrées</h3>
+                    <p>Intervient en renfort ponctuel des services de l’Etat ou des secours publics ou à l’occasion de plans de secours sur des accidents de grande ampleur (catastrophes naturelles, innodations...).</p>
+            </div>
+            <div class="col-xs-offset-1 col-xs-4">
+                <img src="{{ asset('images/image3-15.jpeg') }}" alt="" class="img-responsive illustration">
+            </div>
+        </div>
+        <div class="row customrow">
+            <div class="col-xs-offset-2 col-xs-8">
+                <h3>La FFSS 45 possède des moyens d’interventions humains et matériels conséquents:</h3>
+            </div>
+            <div class="col-xs-offset-2 col-xs-4">
+                <ul class="nopuces">
+                    <li><span class="number">12 </span>véhicules de secours</li>
+                    <li><span class="number">4 </span>bateaux</li>
+                    <li><span class="number">150 </span>secouristes</li>
+                    <li><span class="number">150 </span>lits d'urgence</li>
+                    <li><span class="number">5 </span>lots poste de secours</li>
+                    <li><span class="number">15 </span>lots de premiers secours pours les équipiers</li>
+                </ul>
+            </div>
+            <div class="col-xs-4">
+                <ul>
+                    <li class="headercivil">Des équipes d'intervention :</li>
+                    <li>Une équipe chargée des moyens opérationnels (logistique, transmission ...)</li>
+                    <li>Des experts et conseillers techniques (nautique, secours en montagne, sauvetage-deblaiement)</li>
+                    <li>Une équipe médicale</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row customrow">
+            <div class="col-xs-offset-4 col-xs-4">
+                <ul class="appel">
+                    <li class="headercivil appel">Pourquoi faire appel à nous ?</li>
+                    <li>Une prestation clés en main</li>
+                    <li>Des moyens d'intervention efficaces</li>
+                    <li>Du personnel qualifié</li>
+                    <li>Un maillage et un réseau national</li>
+                </ul>
+                <a class="button" href="{{ path('formulaire') }}"><span>Faire une demande</span></a>
+            </div>
+        </div>
+    </div>
 {% endblock %}

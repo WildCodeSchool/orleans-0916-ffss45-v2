@@ -99,7 +99,15 @@ class DefaultController extends Controller
 
     }
 
+    /**
+     * @Route("/secours-civil", name="secoursCivil")
+     */
+    public function secoursCivilAction()
+    {
+        return $this->render('@Front/PosteSecours/secoursCivil.html.twig');
 
+
+    }
 
 }
 

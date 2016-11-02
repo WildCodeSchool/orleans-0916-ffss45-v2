@@ -33,7 +33,7 @@ class FormationType extends AbstractType
             ->add ('contenuFormation')
             ->add('methodePedagogique', TextAreaType::class, array( 'required' => false,))
             ->add ('validation')
-            ->add('photo', FileType::class)
+            ->add('photo', FileType::class, array('required'=>false))
 
         ;
 
