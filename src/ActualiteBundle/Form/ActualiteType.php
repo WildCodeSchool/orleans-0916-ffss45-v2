@@ -21,7 +21,7 @@ class ActualiteType extends AbstractType
             ->add('contenu')
             ->add('auteur')
             ->add('date', DateType::class)
-            ->add('image', FileType::class, array('label'=>'image au format 2000*3000, 2Mo maximum'))
+            ->add('image', FileType::class, array('label'=>'image au format 2000*3000, 2Mo maximum',))
         ;
     }
     

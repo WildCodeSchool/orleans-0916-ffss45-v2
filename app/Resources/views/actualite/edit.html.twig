@@ -1,4 +1,7 @@
 {% extends 'AdminBundle::adminLayout.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+{% endblock %}
 {% form_theme edit_form 'bootstrap_3_horizontal_layout.html.twig' %}
 
 {% block body %}
@@ -22,5 +25,9 @@
         <a class="btn btn-primary btn-sm" href="{{ path('actualite_index') }}">Retour aux actualités</a>
 
     </div>
-{% endblock %}
 
+
+<script> $(document).ready(function() {
+        $('#actualite_titre, #actualite_contenu, #actualite_auteur').summernote();
+    });</script>
+{% endblock %}
