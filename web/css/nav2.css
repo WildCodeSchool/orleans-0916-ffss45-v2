@@ -99,12 +99,12 @@
     position: relative;
     margin-top: 5px;
     font-weight: bold;
-    background-color: yellow;
+    background-color: #FEEF0E;
     color: black;
     font-size: 25px;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-
 }
+
 i.fa.fa-arrow-up{
     color: white;
 }
