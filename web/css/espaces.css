@@ -1,31 +1,17 @@
-.body{
-    font-size: 0.8em;
-}
-.row-centered {
-    text-align:center;
-}
-.col-centered {
-    display:inline-block;
-    float:none;
-    max-width: 400px;
-}
 
-.identity{
-    padding-bottom: 2em;
-}
 
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
 figure.snip1279 {
     font-family: 'Raleway', Arial, sans-serif;
-    color: #fff;
+    color: black;
     position: relative;
     float: left;
     overflow: hidden;
     margin: 10px 1%;
     min-width: 230px;
     max-width: 315px;
-    max-height: 220px;
+    max-height: 100%;
     width: 100%;
-    color: #000000;
     text-align: center;
 }
 figure.snip1279 * {
@@ -62,7 +48,7 @@ figure.snip1279 figcaption {
     height: 100%;
     z-index: 1;
 }
-figure.snip1279 h2,
+
 figure.snip1279 p {
     margin: 0;
     position: absolute;
@@ -70,18 +56,10 @@ figure.snip1279 p {
     left: 0;
     opacity: 0;
 }
-figure.snip1279 h2 {
-    padding: 0 30px;
-    display: inline-block;
-    font-weight: 400;
-    text-transform: uppercase;
-    bottom: 50%;
-}
-figure.snip1279 h2 span {
-    font-weight: 400;
-}
+
+
 figure.snip1279 p {
-    top: 50%;
+    top: 40%;
     padding: 0 50px;
     font-size: 0.8em;
     font-weight: 500;
@@ -104,17 +82,13 @@ figure.snip1279.hover:after {
     -webkit-transform: scaleY(1);
     transform: scaleY(1);
 }
-figure.snip1279:hover figcaption h2,
-figure.snip1279.hover figcaption h2,
+
 figure.snip1279:hover figcaption p,
 figure.snip1279.hover figcaption p {
     -webkit-transition-delay: 0.2s;
     transition-delay: 0.2s;
 }
-figure.snip1279:hover figcaption h2,
-figure.snip1279.hover figcaption h2 {
-    opacity: 1;
-}
+
 figure.snip1279:hover figcaption p,
 figure.snip1279.hover figcaption p {
     opacity: 0.7;
