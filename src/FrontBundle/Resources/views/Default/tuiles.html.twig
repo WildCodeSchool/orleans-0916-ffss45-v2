@@ -5,37 +5,40 @@
     <h1 class="identity"><span class="glyphicon glyphicon-triangle-right"></span>Accédez à nos espaces</h1>
 </div>
 <div class="container">
-    <div class="row content">
+    <div class="row">
         <div class="col-md-4 col-sm-6 col-xs-12 col-centered">
             <figure class="snip1279">
-                <img src="{{ asset('images/particulier.png') }}" alt="image espace particulier"/>
+                <img class="center-block" src="{{ asset('images/particulier.png') }}" alt="image espace particulier"/>
                 <figcaption>
-                    <p class="lead">Accès à votre demande de formation</p>
+                    <h3>Accès</h3>
+                    <p>à votre demande de formation </p>
                 </figcaption>
-               <a href="{{ path('espace_formation',{'typeFormation':'particulier'}) }}"/>
+                <a href="{{ path('espace_formation',{'typeFormation':'particulier'}) }}"></a>
             </figure>
         </div>
-        <div class="col-md-4 col-sm-6 col-xs-12 col-centered">
+        <div class=" col-md-4 col-sm-6 col-xs-12 col-centered">
             <figure class="snip1279">
-                <img src="{{ asset('images/pro.png') }}" alt="image espace professionnel"/>
+                <img class="center-block" src="{{ asset('images/pro.png') }}" alt="image espace professionnel"/>
                 <figcaption>
-                    <p class="lead">Accès à votre demande de formation</p>
+                    <h3>Accès</h3>
+                    <p>à votre demande de formation </p>
                 </figcaption>
-              <a href="{{ path('espace_formation',{'typeFormation':'professionnel'}) }}"></a>
+                <a href="{{ path('espace_formation',{'typeFormation':'professionnel'}) }}"></a>
             </figure>
         </div>
         <div class="col-md-4  col-xs-12 col-centered">
             <figure class="snip1279">
-                <img src="{{ asset('images/secours.png') }}" alt="image espace poste de secours"/>
+                <img class="center-block" src="{{ asset('images/secours.png') }}" alt="image espace poste de secours"/>
                 <figcaption>
-                    <p class="lead">“ Vous organisez un évènement?<br /> Demandez un dispositif de secours ”</p>
+                    <h3>“ Vous organisez un évènement? ”</h3>
+                    <p>Demandez un dispositif de secours</p>
                 </figcaption>
                 <a href="{{ path('formulaire') }}"></a>
-            </figure
+            </figure>
         </div>
     </div>
 </div>
-</div>
+
 
 {% block javascript %}
 <script>

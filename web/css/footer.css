@@ -6,7 +6,8 @@ footer{
     color: white;
     font-weight: bold;
     font-family: 'Raleway', Arial, sans-serif;
-    font-size: 14px;
+    font-size: 0.8em;
+    padding-bottom: 2em;
 }
 
 .logo-footer {
@@ -33,9 +34,9 @@ footer{
     color: white;
     background-color: #3a3f51;
     border: 1px solid #3a3f51;
-    font-size: 20px;
+
     text-align: center;
-    line-height: 37px;
+
 }
 
 .scrollup:hover {
@@ -52,9 +53,9 @@ footer{
     color: white;
     background-color: #3a3f51;
     border: 1px solid #3a3f51;
-    font-size: 20px;
+
     text-align: center;
-    line-height: 37px;
+
 }
  
 .scrollup:hover {
