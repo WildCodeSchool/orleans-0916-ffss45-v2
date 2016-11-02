@@ -2,18 +2,11 @@
     padding-bottom: 30px;
     color: black;
     font-family: Bebasneue, sans-serif;
+
 }
 
 ul {
     list-style-type:none;
-}
-
-.form-group{
-    font-size: 18px;
-}
-
-.contact2{
-    font-size: 22px;
 }
 
 .wrapper         {width:100%;height:100%;margin:0 auto;background:#ffffff}
@@ -28,7 +21,7 @@ iframe, object, embed {
 .myIframe {
     position: relative;
     padding-bottom: 65.25%;
-    padding-top: 30px;
+    padding-top: 10px;
     height: 0;
     overflow: auto;
     -webkit-overflow-scrolling:touch; //<<--- THIS IS THE KEY
@@ -42,7 +35,7 @@ iframe, object, embed {
     height: 100%;
 }
 
-h3.iframe{
+h4.iframe{
     position: absolute;
     top: 0  ;
     left: 35%;
@@ -62,20 +55,21 @@ h3.iframe{
 
 #form input {
     width: 100%;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
-.formulaire h3{
+.formulaire h4{
     font-weight: bold;
 }
 
 .facebook{
-    text-decoration: underline;
-    font-size: 28px;
+    text-decoration:none;
+
 }
 
 textarea{
     width:100%;
-    height: 150px;
+    height: 100px;
+    padding-left: 6px;
+
 }
