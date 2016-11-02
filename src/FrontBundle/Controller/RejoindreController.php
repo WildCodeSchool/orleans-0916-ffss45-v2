@@ -65,8 +65,8 @@ class RejoindreController extends Controller
 
             $message = \Swift_Message::newInstance()
                 ->setSubject('Vous avez une nouvelle demande pour rejoindre la FFSS')
-                ->setFrom('houssemaine.j@gmail.com')
-                ->setTo('asakura45@gmail.com')
+                ->setFrom('site@secourisme45.com')
+                ->setTo('site@secourisme45.com')
                 ->setBody(
                     $this->renderView(
                         'rejoindreEmail.html.twig',
