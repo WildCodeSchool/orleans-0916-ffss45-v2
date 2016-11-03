@@ -19,7 +19,7 @@ body {
     font-weight: 300;
 }
 .pen-title span {
-    font-size: 12px;
+    font-size: 10px;
 }
 .pen-title span .fa {
     color: #ed2553;
@@ -303,7 +303,7 @@ body {
     cursor: pointer;
 }
 .card.alt .toggle:before {
-   
+
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
     font-size: inherit;
