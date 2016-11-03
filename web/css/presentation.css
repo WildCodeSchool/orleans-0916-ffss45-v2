@@ -1,6 +1,7 @@
 body{
     width:100%;
-
+	font-family: Trirong, serif;
+	font-size:18px;
 }
 .job{
     color: #0078a8;
@@ -21,7 +22,7 @@ body{
     font-size: 0.8em;
     color: rgb(0, 55, 112);
     font-weight: bold;
-    padding-top: 2em;
+    padding-top: 0.5em;
     padding-bottom: 0.5em;
 }
 h1,
@@ -34,7 +35,6 @@ h2.lead{
 }
 
 p.lead{
-    font-family: 'Trirong', serif;
     text-align: center;
 }
 
