@@ -31,7 +31,7 @@ class RejoindreController extends Controller
         $rejoindre = new Rejoindre();
 
         $form = $this->createFormBuilder($rejoindre)
-            ->add('civilite', ChoiceType::class, array('choices'=>array('Madame'=>'Madame', 'Monsieur'=>'Monsieur'),'choices_as_values' => true, 'label'=>'Civilité '))
+            ->add('civilite', ChoiceType::class, array('choices'=>array(' '=>' ','Madame'=>'Madame', 'Monsieur'=>'Monsieur'),'choices_as_values' => true, 'label'=>'Civilité '))
             ->add('nom', TextType::class, array('label'=>false,'attr'=>array('placeholder'=>'Votre nom')
             ))
             ->add('prenom', TextType::class, array('label'=>false,'attr'=>array('placeholder'=>'Votre prénom')
