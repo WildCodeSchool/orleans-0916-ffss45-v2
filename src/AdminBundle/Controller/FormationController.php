@@ -56,15 +56,17 @@ class FormationController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $file = $formation->getPhoto();
             // Generate a unique name for the file before saving it
-            $fileName = md5(uniqid()).'.'.$file->guessExtension();
-            // Move the file to the directory where brochures are stored
-            $file->move(
-                $this->getParameter('upload_directory'),
-                $fileName
-            );
+            if ($file)
+            {
+				$fileName = md5(uniqid()).'.'.$file->guessExtension();
+				// Move the file to the directory where brochures are stored
+				$file->move(
+					$this->getParameter('upload_directory'),
+					$fileName
+				);
 
-            $formation->setPhoto($fileName);
-
+				$formation->setPhoto($fileName);
+			}
             $agenda->setFormation($formation);
             $em->persist($agenda);
             $em->flush();
@@ -142,8 +144,9 @@ class FormationController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $file = $formation->getPhoto();
             // Generate a unique name for the file before saving it
-            if ($file)
+            if ($file->isValid())
             {
+				var_dump($file);
 				$fileName = md5(uniqid()).'.'.$file->guessExtension();
 				// Move the file to the directory where brochures are stored
 				$file->move(
@@ -152,6 +155,9 @@ class FormationController extends Controller
 				);
 
 				$formation->setPhoto($fileName);
+			}
+			else {
+				var_dump($file->getError());
 			}
 				$em = $this->getDoctrine()->getManager();
 				$em->persist($formation);
