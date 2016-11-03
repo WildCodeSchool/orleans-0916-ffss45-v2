@@ -1,17 +1,18 @@
-{% extends 'AdminBundle::adminLayout.html.twig' %}
+{% extends 'FrontBundle:Default:frontLayout.html.twig' %}
 
-
-
-
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/error.css') }}">
+{% endblock %}
 
 {% block body %}
 
-    <div class="container">
-        <h1>hello</h1>
+    <div class="error">
+        <h1>Page non trouvée</h1>
 
-            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                {# ... #}
-            {% endif %}
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+            {# ... #}
+        {% endif %}
 
         <p>
             Cette page n'existe pas !

@@ -2,27 +2,27 @@
 
 {%  block stylesheets %}
     {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/presentation.css') }}">
     <link rel="stylesheet" href="{{ asset('css/listFormation.css') }}">
 {% endblock %}
 
 {%  block body %}
     {% for category, tab in formations %}
-        <div class="categorie">
-            <h1>{{ category }}</h1>
-        </div>
+        <h2 class="identity"><span class="glyphicon glyphicon-triangle-right"></span> {{ category }}</h2>
 
+        
         <div class="row formation_row">
             {%  for key,formation in tab %}
-                <div class="col-sm-6 hidden-xs">
+                <div class="col-lg-6 ">
                     <div class="bloc_formation">
-                        <h1>{{ formation.nomCourt }}</h1>
-                        <h2>{{ formation.nomLong }}</h2>
+                        <h3>{{ formation.nomCourt }}</h3>
+                        <h4>{{ formation.nomLong }}</h4>
 
                         <a href="{{ path('formation', {'nomCourt':formation.nomCourt}) }}">
-                        <div class="bloc_formation_full">
-                            <h1>{{ formation.nomCourt }}</h1>
-                            <h2>{{ formation.nomLong }}</h2>
-                            <img class="img-responsive photo_formation center-block" src="{{ asset('upload/' ~ formation.photo) }}" alt=""/>
+                        <div class="bloc_formation bloc_formation_full">
+                            <h3>{{ formation.nomCourt }}</h3>
+                            <h4>{{ formation.nomLong }}</h4>
+                            <img class="img-responsive photo_formation" src="{{ asset('upload/' ~ formation.photo) }}" alt=""/>
                             <p> {{ formation.descriptif }}</p>
 
                         </div>
@@ -32,7 +32,7 @@
 
 
 
-                <div class="col-xs-12 hidden-lg hidden-md hidden-sm">
+              {#  <div class="col-xs-12 hidden-lg hidden-md hidden-sm">
                 <a href="{{ path('formation', {'nomCourt':formation.nomCourt}) }}">
                     <div class="bloc_formation_mobil">
                         <h1>{{ formation.nomCourt }}</h1>
@@ -40,7 +40,7 @@
                     </div>
                 </a>
                 </div>
-
+				#}
 
             {% endfor %}
          </div>

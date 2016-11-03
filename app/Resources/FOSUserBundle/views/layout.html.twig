@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <meta charset="utf-8">
+    <link href="{{ asset('css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/navbar.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/font-awesome.min.css')}}" rel="stylesheet">
+    <link href="{{ asset('https://fonts.googleapis.com/css?family=Montserrat|Lato')}}" rel="stylesheet">
+
+
+    {% block stylesheets %}
+
+    {% endblock %}
+
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.1.0/velocity.min.js"></script>
+    <title>Fédération de Secourisme du Loiret</title>
+</head>
+
+
+<body>
+
+<header>
+    {% block header %}
+        {% include 'AdminBundle:Default:header.html.twig' %}
+    {% endblock %}
+</header>
+
+
+{% block body %}
+
+
+{% endblock %}
+
+
+{% block footer %}
+
+{% endblock %}
+
+</body>
+
+
+{% block javascript %}
+    <script>
+    </script>
+
+{% endblock %}
+
+</html>
