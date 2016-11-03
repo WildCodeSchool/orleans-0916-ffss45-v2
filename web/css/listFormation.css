@@ -2,29 +2,46 @@
 
 .bloc_formation {
 	padding:1em;
-	margin-bottom:1em;
 	background-color:#E7E7E7;
 	border-left:6px solid #003770;
 	text-align:center;
+    margin-bottom:4.5em;
+    margin-top:0.5em;
+
+
+
 }
 
 .bloc_formation_full{
-    margin-top:-6em;
-    margin-left:-1.4em;
+    margin-top:-7.5em;
+    margin-left:-1.35em;
     display:none;
     position: absolute;
 	border-left:6px solid #FFCC06;
     z-index: 15;
 	background-color:#FFFEF8;
-	
+    padding-bottom:0;
+    padding-top:0;
+    padding-right:3em;
+
+
+
+
+}
+
+h3{
+    padding-top:0;
 }
 .bloc_formation_full h4{
 	color:#353535;
+    font-size:1.2;
 }
 .bloc_formation_full p{
-	font-size:0.9em;
+	font-size:1em;
 	text-align:justify;
-	padding:0.3em;
+    margin-top:2.3em;
+    margin-right:3em;
+
 }
 
 .bloc_formation:hover .bloc_formation_full{
@@ -36,8 +53,11 @@
 .photo_formation{
     padding:5px;
     float: left;
-    width: 150px;
+    width: 225px;
     display: inline-block;
+    border-radius: 25px;
+    margin-right:25px;
+    margin-bottom:0.5em;
 
 }
 
@@ -48,7 +68,13 @@
     border: 2px solid black;
     border-radius:40px;
     color:black;
-    background-color:red;
     margin: 20px 10px 20px 10px;
     padding: 5px 5px 5px 5px;
+}
+
+
+.identity{
+
+    margin-bottom:1em;
+    margin-top:1em;
 }
