@@ -70,9 +70,9 @@ swiftmailer:
     host:      "%mailer_host%"
     port:  "%mailer_port%"
     username:  "%mailer_user%"
-    auth_mode:  "%mailer_auth_mode%"
-    password:  "%mailer_password%"
     encryption:  "%mailer_encryption%"
+    password:  "%mailer_password%"
+    auth_mode: "%mailer_auth_mode%"
     spool:     { type: memory }
 
 # app/config/config.yml

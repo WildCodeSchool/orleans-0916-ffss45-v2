@@ -23,5 +23,5 @@ Pour les actualités veuillez à toujours choisir une photo lorsque vous éditez
 
 ##### Créer
 Cette action  permet de créer une actualité, une formation ou un agenda.
-Attention au choix de la photo pour les actualités. Celle-ci doit être en format 3000*2000 pixels et ne pas dépasse 2 Mo. Ceci afin d'assurer un bon affichage en page d'accueil.
+Attention au choix de la photo pour les actualités. Celle-ci doit être en format 3000*2000 pixels et ne pas dépasser 2 Mo. Ceci afin d'assurer un bon affichage en page d'accueil.
 Une fois l'actualité créée, elle se retrouvera directement dans le carousel en page d'accueil et en tête de liste dans la page d'actualités.

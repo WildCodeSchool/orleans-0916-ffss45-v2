@@ -60,7 +60,7 @@ class Formation
     /**
      * @var string
      *
-     * @ORM\Column(name="photo", type="string")
+     * @ORM\Column(name="photo", type="string", nullable=true)
      */
     private $photo;
 

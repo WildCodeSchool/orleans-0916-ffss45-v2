@@ -1,18 +1,24 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,500);
 
 footer{
     text-align: center;
     background-color:#253571;
     color: white;
-    font-weight: bold;
-    font-family: 'Raleway', Arial, sans-serif;
-    font-size: 0.8em;
-    padding-bottom: 2em;
+    font-size: 18px;
+    padding-top: 3em;
+    padding-bottom: 1.5em;
+    font-family: Trirong, serif;
+
 }
 
+footer li {
+	margin:0.5em;
+}
+footer a {
+    color: white;
+}
 .logo-footer {
     width:70px;
-    margin-top: -30px;
+    margin-top: -4.8em;
     margin-left: -40px;
     position: absolute;
     left: 50%;
@@ -64,4 +70,11 @@ footer{
 
 footer a:visited{
     color: white;
+}
+footer a:hover{
+    color: white;
+}
+
+ul{
+    list-style: none;
 }
