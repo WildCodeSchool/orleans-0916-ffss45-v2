@@ -70,7 +70,7 @@
         margin-bottom: 0;
     }
     .dropdown-menu-large .dropdown-header {
-        padding: 3px 15px !important;
+        padding: 3px  !important;
     }
 }
 
@@ -86,7 +86,6 @@
         position: fixed;
         top: 0;
         z-index: 1000;
-        margin-right: 15px;
         width:100%;
     }
 }
@@ -96,15 +95,19 @@
 }
 
 .joinButton{
-    position: relative;
-    margin-top: 5px;
-    font-weight: bold;
-    background-color: #FEEF0E;
-    color: black;
-    font-size: 25px;
+    background-color: #FFCC06;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight:bold;
+}
+.joinButton_link {
+    color:white;
+
 }
 
 i.fa.fa-arrow-up{
     color: white;
+}
+.navbar-collapse {
+	padding-right:0px;
 }

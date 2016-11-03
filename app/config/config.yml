@@ -68,11 +68,11 @@ doctrine:
 swiftmailer:
     transport: "%mailer_transport%"
     host:      "%mailer_host%"
-    port:  "%mailer_port%"
+    port:  22
     username:  "%mailer_user%"
-    auth_mode:  "%mailer_auth_mode%"
+
     password:  "%mailer_password%"
-    encryption:  "%mailer_encryption%"
+
     spool:     { type: memory }
 
 # app/config/config.yml
