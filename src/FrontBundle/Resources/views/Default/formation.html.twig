@@ -8,10 +8,12 @@
 
 
 {% block body %}
+
      <div class="container-fluid page {{ formation.categorie.nomCategorie }}">
          <div class="row">
             <div class="col-md-12">
                 <h1 class="page-title"><strong>{{ formation.nomLong }}</strong><span class="nomCourt"> - {{ formation.nomCourt }}</span></h1>
+				<a class="btn  btn-info pull-right" href="{{ path('formation_pdf', {'id':formation.id}) }}">Download PDF</a>
             </div>
         </div>
 

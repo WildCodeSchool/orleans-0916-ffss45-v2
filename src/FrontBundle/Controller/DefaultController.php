@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-
+use Symfony\Component\HttpFoundation\Response;
 
 class DefaultController extends Controller
 {
@@ -86,8 +86,26 @@ class DefaultController extends Controller
         return $this->render('FrontBundle:Default:formation.html.twig', array('formation' => $formation));
 
     }
+    
+    /**
+     * @Route("/formation/{id}/pdf", name="formation_pdf")
+     */
+    public function formationPDFAction(Formation $formation)
+    {
+		$html = $this->renderView('FrontBundle:Default:formation_content.html.twig', array(
+			'formation'  => $formation
+		));		
+		//$pageUrl = $this->generateUrl('formation', array('nomCourt'=>$formation->getNomCourt()), true); // use absolute path!
 
-
+		return new Response(
+			$this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+			200,
+			array(
+				'Content-Type'          => 'application/pdf',
+				'Content-Disposition'   => 'attachment; filename="file.pdf"'
+			)
+		);
+	}
 
     /**
      * @Route("/mentions-legales", name="mentionsLegales")
