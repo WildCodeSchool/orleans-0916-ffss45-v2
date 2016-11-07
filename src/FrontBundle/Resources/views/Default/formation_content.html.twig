@@ -1,0 +1,70 @@
+<html>
+	<head>
+		<link href="{{ absolute_url(asset('css/formation_pdf.css'))}}" rel="stylesheet">
+		    <meta charset="utf-8">
+
+	</head>
+	<body>
+     <div class="container-fluid page {{ formation.categorie.nomCategorie }}">
+         <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-title"><strong>{{ formation.nomLong }}</strong><span class="nomCourt"> - {{ formation.nomCourt }}</span></h1>
+            </div>
+        </div>
+
+            <div class="row box">
+                <div class="col-md-6">
+                    <h2>Public Visé</h2>
+                    <p>{{ formation.publicVise }}</p>
+                </div>
+                <div class="col-md-6">
+                    <h2>Objectif Visé</h2>
+                    <p>{{ formation.objectifVise }}</p>
+                </div>
+            </div>
+
+			<h3>Actualisation</h3>
+				 <p>{{ formation.objectifVise }}</p>
+			<h3>Validation de la formation </h3>
+				 <p>{{ formation.validation }}</p>
+			<h3>Durée</h3>
+				 <p>{{ formation.dureeFormation }}</p>
+			<h3>Contenu de la formation</h3>
+				 <p>{{ formation.contenuFormation }}</p>
+			<h3>Méthode pédagogique</h3>
+				<p>{{ formation.methodePedagogique }}</p>
+
+               
+
+        <div class="container">
+            <h2 class="text-left agenda"><span >Agenda</span></h2>
+            <table class="container">
+                <thead>
+                <tr>
+                    <th><h4>Date de début</h4></th>
+                    <th><h4>Date de fin</h4></th>
+                    <th><h4>Heure de début AM</h4></th>
+                    <th><h4>Heure de fin PM</h4></th>
+                    <th><h4>Heure de début PM</h4></th>
+                    <th><h4>Heure de fin PM</h4></th>
+                    <th><h4>Adresse</h4></th>
+                    <th><h4>Remarque</h4></th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for agenda in formation.agendas %}
+                        <tr>
+                            <td>{{ agenda.dateDeDebut|date('d-m-Y') }}</td>
+                            <td>{{ agenda.dateDeFin |date('d-m-Y')}}</td>
+                            <td>{{ agenda.heureDeDebutAm |date('H:i')}}</td>
+                            <td>{{ agenda.heureDeFinAm |date('H:i')}}</td>
+                            <td>{{ agenda.heureDeDebutPm |date('H:i')}}</td>
+                            <td>{{ agenda.heureDeFinPm |date('H:i')}}</td>
+                            <td>{{ agenda.adresse }}</td>
+                            <td>{{ agenda.remarque }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+	</body>
+</html>
