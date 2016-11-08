@@ -144,21 +144,20 @@ class FormationController extends Controller
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $file = $formation->getPhoto();
             // Generate a unique name for the file before saving it
-            if ($file->isValid())
-            {
-				var_dump($file);
-				$fileName = md5(uniqid()).'.'.$file->guessExtension();
-				// Move the file to the directory where brochures are stored
-				$file->move(
-					$this->getParameter('upload_directory'),
-					$fileName
-				);
+            if ($file) {
+                if ($file->isValid()) {
+                    $fileName = md5(uniqid()) . '.' . $file->guessExtension();
+                    // Move the file to the directory where brochures are stored
+                    $file->move(
+                        $this->getParameter('upload_directory'),
+                        $fileName
+                    );
 
-				$formation->setPhoto($fileName);
-			}
-			else {
-				var_dump($file->getError());
-			}
+                    $formation->setPhoto($fileName);
+                } else {
+                    var_dump($file->getError());
+                }
+            }
 				$em = $this->getDoctrine()->getManager();
 				$em->persist($formation);
 				$em->flush();
