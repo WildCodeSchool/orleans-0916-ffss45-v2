@@ -9,13 +9,9 @@
     <div class="container-fluid poste">
         <div class="row">
             <h1>Demander un poste de secours</h1>
-            <div class="col-xs-12 col-sm-offset-1 col-sm-4">
-
-
-    {% include 'CraueFormFlowBundle:FormFlow:stepList.html.twig' %}
-            </div>
-            <div class="col-xs-12 col-sm-7">
+            <div class="col-xs-offset-3 col-xs-7">
 {{ form_start(form) }}
+
     {{ form_errors(form) }}
 
     {% if flow.getCurrentStepNumber() == 1 %}
