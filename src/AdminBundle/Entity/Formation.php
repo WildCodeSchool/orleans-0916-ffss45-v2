@@ -107,12 +107,14 @@ class Formation
      */
     private $validation;
 
+
     /**
      * @var text
      *
-     * @ORM\Column(name="validation", type="text")
+     * @ORM\Column(name="actualisation", type="text")
      */
     private $actualisation;
+
 
     /**
      * Get id
@@ -391,4 +393,5 @@ class Formation
     {
         $this->actualisation = $actualisation;
     }
+
 }

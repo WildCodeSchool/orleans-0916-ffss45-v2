@@ -13,7 +13,7 @@
          <div class="row">
             <div class="col-md-12">
                 <h1 class="page-title"><strong>{{ formation.nomLong }}</strong><span class="nomCourt"> - {{ formation.nomCourt }}</span></h1>
-				<a class="btn  btn-info pull-right" href="{{ path('formation_pdf', {'id':formation.id}) }}">Download PDF</a>
+
             </div>
         </div>
 
@@ -62,8 +62,12 @@
                 <section id="content5">
                     <p>{{ formation.methodePedagogique }}</p>
                 </section>
+            <div class="row box">
+                <div class="col-md-12 centered">
+                    <a class="btn  btn-info" href="{{ path('formation_pdf', {'id':formation.id}) }}">Download PDF</a>
+                </div>
+            </div>
         </main>
-
         <div class="container">
             <h2 class="text-left agenda"><span >Agenda</span></h2>
             <table class="container">
@@ -96,7 +100,6 @@
             </table>
 
             <a class="button" href="{{ path('page_accueil_principale') }}#formulaire_contact"><span>Je m'inscris !</span></a>
-
 
         </div>
 
