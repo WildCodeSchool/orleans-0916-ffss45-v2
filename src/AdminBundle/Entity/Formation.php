@@ -110,7 +110,7 @@ class Formation
     /**
      * @var text
      *
-     * @ORM\Column(name="validation", type="text")
+     * @ORM\Column(name="actualisation", type="text")
      */
     private $actualisation;
 
