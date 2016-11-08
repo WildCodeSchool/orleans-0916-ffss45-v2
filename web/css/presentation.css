@@ -80,7 +80,15 @@ strong{
 
 .chiffres .fa, .chiffres strong {
 	color: #FFCC06;
-    font-size:25px;
-
 }
 
+i.fa{
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.first{
+    font-size: 1.2em;
+    text-align: center;
+    margin-right: 0.3em;
+}

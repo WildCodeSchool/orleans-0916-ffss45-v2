@@ -26,6 +26,7 @@ class FormationType extends AbstractType
                                                         'choice_label'=>'nomCategorie',
                                                         'required'=>false,
                                                         ))
+            ->add('couleur')
             ->add('descriptif')
             ->add ('publicVise')
             ->add ('objectifVise')
