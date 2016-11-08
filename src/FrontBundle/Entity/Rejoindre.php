@@ -11,6 +11,7 @@ namespace FrontBundle\Entity;
 
 class Rejoindre
 {
+    protected $typeCandidat;
     protected $civilite;
     protected $nom;
     protected $prenom;
@@ -24,6 +25,22 @@ class Rejoindre
     protected $dateNaissance;
     protected $ffss;
 
+
+    /**
+    * @return mixed
+    */
+    public function getTypeCandidat()
+    {
+        return $this->typeCandidat;
+    }
+
+    /**
+     * @param mixed $typeCandidat
+     */
+    public function setTypeCandidat($typeCandidat)
+    {
+        $this->typeCandidat = $typeCandidat;
+    }
     /**
      * @return mixed
      */
