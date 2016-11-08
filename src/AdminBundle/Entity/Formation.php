@@ -107,7 +107,12 @@ class Formation
      */
     private $validation;
 
-
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="validation", type="text")
+     */
+    private $actualisation;
 
     /**
      * Get id
@@ -369,5 +374,21 @@ class Formation
     public function setPhoto($photo)
     {
         $this->photo = $photo;
+    }
+
+    /**
+     * @return text
+     */
+    public function getActualisation()
+    {
+        return $this->actualisation;
+    }
+
+    /**
+     * @param text $actualisation
+     */
+    public function setActualisation($actualisation)
+    {
+        $this->actualisation = $actualisation;
     }
 }
