@@ -9,7 +9,6 @@
             <tr>
                 <th>Nom court</th>
                 <th>Catégorie</th>
-                <th>Couleur</th>
                 <th>Agendas</th>
             </tr>
         </thead>
@@ -18,7 +17,7 @@
             <tr>
                 <td><a href="{{ path('formation_edit', { 'id': formation.id }) }}">{{ formation.nomCourt }}</a></td>
                 <td>{{ formation.categorie.nomCategorie }}</td>
-                <td>{{ formation.categorie.couleur }}</td>
+
                 <td>
                     <a href="{{ path('formation_agendas', { 'id': formation.id }) }}"><i title="agendas" class="fa fa-calendar fa-lg"></i></a>
                 </td>
