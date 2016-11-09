@@ -17,9 +17,9 @@
 
 .titre_de_la_page{
     position:absolute;
-    left: 20em;
+    left: 950px;
     top: 250px;
-    font-family: "Bebasneue", Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: Bebasneue, Helvetica Neue, Helvetica, Arial, sans-serif;
     font-size: 45px;
     color:#FFFFFF;
     font-weight:bold;
@@ -39,6 +39,15 @@
 
 
 .glyphicon {
+    font-size: 0.8em;
+    color: rgb(0, 55, 112);
+    font-weight: bold;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.glyphicon-carree{
+
     width:25px;
     height:25px;
     background-color: white;
