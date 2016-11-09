@@ -10,19 +10,19 @@
     {% for category, tab in formations %}
 
 
-        <h2 class="identity" ><span class="glyphicon glyphicon-triangle-right"></span> {{ category }} </h2>
+        <h2 class="identity"><span class="glyphicon glyphicon-triangle-right"></span> {{ category }} </h2>
 
         
         <div class="row formation_row" >
             {%  for key,formation in tab %}
                 <div class="col-lg-6 ">
-                    <div class="bloc_formation"  style="background-color:{{ formation.categorie.couleur }}">
-                        <h3>{{ formation.nomCourt }}</h3>
+                    <div class="bloc_formation">
+                        <h3  style="color:{{ formation.categorie.couleur }}">{{ formation.nomCourt }}</h3>
                         <h4>{{ formation.nomLong }}</h4>
 
                         <a href="{{ path('formation', {'nomCourt':formation.nomCourt}) }}">
-                        <div class="bloc_formation bloc_formation_full" >
-                            <h3>{{ formation.nomCourt }}</h3>
+                        <div class="bloc_formation bloc_formation_full">
+                            <h3 style="background-color:{{ formation.categorie.couleur }}">{{ formation.nomCourt }}</h3>
                             <h4>{{ formation.nomLong }}</h4>
                             <img class="img-responsive photo_formation" src="{{ asset('upload/' ~ formation.photo) }}" alt=""/>
                             <p> {{ formation.descriptif }}</p>

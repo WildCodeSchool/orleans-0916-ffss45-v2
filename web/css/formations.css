@@ -81,12 +81,8 @@ label {
 }
 
 label:hover {
-    color:  #003770;
+    color:  #FFCB00;
     cursor: pointer;
-}
-
-i:hover{
-    color: #FFCB00;
 }
 
 input:checked + label {
