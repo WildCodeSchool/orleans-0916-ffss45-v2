@@ -26,7 +26,7 @@ class FormationPublic
      * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="formationPublics")
      * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
      */
-    private $category;
+    private $categorie;
 
 
     /**
@@ -74,26 +74,26 @@ class FormationPublic
     }
 
     /**
-     * Set category
+     * Set categorie
      *
-     * @param \AdminBundle\Entity\Categorie $category
+     * @param \AdminBundle\Entity\Categorie $categorie
      *
      * @return FormationPublic
      */
-    public function setCategory(\AdminBundle\Entity\Categorie $category = null)
+    public function setCategorie(\AdminBundle\Entity\Categorie $categorie = null)
     {
-        $this->category = $category;
+        $this->categorie = $categorie;
 
         return $this;
     }
 
     /**
-     * Get category
+     * Get categorie
      *
      * @return \AdminBundle\Entity\Categorie
      */
-    public function getCategory()
+    public function getCategorie()
     {
-        return $this->category;
+        return $this->categorie;
     }
 }
