@@ -1,18 +1,13 @@
-
-
 .page {
     margin: 0;
-    background-image: -webkit-linear-gradient( rgba(34, 62, 122, 1) 40%, transparent 40%);
-    background-image: linear-gradient(105deg,rgba(34, 62, 122, 1) 40%, transparent 40%);
-    background-color: white;
+    background-image: -webkit-linear-gradient( white 60%, transparent 60%);
+    background-image: linear-gradient(290deg,white 60%, transparent 60%);
     padding-top: 8em;
     font-weight: 300;
     height: 100%;
     font: 14px/1 'Open Sans', sans-serif;
     font-size: 1em;
-
 }
-
 
 .page-title {
     right: 0;
@@ -38,7 +33,6 @@
 
 .box{
     margin-bottom: 5em;
-
 }
 
 .row{
@@ -48,6 +42,11 @@ p {
     margin: 0 0 30px;
     line-height: 1.2;
 
+}
+
+.centered{
+    text-align: center;
+    padding-top: 50px;
 }
 
 main {
@@ -75,21 +74,25 @@ label {
     font-weight: 600;
     text-align: center;
     border: 1px solid transparent;
-    color: #00AADD;
+    color: #003770;
     width: auto;
 
 
 }
 
 label:hover {
-    color:   #00AADD;
+    color:  #003770;
     cursor: pointer;
 }
 
+i:hover{
+    color: #FFCB00;
+}
+
 input:checked + label {
-    color: rgb(255, 203, 0);
+    color: #FFCB00;
     border: 1px solid #ddd;
-    border-top: 6px solid rgb(255, 203, 0);
+    border-top: 6px solid #FFCB00;
     border-bottom: 2px solid #fff;
 }
 
@@ -118,7 +121,6 @@ input:checked + label {
     }
 }
 
-
 h2 {
     color: #223E7A;
     font-weight: 300;
@@ -126,6 +128,7 @@ h2 {
     display: block;
     line-height:1em;
     padding-bottom: 1em;
+    font-family: bold;
 }
 
 
@@ -136,7 +139,6 @@ h2 {
 
 .container th h3 {
     font-weight: bold;
-
     text-align: left;
 
 
@@ -213,17 +215,16 @@ h2 {
 }
 
 .button {
+    border-radius: 10px;
     text-decoration: none;
     width: 200px;
-    border: #4DC3FA;
     padding: 20px;
     display: block;
     text-align: center;
     margin: 100px auto;
     cursor: pointer;
-    font-size: 1.2em;
+    font-size: 1em;
     color: #223E7A;
-    background-color: transparent;
     position: relative;
     border: 3px solid #223E7A;
     transition: all 0.5s ease;

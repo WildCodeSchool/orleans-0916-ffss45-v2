@@ -50,6 +50,8 @@ class CreatePosteSecoursStep1Form extends AbstractType
                     'Sport'=>'sport',
                     'Rassemblement de personnes'=>'personnes'
                 ),
+                    'expanded'=>true,
+                    'multiple'=>false,
                 'choices_as_values' => true,)
             )
 

@@ -9,11 +9,11 @@
 
 {% block body %}
 
-     <div class="container-fluid page {{ formation.categorie.nomCategorie }}">
+     <div class="container-fluid page" style="background-color:{{ formation.categorie.couleur }}">
          <div class="row">
             <div class="col-md-12">
                 <h1 class="page-title"><strong>{{ formation.nomLong }}</strong><span class="nomCourt"> - {{ formation.nomCourt }}</span></h1>
-				<a class="btn  btn-info pull-right" href="{{ path('formation_pdf', {'id':formation.id}) }}">Download PDF</a>
+
             </div>
         </div>
 
@@ -29,7 +29,7 @@
                 </div>
             </div>
 
-                 <input id="tab1" type="radio" name="tabs" checked>
+                 <input id="tab1" type="radio" name="tabs" checked >
                  <label for="tab1"><i class="fa fa-refresh fa-2x"></i><h3>Actualisation</h3></label>
 
                  <input id="tab2" type="radio" name="tabs">
@@ -39,10 +39,10 @@
                  <label for="tab3"><i class="fa fa-hourglass-o fa-2x"></i><h3>Durée</h3></label>
 
                  <input id="tab4" type="radio" name="tabs">
-                 <label for="tab4"><i class="fa fa-list fa-2x" ></i><h3>Contenu de la formation</h3></label>
+                 <label for="tab4"><i class="fa fa-list fa-2x"></i><h3>Contenu de la formation</h3></label>
 
                  <input id="tab5" type="radio" name="tabs">
-                 <label for="tab5"><i class="fa fa-user fa-2x" ></i><h3>Méthode pédagogique</h3></label>
+                 <label for="tab5"><i class="fa fa-user fa-2x"></i><h3>Méthode pédagogique</h3></label>
 
                  <section id="content1">
                      <p>{{ formation.actualisation }}</p>
@@ -62,8 +62,12 @@
                 <section id="content5">
                     <p>{{ formation.methodePedagogique }}</p>
                 </section>
+            <div class="row box">
+                <div class="col-md-12 centered">
+                    <a class="button"  href="{{ path('formation_pdf', {'id':formation.id}) }}">Download PDF</a>
+                </div>
+            </div>
         </main>
-
         <div class="container">
             <h2 class="text-left agenda"><span >Agenda</span></h2>
             <table class="container">
@@ -95,8 +99,7 @@
                 </tbody>
             </table>
 
-            <a class="button" href="{{ path('page_accueil_principale') }}#formulaire_contact"><span>Je m'inscris !</span></a>
-
+            <a class="button" style="backgroun-color:{{ formation.categorie.couleur }}" href="{{ path('page_accueil_principale') }}#formulaire_contact" ><span>Je m'inscris !</span></a>
 
         </div>
 
