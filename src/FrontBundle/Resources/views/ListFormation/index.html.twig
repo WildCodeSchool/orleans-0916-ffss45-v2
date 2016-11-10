@@ -9,24 +9,31 @@
 {%  block body %}
     {% for category, tab in formations %}
 
+        <h1 class="identity"><span class="glyphicon glyphicon-triangle-right"></span> {{ category }} </h1>
 
-        <h2 class="identity"><span class="glyphicon glyphicon-triangle-right"></span> {{ category }} </h2>
 
-        
         <div class="row formation_row" >
             {%  for key,formation in tab %}
                 <div class="col-lg-6 ">
-                    <div class="bloc_formation">
+                    <div style="border-left-color:{{ formation.categorie.couleur }}" class="bloc_formation">
                         <h3  style="color:{{ formation.categorie.couleur }}">{{ formation.nomCourt }}</h3>
                         <h4>{{ formation.nomLong }}</h4>
 
                         <a href="{{ path('formation', {'nomCourt':formation.nomCourt}) }}">
-                        <div class="bloc_formation bloc_formation_full">
-                            <h3 style="background-color:{{ formation.categorie.couleur }}">{{ formation.nomCourt }}</h3>
-                            <h4>{{ formation.nomLong }}</h4>
-                            <img class="img-responsive photo_formation" src="{{ asset('upload/' ~ formation.photo) }}" alt=""/>
-                            <p> {{ formation.descriptif }}</p>
 
+                        <div class="bloc_formation bloc_formation_full">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h3 style="background-color:{{ formation.categorie.couleur }}">{{ formation.nomCourt }}</h3>
+                                    <h4>{{ formation.nomLong }}</h4>
+                                </div>
+                                <div class="col-md-3 col-sm-3 col-xs-10">
+                                    <img class="img-responsive  photo_formation" src="{{ asset('upload/' ~ formation.photo) }}" alt=""/>
+                                </div>
+                                <div class="col-md-9 col-sm-8 col-xs-12">
+                                    <p class="text-left"> {{ formation.descriptif }}</p>
+                                </div>
+                            </div>
                         </div>
                         </a>
                     </div>

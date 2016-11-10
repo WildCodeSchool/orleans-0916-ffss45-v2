@@ -64,5 +64,8 @@ h2 {
 }
 
 body{
+    padding-top: 6em;
+    padding-bottom: 6em;
     width: 100%;
+    height:100%;
 }
