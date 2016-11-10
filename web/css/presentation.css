@@ -1,8 +1,4 @@
-body{
-    width:100%;
-	font-family: Trirong, serif;
-	font-size:18px;
-}
+
 .job{
     color: #0078a8;
     text-decoration: underline;
@@ -29,7 +25,7 @@ body{
 h1,
 h2{
     color: rgb(0, 55, 112);
-    font-size:45px;
+
 
 }
 
@@ -37,7 +33,7 @@ h2{
 h3{
 
     color: rgb(0, 55, 112);
-    font-size:32px;
+
 }
 
 h2.lead{

@@ -1,5 +1,9 @@
 
-
+body{
+    width:100%;
+    font-family: Trirong, serif;
+    font-size:18px;
+}
 
 
 
@@ -14,5 +18,5 @@ h1, h2, h3, h4, h5, h6{
 
 p{
 
-    font-size:500px;
+    font-size:20px;
 }
