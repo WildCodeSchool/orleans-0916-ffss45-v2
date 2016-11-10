@@ -8,6 +8,52 @@
     margin-right: 0px;
 }
 
+@font-face {
+    font-family: 'Bebasneue';
+    src: url('fonts/BebasNeue.otf');
+}
+
+
+
+.titre_de_la_page{
+    position:absolute;
+    left: 950px;
+    top: 250px;
+    font-family: Bebasneue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 45px;
+    color:#FFFFFF;
+    font-weight:bold;
+}
+
+
+
+.sous_titre_de_la_page{
+    position:absolute;
+    left: 950px;
+    top: 375px;
+    font-family: Bebasneue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-size: 35px;
+    color:#FFFFFF;
+    font-weight:bold;
+}
+
+
+.glyphicon {
+    font-size: 0.8em;
+    color: rgb(0, 55, 112);
+    font-weight: bold;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+}
+
+.glyphicon-carree{
+
+    width:25px;
+    height:25px;
+    background-color: white;
+}
+
+
 .dropdown-large {
     position: static !important;
     margin-right: 5px;

@@ -1,8 +1,7 @@
 .page {
     margin: 0;
-    background-image: -webkit-linear-gradient( rgba(34, 62, 122, 1) 40%, transparent 40%);
-    background-image: linear-gradient(105deg,rgba(34, 62, 122, 1) 40%, transparent 40%);
-    background-color: white;
+    background-image: -webkit-linear-gradient( white 60%, transparent 60%);
+    background-image: linear-gradient(290deg,white 60%, transparent 60%);
     padding-top: 8em;
     font-weight: 300;
     height: 100%;
@@ -27,15 +26,6 @@
     color: black;
 }
 
-.nomCourt {
-    padding-top: 4em;
-}
-
-
-.box{
-    margin-bottom: 5em;
-}
-
 .row{
     margin: 0px;
 }
@@ -53,7 +43,7 @@ p {
 main {
     min-width: 320px;
     max-width: 88%;
-    padding: 50px;
+    padding: 30px;
     margin: 0 auto;
     background: #fff;
 }
@@ -71,25 +61,25 @@ input {
 label {
     display: inline-block;
     margin: 0 0 -1px;
-    padding: 15px 25px;
+    padding: 15px 15px;
     font-weight: 600;
     text-align: center;
     border: 1px solid transparent;
-    color: #00AADD;
+    color: #003770;
     width: auto;
 
 
 }
 
 label:hover {
-    color:   #00AADD;
+    color:  #FFCB00;
     cursor: pointer;
 }
 
 input:checked + label {
-    color: rgb(255, 203, 0);
+    color: #FFCB00;
     border: 1px solid #ddd;
-    border-top: 6px solid rgb(255, 203, 0);
+    border-top: 6px solid #FFCB00;
     border-bottom: 2px solid #fff;
 }
 
@@ -108,8 +98,6 @@ input:checked + label {
 
     label:before {
         margin: 0;
-
-
     }
 }
 @media screen and (max-width: 400px) {
@@ -130,13 +118,12 @@ h2 {
 
 
 .agenda{
-    padding: 100px 50px 40px 300px;
+    padding: 50px 50px 40px 300px;
     color: black;
 }
 
 .container th h3 {
     font-weight: bold;
-
     text-align: left;
 
 
@@ -213,17 +200,16 @@ h2 {
 }
 
 .button {
+    border-radius: 10px;
     text-decoration: none;
     width: 200px;
-    border: #4DC3FA;
     padding: 20px;
     display: block;
     text-align: center;
     margin: 100px auto;
     cursor: pointer;
-    font-size: 1.2em;
+    font-size: 1em;
     color: #223E7A;
-    background-color: transparent;
     position: relative;
     border: 3px solid #223E7A;
     transition: all 0.5s ease;

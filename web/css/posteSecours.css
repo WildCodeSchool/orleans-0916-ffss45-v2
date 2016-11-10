@@ -1,4 +1,14 @@
+.debut_page {
+	background-color:#253571;
+	padding:1.5em;
+	color:white;
+	margin-bottom:1em;
+	margin-top:0;
+}
 
+.form-inline {
+	display:inline-block;
+}
 
 .craue_formflow_buttons {
     margin-top: 10px;
@@ -46,21 +56,12 @@ textarea {
     clear: both;
 }
 
-label{
-    margin-right: 20px;
-    display: inline-block;
-    width: 400px;
-    margin-bottom: 10px;
-}
-select{
-margin-bottom: 10px;
-}
+
+
 
 .poste{
-    padding-top: 20px;
     padding-bottom: 40px;
     font-family: Bebasneue, sans-serif;
-    background-color: #e3e3e3;
 
 }
 
@@ -68,12 +69,22 @@ margin-bottom: 10px;
     margin-bottom: 0px;
 }
 
-h1{
-    margin-top: 0;
-    padding-top: 40px;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-    color: #001BB2;
-    font-weight: bold;
-    text-align: center;
+
+
+#createPosteSecoursStep1_typeManif label  {
+	text-align:center;
+	padding:5em;
+	background-color:#253571;
+	color:white;
+	cursor:pointer;
+}
+
+
+
+
+ label input[type="radio"]:checked   {
+	padding:5em;
+	background-color:#BEF0A3;
+	color:#24731B;
+	box-shadow:0px 0px 6px #24731B inset;
 }
