@@ -1,5 +1,7 @@
 
 {% extends '@Front/Default/frontLayout.html.twig' %}
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('css/posteSecours.css') }}" rel="stylesheet">
@@ -28,7 +30,7 @@
     craue_formflow_button_label_back: 'Précédent',
     craue_formflow_button_class_reset: 'hidden-xs hidden-md hidden-sm hidden-lg',
     craue_formflow_button_class_back: 'pull-left',
-    } %}
+    } %}zz
 {{ form_end(form) }}
             </div>
         </div>
