@@ -1,4 +1,4 @@
-h1 {
+.debut_page {
 	background-color:#253571;
 	padding:1.5em;
 	color:white;
@@ -71,7 +71,7 @@ textarea {
 
 
 
-#createPosteSecoursStep1_typeManif label {
+#createPosteSecoursStep1_typeManif label  {
 	text-align:center;
 	padding:5em;
 	background-color:#253571;
@@ -82,7 +82,7 @@ textarea {
 
 
 
-#createPosteSecoursStep1_typeManif input:checked   {
+ label input[type="radio"]:checked   {
 	padding:5em;
 	background-color:#BEF0A3;
 	color:#24731B;
