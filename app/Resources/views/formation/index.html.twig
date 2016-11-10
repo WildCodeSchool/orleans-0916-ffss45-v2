@@ -1,6 +1,7 @@
 {% extends 'AdminBundle::adminLayout.html.twig' %}
 
 {% block body %}
+
 <div class="container">
     <h1>Liste des formations
     </h1>
@@ -17,7 +18,6 @@
             <tr>
                 <td><a href="{{ path('formation_edit', { 'id': formation.id }) }}">{{ formation.nomCourt }}</a></td>
                 <td>{{ formation.categorie.nomCategorie }}</td>
-
                 <td>
                     <a href="{{ path('formation_agendas', { 'id': formation.id }) }}"><i title="agendas" class="fa fa-calendar fa-lg"></i></a>
                 </td>
@@ -26,8 +26,8 @@
         </tbody>
     </table>
 
-    <a class="btn btn-success  " href="{{ path('formation_new') }}"><i class="fa fa-plus"></i> Create a new entry</a>
-
+    <a class="btn btn-success  " href="{{ path('formation_new') }}"><i class="fa fa-plus"></i> Création</a>
 
 </div>
+
 {% endblock %}

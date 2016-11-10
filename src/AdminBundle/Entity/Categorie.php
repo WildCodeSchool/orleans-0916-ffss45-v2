@@ -33,6 +33,7 @@ class Categorie
      * @var string
      *
      * @ORM\Column(name="couleur", type="string", length=7)
+     * @ORM\OneToMany(targetEntity="Formation")
      */
     private $couleur;
 

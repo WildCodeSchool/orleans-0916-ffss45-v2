@@ -1,15 +1,16 @@
-{% extends 'base.html.twig' %}
+{% extends 'AdminBundle::adminLayout.html.twig' %}
 
 {% block body %}
-    <h1>Categories list</h1>
+<div class="container">
+    <h1>Liste des catégories</h1>
 
-    <table>
+    <table class="table table-hover table-condensed table-striped">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Nomcategorie</th>
+                <th>Catégorie</th>
                 <th>Couleur</th>
-                <th>Actions</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -19,23 +20,19 @@
                 <td>{{ categorie.nomCategorie }}</td>
                 <td>{{ categorie.couleur }}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('categorie_show', { 'id': categorie.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                   {#<a href="{{ path('categorie_show', { 'id': categorie.id }) }}"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></a>#}
+                    <a href="{{ path('categorie_edit', { 'id': categorie.id }) }}"><i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i></a>
+
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('categorie_new') }}">Create a new categorie</a>
-        </li>
-    </ul>
+
+            <a class="btn btn-success  " href="{{ path('categorie_new') }}"><i class="fa fa-plus"></i>  Création</a>
+
 {% endblock %}
+
+
+
