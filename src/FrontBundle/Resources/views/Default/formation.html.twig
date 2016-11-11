@@ -9,22 +9,21 @@
 
 {% block body %}
 
-     <div class="container-fluid page" style="background-color:{{ formation.categorie.couleur }}">
+     <div class="container-fluid page" style="background-color:{{ formation.categorie.couleur }}; border-color:{{ formation.categorie.couleur }}"">
          <div class="row">
             <div class="col-md-12">
-                <h1 class="page-title"><strong>{{ formation.nomLong }}</strong><span class="nomCourt"> - {{ formation.nomCourt }}</span></h1>
-
+                <h1 class="page-title"><span style="color:{{ formation.categorie.couleur }}" class="formationTitle">{{ formation.nomLong }} - {{ formation.nomCourt }}</span></h1>
             </div>
         </div>
 
-        <main>
-            <div class="row box">
-                <div class="col-md-6">
-                    <h2>Public Visé</h2>
+        <main style="color:{{ formation.categorie.couleur }}">
+            <div class="row box" style="color:{{ formation.categorie.couleur }}">
+                <div class="col-md-6 blockPublic">
+                    <h2 >Public Visé</h2>
                     <p>{{ formation.publicVise }}</p>
                 </div>
                 <div class="col-md-6">
-                    <h2>Objectif Visé</h2>
+                    <h2 ">Objectif Visé</h2>
                     <p>{{ formation.objectifVise }}</p>
                 </div>
             </div>
@@ -64,21 +63,19 @@
                 </section>
             <div class="row box">
                 <div class="col-md-12 centered">
-                    <a class="button"  href="{{ path('formation_pdf', {'id':formation.id}) }}">Download PDF</a>
+                    <a  class="button" style="background-color:{{ formation.categorie.couleur }}; border-color:{{ formation.categorie.couleur }}" href="{{ path('formation_pdf', {'id':formation.id}) }}">Download PDF</a>
                 </div>
             </div>
         </main>
         <div class="container">
-            <h2 class="text-left agenda"><span >Agenda</span></h2>
-            <table class="container">
-                <thead>
-                <tr>
+            <h2 class="text-left""><span class="agenda" style="color:{{ formation.categorie.couleur }}">Agenda</span></h2>
+            <table class="table  ">
+                <thead style="background-color:{{ formation.categorie.couleur }}">
+                <tr >
                     <th><h4>Date de début</h4></th>
                     <th><h4>Date de fin</h4></th>
-                    <th><h4>Heure de début AM</h4></th>
-                    <th><h4>Heure de fin PM</h4></th>
-                    <th><h4>Heure de début PM</h4></th>
-                    <th><h4>Heure de fin PM</h4></th>
+                    <th><h4>Horaires matin</h4></th>
+                    <th><h4>Horaires après-midi</h4></th>
                     <th><h4>Adresse</h4></th>
                     <th><h4>Remarque</h4></th>
                 </tr>
@@ -88,10 +85,8 @@
                         <tr>
                             <td>{{ agenda.dateDeDebut|date('d-m-Y') }}</td>
                             <td>{{ agenda.dateDeFin |date('d-m-Y')}}</td>
-                            <td>{{ agenda.heureDeDebutAm |date('H:i')}}</td>
-                            <td>{{ agenda.heureDeFinAm |date('H:i')}}</td>
-                            <td>{{ agenda.heureDeDebutPm |date('H:i')}}</td>
-                            <td>{{ agenda.heureDeFinPm |date('H:i')}}</td>
+                            <td>{{ agenda.heureDeDebutAm |date('H:i')}}-{{ agenda.heureDeFinAm |date('H:i')}}</td>
+                            <td>{{ agenda.heureDeDebutPm |date('H:i')}}-{{ agenda.heureDeFinPm |date('H:i')}}</td>
                             <td>{{ agenda.adresse }}</td>
                             <td>{{ agenda.remarque }}</td>
                         </tr>
@@ -99,7 +94,7 @@
                 </tbody>
             </table>
 
-            <a class="button" style="background-color:{{ formation.categorie.couleur }}" href="{{ path('page_accueil_principale') }}#formulaire_contact" ><span>Je m'inscris !</span></a>
+            <a class="button" style="background-color:{{ formation.categorie.couleur }}; border-color:{{ formation.categorie.couleur }}" href="{{ path('page_accueil_principale') }}#formulaire_contact" ><span>Je m'inscris !</span></a>
 
         </div>
 
