@@ -79,7 +79,17 @@ textarea {
 	cursor:pointer;
 }
 
+#createPosteSecoursStep4_typeEvtSportif label  {
+    text-align:center;
+    padding:5em;
+    background-color:#253571;
+    color:white;
+    cursor:pointer;
+}
 
+.form-control{
+    width: 200px;
+}
 
 
  label input[type="radio"]:checked   {
