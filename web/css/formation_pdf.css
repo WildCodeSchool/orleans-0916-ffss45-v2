@@ -7,3 +7,13 @@ h1 {
 h2, h3 {
 	color:#003770;
 }
+
+table td {
+	padding:0.3em;
+
+}
+table th {
+	padding:0.3em;
+	background-color:#253571;
+	color:white;
+}

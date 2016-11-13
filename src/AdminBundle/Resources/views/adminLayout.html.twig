@@ -14,7 +14,7 @@
 {% endblock %}
 {% block header %}
 
-    <nav class="navbar navbar-default navbar-static firstnav">
+    <nav class="navbar navbar-default navbar-static navbar-fixed-top firstnav">
         <div class="navbar-header">
             <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
                 <span class="sr-only">Toggle navigation</span>
@@ -31,7 +31,9 @@
                 <li class="dropdown dropdown-large">
                     <a href="{{ path('formation_index') }}">Formations</a>
                 </li>
-
+                <li class="dropdown dropdown-large">
+                    <a href="{{ path('categorie_index') }}">Catégories</a>
+                </li>
                 <li class="dropdown dropdown-large">
                     <a href="{{ path('actualite_index') }}">Actualités</a>
                 </li>
@@ -41,7 +43,7 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown dropdown-large">
-                    <a href="{{ path('fos_user_security_logout') }}">Deconnexion</a>
+                    <a href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
                 </li>
             </ul>
 
@@ -54,5 +56,5 @@
 {% endblock %}
 
 {% block footer %}
-    <nav class="footer navbar navbar-default">FFSS45</nav>
+    <nav class="footer navbar navbar-default navbar-fixed-bottom">FFSS45</nav>
 {% endblock %}

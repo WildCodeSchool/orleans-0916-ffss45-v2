@@ -7,30 +7,30 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4 col-sm-6 col-xs-12 col-centered">
-            <figure class="snip1279">
-                <img class="center-block" src="{{ asset('images/particulier.png') }}" alt="image espace particulier"/>
+            <figure class="snip0016">
+                <img src="{{ asset('images/tuile-formations_particuliers.png') }}" alt="image espace particulier"/>
                 <figcaption>
-                    <h3>Accès</h3>
+                    <h3><span>Accès</span></h3>
                     <p>à votre demande de formation </p>
                 </figcaption>
                 <a href="{{ path('espace_formation',{'typeFormation':'particulier'}) }}"></a>
             </figure>
         </div>
         <div class=" col-md-4 col-sm-6 col-xs-12 col-centered">
-            <figure class="snip1279">
-                <img class="center-block" src="{{ asset('images/pro.png') }}" alt="image espace professionnel"/>
+            <figure class="snip0016">
+                <img src="{{ asset('images/tuile-formations_pro.png') }}" alt="image espace professionnel"/>
                 <figcaption>
-                    <h3>Accès</h3>
+                    <h3><span>Accès</span></h3>
                     <p>à votre demande de formation </p>
                 </figcaption>
                 <a href="{{ path('espace_formation',{'typeFormation':'professionnel'}) }}"></a>
             </figure>
         </div>
         <div class="col-md-4  col-xs-12 col-centered">
-            <figure class="snip1279">
-                <img class="center-block" src="{{ asset('images/secours.png') }}" alt="image espace poste de secours"/>
+            <figure class="snip0016">
+                <img src="{{ asset('images/tuile-poste_de_secours.png') }}" alt="image espace poste de secours"/>
                 <figcaption>
-                    <h3>“ Vous organisez un évènement? ”</h3>
+                    <h3><span>“ Vous organisez un évènement? ”</span></h3>
                     <p>Demandez un dispositif de secours</p>
                 </figcaption>
                 <a href="{{ path('secoursCivil') }}"></a>
@@ -42,11 +42,6 @@
 
 {% block javascript %}
 <script>
-    /* Demo purposes only */
-    $(".hover").mouseleave(
-            function () {
-                $(this).removeClass("hover");
-            }
-    );
+
 </script>
 {% endblock %}

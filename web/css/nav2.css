@@ -7,21 +7,17 @@
     margin-left: 0px;
     margin-right: 0px;
 }
-
-@font-face {
-    font-family: 'Bebasneue';
-    src: url('fonts/BebasNeue.otf');
+.banner{
+    position:relative;
 }
-
-
 
 .titre_de_la_page{
     position:absolute;
-    left: 950px;
-    top: 250px;
-    font-family: Bebasneue, Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 45px;
+    right: 17vw;
+    bottom: 10vw;
+    font-size: 2vw;
     color:#FFFFFF;
+    font-family: Bebasneue, Helvetica Neue, Helvetica, Arial, sans-serif;
     font-weight:bold;
 }
 
@@ -29,13 +25,16 @@
 
 .sous_titre_de_la_page{
     position:absolute;
-    left: 950px;
-    top: 375px;
-    font-family: Bebasneue, Helvetica Neue, Helvetica, Arial, sans-serif;
-    font-size: 35px;
+    right:30vw;
+    bottom: 7vw;
+    font-size: 1.5vw;
     color:#FFFFFF;
+    font-family: Bebasneue, Helvetica Neue, Helvetica, Arial, sans-serif;
     font-weight:bold;
+
 }
+
+
 
 
 .glyphicon {
@@ -48,8 +47,8 @@
 
 .glyphicon-carree{
 
-    width:25px;
-    height:25px;
+    width:1vw;
+    height:1vw;
     background-color: white;
 }
 
