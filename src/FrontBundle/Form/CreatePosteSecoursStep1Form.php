@@ -46,13 +46,14 @@ class CreatePosteSecoursStep1Form extends AbstractType
             ->add('typeManif', ChoiceType::class, array(
                 'label'=> 'Votre manifestation',
                 'choices'=>array(
-                    'Culture'=>'culture',
-                    'Sport'=>'sport',
-                    'Rassemblement de personnes'=>'personnes'
+                    'Culture (concert, festival, théâtre, cérémonie)'=>'culture',
+                    'Sport (sous l égide d’une fédération ou non / compétition officielle ou de loisirs)'=>'sport',
+                    'Rassemblement de personnes (brocante, foire, séminaire d’entreprise, soirée d’intégration)'=>'personnes'
                 ),
                     'expanded'=>true,
                     'multiple'=>false,
-                'choices_as_values' => true,)
+                'choices_as_values' => true,
+                    )
             )
 
             ;

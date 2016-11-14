@@ -52,13 +52,15 @@ class CreatePosteSecoursStep4Form extends AbstractType
             ))
             ->add('typeEvtSportif', ChoiceType::class, array('label'=>'Il s\'agit',
                 'choices'=> array(
-                    'Course pédestre'=>'course',
-                    'Sport collectif'=>'collectif',
-                    'Sport individuel'=>'individuel',
-                    'Sport mécanique'=>'mécanique',
-                    'Sport aquatique'=>'aquatique',
-                    'Sport équestre'=>'équestre',
+                    'Course pédestre (trail, run and bike, courses, etc.)'=>'course',
+                    'Sport collectif (football, handball, basket-ball, etc)'=>'collectif',
+                    'Sport individuel (tennis, judo, karaté, bmx)'=>'individuel',
+                    'Sport mécanique (voiture, moto cross, moto vitesse, autre)'=>'mécanique',
+                    'Sport aquatique (natation, canoé, triathlon)'=>'aquatique',
+                    'Sport équestre (CSO, horse ball, polo, cross, autre)'=>'équestre',
                     'Autre'=>'autre'),
+                'expanded'=>true,
+                'multiple'=>false,
                 'choices_as_values' => true,
             ))
         ;
