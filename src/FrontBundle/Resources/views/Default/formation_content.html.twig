@@ -1,18 +1,25 @@
 <html>
 	<head>
-		<link href="{{ absolute_url(asset('css/formation_pdf.css'))}}" rel="stylesheet">
-		    <meta charset="utf-8">
+
+        <link href="{{ absolute_url(asset('css/bootstrap.min.css'))}}" rel="stylesheet">
+        <link href="{{ absolute_url(asset('css/font-awesome.min.css'))}}" rel="stylesheet">
+        <link href="{{ absolute_url(asset('css/formation_pdf.css'))}}" rel="stylesheet">
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
 	</head>
 	<body>
-     <div class="container-fluid page {{ formation.categorie.nomCategorie }}">
-         <div class="row">
-            <div class="col-md-12">
-                <h1 class="page-title"><strong>{{ formation.nomLong }}</strong><span class="nomCourt"> - {{ formation.nomCourt }}</span></h1>
-            </div>
-        </div>
+     <div {{ formation.categorie.nomCategorie }}">
 
-            <div class="row box">
+         <h1 style="background-color:{{ formation.categorie.couleur }}"><strong>{{ formation.nomLong }}</strong><span class="nomCourt"> - {{ formation.nomCourt }}</span></h1>
+
+         <img class="logo-pdf" src="{{ absolute_url(asset('images/logo2.png')) }}" alt="Logo FFSS45">
+     </div>
+     <div class="row">
                 <div class="col-md-6">
                     <h2>Public Visé</h2>
                     <p>{{ formation.publicVise }}</p>
@@ -23,30 +30,27 @@
                 </div>
             </div>
 
-			<h3>Actualisation</h3>
-                <p><i class="fa fa-refresh fa-2x">{{ formation.actualisation }}</p>
-			<h3>Validation de la formation </h3>
-                <p>{{ formation.validation }}</p>
-			<h3>Durée</h3>
-                <p>{{ formation.dureeFormation }}</p>
-			<h3>Contenu de la formation</h3>
-                <p>{{ formation.contenuFormation }}</p>
-			<h3>Méthode pédagogique</h3>
-                <p>{{ formation.methodePedagogique }}</p>
+        <h3>Actualisation</h3>
+            <p><span style="color:{{ formation.categorie.couleur }}"  class="glyphicon glyphicon-chevron-right"></span>{{ formation.actualisation }}</p>
 
-               
+         <h3>Validation de la formation </h3>
+            <p><span style="color:{{ formation.categorie.couleur }}"  class="glyphicon glyphicon-chevron-right"></span>{{ formation.validation }}</p>
+         <h3>Durée</h3>
+                <p><span style="color:{{ formation.categorie.couleur }}"  class="glyphicon glyphicon-chevron-right"></span>{{ formation.dureeFormation }}</p>
+         <h3>Contenu de la formation</h3>
+                <p><span style="color:{{ formation.categorie.couleur }}"  class="glyphicon glyphicon-chevron-right"></span>{{ formation.contenuFormation }}</p>
+         <h3>Méthode pédagogique</h3>
+                <p><span style="color:{{ formation.categorie.couleur }}"  class="glyphicon glyphicon-chevron-right"></span>{{ formation.methodePedagogique }}</p>
 
-        <div class="container">
-            <h2 class="text-left agenda"><span >Agenda</span></h2>
-            <table class="container">
+
+            <h2><span >Agenda</span></h2>
+            <table>
                 <thead>
-                <tr>
+                <tr style="background-color:{{ formation.categorie.couleur }}" >
                     <th><h4>Date de début</h4></th>
                     <th><h4>Date de fin</h4></th>
-                    <th><h4>Heure de début AM</h4></th>
-                    <th><h4>Heure de fin PM</h4></th>
-                    <th><h4>Heure de début PM</h4></th>
-                    <th><h4>Heure de fin PM</h4></th>
+                    <th><h4>Horaire matin </h4></th>
+                    <th><h4>Horaire après-midi</h4></th>
                     <th><h4>Adresse</h4></th>
                     <th><h4>Remarque</h4></th>
                 </tr>
@@ -56,10 +60,8 @@
                         <tr>
                             <td>{{ agenda.dateDeDebut|date('d-m-Y') }}</td>
                             <td>{{ agenda.dateDeFin |date('d-m-Y')}}</td>
-                            <td>{{ agenda.heureDeDebutAm |date('H:i')}}</td>
-                            <td>{{ agenda.heureDeFinAm |date('H:i')}}</td>
-                            <td>{{ agenda.heureDeDebutPm |date('H:i')}}</td>
-                            <td>{{ agenda.heureDeFinPm |date('H:i')}}</td>
+                            <td>{{ agenda.heureDeDebutAm |date('H:i')}} - {{ agenda.heureDeFinAm |date('H:i')}}</td>
+                            <td>{{ agenda.heureDeDebutPm |date('H:i')}} - {{ agenda.heureDeFinPm |date('H:i')}}</td>
                             <td>{{ agenda.adresse }}</td>
                             <td>{{ agenda.remarque }}</td>
                         </tr>
