@@ -16,13 +16,13 @@ class FormulaireSuccessController extends Controller
 {
 
     /**
-     * @Route("/succes", name="succes")
+     * @Route("/succes_rejoindre", name="succes_rejoindre")
      */
 
 
     public function IndexAction()
     {
-       return $this->render('@Front/Default/succes.html.twig');
+       return $this->render('@Front/Default/succes_rejoindre.html.twig');
     }
 
     /**
