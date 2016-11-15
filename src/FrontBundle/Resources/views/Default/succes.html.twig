@@ -9,6 +9,318 @@
     <div class="container-fluid succes">
         <div class="row">
             <div class="col-xs-12">
+                {% for demande in demandes %}
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th>Nom de la manifestation</th>
+                            <td>{{ demande.nomManif }}</td>
+                        </tr>
+                        <tr>
+                            <th>Presentation brève de la manif</th>
+                            <td>{{ demande.presentationManif }}</td>
+                        </tr>
+                        <tr>
+                            <th>Date début manif</th>
+                            <td>{% if demande.dateDebutManif %}{{ demande.dateDebutManif|date('Y-m-d') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Date fin manif</th>
+                            <td>{% if demande.dateFinManif %}{{ demande.dateFinManif|date('Y-m-d') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Heure début manif</th>
+                            <td>{% if demande.heureDebutManif %}{{ demande.heureDebutManif|date('H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Heure fin manif</th>
+                            <td>{% if demande.heureFinManif %}{{ demande.heureFinManif|date('H:i:s') }}{% endif %}</td>
+                        </tr>
+                        <tr>
+                            <th>Adresse manif</th>
+                            <td>{{ demande.adresseManif }}</td>
+                        </tr>
+                        <tr>
+                            <th>Ville manif</th>
+                            <td>{{ demande.villeManif }}</td>
+                        </tr>
+                        <tr>
+                            <th>Adresse pompiers les + proches</th>
+                            <td>{{ demande.pompiersLieu }}</td>
+                        </tr>
+                        <tr>
+                            <th>Adresse urgences les + proches</th>
+                            <td>{{ demande.urgencesLieu }}</td>
+                        </tr>
+                        <tr>
+                            <th>Raison sociale</th>
+                            <td>{{ demande.raisonSociale }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nom représentant</th>
+                            <td>{{ demande.nomRep }}</td>
+                        </tr>
+                        <tr>
+                            <th>Téléphone représentant</th>
+                            <td>{{ demande.telRep }}</td>
+                        </tr>
+                        <tr>
+                            <th>Mail représentant</th>
+                            <td>{{ demande.mailRep }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nom chef de projet</th>
+                            <td>{{ demande.nomChef }}</td>
+                        </tr>
+                        <tr>
+                            <th>Téléphone chef de projet</th>
+                            <td>{{ demande.telChef }}</td>
+                        </tr>
+                        <tr>
+                            <th>Mail chef de projet</th>
+                            <td>{{ demande.mailChef }}</td>
+                        </tr>
+                        <tr>
+                            <th>Site web</th>
+                            <td>{{ demande.siteWeb }}</td>
+                        </tr>
+                        <tr>
+                            <th>Type de manifestation</th>
+                            <td>{{ demande.typeManif }}</td>
+                        </tr>
+                        <tr>
+                            <th>Federation sportive</th>
+                            <td>{{ demande.federation }}</td>
+                        </tr>
+                        <tr>
+                            <th>Obligations réglementaires fédération</th>
+                            <td>{{ demande.regleFed }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nombre de sportifs</th>
+                            <td>{{ demande.nbSportifs }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nombre de public en instantané</th>
+                            <td>{{ demande.nbPublicInsta }}</td>
+                        </tr>
+                        <tr>
+                            <th>les sportifs sont licenciés ?</th>
+                            <td>{{ demande.licenceSportif }}</td>
+                        </tr>
+                        <tr>
+                            <th>Certificat médical ?</th>
+                            <td>{{ demande.certifMedical }}</td>
+                        </tr>
+                        <tr>
+                            <th>Type évènement sportif</th>
+                            <td>{{ demande.typeEvtSportif }}</td>
+                        </tr>
+                        <tr>
+                            <th>Type de course</th>
+                            <td>{{ demande.typeCourse }}</td>
+                        </tr>
+                        <tr>
+                            <th>Distance parcours 1</th>
+                            <td>{{ demande.distParcours1 }}</td>
+                        </tr>
+                        <tr>
+                            <th>Distance parcours 2</th>
+                            <td>{{ demande.distParcours2 }}</td>
+                        </tr>
+                        <tr>
+                            <th>Présence obstacles ?</th>
+                            <td>{{ demande.obstacles }}</td>
+                        </tr>
+                        <tr>
+                            <th>Présence de signaleur</th>
+                            <td>{{ demande.signaleur }}</td>
+                        </tr>
+                        <tr>
+                            <th>Type de piste</th>
+                            <td>{{ demande.typePiste }}</td>
+                        </tr>
+                        <tr>
+                            <th>Commentaire</th>
+                            <td>{{ demande.commentaire }}</td>
+                        </tr>
+                        <tr>
+                            <th>Type de sport collectif</th>
+                            <td>{{ demande.typeSportCo }}</td>
+                        </tr>
+                        <tr>
+                            <th>Niveau de competition</th>
+                            <td>{{ demande.niveauCompet }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nombre de terrains</th>
+                            <td>{{ demande.nbTerrains }}</td>
+                        </tr>
+                        <tr>
+                            <th>Catégorie de sportif</th>
+                            <td>{{ demande.catSportif }}</td>
+                        </tr>
+                        <tr>
+                            <th>Type de sport individuel</th>
+                            <td>{{ demande.typeSportIndiv }}</td>
+                        </tr>
+                        <tr>
+                            <th>Type de sport mécanique</th>
+                            <td>{{ demande.typeSportMeca }}</td>
+                        </tr>
+                        <tr>
+                            <th>Présence de commissaire ?</th>
+                            <td>{{ demande.commissaire }}</td>
+                        </tr>
+                        <tr>
+                            <th>Protection du public prévue ?</th>
+                            <td>{{ demande.protection }}</td>
+                        </tr>
+                        <tr>
+                            <th>Type de sport aquatique</th>
+                            <td>{{ demande.typeSportAqua }}</td>
+                        </tr>
+                        <tr>
+                            <th>Présence dispositif de sécurité ?</th>
+                            <td>{{ demande.dispositifSecu }}</td>
+                        </tr>
+                        <tr>
+                            <th>Type de plan d'eau</th>
+                            <td>{{ demande.typePlanEau }}</td>
+                        </tr>
+                        <tr>
+                            <th>Type de sport équestre</th>
+                            <td>{{ demande.typeSportEquestre }}</td>
+                        </tr>
+                        <tr>
+                            <th>Type de sport autre</th>
+                            <td>{{ demande.typeSportAutre }}</td>
+                        </tr>
+                        <tr>
+                            <th>Age des sportifs</th>
+                            <td>{{ demande.ageSportif }}</td>
+                        </tr>
+                        <tr>
+                            <th>Type évènement culturel</th>
+                            <td>{{ demande.typeEvtCulturel }}</td>
+                        </tr>
+                        <tr>
+                            <th>Evènement gratuit ou payant</th>
+                            <td>{{ demande.prixEvt }}</td>
+                        </tr>
+                        <tr>
+                            <th>Intérieur ou extérieur</th>
+                            <td>{{ demande.evtIntExt }}</td>
+                        </tr>
+                        <tr>
+                            <th>Type de salle</th>
+                            <td>{{ demande.typeSalle }}</td>
+                        </tr>
+                        <tr>
+                            <th>Type de site</th>
+                            <td>{{ demande.typeSite }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nombre de personnes au total</th>
+                            <td>{{ demande.nbPersoTotal }}</td>
+                        </tr>
+                        <tr>
+                            <th>Type de siege</th>
+                            <td>{{ demande.typeSiege }}</td>
+                        </tr>
+                        <tr>
+                            <th>Type de public</th>
+                            <td>{{ demande.typePublic }}</td>
+                        </tr>
+                        <tr>
+                            <th>Capacite du site</th>
+                            <td>{{ demande.capaciteSite }}</td>
+                        </tr>
+                        <tr>
+                            <th>Superficie du site</th>
+                            <td>{{ demande.superficieSite }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nombre d'acces</th>
+                            <td>{{ demande.nbAcces }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nombre de scènes</th>
+                            <td>{{ demande.nbScene }}</td>
+                        </tr>
+                        <tr>
+                            <th>Scènes jouent en simultané ?</th>
+                            <td>{{ demande.simulScene }}</td>
+                        </tr>
+                        <tr>
+                            <th>Aménagements temporaires</th>
+                            <td>{{ demande.amenagTemp }}</td>
+                        </tr>
+                        <tr>
+                            <th>Type de rassemblement de personnes</th>
+                            <td>{{ demande.typeRdP }}</td>
+                        </tr>
+                        <tr>
+                            <th>Animations</th>
+                            <td>{{ demande.animation }}</td>
+                        </tr>
+                        <tr>
+                            <th>Le public assiste</th>
+                            <td>{{ demande.mvtPublic }}</td>
+                        </tr>
+                        <tr>
+                            <th>Présence de médecin souhaitée ?</th>
+                            <td>{{ demande.medecin }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nom de votre médecin</th>
+                            <td>{{ demande.nomMed }}</td>
+                        </tr>
+                        <tr>
+                            <th>Spécialité de votre médecin</th>
+                            <td>{{ demande.speMed }}</td>
+                        </tr>
+                        <tr>
+                            <th>Contact de votre médecin</th>
+                            <td>{{ demande.contactMed }}</td>
+                        </tr>
+                        <tr>
+                            <th>Prénom de votre médecin</th>
+                            <td>{{ demande.prenomMed }}</td>
+                        </tr>
+                        <tr>
+                            <th>Pièce prévue pour le poste de secours</th>
+                            <td>{{ demande.pieceSecours }}</td>
+                        </tr>
+                        <tr>
+                            <th>Repas pris en charge pour les secours</th>
+                            <td>{{ demande.repasSecours }}</td>
+                        </tr>
+                        <tr>
+                            <th>Souhaitez vous une prestation médicale ?</th>
+                            <td>{{ demande.prestaMed }}</td>
+                        </tr>
+                        <tr>
+                            <th>Ligne téléphonique disponible sur le site ?</th>
+                            <td>{{ demande.telSite }}</td>
+                        </tr>
+                        <tr>
+                            <th>Moyen de communication pour joindre secours</th>
+                            <td>{{ demande.communicationSecours }}</td>
+                        </tr>
+                        <tr>
+                            <th>Autres secours présents</th>
+                            <td>{{ demande.autresSecours }}</td>
+                        </tr>
+                        <tr>
+                            <th>Infos complémentaires</th>
+                            <td>{{ demande.infosCompl }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                {% endfor %}
+            </div>
+            <div class="col-xs-12">
                 <p>Formulaire envoyé avec succès !
                     <br>
                     <a href="{{path('page_accueil_principale') }}">retour à l'accueil</a><br>
