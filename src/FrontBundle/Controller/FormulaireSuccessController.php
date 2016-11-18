@@ -16,12 +16,28 @@ class FormulaireSuccessController extends Controller
 {
 
     /**
-     * @Route("/succes", name="succes")
+     * @Route("/succes_rejoindre", name="succes_rejoindre")
      */
 
 
     public function IndexAction()
     {
-       return $this->render('@Front/Default/succes.html.twig');
+       return $this->render('@Front/Default/succes_rejoindre.html.twig');
+    }
+
+    /**
+     * @Route("/succes", name="succes")
+     */
+
+
+    public function ValidationSecoursAction()
+    {
+        {
+            $demandes = $this->getDoctrine()
+                ->getRepository('FrontBundle:FormulaireSecours')
+                ->findBy(array(), array('id'=>'DESC'),1);
+            return $this->render('@Front/Default/succes.html.twig', array('demandes' => $demandes));
+        }
+
     }
 }

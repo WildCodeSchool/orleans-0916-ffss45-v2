@@ -79,7 +79,7 @@ class RejoindreController extends Controller
                 );
             $this->get('mailer')->send($message);
 
-            return $this->redirect($this->generateUrl('succes'));
+            return $this->redirect($this->generateUrl('succes_rejoindre'));
         }
         return $this->render('@Front/Default/rejoindre.html.twig', array(
             'form' => $form->createView(),

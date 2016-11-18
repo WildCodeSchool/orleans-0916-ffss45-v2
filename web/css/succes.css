@@ -1,6 +1,5 @@
 .succes{
     text-align: center;
-    font-family: Bebasneue;
 }
 
 p{
@@ -11,4 +10,29 @@ p{
 
 .succes a{
     font-size: 20px;
+}
+
+tr:nth-child(even) {
+    background-color: lightgrey;
+}
+
+
+tr:nth-child(odd) {
+    background-color: white;
+}
+
+th{
+    border-right: 2px solid grey ;
+    padding-right: 30px;
+}
+
+td{
+    padding-left: 80px;
+    padding-right: 80px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.tableau{
+    padding-top: 20px;
 }
