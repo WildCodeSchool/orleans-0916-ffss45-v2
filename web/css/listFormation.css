@@ -14,6 +14,7 @@
     z-index: 15;
 	background-image: linear-gradient(290deg, #F0F0F0 30%, transparent 30%);
 	box-shadow:2px 2px 4px #969696;
+
 }
 h1{
     padding-left: 10px;
@@ -26,7 +27,7 @@ h3{
     
 }
 h4 {
-	font-size:1.2em;
+
 	padding-bottom:0.5em;
 }
 .bloc_formation_full h3{
@@ -55,20 +56,15 @@ h4 {
     padding:0.5em;
     padding-top:0;
     margin-bottom:0.5em;
+
 }
 
-
-.bloc_formation_mobil{
-    text-align: center;
-    border: 2px solid black;
-    border-radius:40px;
-    color:#353535;
-    margin: 20px 0px 20px 10px;
-    padding: 5px 5px 5px 5px;
-}
 
 
 .identity{
     margin-bottom:1em;
     margin-top:1em;
 }
+
+
+
