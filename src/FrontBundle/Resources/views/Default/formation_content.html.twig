@@ -13,12 +13,12 @@
 
 	</head>
 	<body>
-     <div {{ formation.categorie.nomCategorie }}">
+    <div class="container-fluid">
+        <img class="navbar-fixed-top logo-pdf" src="{{ absolute_url(asset('images/logo2.png')) }}" alt="Logo FFSS45">
+        <div {{ formation.categorie.nomCategorie }}">
+            <h1 style="background-color:{{ formation.categorie.couleur }}"><strong>{{ formation.nomLong }}</strong><span class="text-right nomCourt"> - {{ formation.nomCourt }}</span></h1>
+        </div>
 
-         <h1 style="background-color:{{ formation.categorie.couleur }}"><strong>{{ formation.nomLong }}</strong><span class="nomCourt"> - {{ formation.nomCourt }}</span></h1>
-
-         <img class="logo-pdf" src="{{ absolute_url(asset('images/logo2.png')) }}" alt="Logo FFSS45">
-     </div>
      <div class="row">
                 <div class="col-md-6">
                     <h2>Public Visé</h2>
@@ -68,5 +68,6 @@
                     {% endfor %}
                 </tbody>
             </table>
+
 	</body>
 </html>
