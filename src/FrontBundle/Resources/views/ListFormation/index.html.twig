@@ -15,15 +15,16 @@
         <div class="row formation_row" >
             {%  for key,formation in tab %}
                 <div class="col-lg-6 ">
+                    <a href="{{ path('formation', {'nomCourt':formation.nomCourt}) }}">
                     <div style=" background-color:{{ formation.categorie.couleur }}" class="bloc_formation">
                         <h3 style="color:{{ formation.categorie.couleur }}">{{ formation.nomCourt }}</h3>
                         <h4>{{ formation.nomLong }}</h4>
 
-                        <a href="{{ path('formation', {'nomCourt':formation.nomCourt}) }}">
 
-                        <div  style=" background-color:{{ formation.categorie.couleur }}" class="bloc_formation bloc_formation_full">
+
+                        <div  style=" background-color:{{ formation.categorie.couleur }}" class="bloc_formation bloc_formation_full hidden-xs">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-12 ">
                                     <h3 >{{ formation.nomCourt }}</h3>
                                     <h4>{{ formation.nomLong }}</h4>
                                 </div>
@@ -33,10 +34,13 @@
                                 <div class="col-md-9 col-sm-8 col-xs-12">
                                     <p class=""> {{ formation.descriptif }}</p>
                                 </div>
+
                             </div>
+
                         </div>
-                        </a>
+
                     </div>
+                    </a>
                 </div>
 
 

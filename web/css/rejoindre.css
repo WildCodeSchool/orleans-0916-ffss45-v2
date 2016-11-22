@@ -12,7 +12,6 @@ textarea{
 .rejoindre{
     text-align: center;
     padding-bottom: 40px;
-    font-family: Bebasneue, sans-serif;
     background-color: #e3e3e3;
 
 }
@@ -23,6 +22,7 @@ select{
 
 button{
     margin-top: 10px;
+    margin-bottom:20px;
 }
 
 h1{

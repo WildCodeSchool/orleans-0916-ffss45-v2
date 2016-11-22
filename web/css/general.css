@@ -1,7 +1,12 @@
+@font-face {
+    font-family: myFont;
+    src: url(../fonts/BebasNeue.otf);
+}
+
 
 body{
     width:100%;
-    font-family: Trirong, serif;
+    font-family: 'Open Sans';
     font-size:18px;
 }
 
@@ -9,7 +14,7 @@ body{
 
 h1, h2, h3, h4, h5, h6{
 
-    font-family: Bebasneue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-family: myFont, sans-serif;
 }
 
 
@@ -17,6 +22,5 @@ h1, h2, h3, h4, h5, h6{
 
 
 p{
-
     font-size:20px;
 }
