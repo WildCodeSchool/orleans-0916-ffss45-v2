@@ -6,6 +6,11 @@ use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends Kernel
 {
+    public function init()
+    {
+        bcscale(3); // or any other value greater than 0
+    }
+
     public function registerBundles()
     {
         $bundles = array(
@@ -39,7 +44,20 @@ class AppKernel extends Kernel
             new Sonata\SeoBundle\SonataSeoBundle(),
             new Sonata\NotificationBundle\SonataNotificationBundle(),
             #new Application\Sonata\NotificationBundle\ApplicationSonataNotificationBundle(),
+            new Symfony\Cmf\Bundle\RoutingBundle\CmfRoutingBundle(),
             new Sonata\PageBundle\SonataPageBundle(),
+            new Application\Sonata\PageBundle\ApplicationSonataPageBundle(),
+            new Sonata\UserBundle\SonataUserBundle('FOSUserBundle'),
+            new Application\Sonata\UserBundle\ApplicationSonataUserBundle(),
+
+            new Sonata\CustomerBundle\SonataCustomerBundle(),
+            new Sonata\ProductBundle\SonataProductBundle(),
+            new Sonata\BasketBundle\SonataBasketBundle(),
+            new Sonata\OrderBundle\SonataOrderBundle(),
+            new Sonata\InvoiceBundle\SonataInvoiceBundle(),
+            new Sonata\DeliveryBundle\SonataDeliveryBundle(),
+            new Sonata\PaymentBundle\SonataPaymentBundle(),
+            new Sonata\PriceBundle\SonataPriceBundle(),
 
 
         );
@@ -53,6 +71,7 @@ class AppKernel extends Kernel
 
         return $bundles;
     }
+
 
     public function registerContainerConfiguration(LoaderInterface $loader)
     {

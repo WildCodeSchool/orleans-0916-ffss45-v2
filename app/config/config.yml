@@ -92,8 +92,20 @@ swiftmailer:
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
     firewall_name: main
-    user_class: AdminBundle\Entity\User
-    
+    #user_class: AdminBundle\Entity\User
+    user_class:     Sonata\UserBundle\Entity\BaseUser
+    user_class:     Application\Sonata\UserBundle\Entity\User
+
+    group:
+
+        group_class:   Application\Sonata\UserBundle\Entity\Group
+        group_class:   Sonata\UserBundle\Entity\BaseGroup
+        group_manager: sonata.user.orm.group_manager                    # If you're using doctrine orm (use sonata.user.mongodb.group_manager for mongodb)
+
+    service:
+        user_manager: sonata.user.orm.user_manager
+
+
 knp_snappy:  
     pdf:
         enabled:    true
@@ -126,6 +138,13 @@ sonata_block:
 sonata_block:
     context_manager: sonata.page.block.context_manager
 
+sonata_block:
+    blocks:
+        #...
+        sonata.user.block.menu:    # used to display the menu in profile pages
+        sonata.user.block.account: # used to display menu option (login option)
+        sonata.block.service.text: # used to if you plan to use Sonata user routes
+
 
 doctrine:
     orm:
@@ -148,6 +167,15 @@ doctrine:
         types:
             json: Sonata\Doctrine\Types\JsonType
 
+
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                mappings:
+                    ApplicationSonataUserBundle: ~
+                    SonataUserBundle: ~
+                    FOSUserBundle: ~
 
 sonata_media:
     # if you don't use default namespace configuration
@@ -309,3 +337,375 @@ sonata_admin:
             - bundles/sonataadmin/vendor/AdminLTE/css/font-awesome.min.css
             - bundles/sonataadmin/vendor/jqueryui/themes/flick/jquery-ui.min.css
             - bundles/sonatapage/sonata-page.back.min.css
+
+sonata_user:
+    security_acl: true
+    manager_type: orm
+
+
+sonata_user:
+    #... Your conf
+    profile:
+        menu:
+            - { route: 'sonata_user_profile_edit', label: 'link_edit_profile', domain: 'SonataUserBundle'}
+            - { route: 'sonata_user_profile_edit_authentication', label: 'link_edit_authentication', domain: 'SonataUserBundle'}
+            - { route: 'sonata_order_index', label: 'order_list', domain: 'SonataOrderBundle'}
+
+sonata_delivery:
+    services:
+        free_address_required:
+            name: Free
+            #enabled: false
+            priority: 1
+            code: free
+
+    selector: sonata.delivery.selector.default
+
+sonata_media:
+    # if you don't use default namespace configuration
+    #class:
+    #    media: MyVendor\MediaBundle\Entity\Media
+    #    gallery: MyVendor\MediaBundle\Entity\Gallery
+    #    gallery_has_media: MyVendor\MediaBundle\Entity\GalleryHasMedia
+    default_context: default
+    db_driver: doctrine_orm # or doctrine_mongodb, doctrine_phpcr
+    contexts:
+        default:  # the default context is mandatory
+            providers:
+                - sonata.media.provider.dailymotion
+                - sonata.media.provider.youtube
+                - sonata.media.provider.image
+                - sonata.media.provider.file
+
+            formats:
+                small: { width: 100 , quality: 70}
+                big:   { width: 500 , quality: 70}
+
+    cdn:
+        server:
+            path: /uploads/media # http://media.sonata-project.org/
+
+    filesystem:
+        local:
+            directory:  '%kernel.root_dir%/../web/uploads/media'
+            create:     false
+
+sonata_payment:
+    services:
+        #acme.payment.mymethod: ~
+        pass:
+            name:    Pass
+            #enabled: false
+            code:    pass
+            browser: sonata.payment.browser.curl
+
+            transformers:
+                basket: sonata.payment.transformer.basket
+                order:  sonata.payment.transformer.order
+
+            options:
+                shop_secret_key: assdsds
+                url_callback:    sonata_payment_callback
+                url_return_ko:   sonata_payment_error
+                url_return_ok:   sonata_payment_confirmation
+
+    # service which find the correct payment methods for a basket
+    selector: sonata.payment.selector.simple
+
+    # service which generate the correct order and invoice number
+    generator: sonata.payment.generator.mysql
+
+    transformers:
+        order:  sonata.payment.transformer.order
+        basket: sonata.payment.transformer.basket
+
+sonata_price:
+    currency: EUR
+
+# Doctrine Configuration
+doctrine:
+    # ...
+    dbal:
+        types:
+            # ...
+            currency: Sonata\Component\Currency\CurrencyDoctrineType
+
+services:
+    # Register dedicated Product Managers
+#           sonata.product.manager.amazon:
+#                class: Sonata\ProductBundle\Entity\ProductManager
+#                arguments:
+#                    - Application\Sonata\ProductBundle\Entity\Amazon
+#                    - "@sonata.product.entity_manager"
+#
+#           sonata.product.manager.bottle:
+#                class: Sonata\ProductBundle\Entity\ProductManager
+#                arguments:
+#                    - Application\Sonata\ProductBundle\Entity\Bottle
+#                    - "@sonata.product.entity_manager"
+#
+#           # Register dedicated Product Providers
+#            sonata.product.type.amazon:
+#                class: Application\Sonata\ProductBundle\Entity\AmazonProductProvider
+#
+#           sonata.product.type.bottle:
+#                class: Application\Sonata\ProductBundle\Entity\BottleProductProvider
+
+
+
+#####################PRODUIT
+
+sonata_product:
+    products:
+        # Prototype
+        id:
+            provider:             ~  # Required
+            manager:              ~  # Required
+            variations:
+                fields:           [] # Required
+    class:
+        product:              Application\Sonata\ProductBundle\Entity\Product
+        package:              Application\Sonata\ProductBundle\Entity\Package
+        product_category:     Application\Sonata\ProductBundle\Entity\ProductCategory
+        product_collection:   Application\Sonata\ProductBundle\Entity\ProductCollection
+        category:             Application\Sonata\ClassificationBundle\Entity\Category
+        collection:           Application\Sonata\ClassificationBundle\Entity\Collection
+        delivery:             Application\Sonata\ProductBundle\Entity\Delivery
+        gallery:              Application\Sonata\MediaBundle\Entity\Gallery
+
+# Enable Doctrine to map the provided entities
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                mappings:
+                    ApplicationSonataProductBundle: ~
+                    SonataProductBundle: ~
+
+###############################CUSTOMER
+
+sonata_customer:
+    class:
+        customer:             Application\Sonata\CustomerBundle\Entity\Customer
+        address:              Application\Sonata\CustomerBundle\Entity\Address
+        order:                Application\Sonata\OrderBundle\Entity\Order
+        user:                 Application\Sonata\UserBundle\Entity\User
+
+        # You can also implement custom components classes
+        customer_selector:    Sonata\Component\Customer\CustomerSelector
+
+# Enable Doctrine to map the provided entities
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                mappings:
+                    ApplicationSonataCustomerBundle: ~
+                    SonataCustomerBundle: ~
+
+########################Basket
+
+sonata_basket:
+
+    # Services
+    builder:            sonata.basket.builder.standard
+    factory:            sonata.basket.session.factory       # Replace with sonata.basket.entity.factory to store in db
+    loader:             sonata.basket.loader.standard
+
+    # Model
+    class:
+        basket:         Application\Sonata\BasketBundle\Entity\Basket
+        basket_element: Application\Sonata\BasketBundle\Entity\BasketElement
+        customer:       Application\Sonata\CustomerBundle\Entity\Customer
+
+    # Forms
+    basket:
+        form:
+            type:       sonata_basket_basket
+            name:       sonata_basket_basket_form
+    shipping:
+        form:
+            type:       sonata_basket_shipping
+            name:       sonata_basket_shipping_form
+    payment:
+        form:
+            type:       sonata_basket_payment
+            name:       sonata_basket_payment_form
+
+#########################Delivery
+
+
+sonata_delivery:
+    selector:             sonata.delivery.selector.default
+
+    # This allows you to configure provided delivery methods
+    services:
+        free_address_required:
+            name:                 free_address_required
+            code:                 free_address_required
+            priority:             10
+        free_address_not_required:
+            name:                 free_address_not_required
+            code:                 free_address_not_required
+            priority:             10
+
+    # Here you will enable the delivery methods you wish to provide
+    # and add your custom ones
+    methods:
+        free_address_required: ~     # This is a provided method, we don't need to specify its service id
+        take_away: app.delivery.take_away    # Custom delivery method, we specify the service id
+
+###############Order
+
+sonata_order:
+    class:
+        order:                Application\Sonata\OrderBundle\Entity\Order
+        order_element:        Application\Sonata\OrderBundle\Entity\OrderElement
+        customer:             Application\Sonata\CustomerBundle\Entity\Customer
+
+# Enable Doctrine to map the provided entities
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                mappings:
+                    ApplicationSonataOrderBundle: ~
+                    SonataOrderBundle: ~
+
+###############payment
+
+sonata_payment:
+    selector:             sonata.payment.selector.simple
+    generator:            sonata.payment.generator.mysql
+    transformers:
+        order:                sonata.payment.transformer.order      # The service to transform an order into a basket
+        basket:               sonata.payment.transformer.basket     # The service to transform a basket into an order
+    services:
+        # Which payment methods are enabled?
+        paypal:
+            name:                 Paypal
+            code:                 paypal
+            transformers:
+                basket:               sonata.payment.transformer.basket
+                order:                sonata.payment.transformer.order
+            options:
+                shop_secret_key:      ~
+                web_connector_name:   curl
+                account:              your_paypal_account@fake.com
+                cert_id:              fake
+                debug:                false
+                paypal_cert_file:     '%kernel.root_dir%/paypal_cert_pem_sandbox.txt'
+                url_action:           https://www.sandbox.paypal.com/cgi-bin/webscr
+                class_order:          Application\Sonata\OrderBundle\Entity\Order
+                url_callback:         sonata_payment_callback
+                url_return_ko:        sonata_payment_error
+                url_return_ok:        sonata_payment_confirmation
+                method:               encryptViaBuffer
+                key_file:             '%kernel.root_dir%/my-prvkey.pem'
+                cert_file:            '%kernel.root_dir%/my-pubcert.pem'
+                openssl:              /opt/local/bin/openssl
+        pass:
+            name:                 Pass
+            code:                 pass
+            transformers:
+                basket:               sonata.payment.transformer.basket
+                order:                sonata.payment.transformer.order
+            browser:              sonata.payment.browser.curl
+            options:
+                shop_secret_key:      ~
+                url_callback:         sonata_payment_callback
+                url_return_ko:        sonata_payment_error
+                url_return_ok:        sonata_payment_confirmation
+        check:
+            name:                 Check
+            code:                 check
+            transformers:
+                basket:               sonata.payment.transformer.basket
+                order:                sonata.payment.transformer.order
+            browser:              sonata.payment.browser.curl
+            options:
+                shop_secret_key:      ~
+                url_callback:         sonata_payment_callback
+                url_return_ko:        sonata_payment_error
+                url_return_ok:        sonata_payment_confirmation
+        scellius:
+            name:                 Scellius
+            code:                 scellius
+            generator:            sonata.payment.provider.scellius.none_generator
+            transformers:
+                basket:               sonata.payment.transformer.basket
+                order:                sonata.payment.transformer.order
+            options:
+                url_callback:         sonata_payment_callback
+                url_return_ko:        sonata_payment_error
+                url_return_ok:        sonata_payment_confirmation
+                template:             SonataPaymentBundle:Payment:scellius.html.twig
+                shop_secret_key:      ~
+                request_command:      ~
+                response_command:     ~
+                merchant_id:          ~
+                merchant_country:     ~
+                pathfile:             ~
+                language:             ~
+                payment_means:        ~
+                base_folder:          ~
+                data:
+                header_flag:          no
+                capture_day:
+                capture_mode:
+                bgcolor:
+                block_align:
+                block_order:
+                textcolor:
+                normal_return_logo:
+                cancel_return_logo:
+                submit_logo:
+                logo_id:
+                logo_id2:
+                advert:
+                background_id:
+                templatefile:
+        ogone:
+            name:                 Ogone
+            code:                 ogone
+            transformers:
+                basket:               sonata.payment.transformer.basket
+                order:                sonata.payment.transformer.order
+            options:
+                url_callback:         sonata_payment_callback
+                url_return_ko:        sonata_payment_error
+                url_return_ok:        sonata_payment_confirmation
+                form_url:             ~ # Required
+                catalog_url:          ~ # Required
+                home_url:             ~ # Required
+                pspid:                ~ # Required
+                sha_key:              ~ # Required
+                sha-out_key:          ~ # Required
+                template:             SonataPaymentBundle:Payment:ogone.html.twig
+    class:
+        order:                Application\Sonata\OrderBundle\Entity\Order
+        transaction:          Application\Sonata\PaymentBundle\Entity\Transaction
+
+    # Here you will enable the payment methods you wish to provide
+    # and add your custom ones
+    methods:
+        pass: ~     # This is a provided method, we don't need to specify its service id
+        bitcoin: application.acme.payment.bitcoin    # Custom payment method, we specify the service id
+
+############Invoice
+
+sonata_invoice:
+    class:
+        invoice:              Application\Sonata\InvoiceBundle\Entity\Invoice
+        invoice_element:      Application\Sonata\InvoiceBundle\Entity\InvoiceElement
+        order_element:        Application\Sonata\OrderBundle\Entity\OrderElement
+        customer:             Application\Sonata\CustomerBundle\Entity\Customer
+
+# Enable Doctrine to map the provided entities
+doctrine:
+    orm:
+        entity_managers:
+            default:
+                mappings:
+                    ApplicationSonataInvoiceBundle: ~
+                    SonataInvoiceBundle: ~
