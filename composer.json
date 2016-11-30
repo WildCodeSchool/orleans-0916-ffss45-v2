@@ -25,9 +25,22 @@
         "twbs/bootstrap": "v3.3.7",
         "components/jquery": "^3.1",
         "craue/formflow-bundle": "~3.0@dev",
-        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "sonata-project/ecommerce": "2.0.0",
         "knplabs/knp-snappy-bundle": "~1.4",
-        "h4cc/wkhtmltopdf-amd64": "0.12.3"
+        "h4cc/wkhtmltopdf-amd64": "0.12.3",
+        "sonata-project/admin-bundle": "^3.10",
+        "sonata-project/doctrine-orm-admin-bundle": "^3.1",
+        "sonata-project/easy-extends-bundle": "^2.1",
+        "sonata-project/media-bundle": "^3.3",
+        "sonata-project/classification-bundle": "^3.0",
+        "sonata-project/cache-bundle": "^2.3",
+        "sonata-project/seo-bundle": "^2.0",
+        "sonata-project/notification-bundle": "^3.0",
+        "sonata-project/page-bundle": "^3.2",
+        "sonata-project/datagrid-bundle": "2.2.*@dev"
+
+
+
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
