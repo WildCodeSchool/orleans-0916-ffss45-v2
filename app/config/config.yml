@@ -5,6 +5,7 @@ imports:
     - { resource: "@FrontBundle/Resources/config/services.yml" }
     - { resource: "@AdminBundle/Resources/config/services.yml" }
     - { resource: "@ActualiteBundle/Resources/config/services.yml" }
+    - { resource: "@CommerceBundle/Resources/config/services.yml" }
 
 
    
