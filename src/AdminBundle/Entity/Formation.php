@@ -9,7 +9,6 @@ use Doctrine\ORM\Mapping as ORM;
  *
  * @ORM\Table(name="formation")
  * @ORM\Entity(repositoryClass="AdminBundle\Repository\FormationRepository")
-
  */
 class Formation
 {
@@ -19,7 +18,6 @@ class Formation
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
-
      */
 
 
@@ -114,6 +112,38 @@ class Formation
      * @ORM\Column(name="actualisation", type="text")
      */
     private $actualisation;
+
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="prix", type="integer")
+     */
+    private $prix;
+
+
+    /**
+     * Set prix
+     *
+     * @param string $prix
+     * @return Formation
+     */
+    public function setPrix($prix)
+    {
+        $this->prix = $prix;
+
+        return $this;
+    }
+
+    /**
+     * Get prix
+     *
+     * @return string
+     */
+    public function getPrix()
+    {
+        return $this->prix;
+    }
 
 
     /**

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Uploads list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Path</th>
+                <th>Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for upload in uploads %}
+            <tr>
+                <td><a href="{{ path('upload_show', { 'id': upload.id }) }}">{{ upload.id }}</a></td>
+                <td>{{ upload.path }}</td>
+                <td>{{ upload.type }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('upload_show', { 'id': upload.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('upload_edit', { 'id': upload.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('upload_new') }}">Create a new upload</a>
+        </li>
+    </ul>
+{% endblock %}

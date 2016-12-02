@@ -10,6 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use AdminBundle\Form\AgendaType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType ;
 
 class FormationType extends AbstractType
 {
@@ -35,6 +36,7 @@ class FormationType extends AbstractType
             ->add('methodePedagogique', TextAreaType::class, array( 'required' => false,))
             ->add ('validation')
             ->add('photo', FileType::class, array('required'=>false))
+            ->add('prix' , MoneyType :: class)
 
         ;
 
