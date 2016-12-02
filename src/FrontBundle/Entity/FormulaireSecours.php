@@ -553,6 +553,36 @@ class FormulaireSecours
      */
     private $infosCompl;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="devis", type="integer")
+     */
+    private $devis;
+
+
+    /**
+     * Set devis
+     *
+     * @param string $devis
+     * @return Formation
+     */
+    public function setDevis($devis)
+    {
+        $this->devis = $devis;
+
+        return $this;
+    }
+
+    /**
+     * Get devis
+     *
+     * @return string
+     */
+    public function getDevis()
+    {
+        return $this->devis;
+    }
 
     /**
      * Get id

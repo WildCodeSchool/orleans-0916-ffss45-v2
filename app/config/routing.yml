@@ -1,3 +1,8 @@
+commerce:
+    resource: "@CommerceBundle/Controller/"
+    type:     annotation
+    prefix:   /commerce
+
 admin_categorie:
     resource: "@AdminBundle/Controller/CategorieController.php"
     type:     annotation

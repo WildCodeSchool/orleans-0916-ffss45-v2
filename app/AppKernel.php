@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Craue\FormFlowBundle\CraueFormFlowBundle(),
             new FOS\UserBundle\FOSUserBundle(),
 			new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
+            new CommerceBundle\CommerceBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
