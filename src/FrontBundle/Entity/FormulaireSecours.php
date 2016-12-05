@@ -21,6 +21,12 @@ class FormulaireSecours
      */
     private $id;
 
+	/**
+	 *
+	 * @ORM\OneToMany(targetEntity="CommerceBundle\Entity\Reservations", mappedBy="FormulaireSecourss")
+	 */
+	private $reservations;
+
     /**
      * @var string
      *

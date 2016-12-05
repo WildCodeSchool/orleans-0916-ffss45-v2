@@ -28,6 +28,12 @@ class upload
      */
     private $path;
 
+	/**
+	 *
+	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\User", inversedBy="Uploads")
+	 */
+	private $user;
+
     /**
      * @var string
      *

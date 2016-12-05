@@ -27,6 +27,7 @@ class Formation
     /**
      * @ORM\OneToMany(targetEntity="Agenda", mappedBy="formation")
      */
+
     private $agendas;
     /**
      * @var string

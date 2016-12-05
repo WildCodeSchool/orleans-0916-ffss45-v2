@@ -30,12 +30,29 @@ class Reservations
 
     /**
      * @var int
-     *
      * @ORM\Column(name="numero_reservation", type="integer")
      */
     private $numeroReservation;
 
-    /**
+	/**
+	 *
+	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Agenda", inversedBy="Reservationss")
+	 */
+	private $agenda;
+
+	/**
+	 *
+	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\User", inversedBy="Reservationss")
+	 */
+	private $user;
+
+	/**
+	 *
+	 * @ORM\ManyToOne(targetEntity="FrontBundle\Entity\FormulaireSecours", inversedBy="Reservationss")
+	 */
+	private $formulairesecours;
+
+	/**
      * @var string
      *
      * @ORM\Column(name="convocation", type="string", length=45)
