@@ -2,7 +2,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    <link href="{{ asset('css/formations.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/formations.css') }}" rel="stylesheet" xmlns="http://www.w3.org/1999/html">
 {% endblock %}
 
 
@@ -89,12 +89,13 @@
                             <td>{{ agenda.heureDeDebutPm |date('H:i')}}-{{ agenda.heureDeFinPm |date('H:i')}}</td>
                             <td>{{ agenda.adresse }}</td>
                             <td>{{ agenda.remarque }}</td>
+                            <td><a class="btn" style="background-color:{{ formation.categorie.couleur }}; border-color:{{ formation.categorie.couleur }}" href="{{ path('add_panier', {'id' : agenda.id }) }}">S'inscrire</a> </td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
 
-            <a class="button" style="background-color:{{ formation.categorie.couleur }}; border-color:{{ formation.categorie.couleur }}" href="{{ path('page_accueil_principale') }}#formulaire_contact" ><span>Je m'inscris !</span></a>
+            {#<a class="button" style="background-color:{{ formation.categorie.couleur }}; border-color:{{ formation.categorie.couleur }}" href="{{ path('panier', {'id' : formation.id }) }}"  ><span>Je m'inscris !</span></a>#}
 
         </div>
 
