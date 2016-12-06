@@ -22,6 +22,7 @@ class PanierController extends Controller
         }
 
         $session->set('panier',$panier);
+
         return $this->redirect($this->generateUrl('panier'));
     }
 
@@ -29,17 +30,21 @@ class PanierController extends Controller
      * @Route("/panier", name="panier")
      */
     public function panierAction( Request $request)
-    {
+    {   $em = $this->getDoctrine()->getManager();
+
+        $agendas = $em->getRepository('AdminBundle:Agenda')->find('agenda');
+
         $session = $request->getSession();
      //  $session->remove('panier');
 
         if (!$session->has('panier')) {
             $session->set('panier', array());
         }
-        var_dump($session->get('panier'));
-        die();
 
-        return $this->render('@Commerce/Default/panier.html.twig');
+
+        return $this->render('@Commerce/Default/panier.html.twig',array(
+            'adresse' => $agendas,
+        ));
 
 
     }
