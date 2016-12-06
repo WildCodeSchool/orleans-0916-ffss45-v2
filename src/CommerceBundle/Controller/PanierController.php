@@ -30,20 +30,28 @@ class PanierController extends Controller
      * @Route("/panier", name="panier")
      */
     public function panierAction( Request $request)
+
     {   $em = $this->getDoctrine()->getManager();
 
-        $agendas = $em->getRepository('AdminBundle:Agenda')->find('agenda');
 
         $session = $request->getSession();
-     //  $session->remove('panier');
-
         if (!$session->has('panier')) {
             $session->set('panier', array());
         }
 
 
-        return $this->render('@Commerce/Default/panier.html.twig',array(
-            'adresse' => $agendas,
+        var_dump($session->get('panier'));
+        $panier="";
+        foreach ($session->get('panier') as $id=>$qte) {
+          //  echo $key.'<br/>'.$qte;
+
+          //  var_dump($ligne);
+            $panier[] =array('agenda'=>($em->getRepository('AdminBundle:Agenda')->find($id)),'quantite'=>$qte);
+        }
+       // var_dump($agendas);
+        return $this->render('@Commerce/Default/panier.html.twig', array(
+            'panier' => $panier,
+
         ));
 
 
