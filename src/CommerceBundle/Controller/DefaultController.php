@@ -14,4 +14,13 @@ class DefaultController extends Controller
     {
         return $this->render('CommerceBundle:Default:index.html.twig');
     }
+
+	/**
+	 * @Route("/inscription", name="inscription")
+	 */
+	public function inscriptionAction()
+	{
+		return $this->render('FOSUserBundle:Security:login.html.twig');
+	}
+
 }

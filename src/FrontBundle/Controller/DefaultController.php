@@ -127,5 +127,15 @@ class DefaultController extends Controller
 
     }
 
+	/**
+	 * @Route("/inscription", name="inscription")
+	 */
+	public function inscriptionAction()
+	{
+		return $this->render('@Commerce/Default/inscription.html.twig');
+
+
+	}
+
 }
 
