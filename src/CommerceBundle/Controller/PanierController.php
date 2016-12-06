@@ -17,15 +17,10 @@ class PanierController extends Controller
         $session = $request->getSession();
         $panier=$session->get('panier');
 
-        $doublon = 0;
-        foreach ($panier as $value){
-            if($value == $agenda->getId()){
-                $doublon = 1;
-            }
+        if(!array_key_exists($agenda->getId(),$panier)){
+            $panier[$agenda->getId()] = 1;
         }
-        if($doublon == 0) {
-            array_push($panier, $agenda->getId());
-        }
+
         $session->set('panier',$panier);
         return $this->redirect($this->generateUrl('panier'));
     }
@@ -36,7 +31,7 @@ class PanierController extends Controller
     public function panierAction( Request $request)
     {
         $session = $request->getSession();
-      // $session->remove('panier');
+     //  $session->remove('panier');
 
         if (!$session->has('panier')) {
             $session->set('panier', array());
