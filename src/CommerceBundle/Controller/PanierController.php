@@ -14,24 +14,19 @@ class PanierController extends Controller
      */
     public function ajouterAction(Agenda $agenda, Request $request)
     {
+        $session = $request->getSession();
+        $panier=$session->get('panier');
 
-// findById($id);
-          $session = $request->getSession();
-//        if (!$session->has('panier')) {
-//            $session->set('panier', array());
-//        }
-//
-        $panier[] =$session->get('panier');
-//
-        foreach ($panier as $key=>$item) {
-            if($item != $agenda->getId()){
-                $panier['panier']=$agenda->getId();
+        $doublon = 0;
+        foreach ($panier as $value){
+            if($value == $agenda->getId()){
+                $doublon = 1;
             }
         }
-
-
+        if($doublon == 0) {
+            array_push($panier, $agenda->getId());
+        }
         $session->set('panier',$panier);
-
         return $this->redirect($this->generateUrl('panier'));
     }
 
@@ -41,7 +36,7 @@ class PanierController extends Controller
     public function panierAction( Request $request)
     {
         $session = $request->getSession();
-     //  $session->remove('panier');
+      // $session->remove('panier');
 
 
 
@@ -49,7 +44,6 @@ class PanierController extends Controller
             $session->set('panier', array());
 
         }
-
         var_dump($session->get('panier'));
         die();
 
