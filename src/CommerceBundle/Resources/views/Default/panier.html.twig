@@ -1,1 +1,3 @@
-panier
+{% for item in panier %}
+ {{ item.agenda.formation.nomLong }}:{{ item.quantite }}
+{% endfor %}
