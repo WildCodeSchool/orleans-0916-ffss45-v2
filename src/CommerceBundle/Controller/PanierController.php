@@ -38,11 +38,8 @@ class PanierController extends Controller
         $session = $request->getSession();
       // $session->remove('panier');
 
-
-
         if (!$session->has('panier')) {
             $session->set('panier', array());
-
         }
         var_dump($session->get('panier'));
         die();
