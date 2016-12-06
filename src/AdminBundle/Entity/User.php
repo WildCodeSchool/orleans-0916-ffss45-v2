@@ -27,14 +27,14 @@ class User extends BaseUser
 
 	/**
 	 * @ORM\OneToMany(targetEntity="CommerceBundle\Entity\Reservations", mappedBy="user")
-	 * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+	 *
 	 */
 	private $reservations;
 
 	/**
 	 * @ORM\OneToMany(targetEntity="CommerceBundle\Entity\Upload", mappedBy="user")
-	 * @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+	 *
 	 */
-	private $upload;
+	private $uploads;
 }
 

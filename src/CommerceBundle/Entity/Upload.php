@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="upload")
  * @ORM\Entity(repositoryClass="CommerceBundle\Repository\uploadRepository")
  */
-class upload
+class Upload
 {
     /**
      * @var int
@@ -30,7 +30,7 @@ class upload
 
 	/**
 	 *
-	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\User", inversedBy="Uploads")
+	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\User", inversedBy="uploads")
 	 */
 	private $user;
 
