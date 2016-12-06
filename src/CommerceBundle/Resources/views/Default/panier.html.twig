@@ -1,1 +1,85 @@
-panier
+
+<?php
+
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+
+</head>
+<body>
+
+
+
+<div class="container">
+    <div class="row">
+
+        <div class="span9">
+            <h2>Votre parnier</h2>
+            <form>
+                <table class="table table-striped table-hover">
+                    <thead>
+                    <tr>
+                        <th>Références</th>
+                        <th>Quantité</th>
+                        <th>Prix unitaire</th>
+                        <th>Total HT</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>{% for item in panier %}
+                            <li>{{ item.agenda.formation.nomLong }}</li>
+                            {% endfor %}</td>
+                        <td>
+                            <select class="span1"><option>1</option></select>&nbsp;
+                            <a href="#"><i class="icon-refresh"></i></a>
+                            <a href="#"><i class="icon-trash"></i></a>
+                        </td>
+                        <td>-€</td>
+                        <td>-€</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>
+                            <select class="span1"><option>1</option></select>&nbsp;
+                            <a href="#"><i class="icon-refresh"></i></a>
+                            <a href="#"><i class="icon-trash"></i></a>
+                        </td>
+                        <td>-€</td>
+                        <td>-€</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </form>
+
+            <dl class="dl-horizontal pull-right">
+                <dt>Total HT :</dt>
+                <dd>-€</dd>
+
+                <dt>TVA :</dt>
+                <dd>-€</dd>
+
+                <dt>Total:</dt>
+                <dd>-€</dd>
+            </dl>
+            <div class="clearfix"></div>
+            <a href="livraison.php" class="btn btn-success pull-right">Valider mon panier</a>
+            <a href="index.php" class="btn btn-primary">Continuer mes achats</a>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
