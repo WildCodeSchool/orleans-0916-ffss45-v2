@@ -301,4 +301,38 @@ class Agenda
     {
         return $this->remarque;
     }
+
+    /**
+     * Add reservation
+     *
+     * @param \CommerceBundle\Entity\Reservations $reservation
+     *
+     * @return Agenda
+     */
+    public function addReservation(\CommerceBundle\Entity\Reservations $reservation)
+    {
+        $this->reservations[] = $reservation;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservation
+     *
+     * @param \CommerceBundle\Entity\Reservations $reservation
+     */
+    public function removeReservation(\CommerceBundle\Entity\Reservations $reservation)
+    {
+        $this->reservations->removeElement($reservation);
+    }
+
+    /**
+     * Get reservations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
+    }
 }

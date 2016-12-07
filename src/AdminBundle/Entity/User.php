@@ -36,5 +36,72 @@ class User extends BaseUser
 	 *
 	 */
 	private $uploads;
-}
 
+    /**
+     * Add reservation
+     *
+     * @param \CommerceBundle\Entity\Reservations $reservation
+     *
+     * @return User
+     */
+    public function addReservation(\CommerceBundle\Entity\Reservations $reservation)
+    {
+        $this->reservations[] = $reservation;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservation
+     *
+     * @param \CommerceBundle\Entity\Reservations $reservation
+     */
+    public function removeReservation(\CommerceBundle\Entity\Reservations $reservation)
+    {
+        $this->reservations->removeElement($reservation);
+    }
+
+    /**
+     * Get reservations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
+    }
+
+    /**
+     * Add upload
+     *
+     * @param \CommerceBundle\Entity\Upload $upload
+     *
+     * @return User
+     */
+    public function addUpload(\CommerceBundle\Entity\Upload $upload)
+    {
+        $this->uploads[] = $upload;
+
+        return $this;
+    }
+
+    /**
+     * Remove upload
+     *
+     * @param \CommerceBundle\Entity\Upload $upload
+     */
+    public function removeUpload(\CommerceBundle\Entity\Upload $upload)
+    {
+        $this->uploads->removeElement($upload);
+    }
+
+    /**
+     * Get uploads
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUploads()
+    {
+        return $this->uploads;
+    }
+}
