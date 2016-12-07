@@ -1,13 +1,18 @@
 
-<?php
 
-   <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
 
-</head>
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    {% endblock %}
+
+{% block contain %}
+
 <body>
 
 
@@ -22,6 +27,7 @@
                     <thead>
                     <tr>
                         <th>Formation</th>
+                        <th>Date</th>
                         <th>Quantité</th>
                         <th>Prix unitaire</th>
                         <th>Prix total</th>
@@ -30,21 +36,28 @@
                     <tbody>
                     <tr>
                         <td>{% for item in panier %}
-                            <li>{{ item.agenda.formation.nomLong }}</li>
-                            {% endfor %}</td>
-                        <td>
-d
+                            {{ item.agenda.formation.nomlong }}
+
                         </td>
-                        <td>{% for item in panier %}
-                            <li>{{ item.agenda.formation.prix }} €</li>
-                            {% endfor %} </td>
-                        <td>-€</td>
+                        <td>{#Datedebute#}
+                                                    </td>
+                        <td>{#quantité#}
+
+                        </td>
+                        <td>
+                            {{ item.agenda.formation.prix }} €
+                        </td>
+                        <td>{#prix#}
+
+                          </td>
+                        <td>{{ item.agenda.formation.prix }} €</td>
                     </tr>
                     <tr>
-                        <td>-</td>
+                        <td></td>
 
 
                     </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </form>
@@ -64,15 +77,6 @@ d
 
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
+    {% endblock %}
 </body>
 </html>

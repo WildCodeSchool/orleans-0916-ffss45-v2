@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use AdminBundle\Entity\Agenda;
 
+
 class PanierController extends Controller
 {
     /**

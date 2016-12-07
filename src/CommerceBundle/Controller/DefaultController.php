@@ -16,9 +16,9 @@ class DefaultController extends Controller
     }
 
 	/**
-	 * @Route("/inscription", name="inscription")
+	 * @Route("/connexion", name="connexion")
 	 */
-	public function inscriptionAction()
+	public function connexionAction()
 	{
 		return $this->render('FOSUserBundle:Security:login.html.twig');
 	}

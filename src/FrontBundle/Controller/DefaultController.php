@@ -137,5 +137,13 @@ class DefaultController extends Controller
 
 	}
 
+	/**
+	 * @Route("/register", name="register")
+	 */
+	public function registerAction()
+	{
+		return $this->render('CommerceBundle:Default:register.html.twig');
+	}
+
 }
 

@@ -1,5 +1,6 @@
 <!-- Mixins-->
 <!-- Pen Title-->
+<link href="{{ asset('css/login.css') }}" rel="stylesheet">
 <div class="pen-title">
     <h1>Bienvenue</h1>
     {% trans_default_domain 'FOSUserBundle' %}
@@ -12,10 +13,10 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-xs-6">
+        <div class="col-xs-12">
             <div class="card"></div>
             <div class="card">
-                <h1 class="title">Login</h1>
+                <h1 class="title">Je possède un espace personnel</h1>
                 <form action="{{ path("fos_user_security_check") }}" method="post">
                     {% if csrf_token %}
                         <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
@@ -36,40 +37,41 @@
                     </div>
                     <div class="footer">
                         <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-                        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label><br/>
+                        <a href="{{ path('register') }}">Je n'ai pas d'espace personnel</a>
                     </div>
                 </form>
                 </form>
             </div>
         </div>
-        <div class="col-xs-6">
-        <div class="card alt">
-            <div class="toggle"><span class="glyphicon ">&#x270f;</span></div>
-            <h1 class="title">Registre
-                <div class="close"></div>
-            </h1>
-            <form>
-                <div class="input-container">
-                    <input type="text" id="Username" required="required"/>
-                    <label for="Username">Username</label>
-                    <div class="bar"></div>
-                </div>
-                <div class="input-container">
-                    <input type="password" id="Password" required="required"/>
-                    <label for="Password">Password</label>
-                    <div class="bar"></div>
-                </div>
-                <div class="input-container">
-                    <input type="password" id="Repeat Password" required="required"/>
-                    <label for="Repeat Password">Repeat Password</label>
-                    <div class="bar"></div>
-                </div>
-                <div class="button-container">
-                    <button><span>Next</span></button>
-                </div>
-            </form>
-        </div>
-        </div>
+        {#<div class="col-xs-6">#}
+        {#<div class="card alt">#}
+            {#<h1 class="title">Je n'ai pas d'espace personnel#}
+                {#<div class="close"></div>#}
+            {#</h1>#}
+            {#<form>#}
+                {#<div class="input-container">#}
+                    {#<input type="text" id="Username" required="required"/>#}
+                    {#<label for="Username">Username</label>#}
+                    {#<div class="bar"></div>#}
+                {#</div>#}
+                {#<div class="input-container">#}
+                    {#<input type="password" id="Password" required="required"/>#}
+                    {#<label for="Password">Password</label>#}
+                    {#<div class="bar"></div>#}
+                {#</div>#}
+                {#<div class="input-container">#}
+                    {#<input type="password" id="Repeat Password" required="required"/>#}
+                    {#<label for="Repeat Password">Repeat Password</label>#}
+                    {#<div class="bar"></div>#}
+                {#</div>#}
+                {#<div class="button-container">#}
+
+                    {#<a href="{{ path('register') }}"><button><span>Next</span></button></a>#}
+                {#</div>#}
+            {#</form>#}
+        {#</div>#}
+        {#</div>#}
     </div>
 </div>
 
