@@ -24,11 +24,11 @@ class DefaultController extends Controller
 	}
 
     /**
-     * @Route("/inscription")
+     * @Route("/registration")
      */
-    public function inscAction()
+    public function registrationAction()
     {
-        return $this->render('CommerceBundle:Default:inscription.html.twig');
+        return $this->render('FOSUserBundle/Form/RegistrationFormType');
     }
 
 }
