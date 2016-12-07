@@ -27,9 +27,14 @@ class Agenda
      */
     private $formation;
 
+	/**
+	 * @ORM\OneToMany(targetEntity="CommerceBundle\Entity\Reservations", mappedBy="agenda")
+	 * @ORM\JoinColumn(name="agenda_id", referencedColumnName="id")
+	 */
+	private $reservations;
+
     /**
      * @var \DateTime
-     *
      * @ORM\Column(name="date_de_debut", type="date")
      */
     private $dateDeDebut;
