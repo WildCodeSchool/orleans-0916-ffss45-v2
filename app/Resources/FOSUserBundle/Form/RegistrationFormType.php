@@ -45,6 +45,17 @@ class RegistrationFormType extends AbstractType
 				'first_options' => array('label' => 'form.password'),
 				'second_options' => array('label' => 'form.password_confirmation'),
 				'invalid_message' => 'fos_user.password.mismatch',
+			->add('nom')
+			->add('prenom')
+			->add('age')
+			->add('date_naissance')
+			->add('lieu_naissance')
+			->add('departement_naissance')
+			->add('adresse')
+			->add('code_postal')
+			->add('ville')
+			->add('tel')
+			->add('relation')
 			))
 		;
 	}
