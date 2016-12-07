@@ -13,7 +13,7 @@
     <div class="row">
         <div class="span9">
             <h2>Votre panier</h2>
-            <form>
+
                 <table class="table table-striped table-hover">
                     <thead>
                     <tr>
@@ -24,8 +24,9 @@
                         <th>Prix total</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>{% for item in panier %}
+                    <tbody>{% for item in panier %}
+                    <tr>
+                        <form  method="get">
                         <td>
                             {{ item.agenda.formation.nomlong }}
                         </td>
@@ -35,31 +36,32 @@
                         <td>{#quantité#}
                             <select name="qte" onChange="this.form.submit()">
                                 {% for i in 1..10 %}
-                                    <option value="{{ i }}" {% if i == 1 %} selected="selected" {% endif %}>{{ i }}</option>
+                                    <option value="{{ i }}" {% if i == panier[item.agenda.formation.id] %} selected="selected" {% endif %}>{{ i }}</option>
                                 {% endfor %}
                             </select>
                         </td>
                         <td>
                             {{ item.agenda.formation.prix }} €
                         </td>
-                        <td>{#prix#}
-                        </td>
-                        <td>{{ item.agenda.formation.prix }} €</td>
+                        <td>{#prix total#}
+
+                        </td> </form>
+
                     </tr> {% endfor %}
                     <tr>
-                        <td><{#prix#}/td>
+                        <td><{#somme prix total #}/td>
                     </tr>
 
                     </tbody>
                 </table>
-            </form>
+
             <dl class="dl-horizontal pull-right">
                 <dt>Total:</dt>
                 <dd>-€</dd>
             </dl>
             <div class="clearfix"></div>
             <a href="livraison.php" class="btn btn-success pull-right">Valider mon panier</a>
-            <a href="index.php" class="btn btn-primary">Continuer mes achats</a>
+            <a href="{{path ('actualite_index') }}" class="btn btn-primary">Acheter d'autres formations</a>
         </div>
     </div>
 </div>

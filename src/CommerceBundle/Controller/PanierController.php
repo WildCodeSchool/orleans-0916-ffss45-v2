@@ -24,7 +24,7 @@ class PanierController extends Controller
 
         $session->set('panier',$panier);
 
-       
+
 
         return $this->redirect($this->generateUrl('panier'));
     }
@@ -34,7 +34,8 @@ class PanierController extends Controller
      */
     public function panierAction( Request $request)
 
-    {   $em = $this->getDoctrine()->getManager();
+    {
+        $em = $this->getDoctrine()->getManager();
 
 
         $session = $request->getSession();
@@ -53,7 +54,7 @@ class PanierController extends Controller
         }
        // var_dump($agendas);
         return $this->render('@Commerce/Default/panier.html.twig', array(
-            'panier' => $panier,
+            'panier' => $panier, 'qte'=>$qte
 
         ));
 
