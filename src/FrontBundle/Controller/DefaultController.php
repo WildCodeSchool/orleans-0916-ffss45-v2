@@ -132,7 +132,7 @@ class DefaultController extends Controller
 	 */
 	public function inscriptionAction()
 	{
-		return $this->render('@Commerce/Default/inscription.html.twig');
+		return $this->render('login.html.twig');
 
 
 	}
