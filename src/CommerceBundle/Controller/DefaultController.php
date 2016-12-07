@@ -31,4 +31,6 @@ class DefaultController extends Controller
         return $this->render('FOSUserBundle/Form/RegistrationFormType');
     }
 
+
+
 }

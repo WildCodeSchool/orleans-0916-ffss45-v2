@@ -145,5 +145,13 @@ class DefaultController extends Controller
 		return $this->render('CommerceBundle:Default:register.html.twig');
 	}
 
+	/**
+	 * @Route("/compte", name="compte")
+	 */
+	public function compteAction()
+	{
+		return $this->render('CommerceBundle:Default:compte.html.twig');
+	}
+
 }
 

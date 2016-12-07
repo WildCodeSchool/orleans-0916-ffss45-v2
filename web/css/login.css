@@ -383,3 +383,9 @@ body {
         opacity: 0;
     }
 }
+
+
+label {
+    padding-bottom: 25px;
+}
+
