@@ -1,25 +1,16 @@
 
 
-
 {% block stylesheets %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    {% endblock %}
-
+{% endblock %}
 {% block contain %}
-
 <body>
-
-
-
 <div class="container">
     <div class="row">
-
         <div class="span9">
             <h2>Votre panier</h2>
             <form>
@@ -34,39 +25,35 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>{% for item in panier %}
+                    <tr>{% for item in panier %}
+                        <td>
                             {{ item.agenda.formation.nomlong }}
-
                         </td>
                         <td>{#Datedebute#}
-                                                    </td>
+                            Du {{ item.agenda.dateDeDebut |date('d-m-Y') }}  au   {{ item.agenda.dateDeFin |date('d-m-Y') }}
+                        </td>
                         <td>{#quantité#}
-
+                            <select name="qte" onChange="this.form.submit()">
+                                {% for i in 1..10 %}
+                                    <option value="{{ i }}" {% if i == 1 %} selected="selected" {% endif %}>{{ i }}</option>
+                                {% endfor %}
+                            </select>
                         </td>
                         <td>
                             {{ item.agenda.formation.prix }} €
                         </td>
                         <td>{#prix#}
-
-                          </td>
+                        </td>
                         <td>{{ item.agenda.formation.prix }} €</td>
-                    </tr>
+                    </tr> {% endfor %}
                     <tr>
-                        <td></td>
-
-
+                        <td><{#prix#}/td>
                     </tr>
-                    {% endfor %}
+
                     </tbody>
                 </table>
             </form>
-
             <dl class="dl-horizontal pull-right">
-
-
-
-
                 <dt>Total:</dt>
                 <dd>-€</dd>
             </dl>
@@ -74,9 +61,9 @@
             <a href="livraison.php" class="btn btn-success pull-right">Valider mon panier</a>
             <a href="index.php" class="btn btn-primary">Continuer mes achats</a>
         </div>
-
     </div>
 </div>
-    {% endblock %}
+{% endblock %}
 </body>
 </html>
+
