@@ -1,5 +1,17 @@
 <!-- Mixins-->
 <!-- Pen Title-->
+<head>
+
+    <style>
+       label {
+           padding-bottom: 28px;
+       }
+
+    </style>
+
+</head>
+
+
 <link href="{{ asset('css/login.css') }}" rel="stylesheet">
 <div class="pen-title">
     <h1>Bienvenue</h1>
@@ -14,6 +26,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
+
             <div class=" hidden card"></div>
             <div class="card">
                 <h1 class="title">Je possède un espace personnel</h1>
@@ -24,12 +37,12 @@
                 <form>
                     <div class="input-container">
                         <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
-                        <label for="Username">{{ 'security.login.username'|trans }}</label>
+                        <label  for="Username">{{ 'security.login.username'|trans }}</label>
                         <div class="bar"></div>
                     </div>
                     <div class="input-container">
                         <input type="password" id="password" name="_password" required="required" />
-                        <label for="Password">{{ 'security.login.password'|trans }}</label>
+                        <label  for="Password">{{ 'security.login.password'|trans }}</label>
                         <div class="bar"></div>
                     </div>
                     <div class="button-container">
@@ -40,7 +53,8 @@
                         <input type="checkbox" id="remember_me" name="_remember_me"
                                                                 value="on" />
                         <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label><br/>
-                        <a href="{{ path('fos_user_registration_register') }}">Je n'ai pas d'espace personnel</a>
+
+                        <a href="{{ path('register2') }}">Je n'ai pas d'espace personnel</a>
                     </div>
                 </form>
                 </form>
