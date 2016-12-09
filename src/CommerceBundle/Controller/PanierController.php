@@ -48,14 +48,11 @@ class PanierController extends Controller
             $session->set('panier', array());
         }
 
-
-        //var_dump($session->get('panier'));
         $panier = "";
         $total = 0;
         foreach ($session->get('panier') as $id => $qte) {
-            //  echo $key.'<br/>'.$qte;
+
             $agenda = $em->getRepository('AdminBundle:Agenda')->find($id);
-            //  var_dump($ligne);
             $panier[] = array('agenda' => $agenda, 'quantite' => $qte);
             $total+=$agenda->getFormation()->getPrix()*$qte;
 
@@ -75,10 +72,10 @@ class PanierController extends Controller
         for ($i = 1; $i<=10; $i++){
             $choices[$i]=$i;
         }
-       // var_dump($choices);
+
         $session = $request->getSession();
         $panier = $session->get('panier');
-     //   var_dump($panier);
+
         $order = new Order();
         $form = $this->createFormBuilder($order)
             ->add('quantity', ChoiceType::class, array('label'=>false, 'choices' => $choices, 'data'=>$panier[$id]))
