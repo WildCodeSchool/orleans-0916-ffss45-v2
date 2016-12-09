@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FrontBundle\Form;
+namespace FrontBundle\FOSUserBundle\Form;
 
 use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\AbstractType;
@@ -31,13 +31,13 @@ class RegistrationFormType extends AbstractType
 		// return 'fos_user_registration';
 	}
 
-	/**
-	 * @param string $class The User class name
-	 */
-	public function __construct($class)
-	{
-		$this->class = $class;
-	}
+//	/**
+//	 * @param string $class The User class name
+//	 */
+//	public function __construct($class)
+//	{
+//		$this->class = $class;
+//	}
 
 	/**
 	 * {@inheritdoc}
@@ -74,28 +74,40 @@ class RegistrationFormType extends AbstractType
 	public function configureOptions(OptionsResolver $resolver)
 	{
 		$resolver->setDefaults(array(
-			'data_class' => $this->class,
+//			'data_class' => $this->class,
 			'csrf_token_id' => 'registration',
 			// BC for SF < 2.8
 			'intention' => 'registration',
+			'data_class' => 'AdminBundle\Entity\User',
 		));
 	}
 
-	// BC for SF < 3.0
-	/**
-	 * {@inheritdoc}
-	 */
+//	// BC for SF < 3.0
+//	/**
+//	 * {@inheritdoc}
+//	 */
+//	public function getName()
+//	{
+//		return $this->getBlockPrefix();
+//	}
+//
+//	/**
+//	 * {@inheritdoc}
+//	 */
+//	public function getBlockPrefix()
+//	{
+//		return 'fos_user_registration';
+//	}
+
+	public function getBlockPrefix()
+	{
+		return 'app_user_registration';
+	}
+
+	// For Symfony 2.x
 	public function getName()
 	{
 		return $this->getBlockPrefix();
-	}
-
-	/**
-	 * {@inheritdoc}
-	 */
-	public function getBlockPrefix()
-	{
-		return 'fos_user_registration';
 	}
 
 	/**

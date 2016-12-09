@@ -140,7 +140,7 @@ class DefaultController extends Controller
 	 */
 	public function register2Action()
 	{
-		return $this->render('enregistrement.html.twig');
+		return $this->render('CommerceBundle:Default:enregistrement.html.twig');
 	}
 
 	/**

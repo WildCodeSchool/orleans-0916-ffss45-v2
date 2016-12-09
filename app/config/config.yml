@@ -82,11 +82,11 @@ fos_user:
     firewall_name: main
     user_class: AdminBundle\Entity\User
 
-    registration:
-            form:
-                type: FrontBundle\Form\RegistrationFormType
-                # if you are using Symfony < 2.8 you should use the type name instead
-                # type: app_user_registration
+#    registration:
+#            form:
+#                type: FrontBundle\FOSUserBundle\Form\RegistrationFormType
+#                # if you are using Symfony < 2.8 you should use the type name instead
+##                 type: app_user_registration
     
 knp_snappy:  
     pdf:
