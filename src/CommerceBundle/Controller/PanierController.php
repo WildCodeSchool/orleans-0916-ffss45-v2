@@ -60,7 +60,7 @@ class PanierController extends Controller
             $total+=$agenda->getFormation()->getPrix()*$qte;
 
         }
-        //var_dump($panier);
+
         return $this->render('@Commerce/Default/panier.html.twig', array(
             'panier' => $panier,  'total' => $total
 
