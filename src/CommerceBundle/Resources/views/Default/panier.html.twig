@@ -8,13 +8,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 {% endblock %}
 {% block contain %}
+
+
 <body>
 <div class="container">
     <div class="row">
         <div class="span9">
             <h2>Votre panier</h2>
-
+            <form>
                 <table class="table table-striped table-hover">
+
                     <thead>
                     <tr>
                         <th>Formation</th>
@@ -24,9 +27,8 @@
                         <th>Prix total</th>
                     </tr>
                     </thead>
-                    <tbody>{% for item in panier %}
-                    <tr>
-                        <form  method="get">
+                    <tbody>
+                    <tr>{% for item in panier %}
                         <td>
                             {{ item.agenda.formation.nomlong }}
                         </td>
@@ -34,30 +36,34 @@
                             Du {{ item.agenda.dateDeDebut |date('d-m-Y') }}  au   {{ item.agenda.dateDeFin |date('d-m-Y') }}
                         </td>
                         <td>{#quantité#}
-                            <select name="qte" onChange="this.form.submit()">
-                                {% for i in 1..10 %}
-                                    <option value="{{ i }}" {% if i == panier[item.agenda.formation.id ] %} selected="selected" {% endif %}>{{ i }}</option>
-                                {% endfor %}
-                            </select>
+                            {{ render(controller('CommerceBundle:Panier:quantityForm', {'id': item.agenda.id})) }}
+                            {#<form >#}
+                                {#<select name="qte" action="{{ qte }}" method="get" >#}
+                                    {#{% for i in 1..10 %}#}
+                                        {#<option value="{{ i }}" {% if i == 1 %} selected="selected" {% endif %}>{{ i }}</option>#}
+                                    {#{% endfor %}#}
+                                {#</select>#}
+                            {#</form>#}
+
                         </td>
                         <td>
                             {{ item.agenda.formation.prix }} €
                         </td>
-                        <td>{#prix total#}
-
-                        </td> </form>
-
+                        <td>{#prix x quantité#}
+                            {{ item.agenda.formation.prix }}
+                        </td>
+                        <td></td>
                     </tr> {% endfor %}
                     <tr>
-                        <td><{#somme prix total #}/td>
+                        <td></td>
                     </tr>
 
                     </tbody>
                 </table>
-
+            </form>
             <dl class="dl-horizontal pull-right">
-                <dt>Total:</dt>
-                <dd>-€</dd>
+                <dt>Total: {{ total }} € TTC</dt>
+                <dd></dd>
             </dl>
             <div class="clearfix"></div>
             <a href="livraison.php" class="btn btn-success pull-right">Valider mon panier</a>
