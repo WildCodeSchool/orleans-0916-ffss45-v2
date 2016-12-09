@@ -23,14 +23,6 @@ class DefaultController extends Controller
 		return $this->render('FOSUserBundle:Security:login.html.twig');
 	}
 
-    /**
-     * @Route("/registration")
-     */
-    public function registrationAction()
-    {
-        return $this->render('FOSUserBundle/Form/RegistrationFormType');
-    }
-
 
 
 }
