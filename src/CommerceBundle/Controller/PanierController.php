@@ -37,7 +37,6 @@ class PanierController extends Controller
      * @Route("/panier", name="panier")
      */
     public function panierAction(Request $request)
-
     {
 
         $em = $this->getDoctrine()->getManager();
@@ -48,53 +47,62 @@ class PanierController extends Controller
             $session->set('panier', array());
         }
 
-
-        //var_dump($session->get('panier'));
         $panier = "";
-        $total = 0;
+        $totalfinal = 0;
         foreach ($session->get('panier') as $id => $qte) {
-            //  echo $key.'<br/>'.$qte;
+
             $agenda = $em->getRepository('AdminBundle:Agenda')->find($id);
-            //  var_dump($ligne);
-            $panier[] = array('agenda' => $agenda, 'quantite' => $qte);
-            $total+=$agenda->getFormation()->getPrix()*$qte;
+            $panier[] = array('agenda' => $agenda, 'quantite' => $qte, 'totalitem' => $agenda->getFormation()->getPrix()*$qte);
+            $totalfinal+=$agenda->getFormation()->getPrix()*$qte;
 
         }
 
         return $this->render('@Commerce/Default/panier.html.twig', array(
-            'panier' => $panier,  'total' => $total
+            'panier' => $panier,  'totalfinal' => $totalfinal
 
         ));
     }
 
     /**
-     * @Route("/quantityForm", name="qtform")
+     * @Route("/quantityForm/{id}", name="qtform")
      */
     public function quantityFormAction($id, Request $request)
     {
-        for ($i = 1; $i<=10; $i++){
+        for ($i = 1; $i<=20; $i++){
             $choices[$i]=$i;
         }
-       // var_dump($choices);
+
         $session = $request->getSession();
         $panier = $session->get('panier');
-     //   var_dump($panier);
+
         $order = new Order();
         $form = $this->createFormBuilder($order)
             ->add('quantity', ChoiceType::class, array('label'=>false, 'choices' => $choices, 'data'=>$panier[$id]))
             //->add('id', HiddenType::class, array('data' => $id))
             ->getForm();
         ;
-
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $panier[$id]=$data->getQte();
+            $panier[$id]=$data->getQuantity();
+            $session->set('panier',$panier);
+            return $this->redirect($this->generateUrl('panier'));
         }
-        return $this->render('@Commerce/Default/quantityForm.html.twig', array(
-            'form' => $form->createView(),
-
+         return $this->render('@Commerce/Default/quantityForm.html.twig', array(
+        'form' => $form->createView(),
+        'id'=>$id
         ));
+    }
+
+    /**
+     * @Route("/remove/{id}", name="remove")
+     */
+    public function deleteFunction($id, Request $request)
+    {
+        $session = $request->getSession();
+        $panier = $session->get('panier');
+        unset($panier[$id]);
+        $session->set('panier',$panier);
+        return $this->redirect($this->generateUrl('panier'));
     }
 }
