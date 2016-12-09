@@ -36,7 +36,7 @@
                         <td>{#quantité#}
                             <select name="qte" onChange="this.form.submit()">
                                 {% for i in 1..10 %}
-                                    <option value="{{ i }}" {% if i == panier[item.agenda.formation.id] %} selected="selected" {% endif %}>{{ i }}</option>
+                                    <option value="{{ i }}" {% if i == panier[item.agenda.formation.id ] %} selected="selected" {% endif %}>{{ i }}</option>
                                 {% endfor %}
                             </select>
                         </td>
@@ -61,7 +61,7 @@
             </dl>
             <div class="clearfix"></div>
             <a href="livraison.php" class="btn btn-success pull-right">Valider mon panier</a>
-            <a href="{{path ('actualite_index') }}" class="btn btn-primary">Acheter d'autres formations</a>
+            <a href="{{path ('actualite_index')}}" class="btn btn-primary">Acheter d'autres formations</a>
         </div>
     </div>
 </div>
