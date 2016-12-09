@@ -16,7 +16,6 @@
     <div class="row">
         <div class="span9">
             <h2>Votre panier</h2>
-            <form>
                 <table class="table table-striped table-hover">
 
                     <thead>
@@ -37,7 +36,7 @@
                             Du {{ item.agenda.dateDeDebut |date('d-m-Y') }}  au   {{ item.agenda.dateDeFin |date('d-m-Y') }}
                         </td>
                         <td>{#quantité#}
-                            {{ render(controller('CommerceBundle:Panier:quantityForm', {'id': item.agenda.id})) }}
+                            {{ item.quantite }}{{ render(controller('CommerceBundle:Panier:quantityForm', {'id': item.agenda.id})) }}
                             {#<form >#}
                                 {#<select name="qte" action="{{ qte }}" method="get" >#}
                                     {#{% for i in 1..10 %}#}
@@ -45,15 +44,16 @@
                                     {#{% endfor %}#}
                                 {#</select>#}
                             {#</form>#}
-
                         </td>
                         <td>
                             {{ item.agenda.formation.prix }} €
                         </td>
                         <td>{#prix x quantité#}
-                            {{ item.agenda.formation.prix }}
+                            {{ item.totalitem }} €
                         </td>
-                        <td></td>
+                        <td><a href="{{ path('remove', {'id': item.agenda.id}) }}">Sup</a>
+                        </td>
+
                     </tr> {% endfor %}
                     <tr>
                         <td></td>
@@ -63,7 +63,7 @@
                 </table>
             </form>
             <dl class="dl-horizontal pull-right">
-                <dt>Total: {{ total }} € TTC</dt>
+                <dt>Total: {{ totalfinal }} € TTC</dt>
                 <dd></dd>
             </dl>
             <div class="clearfix"></div>
