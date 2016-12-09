@@ -44,7 +44,7 @@ class RegistrationFormType extends AbstractType
 				'options' => array('translation_domain' => 'FOSUserBundle'),
 				'first_options' => array('label' => 'form.password'),
 				'second_options' => array('label' => 'form.password_confirmation'),
-				'invalid_message' => 'fos_user.password.mismatch',
+				'invalid_message' => 'fos_user.password.mismatch'))
 			->add('nom')
 			->add('prenom')
 			->add('age')
@@ -56,7 +56,6 @@ class RegistrationFormType extends AbstractType
 			->add('ville')
 			->add('tel')
 			->add('relation')
-			))
 		;
 	}
 
@@ -89,4 +88,21 @@ class RegistrationFormType extends AbstractType
 	{
 		return 'fos_user_registration';
 	}
+
+	/**
+	 * @return string
+	 */
+	public function getClass(): string
+	{
+		return $this->class;
+	}
+
+	/**
+	 * @param string $class
+	 */
+	public function setClass(string $class)
+	{
+		$this->class = $class;
+	}
+
 }

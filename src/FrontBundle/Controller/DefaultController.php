@@ -123,8 +123,6 @@ class DefaultController extends Controller
     public function secoursCivilAction()
     {
         return $this->render('@Front/PosteSecours/secoursCivil.html.twig');
-
-
     }
 
 	/**
@@ -138,11 +136,19 @@ class DefaultController extends Controller
 	}
 
 	/**
-	 * @Route("/register", name="register")
+	 * @Route("/register2", name="register2")
 	 */
-	public function registerAction()
+	public function register2Action()
 	{
 		return $this->render('CommerceBundle:Default:register.html.twig');
+	}
+
+	/**
+	 * @Route("/compte", name="compte")
+	 */
+	public function compteAction()
+	{
+		return $this->render('CommerceBundle:Default:compte.html.twig');
 	}
 
 }

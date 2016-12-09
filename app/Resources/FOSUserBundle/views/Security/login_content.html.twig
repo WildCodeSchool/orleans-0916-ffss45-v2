@@ -26,7 +26,8 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <div style="visibility: hidden;" class="card"></div>
+
+            <div class=" hidden card"></div>
             <div class="card">
                 <h1 class="title">Je possède un espace personnel</h1>
                 <form action="{{ path("fos_user_security_check") }}" method="post">
@@ -45,10 +46,12 @@
                         <div class="bar"></div>
                     </div>
                     <div class="button-container">
-                        <input class="btn-primary btn btn-lg" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                        <a href="{{ path('compte') }}"><input href="{{ path('compte') }}" class="btn-primary btn
+                        btn-lg" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" /></a>
                     </div>
                     <div class="footer">
-                        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                        <input type="checkbox" id="remember_me" name="_remember_me"
+                                                                value="on" />
                         <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label><br/>
                         <a href="{{ path('register') }}">Je n'ai pas d'espace personnel</a>
                     </div>
@@ -86,26 +89,6 @@
         {#</div>#}
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 {% block javascript %}

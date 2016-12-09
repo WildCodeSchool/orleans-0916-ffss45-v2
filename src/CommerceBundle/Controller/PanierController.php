@@ -24,6 +24,8 @@ class PanierController extends Controller
 
         $session->set('panier',$panier);
 
+       
+
         return $this->redirect($this->generateUrl('panier'));
     }
 

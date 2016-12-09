@@ -384,7 +384,8 @@ body {
     }
 }
 
-.inscription {
-    padding-left: 0px;
-    padding-right: 0px;
+
+label {
+    padding-bottom: 25px;
 }
+
