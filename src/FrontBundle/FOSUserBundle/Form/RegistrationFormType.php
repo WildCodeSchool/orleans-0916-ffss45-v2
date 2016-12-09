@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace FOS\UserBundle\Form\Type;
+namespace FrontBundle\Form;
 
 use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\AbstractType;
@@ -22,6 +22,14 @@ class RegistrationFormType extends AbstractType
 	 * @var string
 	 */
 	private $class;
+
+	public function getParent()
+	{
+		return 'FOS\UserBundle\Form\Type\RegistrationFormType';
+
+		// Or for Symfony < 2.8
+		// return 'fos_user_registration';
+	}
 
 	/**
 	 * @param string $class The User class name
@@ -57,6 +65,14 @@ class RegistrationFormType extends AbstractType
 			->add('tel')
 			->add('relation')
 		;
+	}
+
+	public function getParent()
+	{
+		return 'FOS\UserBundle\Form\Type\RegistrationFormType';
+
+		// Or for Symfony < 2.8
+		// return 'fos_user_registration';
 	}
 
 	/**

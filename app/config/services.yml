@@ -10,3 +10,7 @@ services:
 #        arguments: []
 #        tags:
 #            - { name: kernel.event_subscriber }
+    app.form.registration:
+        class: FrontBundle\Form\RegistrationFormType
+        tags:
+            - { name: form.type, alias: app_user_registration }

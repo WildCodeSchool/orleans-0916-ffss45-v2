@@ -136,11 +136,11 @@ class DefaultController extends Controller
 	}
 
 	/**
-	 * @Route("/register2", name="register2")
+	 * @Route("/enregistrement2", name="enregistrement2")
 	 */
-	public function register2Action()
+	public function enregistrement2Action()
 	{
-		return $this->render('CommerceBundle:Default:register.html.twig');
+		return $this->render('CommerceBundle:Default:enregistrement.html.twig');
 	}
 
 	/**
