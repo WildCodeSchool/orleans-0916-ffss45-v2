@@ -42,6 +42,7 @@ class User extends BaseUser
 	 * @var string
 	 *
 	 * @ORM\Column(name="nom", type="string", length=45)
+	 *
 	 */
 	private $nom;
 
@@ -118,7 +119,7 @@ class User extends BaseUser
 	/**
 	 * @return int
 	 */
-	public function getAge(): int
+	public function getAge()
 	{
 		return $this->age;
 	}
@@ -134,7 +135,7 @@ class User extends BaseUser
 	/**
 	 * @return string
 	 */
-	public function getLieuNaissance(): string
+	public function getLieuNaissance()
 	{
 		return $this->lieu_naissance;
 	}
@@ -150,7 +151,7 @@ class User extends BaseUser
 	/**
 	 * @return string
 	 */
-	public function getAdresse(): string
+	public function getAdresse()
 	{
 		return $this->adresse;
 	}
@@ -166,7 +167,7 @@ class User extends BaseUser
 	/**
 	 * @return int
 	 */
-	public function getCodePostal(): int
+	public function getCodePostal()
 	{
 		return $this->code_postal;
 	}
@@ -198,7 +199,7 @@ class User extends BaseUser
 	/**
 	 * @return date
 	 */
-	public function getDateNaissance(): date
+	public function getDateNaissance()
 	{
 		return $this->date_naissance;
 	}
@@ -214,7 +215,7 @@ class User extends BaseUser
 	/**
 	 * @return string
 	 */
-	public function getDepartementNaissance(): string
+	public function getDepartementNaissance()
 	{
 		return $this->departement_naissance;
 	}
@@ -230,7 +231,7 @@ class User extends BaseUser
 	/**
 	 * @return string
 	 */
-	public function getNom(): string
+	public function getNom()
 	{
 		return $this->nom;
 	}
@@ -278,7 +279,7 @@ class User extends BaseUser
 	/**
 	 * @return string
 	 */
-	public function getPrenom(): string
+	public function getPrenom()
 	{
 		return $this->prenom;
 	}
@@ -294,7 +295,7 @@ class User extends BaseUser
 	/**
 	 * @return text
 	 */
-	public function getRelation(): text
+	public function getRelation()
 	{
 		return $this->relation;
 	}
@@ -310,7 +311,7 @@ class User extends BaseUser
 	/**
 	 * @return string
 	 */
-	public function getVille(): string
+	public function getVille()
 	{
 		return $this->ville;
 	}
@@ -326,7 +327,7 @@ class User extends BaseUser
 	/**
 	 * @return int
 	 */
-	public function getTel(): int
+	public function getTel()
 	{
 		return $this->tel;
 	}

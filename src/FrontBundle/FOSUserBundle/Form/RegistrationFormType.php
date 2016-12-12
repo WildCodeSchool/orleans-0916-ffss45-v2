@@ -23,13 +23,13 @@ class RegistrationFormType extends AbstractType
 	 */
 	private $class;
 
-	public function getParent()
-	{
-		return 'FOS\UserBundle\Form\Type\RegistrationFormType';
-
-		// Or for Symfony < 2.8
-		// return 'fos_user_registration';
-	}
+//	public function getParent()
+//	{
+//		return 'FOS\UserBundle\Form\Type\RegistrationFormType';
+//
+//		// Or for Symfony < 2.8
+//		// return 'fos_user_registration';
+//	}
 
 //	/**
 //	 * @param string $class The User class name
