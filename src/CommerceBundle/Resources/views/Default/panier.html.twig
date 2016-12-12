@@ -36,7 +36,7 @@
                             Du {{ item.agenda.dateDeDebut |date('d-m-Y') }}  au   {{ item.agenda.dateDeFin |date('d-m-Y') }}
                         </td>
                         <td>{#quantité#}
-                            {{ item.quantite }}{{ render(controller('CommerceBundle:Panier:quantityForm', {'id': item.agenda.id})) }}
+                           {{ render(controller('CommerceBundle:Panier:quantityForm', {'id': item.agenda.id})) }}
                             {#<form >#}
                                 {#<select name="qte" action="{{ qte }}" method="get" >#}
                                     {#{% for i in 1..10 %}#}
