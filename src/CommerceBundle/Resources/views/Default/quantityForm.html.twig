@@ -1,0 +1,17 @@
+{% block js %}
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+{% endblock %}
+
+
+{{ form_start(form, {'action':path('qtform',{'id':id})}) }}
+
+{{ form_widget(form) }}
+
+{{ form_end(form) }}
+
+<script>
+    var quant = {{ path('qtform',{'id':id}) }};
+    quant = quant.onChange('id'.form.submit());
+</script>
