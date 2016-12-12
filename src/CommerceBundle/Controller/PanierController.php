@@ -14,7 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 class PanierController extends Controller
 {
     /**
-     * @Route("/add-panier/{id}", name="add_panier")
+     * @Route("/panier/{id}", name="add_panier")
      */
     public function ajouterAction(Agenda $agenda, Request $request)
     {
