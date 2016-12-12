@@ -13,6 +13,7 @@ namespace FrontBundle\FOSUserBundle\Form;
 
 use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -24,22 +25,6 @@ class RegistrationFormType extends AbstractType
 	 * @var string
 	 */
 	private $class;
-
-//	public function getParent()
-//	{
-//		return 'FOS\UserBundle\Form\Type\RegistrationFormType';
-//
-//		// Or for Symfony < 2.8
-//		// return 'fos_user_registration';
-//	}
-
-//	/**
-//	 * @param string $class The User class name
-//	 */
-//	public function __construct($class)
-//	{
-//		$this->class = $class;
-//	}
 
 	/**
 	 * {@inheritdoc}
@@ -62,6 +47,9 @@ class RegistrationFormType extends AbstractType
                 // this is actually the default format for single_text
                 'format' => 'yyyy-MM-dd',
             ))
+			->add('age')
+			->add('date_naissance', BirthdayType::class)
+
 			->add('lieu_naissance')
 			->add('departement_naissance')
 			->add('adresse')
@@ -87,23 +75,6 @@ class RegistrationFormType extends AbstractType
 		));
 	}
 
-//	// BC for SF < 3.0
-//	/**
-//	 * {@inheritdoc}
-//	 */
-//	public function getName()
-//	{
-//		return $this->getBlockPrefix();
-//	}
-//
-//	/**
-//	 * {@inheritdoc}
-//	 */
-//	public function getBlockPrefix()
-//	{
-//		return 'fos_user_registration';
-//	}
-
 	public function getBlockPrefix()
 	{
 		return 'app_user_registration';
@@ -118,7 +89,7 @@ class RegistrationFormType extends AbstractType
 	/**
 	 * @return string
 	 */
-	public function getClass(): string
+	public function getClass()
 	{
 		return $this->class;
 	}
