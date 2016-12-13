@@ -5,6 +5,7 @@ namespace AdminBundle\Entity;
 
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
@@ -41,6 +42,7 @@ class User extends BaseUser
 	 * @var string
 	 *
 	 * @ORM\Column(name="nom", type="string", length=45)
+	 *
 	 */
 	private $nom;
 
@@ -61,7 +63,7 @@ class User extends BaseUser
 	/**
 	 * @var date
 	 *
-	 * @ORM\Column(name="date_naissance", type="date", length=45)
+	 * @ORM\Column(name="date_naissance", type="date")
 	 */
 	private $date_naissance;
 
@@ -103,7 +105,7 @@ class User extends BaseUser
 	/**
 	 * @var integer
 	 *
-	 * @ORM\Column(name="tel", type="integer", length=45)
+	 * @ORM\Column(name="tel", type="string", length=45)
 	 */
 	private $tel;
 
@@ -117,7 +119,7 @@ class User extends BaseUser
 	/**
 	 * @return int
 	 */
-	public function getAge(): int
+	public function getAge()
 	{
 		return $this->age;
 	}
@@ -125,7 +127,7 @@ class User extends BaseUser
 	/**
 	 * @param int $age
 	 */
-	public function setAge(int $age)
+	public function setAge($age)
 	{
 		$this->age = $age;
 	}
@@ -133,7 +135,7 @@ class User extends BaseUser
 	/**
 	 * @return string
 	 */
-	public function getLieuNaissance(): string
+	public function getLieuNaissance()
 	{
 		return $this->lieu_naissance;
 	}
@@ -141,7 +143,7 @@ class User extends BaseUser
 	/**
 	 * @param string $lieu_naissance
 	 */
-	public function setLieuNaissance(string $lieu_naissance)
+	public function setLieuNaissance($lieu_naissance)
 	{
 		$this->lieu_naissance = $lieu_naissance;
 	}
@@ -149,7 +151,7 @@ class User extends BaseUser
 	/**
 	 * @return string
 	 */
-	public function getAdresse(): string
+	public function getAdresse()
 	{
 		return $this->adresse;
 	}
@@ -157,7 +159,7 @@ class User extends BaseUser
 	/**
 	 * @param string $adresse
 	 */
-	public function setAdresse(string $adresse)
+	public function setAdresse($adresse)
 	{
 		$this->adresse = $adresse;
 	}
@@ -165,7 +167,7 @@ class User extends BaseUser
 	/**
 	 * @return int
 	 */
-	public function getCodePostal(): int
+	public function getCodePostal()
 	{
 		return $this->code_postal;
 	}
@@ -173,7 +175,7 @@ class User extends BaseUser
 	/**
 	 * @param int $code_postal
 	 */
-	public function setCodePostal(int $code_postal)
+	public function setCodePostal($code_postal)
 	{
 		$this->code_postal = $code_postal;
 	}
@@ -197,7 +199,7 @@ class User extends BaseUser
 	/**
 	 * @return date
 	 */
-	public function getDateNaissance(): date
+	public function getDateNaissance()
 	{
 		return $this->date_naissance;
 	}
@@ -205,7 +207,7 @@ class User extends BaseUser
 	/**
 	 * @param date $date_naissance
 	 */
-	public function setDateNaissance(date $date_naissance)
+	public function setDateNaissance(\DateTime $date_naissance)
 	{
 		$this->date_naissance = $date_naissance;
 	}
@@ -213,7 +215,7 @@ class User extends BaseUser
 	/**
 	 * @return string
 	 */
-	public function getDepartementNaissance(): string
+	public function getDepartementNaissance()
 	{
 		return $this->departement_naissance;
 	}
@@ -221,7 +223,7 @@ class User extends BaseUser
 	/**
 	 * @param string $departement_naissance
 	 */
-	public function setDepartementNaissance(string $departement_naissance)
+	public function setDepartementNaissance($departement_naissance)
 	{
 		$this->departement_naissance = $departement_naissance;
 	}
@@ -229,7 +231,7 @@ class User extends BaseUser
 	/**
 	 * @return string
 	 */
-	public function getNom(): string
+	public function getNom()
 	{
 		return $this->nom;
 	}
@@ -237,7 +239,7 @@ class User extends BaseUser
 	/**
 	 * @param string $nom
 	 */
-	public function setNom(string $nom)
+	public function setNom($nom)
 	{
 		$this->nom = $nom;
 	}
@@ -277,7 +279,7 @@ class User extends BaseUser
 	/**
 	 * @return string
 	 */
-	public function getPrenom(): string
+	public function getPrenom()
 	{
 		return $this->prenom;
 	}
@@ -285,7 +287,7 @@ class User extends BaseUser
 	/**
 	 * @param string $prenom
 	 */
-	public function setPrenom(string $prenom)
+	public function setPrenom($prenom)
 	{
 		$this->prenom = $prenom;
 	}
@@ -293,7 +295,7 @@ class User extends BaseUser
 	/**
 	 * @return text
 	 */
-	public function getRelation(): text
+	public function getRelation()
 	{
 		return $this->relation;
 	}
@@ -301,7 +303,7 @@ class User extends BaseUser
 	/**
 	 * @param text $relation
 	 */
-	public function setRelation(text $relation)
+	public function setRelation($relation)
 	{
 		$this->relation = $relation;
 	}
@@ -309,7 +311,7 @@ class User extends BaseUser
 	/**
 	 * @return string
 	 */
-	public function getVille(): string
+	public function getVille()
 	{
 		return $this->ville;
 	}
@@ -317,7 +319,7 @@ class User extends BaseUser
 	/**
 	 * @param string $ville
 	 */
-	public function setVille(string $ville)
+	public function setVille($ville)
 	{
 		$this->ville = $ville;
 	}
@@ -325,7 +327,7 @@ class User extends BaseUser
 	/**
 	 * @return int
 	 */
-	public function getTel(): int
+	public function getTel()
 	{
 		return $this->tel;
 	}
@@ -333,10 +335,14 @@ class User extends BaseUser
 	/**
 	 * @param int $tel
 	 */
-	public function setTel(int $tel)
+	public function setTel($tel)
 	{
 		$this->tel = $tel;
 	}
+
+
+
+
 
 
 }
