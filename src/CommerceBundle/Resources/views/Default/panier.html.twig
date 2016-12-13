@@ -72,6 +72,13 @@
         </div>
     </div>
 </div>
+
+<script>
+    $('.mySelect').change(function() {
+        $(this).parent('form').submit();
+    });
+</script>
+
 {% endblock %}
 </body>
 </html>
