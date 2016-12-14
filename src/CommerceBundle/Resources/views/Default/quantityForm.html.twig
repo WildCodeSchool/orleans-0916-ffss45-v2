@@ -1,14 +1,7 @@
-{% block js %}
-    <script src="{{ asset('js/jquery.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
-
-{% endblock %}
-
-
 {{ form_start(form, {'action':path('qtform',{'id':id})}) }}
 
-{{ form_row(form.quantity, {'attr':{'class':'mySelect', 'onchange':'myFunction()' } }) }}
-{{ form_row(form.nom)}}
+{{ form_row(form.quantity, {'attr':{'class':'mySelect' } }) }}
+{#{{ form_row(form.nom)}}#}
 {{ form_end(form) }}
 
 
