@@ -5,14 +5,14 @@ parameters:
 
 services:
 #  FOSUserBundle:
-#    app_user.registration_listener:
-#        class : AdminBundle/EventListener/Event
-#        arguments: []
-#        tags:
-#            - { name: kernel.event_subscriber }
+#      app_user.registration_listener:
+#          class : AdminBundle/EventListener/Event
+#          arguments: []
+#          tags:
+#              - { name: kernel.event_subscriber }
 
-    app.form.registration:
-        class: FrontBundle\FOSUserBundle\Form\RegistrationFormType
-        tags:
-            - { name: form.type, alias: app_user_registration }
+      app.form.registration:
+          class: FrontBundle\FOSUserBundle\Form\RegistrationFormType
+          tags:
+              - { name: form.type, alias: app_user_registration }
 
