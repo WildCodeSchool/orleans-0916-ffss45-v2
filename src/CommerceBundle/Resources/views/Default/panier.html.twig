@@ -35,6 +35,8 @@
                         </td>
                         <td>{#quantité#}
                            {{ render(controller('CommerceBundle:Panier:quantityForm', {'id': item.agenda.id})) }}
+                            {#{% set test = 'id': item.agenda.id  %}#}
+                            
                         </td>
                         <td>
                             {{ item.agenda.formation.prix }} €
@@ -44,11 +46,20 @@
                         </td>
                         <td><a href="{{ path('remove', {'id': item.agenda.id}) }}">Sup</a>
                         </td>
+                    <tr>
+                        <td>
+                            {% for i in 1..qte  %}
+{{ i }}
+                                {#{{ form_start(form) }}#}
+                                {#{{ form_widget(form) }}#}
+                                {#<input type="submit" value="Create" />#}
+                                {#{{ form_end(form) }}#}
+                            {% endfor %}
+                        </td>
+                    </tr>
 
                     </tr> {% endfor %}
-                    <tr>
-                        <td></td>
-                    </tr>
+
 
                     </tbody>
                 </table>
