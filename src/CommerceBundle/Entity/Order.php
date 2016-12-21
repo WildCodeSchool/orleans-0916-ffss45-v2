@@ -17,6 +17,12 @@ class Order
     private $quantity;
 
     /**
+     * @var int
+     *
+     */
+    private $nom;
+
+    /**
      * @return int
      */
     public function getQuantity()
@@ -30,6 +36,22 @@ class Order
     public function setQuantity(int $quantity)
     {
         $this->quantity = $quantity;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNom()
+    {
+        return $this->nom;
+    }
+
+    /**
+     * @param int $nom
+     */
+    public function setNom($nom)
+    {
+        $this->nom = $nom;
     }
 
 }

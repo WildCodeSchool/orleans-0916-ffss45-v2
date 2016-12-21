@@ -1,0 +1,32 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1> Page utilisateur</h1>
+    <p>Vous êtes un :
+        {% if is_granted('ROLE_ADMIN') %}
+                <b>Admin</b>
+            {% endif %}
+
+        {% if is_granted('ROLE_USER') %}
+            <b>client</b>
+        {% endif %}
+    </p>
+    <p>Vos Informations</p>
+
+    <ul>
+        <li>Indentifiant : {{app.user.id}}</li>
+        <li>Pseudo : {{app.user.username}}</li>
+        <li>Nom : {{app.user.nom}}</li>
+        <li>Prénom : {{app.user.prenom}}</li>
+        <li>Age : {{app.user.age}}</li>
+        <li>Adresse : {{app.user.adresse}}</li>
+        <li>Code Postal : {{app.user.codepostal}}</li>
+        <li>Ville : {{app.user.ville}}</li>
+        <li>Tel : {{app.user.tel}}</li>
+        <li>Mail : {{app.user.email}}</li>
+        <li>Comment avez vous connu l'association FFSS : {{app.user.relation}}</li>
+    </ul>
+
+
+    <p><a href="{{ path('fos_user_security_logout') }}">se déconnecter</a> </p>
+{% endblock %}

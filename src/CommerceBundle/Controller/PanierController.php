@@ -4,30 +4,42 @@ namespace CommerceBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use AdminBundle\Entity\Agenda;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use CommerceBundle\Entity\Order;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use AdminBundle\Form\AddUserType;
+use Symfony\Component\HttpFoundation\Session\Session;
+
+
 
 class PanierController extends Controller
 {
     /**
      * @Route("/add-panier/{id}", name="add_panier")
      */
-    public function ajouterAction(Agenda $agenda, Request $request)
+    public function ajouterAction(Agenda $agenda)
     {
-        $session = $request->getSession();
+
+        $session = new Session();
+
+       // $session = $request->getSession();
         $panier=$session->get('panier');
 
-        if(!array_key_exists($agenda->getId(),$panier)){
-            $panier[$agenda->getId()] = 1;
+        if (!is_array($panier)) {
+            $panier = [];
         }
+            if (!array_key_exists($agenda->getId(), $panier)) {
+                $panier[$agenda->getId()] = 1;
+            }
 
         $session->set('panier',$panier);
 
-       
+
 
         return $this->redirect($this->generateUrl('panier'));
 
@@ -71,13 +83,16 @@ class PanierController extends Controller
         for ($i = 1; $i<=20; $i++){
             $choices[$i]=$i;
         }
-
         $session = $request->getSession();
         $panier = $session->get('panier');
 
         $order = new Order();
         $form = $this->createFormBuilder($order)
             ->add('quantity', ChoiceType::class, array('label'=>false, 'choices' => $choices, 'data'=>$panier[$id]))
+           // ->add('nom', CollectionType::class, array(
+          //      'entry_type'   => AddUserType::class,
+           // ))
+         //   ->add('prenom', ChoiceType::class, array('label'=>false, 'prenom' => $prenom, 'data'=>$panier[$id]))
             //->add('id', HiddenType::class, array('data' => $id))
             ->getForm();
         ;
@@ -105,4 +120,5 @@ class PanierController extends Controller
         $session->set('panier',$panier);
         return $this->redirect($this->generateUrl('panier'));
     }
+
 }
