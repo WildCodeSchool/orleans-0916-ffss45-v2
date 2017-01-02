@@ -21,7 +21,7 @@ class Order
      * @var
      *
      */
-    private $nom;
+    private $inscrits;
 
     /**
      * @return int
@@ -40,19 +40,23 @@ class Order
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getNom()
+    public function getInscrits()
     {
-        return $this->nom;
+        return $this->inscrits;
     }
 
     /**
-     * @param int $nom
+     * @param mixed $inscrits
      */
-    public function setNom(User $nom)
+    public function setInscrits($inscrits)
     {
-        $this->nom = $nom;
+        $this->inscrits = $inscrits;
     }
+
+
+
+
 
 }

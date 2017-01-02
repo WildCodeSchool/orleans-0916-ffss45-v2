@@ -65,8 +65,9 @@ class PanierController extends Controller
         }
         $panier = "";
         $totalfinal = 0;
-        foreach ($session->get('panier') as $id => $qte) {
+        foreach ($session->get('panier') as $id => $val) {
             $agenda = $em->getRepository('AdminBundle:Agenda')->find($id);
+            $qte = $val['quantity'];
             $panier[] = array('agenda' => $agenda, 'quantite' => $qte, 'totalitem' => $agenda->getFormation()->getPrix()*$qte);
             $totalfinal+=$agenda->getFormation()->getPrix()*$qte;
 
@@ -108,20 +109,26 @@ class PanierController extends Controller
         $session = $request->getSession();
         $panier = $session->get('panier');
         $order = new Order();
-
+        for ($i=0; $i<$panier[$id]['quantity'];$i++) {
+            $user[]=array();
+        }
+        $order->setInscrits($user);
         $form = $this->createFormBuilder($order)
-            ->add('quantity', ChoiceType::class, array('label'=>false, 'choices' => $choices, 'data'=>$panier[$id]))
+            ->add('quantity', ChoiceType::class, array('label'=>false, 'choices' => $choices, 'data'=>$panier[$id]['quantity']))
              ->add('inscrits', CollectionType::class, array(
                   'entry_type'   => AddUserType::class,
                  'allow_add'=>true,
-                 'mapped'=>false,
              ))
-            ->getForm();
+            ->getForm()
         ;
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            $panier[$id]=$data->getQuantity();
+            $qte=$data->getQuantity();
+            $users=$data->getInscrits();
+            $panier[$id]=['quantity'=>$qte, 'users'=>$users];
+            var_dump($panier[$id]);
+            $session->set('panier',$panier);
             $session->set('panier',$panier);
             return $this->redirect($this->generateUrl('panier'));
         }
