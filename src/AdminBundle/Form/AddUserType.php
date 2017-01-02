@@ -23,7 +23,7 @@ class AddUserType extends AbstractType
         $builder
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
-            ->add('mail', EmailType::class)
+            ->add('email', EmailType::class)
         ;
 
 
