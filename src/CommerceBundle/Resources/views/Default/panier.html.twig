@@ -46,20 +46,10 @@
                         <td><a href="{{ path('remove', {'id': item.agenda.id}) }}">Sup</a>
                         </td>
                         <td>
-
-                            {#{% for i in 1..qte  %}#}
-                            {#{{ i }}#}
                             {#{{ form_start(form) }}#}
                             {#{{ form_widget(form) }}#}
-                            {#<input type="submit" value="Create" />#}
+                            {#<input class="btn btn-success" type="submit" value="Créer" />#}
                             {#{{ form_end(form) }}#}
-                            {#{% endfor %} #}
-
-                            {{ form_start(form) }}
-                            {{ form_widget(form) }}
-                            <input class="btn btn-success" type="submit" value="Créer" />
-                            {{ form_end(form) }}
-
                         </td>
                     {#<tr>#}
                         {#<td>#}
@@ -78,7 +68,6 @@
 
                     </tbody>
                 </table>
-
             <dl class="dl-horizontal pull-right">
                 <dt>Total: {{ totalfinal }} € TTC</dt>
                 <dd></dd>

@@ -3,6 +3,7 @@ namespace CommerceBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -58,6 +59,7 @@ class PanierController extends Controller
         $em = $this->getDoctrine()->getManager();
         $session = $request->getSession();
 
+
         if (!$session->has('panier')) {
             $session->set('panier', array());
         }
@@ -69,22 +71,31 @@ class PanierController extends Controller
             $totalfinal+=$agenda->getFormation()->getPrix()*$qte;
 
         }
-        foreach ($session->get('panier') as $id => $qte) {
-            $forAddUsers = new User();
-            $form = $this->createForm('AdminBundle\Form\AddUserType', $forAddUsers);
-            $form->handleRequest($request);
-
-            if ($form->isSubmitted() && $form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($forAddUsers);
-                $em->flush();
-                return $this->redirectToRoute('panier', array('id' => $forAddUsers->getId()));
-            }
-        }
-        $forAddUsers='';
+//        foreach ($session->get('panier') as $id => $qte) {
+//            $forAddUsers = new User();
+//            $form = $this->createForm('AdminBundle\Form\AddUserType', $forAddUsers);
+//            $form->handleRequest($request);
+//            var_dump($form->getData()->getNom());
+//            $userManager = $this->container->get('fos_user.user_manager');
+//           // var_dump($userManager);
+//
+//         //   var_dump($user);
+//
+//            if ($form->isSubmitted() && $form->isValid()) {
+//                $em = $this->getDoctrine()->getManager();
+//                $user = $userManager->createUser();
+//
+////                $em->persist($forAddUsers);
+////                $em->flush();
+//                return $this->redirectToRoute('panier', array('id' => $forAddUsers->getId()));
+//            }
+//        }
+//        $forAddUsers='';
         return $this->render('@Commerce/Default/panier.html.twig', array(
-            'panier' => $panier,  'totalfinal' => $totalfinal, 'forAddUsers' => $forAddUsers,
-            'form' => $form->createView(), 'qte' => $qte,
+            'panier' => $panier,  'totalfinal' => $totalfinal,
+//            'forAddUsers' => $forAddUsers,
+//            'form' => $form->createView(),
+// 'qte' => $qte,
         ));
     }
 
@@ -96,26 +107,15 @@ class PanierController extends Controller
         $choices = range(0,20);
         $session = $request->getSession();
         $panier = $session->get('panier');
-
         $order = new Order();
-//        $order->setNom($this->getUser());
-//        $form = $this->createFormBuilder($order)
-//            ->add('quantity', ChoiceType::class, array('label'=>false, 'choices' => $choices, 'data'=>$panier[$id]))
-//            ->add('nom', CollectionType::class, array(
-//                'entry_type'   => AddUserType::class,
-//                'allow_add' => true,
-//            ))
-//         //   ->add('prenom', ChoiceType::class, array('label'=>false, 'prenom' => $prenom, 'data'=>$panier[$id]))
-//            //->add('id', HiddenType::class, array('data' => $id))
-//            ->getForm();
-//        ;
+
         $form = $this->createFormBuilder($order)
             ->add('quantity', ChoiceType::class, array('label'=>false, 'choices' => $choices, 'data'=>$panier[$id]))
-            // ->add('nom', CollectionType::class, array(
-            //      'entry_type'   => AddUserType::class,
-            // ))
-            //   ->add('prenom', ChoiceType::class, array('label'=>false, 'prenom' => $prenom, 'data'=>$panier[$id]))
-            //->add('id', HiddenType::class, array('data' => $id))
+             ->add('inscrits', CollectionType::class, array(
+                  'entry_type'   => AddUserType::class,
+                 'allow_add'=>true,
+                 'mapped'=>false,
+             ))
             ->getForm();
         ;
         $form->handleRequest($request);
