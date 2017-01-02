@@ -14,7 +14,11 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use AdminBundle\Form\AddUserType;
 use Symfony\Component\HttpFoundation\Session\Session;
-
+use AdminBundle\Entity\Formation;
+use AdminBundle\Form\FormationType;
+use AdminBundle\Form\AgendaType;
+use Symfony\Component\HttpFoundation\File\File;
+use AdminBundle\Entity\User;
 
 
 class PanierController extends Controller
@@ -27,7 +31,7 @@ class PanierController extends Controller
 
         $session = new Session();
 
-       // $session = $request->getSession();
+      //  $session = $request->getSession();
         $panier=$session->get('panier');
 
         if (!is_array($panier)) {
@@ -54,24 +58,33 @@ class PanierController extends Controller
         $em = $this->getDoctrine()->getManager();
         $session = $request->getSession();
 
-
         if (!$session->has('panier')) {
             $session->set('panier', array());
         }
-
         $panier = "";
         $totalfinal = 0;
         foreach ($session->get('panier') as $id => $qte) {
-
             $agenda = $em->getRepository('AdminBundle:Agenda')->find($id);
             $panier[] = array('agenda' => $agenda, 'quantite' => $qte, 'totalitem' => $agenda->getFormation()->getPrix()*$qte);
             $totalfinal+=$agenda->getFormation()->getPrix()*$qte;
 
         }
-       // var_dump($panier);
-        return $this->render('@Commerce/Default/panier.html.twig', array(
-            'panier' => $panier,  'totalfinal' => $totalfinal
+        foreach ($session->get('panier') as $id => $qte) {
+            $forAddUsers = new User();
+            $form = $this->createForm('AdminBundle\Form\AddUserType', $forAddUsers);
+            $form->handleRequest($request);
 
+            if ($form->isSubmitted() && $form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($forAddUsers);
+                $em->flush();
+                return $this->redirectToRoute('panier', array('id' => $forAddUsers->getId()));
+            }
+        }
+        $forAddUsers='';
+        return $this->render('@Commerce/Default/panier.html.twig', array(
+            'panier' => $panier,  'totalfinal' => $totalfinal, 'forAddUsers' => $forAddUsers,
+            'form' => $form->createView(), 'qte' => $qte,
         ));
     }
 
@@ -80,19 +93,28 @@ class PanierController extends Controller
      */
     public function quantityFormAction($id, Request $request)
     {
-        for ($i = 1; $i<=20; $i++){
-            $choices[$i]=$i;
-        }
+        $choices = range(0,20);
         $session = $request->getSession();
         $panier = $session->get('panier');
 
         $order = new Order();
+//        $order->setNom($this->getUser());
+//        $form = $this->createFormBuilder($order)
+//            ->add('quantity', ChoiceType::class, array('label'=>false, 'choices' => $choices, 'data'=>$panier[$id]))
+//            ->add('nom', CollectionType::class, array(
+//                'entry_type'   => AddUserType::class,
+//                'allow_add' => true,
+//            ))
+//         //   ->add('prenom', ChoiceType::class, array('label'=>false, 'prenom' => $prenom, 'data'=>$panier[$id]))
+//            //->add('id', HiddenType::class, array('data' => $id))
+//            ->getForm();
+//        ;
         $form = $this->createFormBuilder($order)
             ->add('quantity', ChoiceType::class, array('label'=>false, 'choices' => $choices, 'data'=>$panier[$id]))
-           // ->add('nom', CollectionType::class, array(
-          //      'entry_type'   => AddUserType::class,
-           // ))
-         //   ->add('prenom', ChoiceType::class, array('label'=>false, 'prenom' => $prenom, 'data'=>$panier[$id]))
+            // ->add('nom', CollectionType::class, array(
+            //      'entry_type'   => AddUserType::class,
+            // ))
+            //   ->add('prenom', ChoiceType::class, array('label'=>false, 'prenom' => $prenom, 'data'=>$panier[$id]))
             //->add('id', HiddenType::class, array('data' => $id))
             ->getForm();
         ;

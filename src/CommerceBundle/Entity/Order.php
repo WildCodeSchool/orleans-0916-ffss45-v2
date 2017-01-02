@@ -3,6 +3,7 @@
 namespace CommerceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AdminBundle\Entity\User;
 
 /**
  * Organisme
@@ -17,7 +18,7 @@ class Order
     private $quantity;
 
     /**
-     * @var int
+     * @var
      *
      */
     private $nom;
@@ -49,7 +50,7 @@ class Order
     /**
      * @param int $nom
      */
-    public function setNom($nom)
+    public function setNom(User $nom)
     {
         $this->nom = $nom;
     }
