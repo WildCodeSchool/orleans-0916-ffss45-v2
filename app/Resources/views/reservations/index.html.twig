@@ -1,26 +1,26 @@
-{% extends 'base.html.twig' %}
+{% extends 'AdminBundle::adminLayout.html.twig' %}
 
 {% block body %}
-    <h1>Reservations list</h1>
+    <h1>Liste Inscriptions</h1>
 
-    <table>
+    <table class="table-fill">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>N°</th>
                 <th>Status</th>
-                <th>Numberreservation</th>
+                <th>Numéro de réservation</th>
                 <th>Convocation</th>
-                <th>Certificate</th>
-                <th>Delaiexpiration</th>
+                <th>Certificat</th>
+                <th>Delai d' expiration</th>
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-hover">
         {% for reservation in reservations %}
             <tr>
                 <td><a href="{{ path('reservations_show', { 'id': reservation.id }) }}">{{ reservation.id }}</a></td>
                 <td>{{ reservation.status }}</td>
-                <td>{{ reservation.numberReservation }}</td>
+                <td>{{ reservation.numeroReservation }}</td>
                 <td>{{ reservation.convocation }}</td>
                 <td>{{ reservation.certificate }}</td>
                 <td>{% if reservation.delaiExpiration %}{{ reservation.delaiExpiration|date('Y-m-d H:i:s') }}{% endif %}</td>
@@ -41,7 +41,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('reservations_new') }}">Create a new reservation</a>
+            <a href="{{ path('reservations_new') }}">Creer une nouvelle Inscription</a>
         </li>
     </ul>
 {% endblock %}
