@@ -4,9 +4,36 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7266560a1657732eb3ac0989c13b8eaa",
-    "content-hash": "8af7eccd671d7e2d68dfc933de3adada",
+    "hash": "0f3bd9df0822d3d54f776df6e8192a68",
+    "content-hash": "65b7333601383db4185ac22d24348771",
     "packages": [
+        {
+            "name": "baptiste-dulac/systempay-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/baptiste-dulac/SystempayBundle.git",
+                "reference": "6f9114051ac0f91e319c6d13050fafd1fabe6f98"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/baptiste-dulac/SystempayBundle/zipball/6f9114051ac0f91e319c6d13050fafd1fabe6f98",
+                "reference": "6f9114051ac0f91e319c6d13050fafd1fabe6f98",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Tlconseil\\SystempayBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "description": "Payment gateway for Banque Populaire and Caisse d'épargne.",
+            "time": "2016-06-20 06:46:43"
+        },
         {
             "name": "components/font-awesome",
             "version": "4.6.3",
@@ -1470,16 +1497,16 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v5.0.16",
+            "version": "v5.0.17",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "68e3dc02e66fec5036557d457cfdffa332a40da4"
+                "reference": "4e98a1a6d3935d05414bd11e421a2047c93619f7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/68e3dc02e66fec5036557d457cfdffa332a40da4",
-                "reference": "68e3dc02e66fec5036557d457cfdffa332a40da4",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/4e98a1a6d3935d05414bd11e421a2047c93619f7",
+                "reference": "4e98a1a6d3935d05414bd11e421a2047c93619f7",
                 "shasum": ""
             },
             "require": {
@@ -1518,7 +1545,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2016-12-31 08:39:25"
+            "time": "2017-01-04 13:35:35"
         },
         {
             "name": "sensio/framework-extra-bundle",
@@ -2678,7 +2705,8 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "craue/formflow-bundle": 20,
-        "friendsofsymfony/user-bundle": 20
+        "friendsofsymfony/user-bundle": 20,
+        "baptiste-dulac/systempay-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

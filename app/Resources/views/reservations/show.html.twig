@@ -1,7 +1,10 @@
-{% extends 'base.html.twig' %}
+{% extends 'AdminBundle::adminLayout.html.twig' %}
 
 {% block body %}
-    <h1>Reservation</h1>
+    <h1>Inscription</h1>
+    <div class="container">
+        <div class="row">
+
 
     <table>
         <tbody>
@@ -45,4 +48,8 @@
             {{ form_end(delete_form) }}
         </li>
     </ul>
+
+
+    </div>
+    </div>
 {% endblock %}
