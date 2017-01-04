@@ -63,35 +63,14 @@ class PanierController extends Controller
         if (!$session->has('panier')) {
             $session->set('panier', array());
         }
-        $panier = "";
         $totalfinal = 0;
         foreach ($session->get('panier') as $id => $val) {
             $agenda = $em->getRepository('AdminBundle:Agenda')->find($id);
-            $qte = $val['quantity'];
+            $qte = $val['quantity']+1;
             $panier[] = array('agenda' => $agenda, 'quantite' => $qte, 'totalitem' => $agenda->getFormation()->getPrix()*$qte);
             $totalfinal+=$agenda->getFormation()->getPrix()*$qte;
-
         }
-//        foreach ($session->get('panier') as $id => $qte) {
-//            $forAddUsers = new User();
-//            $form = $this->createForm('AdminBundle\Form\AddUserType', $forAddUsers);
-//            $form->handleRequest($request);
-//            var_dump($form->getData()->getNom());
-//            $userManager = $this->container->get('fos_user.user_manager');
-//           // var_dump($userManager);
-//
-//         //   var_dump($user);
-//
-//            if ($form->isSubmitted() && $form->isValid()) {
-//                $em = $this->getDoctrine()->getManager();
-//                $user = $userManager->createUser();
-//
-////                $em->persist($forAddUsers);
-////                $em->flush();
-//                return $this->redirectToRoute('panier', array('id' => $forAddUsers->getId()));
-//            }
-//        }
-//        $forAddUsers='';
+
         return $this->render('@Commerce/Default/panier.html.twig', array(
             'panier' => $panier,  'totalfinal' => $totalfinal,
 //            'forAddUsers' => $forAddUsers,
@@ -105,13 +84,16 @@ class PanierController extends Controller
      */
     public function quantityFormAction($id, Request $request)
     {
-        $choices = range(0,20);
+        $choices = range(1,20);
         $session = $request->getSession();
         $panier = $session->get('panier');
+        //var_dump($panier);
         $order = new Order();
-        for ($i=0; $i<$panier[$id]['quantity'];$i++) {
-            $user[]=array();
-        }
+        $user[] = array();
+            for ($i = 0; $i < $panier[$id]['quantity']; $i++) {
+                $user[] = array();
+
+            }
         $order->setInscrits($user);
         $form = $this->createFormBuilder($order)
             ->add('quantity', ChoiceType::class, array('label'=>false, 'choices' => $choices, 'data'=>$panier[$id]['quantity']))
@@ -123,18 +105,40 @@ class PanierController extends Controller
         ;
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $nextAction = $form->get('saveAndAdd')->isClicked()
+                ? 'task_new'
+                : 'task_success';
+            $toto = new User();
+//            var_dump($toto);
+            $em = $this->getDoctrine()->getManager();
             $data = $form->getData();
-            $qte=$data->getQuantity();
-            $users=$data->getInscrits();
-            $panier[$id]=['quantity'=>$qte, 'users'=>$users];
-            var_dump($panier[$id]);
+            $qte=$data->getQuantity()+1;
+
+            var_dump($data);
+          //  var_dump($form->getData()->getInscrits());
+            $inscrits=$form->getData()->getInscrits();
+
+                $nom = $inscrits[0]['nom'];
+                $prenom = $inscrits[0]['prenom'];
+                $email = $inscrits[0]['email'];
+
+            $toto->setNom($nom);
+            $toto->setPrenom($prenom);
+            $toto->setUsername($nom.'_'.$prenom);
+            $toto->setEmail($email);
+      //      $toto=$data->getInscrits();
+            var_dump($toto);
+            $panier[$id]=['quantity'=>$qte, 'users'=>$toto];
+         //   var_dump($panier[$id]);
             $session->set('panier',$panier);
-            $session->set('panier',$panier);
-            return $this->redirect($this->generateUrl('panier'));
+            $em->persist($toto);
+            $em->flush($toto);
+          //  return $this->redirect($this->generateUrl('panier'));
+            return $this->redirectToRoute($nextAction);
         }
          return $this->render('@Commerce/Default/quantityForm.html.twig', array(
         'form' => $form->createView(),
-        'id'=>$id
+        'id'=>$id,
         ));
     }
 
