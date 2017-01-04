@@ -15,7 +15,7 @@ security:
         main:
             pattern: ^/
             form_login:
-                default_target_path: /
+                default_target_path: /commerce/who-is-user
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
                 # if you are using Symfony < 2.8, use the following config instead:

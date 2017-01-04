@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
 	       new Knp\Bundle\SnappyBundle\KnpSnappyBundle(),
             new CommerceBundle\CommerceBundle(),
+	       new Tlconseil\SystempayBundle\TlconseilSystempayBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
