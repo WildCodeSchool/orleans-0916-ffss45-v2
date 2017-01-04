@@ -55,7 +55,7 @@ class DefaultController extends Controller
 	 * @Route("/user", name="user_info")
 	 * @security("is_granted('IS_AUTHENTICATED_FULLY')")
 	 */
-	public function showUserAction()
+	public function showUserAction(Request $request)
 	{
 		IF($this->GET('security.authorization_checker')->isgranted('ROLE_ADMIN')) {
 			return $this->render('CommerceBundle:Default:admin.html.twig');

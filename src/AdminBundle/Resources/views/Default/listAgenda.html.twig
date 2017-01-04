@@ -11,6 +11,9 @@
         <th class="text-left">Formation</th>
         <th class="text-left">Remarque</th>
         <th class="text-left">Actions</th>
+        <th class="text-left">Inscriptions</th>
+
+
     </tr>
     </thead>
     <tbody class="">
@@ -25,8 +28,13 @@
             <td class="">{{ agenda.adresse }}</td>
             <td class="">{{ agenda.formation.nomCourt }}</td>
             <td class="">{{ agenda.remarque }}</td>
+
             <td>
                 <a href="{{ path('agenda_edit', { 'id': agenda.id }) }}"><i title="Modifier l'agenda" class="fa fa-edit fa-lg"></i></a>
+            </td>
+            <td>
+                <a href="{{ path('reservations_index', { 'id': agenda.id }) }}"><i title="Modifier l'agenda" class="fa
+                fa-edit fa-lg"></i></a>
             </td>
         </tr>
     {% else %}
