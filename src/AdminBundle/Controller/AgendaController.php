@@ -26,7 +26,7 @@ class AgendaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $agendas = $em->getRepository('AdminBundle:Agenda')->findAll();
+        $agendas = $em->getRepository('AdminBundle:Agenda')->find(1);
 
         return $this->render('agenda/index.html.twig', array(
             'agendas' => $agendas,
