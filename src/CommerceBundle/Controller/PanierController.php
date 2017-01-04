@@ -67,7 +67,7 @@ class PanierController extends Controller
         $totalfinal = 0;
         foreach ($session->get('panier') as $id => $val) {
             $agenda = $em->getRepository('AdminBundle:Agenda')->find($id);
-            $qte = $val['quantity'];
+            $qte = $val['quantity']+1;
             $panier[] = array('agenda' => $agenda, 'quantite' => $qte, 'totalitem' => $agenda->getFormation()->getPrix()*$qte);
             $totalfinal+=$agenda->getFormation()->getPrix()*$qte;
 
@@ -94,8 +94,8 @@ class PanierController extends Controller
 //        $forAddUsers='';
         return $this->render('@Commerce/Default/panier.html.twig', array(
             'panier' => $panier,  'totalfinal' => $totalfinal,
-//            'forAddUsers' => $forAddUsers,
-//            'form' => $form->createView(),
+//          'forAddUsers' => $forAddUsers,
+//          'form' => $form->createView(),
 // 'qte' => $qte,
         ));
     }
@@ -105,19 +105,21 @@ class PanierController extends Controller
      */
     public function quantityFormAction($id, Request $request)
     {
-        $choices = range(0,20);
+        $choices = range(1,20);
         $session = $request->getSession();
         $panier = $session->get('panier');
         $order = new Order();
+        $user[]=array();
         for ($i=0; $i<$panier[$id]['quantity'];$i++) {
             $user[]=array();
         }
+
         $order->setInscrits($user);
         $form = $this->createFormBuilder($order)
-            ->add('quantity', ChoiceType::class, array('label'=>false, 'choices' => $choices, 'data'=>$panier[$id]['quantity']))
+             ->add('quantity', ChoiceType::class, array('label'=>false, 'choices' => $choices, 'data'=>$panier[$id]['quantity']))
              ->add('inscrits', CollectionType::class, array(
-                  'entry_type'   => AddUserType::class,
-                 'allow_add'=>true,
+                   'entry_type'   => AddUserType::class,
+                   'allow_add'=>true,
              ))
             ->getForm()
         ;
@@ -127,7 +129,7 @@ class PanierController extends Controller
             $qte=$data->getQuantity();
             $users=$data->getInscrits();
             $panier[$id]=['quantity'=>$qte, 'users'=>$users];
-            var_dump($panier[$id]);
+            //var_dump($panier[$id]);
             $session->set('panier',$panier);
             $session->set('panier',$panier);
             return $this->redirect($this->generateUrl('panier'));
