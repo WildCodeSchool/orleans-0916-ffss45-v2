@@ -56,6 +56,7 @@
                         <th class="text-left">Formation</th>
                         <th class="text-left">Remarque</th>
                         <th class="text-left">Actions</th>
+                        <th class="text-left">Inscrits</th>
                     </tr>
                     </thead>
                     <tbody class="table-hover">
@@ -71,6 +72,7 @@
                             <td class="text-left">{{ agenda.adresse }}</td>
                             <td class="text-left">{{ agenda.formation.nomCourt }}</td>
                             <td class="text-left">{{ agenda.remarque }}</td>
+                            <td class="text-left">{{ user.nom }}</td>
                             <td>
                                 <a href="{{ path('agenda_show', { 'id': agenda.id }) }}"><span class="glyphicon glyphicon-eye-open"></span></a>
                                 <a href="{{ path('agenda_edit', { 'id': agenda.id }) }}"><span class="glyphicon glyphicon-edit"></span></a>

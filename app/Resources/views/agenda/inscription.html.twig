@@ -1,0 +1,39 @@
+{% extends 'AdminBundle::adminLayout.html.twig' %}
+{% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
+{% block body %}
+
+<div class="container-fluid">
+
+    <h1>Edition Inscriptions</h1>
+
+    <div class="content-body">
+        <table class="table-fill">
+            <thead>
+                <tr>
+                    <th class="text-left">Status</th>
+                    <th class="text-left">Convocation</th>
+                    <th class="text-left">Certificat</th>
+                </tr>
+            </thead>
+        {% for reservations in reservations %}
+            <tbody class="table-hover">
+                <tr>
+                    <td>{{ reservations.status }}</td>
+                    <td>{{ reservations.convocation }}</td>
+                    <td>{{ reservations.certificate }}</td>
+                </tr>
+            </tbody>
+        {% else %}
+            <tr><td>Aucun utilsateurs n'a été trouvé.</td></tr>
+        {% endfor %}
+        </table>
+    </div>
+
+
+        {#{{ form_start(delete_form) }}#}
+            {#<input class="btn btn-danger pull-right" type="submit" value="Supprimer">#}
+        {#{{ form_end(delete_form) }}#}
+
+        {#<a class="btn btn-primary" href="{{ path('formation_agendas', {'id':agenda.formation.id}) }}">Retour aux agendas</a>#}
+
+{% endblock %}

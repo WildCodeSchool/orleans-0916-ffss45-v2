@@ -24,6 +24,7 @@ class User extends BaseUser
     {
         parent::__construct();
         // your own logic
+
     }
 
 	/**
@@ -53,12 +54,6 @@ class User extends BaseUser
 	 */
 	private $prenom;
 
-	/**
-	 * @var integer
-	 *
-	 * @ORM\Column(name="age", type="integer", length=45)
-	 */
-	private $age;
 
 	/**
 	 * @var date
@@ -119,18 +114,7 @@ class User extends BaseUser
 	/**
 	 * @return int
 	 */
-	public function getAge()
-	{
-		return $this->age;
-	}
 
-	/**
-	 * @param int $age
-	 */
-	public function setAge($age)
-	{
-		$this->age = $age;
-	}
 
 	/**
 	 * @return string
