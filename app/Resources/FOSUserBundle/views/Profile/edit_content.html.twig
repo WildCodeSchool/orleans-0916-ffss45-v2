@@ -1,8 +1,15 @@
 {% trans_default_domain 'FOSUserBundle' %}
-
+{% extends 'FrontBundle:Default:frontLayout.html.twig' %}
+{% block body %}
 {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
     {{ form_widget(form) }}
+
+    {#{{form_label(form.name, 'Name')}}#}
+    {#{{form_widget(form.name, {'attr':{'class':'form-control'}}) }}#}
+    {#{{form_errors(form.name)}}#}
+
     <div>
         <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
     </div>
 {{ form_end(form) }}
+{% endblock %}
