@@ -112,51 +112,51 @@ class User extends BaseUser
 	 */
 	private $relation;
 
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="ciRecto", type="string", length=255)
-     */
-    private $ciRecto;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="ciVerso", type="string", length=255)
-     */
-    private $ciVerso;
-
-    /**
-     * @return int
-     */
-    public function getCiRecto()
-    {
-        return $this->ciRecto;
-    }
-
-    /**
-     * @param int $ciRecto
-     */
-    public function setCiRecto($ciRecto)
-    {
-        $this->ciRecto = $ciRecto;
-    }
-
-    /**
-     * @return int
-     */
-    public function getCiVerso()
-    {
-        return $this->ciVerso;
-    }
-
-    /**
-     * @param int $ciVerso
-     */
-    public function setCiVerso($ciVerso)
-    {
-        $this->ciVerso = $ciVerso;
-    }
+//    /**
+//     * @var integer
+//     *
+//     * @ORM\Column(name="ciRecto", type="string", length=255)
+//     */
+//    private $ciRecto;
+//
+//    /**
+//     * @var integer
+//     *
+//     * @ORM\Column(name="ciVerso", type="string", length=255)
+//     */
+//    private $ciVerso;
+//
+//    /**
+//     * @return int
+//     */
+//    public function getCiRecto()
+//    {
+//        return $this->ciRecto;
+//    }
+//
+//    /**
+//     * @param int $ciRecto
+//     */
+//    public function setCiRecto($ciRecto)
+//    {
+//        $this->ciRecto = $ciRecto;
+//    }
+//
+//    /**
+//     * @return int
+//     */
+//    public function getCiVerso()
+//    {
+//        return $this->ciVerso;
+//    }
+//
+//    /**
+//     * @param int $ciVerso
+//     */
+//    public function setCiVerso($ciVerso)
+//    {
+//        $this->ciVerso = $ciVerso;
+//    }
 
 
 
