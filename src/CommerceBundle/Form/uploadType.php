@@ -5,6 +5,7 @@ namespace CommerceBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 
 class uploadType extends AbstractType
 {
@@ -14,7 +15,10 @@ class uploadType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('path')
-                ->add('type')        ;
+                ->add('type')
+                ->add('ciRecto', FileType::class)
+                ->add('diplome', FileType::class)
+        ;
     }
     
     /**
