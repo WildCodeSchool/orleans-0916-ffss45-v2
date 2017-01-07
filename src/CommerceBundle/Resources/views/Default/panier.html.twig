@@ -30,6 +30,7 @@
                         </td>
                         <td>{#quantité#}
                            {{ render(controller('CommerceBundle:Panier:quantityForm', {'id': item.agenda.id})) }}
+
                         </td>
                         <td>
                             {{ item.agenda.formation.prix }} €
@@ -39,11 +40,15 @@
                         </td>
                         <td><a href="{{ path('remove', {'id': item.agenda.id}) }}">Sup</a>
                         </td>
-
-                    </tr> {% endfor %}
-                    <tr>
-                        <td></td>
+                        <td>
+                            {#{{ form_start(form) }}#}
+                            {#{{ form_widget(form) }}#}
+                            {#<input class="btn btn-success" type="submit" value="Créer" />#}
+                            {#{{ form_end(form) }}#}
+                        </td>
                     </tr>
+                    {% endfor %}
+
 
                     </tbody>
                 </table>

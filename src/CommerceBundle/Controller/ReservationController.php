@@ -133,4 +133,26 @@ class ReservationController extends Controller
             ->getForm()
         ;
     }
+
+	/**
+	 * @Route("/presence_pdf/{id}/pdf", name="presence_pdf")
+	 *
+	 */
+	public function presence_pdfAction(Reservations $reservation)
+	{
+		$html = $this->renderView('CommerceBundle:Default:presence_pdf.html.twig', array(
+			'reservation'  => $reservation
+		));
+
+
+		return new Response(
+			$this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+			200,
+			array(
+				'Content-Type'          => 'application/pdf',
+				'Content-Disposition'   => 'attachment; filename="file.pdf"'
+			)
+		);
+	}
+
 }

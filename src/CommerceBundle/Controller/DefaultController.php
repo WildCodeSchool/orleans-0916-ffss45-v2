@@ -2,6 +2,7 @@
 
 namespace CommerceBundle\Controller;
 
+use CommerceBundle\Entity\Reservations;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\BrowserKit\Request;
@@ -73,6 +74,8 @@ class DefaultController extends Controller
     {
         return $this->render('CommerceBundle:Default:user.html.twig');
     }
+
+
 
 
 }

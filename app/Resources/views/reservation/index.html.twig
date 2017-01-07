@@ -5,7 +5,7 @@
     <div class="row center-block">
         <div class="col-xs-12">
 
-    <table class="table-fill table-striped table-hover">
+    <table class="table-fill table-striped table-hover" style="width: 100%;">
         <thead>
             <tr>
                 <th>N°</th>
@@ -51,6 +51,10 @@
                         </li>
                         <li>
                             <a href="{{ path('reservation_edit', { 'id': reservation.id }) }}">edit</a>
+                        </li>
+                        <li>
+                            <a  class="button"  href="{{ path('presence_pdf', {'id':reservation.id})
+                            }}">Télécharger le PDF</a>
                         </li>
                     </ul>
                 </td>
