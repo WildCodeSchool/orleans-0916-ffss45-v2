@@ -27,7 +27,7 @@ class User extends BaseUser
     }
 
 	/**
-	 * @ORM\OneToMany(targetEntity="CommerceBundle\Entity\Reservations", mappedBy="user")
+	 * @ORM\OneToMany(targetEntity="CommerceBundle\Entity\Reservation", mappedBy="user")
 	 *
 	 */
 	private $reservations;
@@ -329,5 +329,52 @@ class User extends BaseUser
 
 
 
-}
 
+    /**
+     * Add reservation
+     *
+     * @param \CommerceBundle\Entity\Reservation $reservation
+     *
+     * @return User
+     */
+    public function addReservation(\CommerceBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations[] = $reservation;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservation
+     *
+     * @param \CommerceBundle\Entity\Reservation $reservation
+     */
+    public function removeReservation(\CommerceBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations->removeElement($reservation);
+    }
+
+    /**
+     * Add upload
+     *
+     * @param \CommerceBundle\Entity\Upload $upload
+     *
+     * @return User
+     */
+    public function addUpload(\CommerceBundle\Entity\Upload $upload)
+    {
+        $this->uploads[] = $upload;
+
+        return $this;
+    }
+
+    /**
+     * Remove upload
+     *
+     * @param \CommerceBundle\Entity\Upload $upload
+     */
+    public function removeUpload(\CommerceBundle\Entity\Upload $upload)
+    {
+        $this->uploads->removeElement($upload);
+    }
+}
