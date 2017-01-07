@@ -3,6 +3,7 @@
 namespace CommerceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use AdminBundle\Entity\User;
 
 /**
  * Organisme
@@ -17,10 +18,10 @@ class Order
     private $quantity;
 
     /**
-     * @var int
+     * @var
      *
      */
-    private $nom;
+    private $inscrits;
 
     /**
      * @return int
@@ -39,19 +40,23 @@ class Order
     }
 
     /**
-     * @return int
+     * @return mixed
      */
-    public function getNom()
+    public function getInscrits()
     {
-        return $this->nom;
+        return $this->inscrits;
     }
 
     /**
-     * @param int $nom
+     * @param mixed $inscrits
      */
-    public function setNom($nom)
+    public function setInscrits($inscrits)
     {
-        $this->nom = $nom;
+        $this->inscrits = $inscrits;
     }
+
+
+
+
 
 }
