@@ -1,17 +1,27 @@
 {% extends '@Front/Default/frontLayout.html.twig' %}
-
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
 
 {% block stylesheets %}
     {{ parent() }}
     <link href="{{ asset('css/rejoindre.css') }}" rel="stylesheet">
-
 {% endblock %}
+
+
 {% block title %}
     Rejoindre la FFSS
 {% endblock %}
+
+
 {% block body %}
-    <div class="rejoindre">
-    <h1>Rejoindre la FFSS 45</h1>
-    {{ form(form) }}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <div class="rejoindre">
+                <h1 class="center-block">Rejoindre la FFSS 45</h1>
+                {{ form(form) }}
+                </div>
+            </div>
+        </div>
     </div>
 {% endblock %}

@@ -218,4 +218,3 @@ class Organisme
         return $this->mail;
     }
 }
-

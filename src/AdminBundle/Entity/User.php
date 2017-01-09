@@ -7,6 +7,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
+
 /**
  * @ORM\Entity
  * @ORM\Table(name="fos_user")
@@ -24,10 +25,11 @@ class User extends BaseUser
     {
         parent::__construct();
         // your own logic
+
     }
 
 	/**
-	 * @ORM\OneToMany(targetEntity="CommerceBundle\Entity\Reservations", mappedBy="user")
+	 * @ORM\OneToMany(targetEntity="CommerceBundle\Entity\Reservation", mappedBy="user")
 	 *
 	 */
 	private $reservations;
@@ -53,12 +55,6 @@ class User extends BaseUser
 	 */
 	private $prenom;
 
-	/**
-	 * @var integer
-	 *
-	 * @ORM\Column(name="age", type="integer", length=45)
-	 */
-	private $age;
 
 	/**
 	 * @var date
@@ -116,21 +112,58 @@ class User extends BaseUser
 	 */
 	private $relation;
 
+//    /**
+//     * @var integer
+//     *
+//     * @ORM\Column(name="ciRecto", type="string", length=255)
+//     */
+//    private $ciRecto;
+//
+//    /**
+//     * @var integer
+//     *
+//     * @ORM\Column(name="ciVerso", type="string", length=255)
+//     */
+//    private $ciVerso;
+//
+//    /**
+//     * @return int
+//     */
+//    public function getCiRecto()
+//    {
+//        return $this->ciRecto;
+//    }
+//
+//    /**
+//     * @param int $ciRecto
+//     */
+//    public function setCiRecto($ciRecto)
+//    {
+//        $this->ciRecto = $ciRecto;
+//    }
+//
+//    /**
+//     * @return int
+//     */
+//    public function getCiVerso()
+//    {
+//        return $this->ciVerso;
+//    }
+//
+//    /**
+//     * @param int $ciVerso
+//     */
+//    public function setCiVerso($ciVerso)
+//    {
+//        $this->ciVerso = $ciVerso;
+//    }
+
+
+
 	/**
 	 * @return int
 	 */
-	public function getAge()
-	{
-		return $this->age;
-	}
 
-	/**
-	 * @param int $age
-	 */
-	public function setAge($age)
-	{
-		$this->age = $age;
-	}
 
 	/**
 	 * @return string
@@ -346,5 +379,52 @@ class User extends BaseUser
 
 
 
-}
 
+    /**
+     * Add reservation
+     *
+     * @param \CommerceBundle\Entity\Reservation $reservation
+     *
+     * @return User
+     */
+    public function addReservation(\CommerceBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations[] = $reservation;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservation
+     *
+     * @param \CommerceBundle\Entity\Reservation $reservation
+     */
+    public function removeReservation(\CommerceBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations->removeElement($reservation);
+    }
+
+    /**
+     * Add upload
+     *
+     * @param \CommerceBundle\Entity\Upload $upload
+     *
+     * @return User
+     */
+    public function addUpload(\CommerceBundle\Entity\Upload $upload)
+    {
+        $this->uploads[] = $upload;
+
+        return $this;
+    }
+
+    /**
+     * Remove upload
+     *
+     * @param \CommerceBundle\Entity\Upload $upload
+     */
+    public function removeUpload(\CommerceBundle\Entity\Upload $upload)
+    {
+        $this->uploads->removeElement($upload);
+    }
+}

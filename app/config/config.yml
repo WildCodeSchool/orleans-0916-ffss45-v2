@@ -13,7 +13,7 @@ imports:
 # Put parameters here that don't need to change on each machine where the app is deployed
 # http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    locale: en
+    locale: fr
     upload_directory: '%kernel.root_dir%/../web/upload/'
 
 framework:
@@ -87,9 +87,23 @@ fos_user:
                 type: FrontBundle\FOSUserBundle\Form\RegistrationFormType
                 # if you are using Symfony < 2.8 you should use the type name instead
                 # type: app_user_registration
+
+    profile:
+       form:
+            type: FrontBundle\FOSUserBundle\Form\ProfileFormType
+
     
 knp_snappy:  
     pdf:
         enabled:    true
         binary:     %kernel.root_dir%/../vendor/h4cc/wkhtmltopdf-amd64/bin/wkhtmltopdf-amd64
 
+
+tlconseil_systempay:
+    # Credentials
+    site_id: XXXXX
+    # Keys
+    key_dev: XXXXX
+    key_prod: XXXXX
+    # Return
+    url_return: http://www.example.com/payment_return

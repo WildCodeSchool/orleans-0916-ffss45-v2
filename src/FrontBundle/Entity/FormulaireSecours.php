@@ -23,7 +23,7 @@ class FormulaireSecours
 
 	/**
 	 *
-	 * @ORM\OneToMany(targetEntity="CommerceBundle\Entity\Reservations", mappedBy="FormulaireSecourss")
+	 * @ORM\OneToMany(targetEntity="CommerceBundle\Entity\Reservation", mappedBy="formulaireSecours")
 	 */
 	private $reservations;
 
@@ -2346,5 +2346,46 @@ class FormulaireSecours
     public function getInfosCompl()
     {
         return $this->infosCompl;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add reservation
+     *
+     * @param \CommerceBundle\Entity\Reservation $reservation
+     *
+     * @return FormulaireSecours
+     */
+    public function addReservation(\CommerceBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations[] = $reservation;
+
+        return $this;
+    }
+
+    /**
+     * Remove reservation
+     *
+     * @param \CommerceBundle\Entity\Reservation $reservation
+     */
+    public function removeReservation(\CommerceBundle\Entity\Reservation $reservation)
+    {
+        $this->reservations->removeElement($reservation);
+    }
+
+    /**
+     * Get reservations
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getReservations()
+    {
+        return $this->reservations;
     }
 }

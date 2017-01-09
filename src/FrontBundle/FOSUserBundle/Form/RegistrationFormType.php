@@ -16,6 +16,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+
 
 class RegistrationFormType extends AbstractType
 {
@@ -40,8 +42,10 @@ class RegistrationFormType extends AbstractType
 				'invalid_message' => 'fos_user.password.mismatch'))
 			->add('nom')
 			->add('prenom')
-			->add('age')
-			->add('date_naissance', BirthdayType::class)
+			->add('date_naissance', BirthdayType::class, array(
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+            ))
 			->add('lieu_naissance')
 			->add('departement_naissance')
 			->add('adresse')

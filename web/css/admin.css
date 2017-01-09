@@ -18,6 +18,10 @@ table th {
     color:white;
 }
 
+table {
+    width:100px;
+}
+
 h1 {
     border-top:3px solid #FFE40E;
     border-bottom:3px solid #FFE40E;

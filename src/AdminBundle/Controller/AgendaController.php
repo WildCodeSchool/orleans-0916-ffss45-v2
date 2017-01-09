@@ -146,6 +146,27 @@ class AgendaController extends Controller
             ->getForm();
     }
 
+	/**
+	 * Displays a form to edit an existing Agenda entity.
+	 *
+	 * @Route("/{id}/inscription", name="agenda_inscription")
+	 * @Method({"GET", "POST"})
+	 */
+	public function inscriptionAction(Agenda $agenda)
+	{
+		$em = $this->getDoctrine()->getManager();
+
+		//recupération des agendas en cours pour une formation
+
+		$reservations = $em->getRepository('CommerceBundle:Reservation')->findByAgenda($agenda);
+
+
+
+		return $this->render('agenda/inscription.html.twig', array(
+			'reservations' => $reservations,
+
+		));
+	}
 
 
 }
