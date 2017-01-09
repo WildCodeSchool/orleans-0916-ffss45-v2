@@ -41,7 +41,7 @@ class PanierController extends Controller
         $panier = $session->get('panier');
         if (is_array($panier)) {
             if (!array_key_exists($agenda->getId(), $panier)) {
-                $panier[$agenda->getId()] = ['agenda' => $agenda, 'formation' => $agenda->getFormation()->getNomLong(), 'quantity' => 1, 'inscrits'=>null];
+                $panier[$agenda->getId()] = ['agenda' => $agenda, 'formation' => $agenda->getFormation()->getNomLong(), 'quantity' => 1, 'inscrits' => null];
             }
         }
         $session->set('panier', $panier);
@@ -159,11 +159,14 @@ class PanierController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             if (array_key_exists($id, $panier)) {
-                $panier[$id]['inscrits'][$key] = [
-                    'nom'    => $data['nom'],
-                    'prenom' => $data['prenom'],
-                    'email'  => $data['email'],
-                ];
+                if ($data['nom'] && $data['prenom'] && $data['email']) {
+
+                    $panier[$id]['inscrits'][$key] = [
+                        'nom'    => $data['nom'],
+                        'prenom' => $data['prenom'],
+                        'email'  => $data['email'],
+                    ];
+                }
             }
             $session->set('panier', $panier);
             //return $this->redirectToRoute('valid_cart');
@@ -183,6 +186,7 @@ class PanierController extends Controller
     {
         $session = $request->getSession();
         $panier = $session->get('panier');
+        dump($panier);
         $id = $agenda->getId();
         if (isset($panier[$id]['inscrits'][$key])) {
             unset($panier[$id]['inscrits'][$key]);
@@ -196,6 +200,20 @@ class PanierController extends Controller
     }
 
     /**
+     * @Route("/user-inscrit/{id}", name="user_inscrit")
+     */
+    public function userInscritAction(Agenda $agenda, Request $request)
+    {
+        $session = $request->getSession();
+        $panier = $session->get('panier');
+        $id = $agenda->getId();
+        $user = $this->getUser();
+        $panier[$id]['inscrits'][1]=['nom'=>$user->getNom(), 'prenom'=>$user->getPrenom(), 'email'=>$user->getEmail()];
+        $session->set('panier', $panier);
+        return $this->redirectToRoute('valid_cart');
+    }
+
+    /**
      * @Route("/valid-cart", name="valid_cart")
      */
     public function validateCartAction(Request $request)
@@ -203,6 +221,7 @@ class PanierController extends Controller
         $session = $request->getSession();
         $panier = $session->get('panier');
         dump($panier);
+
         return $this->render('@Commerce/Default/validCart.html.twig', array(
             'panier' => $panier,
         ));
@@ -212,7 +231,8 @@ class PanierController extends Controller
     /**
      * @Route("/payment", name="payment")
      */
-    public function paymentAction(Request $request)
+    public
+    function paymentAction(Request $request)
     {
         $session = $request->getSession();
         $panier = $session->get('panier');
@@ -220,7 +240,9 @@ class PanierController extends Controller
         if ($panier) {
             foreach ($panier as $article) {
                 for ($i = 0; $i < $article['quantity']; $i++) {
-                    if (!array_key_exists($i, $article['inscrits'])) {
+                    if (!isset($article['inscrits']))  {
+                        $errorBack=1;
+                    } elseif (!array_key_exists($i, $article['inscrits'])) {
                         $errorBack = 1;
                     }
                 }
@@ -243,8 +265,9 @@ class PanierController extends Controller
                 'danger',
                 'Le panier est vide, veuillez ajouter des formations'
             );
+
             return $this->redirectToRoute('panier');
-       }
+        }
     }
 
 }

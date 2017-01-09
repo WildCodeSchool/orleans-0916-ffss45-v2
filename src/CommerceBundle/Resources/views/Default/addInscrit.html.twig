@@ -1,6 +1,6 @@
 #{{ key }}
 {% set panier =  app.session.get('panier') %}
-{% if panier[id]['inscrits'][key] is defined %}
+{% if panier[id]['inscrits'][key]['nom'] is defined %}
     {{ panier[id]['inscrits'][key]['nom'] }}
     <a href="{{ path('edit_inscrit', {'id':id, 'key':key} ) }}">edit</a>
 {% else %}
@@ -15,5 +15,8 @@
     {{ form_label(form.email) }}
     {{ form_widget(form.email) }}
     {{ form_end(form) }}
+    {% if key==1 %}
+        <a href="{{ path('user_inscrit', {'id':id} ) }}">pour moi</a>
+    {% endif %}
 {% endif %}
 

@@ -1,5 +1,5 @@
 {% extends 'base.html.twig' %}
-
+{% set panier = app.session.get('panier') %}
 {% block body %}
     {% for article_id, article in panier %}
         {% if article.quantity is defined %}
