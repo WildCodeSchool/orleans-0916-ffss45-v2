@@ -271,4 +271,39 @@ class PanierController extends Controller
         }
     }
 
+	/**
+	 * @Route("/initiate-payment/id-{id}", name="pay_online")
+	 *
+	 */
+	public function payOnlineAction($id)
+	{
+		// ...
+		$systempay = $this->get('tlconseil.systempay')
+			->init()
+			->setOptionnalFields(array(
+				'shop_url' => 'http://www.example.com'
+			))
+		;
+
+		return $this-> render ('@Commerce/Default/payment.html.twig', array(
+			'paymentUrl' => $systempay->getPaymentUrl(),
+			'fields' => $systempay->getResponse(),
+		));
+	}
+
+	/**
+	 * @Route("/payment/verification")
+	 * @param Request $request
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	public function paymentVerificationAction(Request $request)
+	{
+		// ...
+		$this->get('tlconseil.systempay')
+			->responseHandler($request)
+		;
+
+		return new Response();
+	}
+
 }
