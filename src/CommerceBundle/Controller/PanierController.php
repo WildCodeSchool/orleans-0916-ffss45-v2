@@ -20,6 +20,8 @@ use AdminBundle\Form\FormationType;
 use AdminBundle\Form\AgendaType;
 use Symfony\Component\HttpFoundation\File\File;
 use AdminBundle\Entity\User;
+use FrontBundle\Entity\Contact;
+
 
 
 class PanierController extends Controller
@@ -139,6 +141,57 @@ class PanierController extends Controller
         'id'=>$id
         ));
     }
+
+    /**
+     * @Route("/finalSubscription", name="final_subscription")
+     */
+    public function finalSubscriptionFunction(Request $request)
+    {
+
+        $nom = 'paul';
+        $prenom = 'polo';
+        $email = 'pol@hh.fr';
+
+        $userTest = array(
+            'nom' => $nom,
+            'prenom' => $prenom ,
+            'email' => $email,
+        );
+
+        ***if ($form->isSubmitted() && $form->isValid()) {
+
+
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('FFSS45 : Finaliser votre inscription')
+                    ->setFrom('-')
+                    ->setTo('sancho4582@gmail.com')
+                    ->setBody(
+                        $this->renderView(
+                            'emailSubscription.html.twig',
+                            array('nom' => $nom,
+                                  'prenom'=>$prenom,
+                                  'email'=>$email,)
+
+                        ),
+                        'text/html'
+                    );
+                $this->get('mailer')->send($message);
+
+                return $this->redirect($this->generateUrl('succes'));
+            }
+            return $this->render('@Front/Default/acceuil.html.twig', array(
+                'form' => $form->createView(),
+            ));
+
+
+    }
+
+
+
+
+
+
+
 
     /**
      * @Route("/remove/{id}", name="remove")

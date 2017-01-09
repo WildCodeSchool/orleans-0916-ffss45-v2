@@ -1,9 +1,12 @@
-{{ form_start(form, {'action':path('qtform',{'id':id})}) }}
+
+{{ form_start(form, {'method':'POST', 'action':path('qtform',{'id':id})}) }}
 
 {{ form_row(form.quantity, {'attr':{'class':'mySelect'}, 'id':'formquantity'~id  }) }}
 {#{{ form_row(form.inscrits)}}#}
-{{ form_end(form) }}
 
+
+<a href="{{path ('final_subscription')}}" class="btn btn-success pull-right" type="submit">Envoyer mail</a>
+{{ form_end(form) }}
 
 <script>
     var nb = parseInt($('#formquantity'+{{ id }}).val())+1;
