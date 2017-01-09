@@ -14,6 +14,7 @@ use CommerceBundle\Entity\Order;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use AdminBundle\Form\AddUserType;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\Session;
 use AdminBundle\Entity\Formation;
 use AdminBundle\Form\FormationType;
@@ -153,5 +154,40 @@ class PanierController extends Controller
         $session->set('panier',$panier);
         return $this->redirect($this->generateUrl('panier'));
     }
+
+	/**
+	 * @Route("/initiate-payment/id-{id}", name="pay_online")
+	 *
+	 */
+	public function payOnlineAction($id)
+	{
+		// ...
+		$systempay = $this->get('tlconseil.systempay')
+			->init()
+			->setOptionnalFields(array(
+				'shop_url' => 'http://www.example.com'
+			))
+		;
+
+		return $this-> render('@Commerce/Default/payment.html.twig', array(
+			'paymentUrl' => $systempay->getPaymentUrl(),
+			'fields' => $systempay->getResponse(),
+		));
+	}
+
+	/**
+	 * @Route("/payment/verification")
+	 * @param Request $request
+	 * @return \Symfony\Component\HttpFoundation\Response
+	 */
+	public function paymentVerificationAction(Request $request)
+	{
+		// ...
+		$this->get('tlconseil.systempay')
+			->responseHandler($request)
+		;
+
+		return new Response();
+	}
 
 }

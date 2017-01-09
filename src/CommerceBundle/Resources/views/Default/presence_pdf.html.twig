@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <h1>Liste des Inscriptions</h1>
+    <h1>FEUILLE D'EMARGEMENT</h1>
     <div class="container-fluid">
         <div class="row center-block">
             <div class="col-xs-12">
@@ -56,7 +56,11 @@
                             <td>{{ reservation.numeroReservation }}</td>
                             <td>{{ reservation.convocation }}</td>
                             <td>{{ reservation.certificate }}</td>
-                            <td>{% if reservation.delaiExpiration %}{{ reservation.delaiExpiration|date('Y-m-d H:i:s') }}{% endif %}</td>
+
+
+                            <td>{% if reservation.delaiExpiration %}{{ reservation.delaiExpiration|date('Y-m-d H:i:s') }}
+                                {% endif %}
+                            </td>
                         </tr>
                     </tbody>
                 </table>
