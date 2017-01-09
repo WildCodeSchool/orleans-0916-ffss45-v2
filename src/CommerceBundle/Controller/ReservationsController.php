@@ -2,10 +2,14 @@
 
 namespace CommerceBundle\Controller;
 
+use AdminBundle\Entity\Agenda;
 use CommerceBundle\Entity\Reservations;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+
 
 /**
  * Reservation controller.
@@ -133,4 +137,26 @@ class ReservationsController extends Controller
             ->getForm()
         ;
     }
+
+	/**
+	 * @Route("/presence_pdf/{id}/pdf", name="presence_pdf")
+	 *
+	 */
+	public function presence_pdfAction(Reservations $reservation)
+	{
+		$html = $this->renderView('CommerceBundle:Default:presence_pdf.html.twig', array(
+			'reservation'  => $reservation
+		));
+
+
+		return new Response(
+			$this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+			200,
+			array(
+				'Content-Type'          => 'application/pdf',
+				'Content-Disposition'   => 'attachment; filename="file.pdf"'
+			)
+		);
+	}
+
 }

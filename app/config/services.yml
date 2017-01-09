@@ -16,3 +16,18 @@ services:
           tags:
               - { name: form.type, alias: app_user_registration }
 
+
+
+      app.form.profile:
+                class: FrontBundle\FOSUserBundle\Form\ProfileFormType
+                tags:
+                    - { name: form.type, alias: app_user_profile }
+
+
+#      app.doctrine_image_uploader:
+#              class: CommerceBundle\Entity\Upload
+#              arguments: ['@commerce.image_uploader']
+#              tags:
+#                  - { name: doctrine.event_listener, event: prePersist }
+#                  - { name: doctrine.event_listener, event: preUpdate }
+
