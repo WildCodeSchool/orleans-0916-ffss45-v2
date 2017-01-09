@@ -1,18 +1,16 @@
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+
 {{ form_start(form, {'action':path('qtform',{'id':id})}) }}
 
-{{ form_row(form.quantity, {'attr':{'class':'mySelect'}, 'id':'formquantity'~id  }) }}
-{{ form_row(form.inscrits) }}
-
-
-{#{{ form_row(form.inscrits)}}#}
+{{ form_row(form.quantity, {'attr':{'class':'qtSelect'}, 'id':'formquantity'~id  }) }}
 
 {{ form_end(form) }}
 
 
-<script>
-    var nb = parseInt($('#formquantity'+{{ id }}).val())+1;
-    userform = $('#form_nom').attr('data-prototype');
-    for (i=0; i<nb; i++) {
-        $('#form_nom').append(userform);
-    }
-</script>
+{#<script>#}
+    {#var nb = parseInt($('#formquantity' +{{ id }}).val()) + 1;#}
+    {#userform = $('#form_nom').attr('data-prototype');#}
+    {#for (i = 0; i < nb; i++) {#}
+        {#$('#form_nom').append(userform);#}
+    {#}#}
+{#</script>#}

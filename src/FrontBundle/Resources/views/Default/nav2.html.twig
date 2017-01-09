@@ -58,10 +58,7 @@
                 <a href="{{ path('page_accueil_principale') }}#formulaire_contact">Contact</a>
             </li>
         </ul>
-
-
-
-                    <ul class="joinButton nav navbar-nav navbar-right">
+        <ul class="joinButton nav navbar-nav navbar-right">
 
 
 
@@ -80,13 +77,14 @@
                         {% endif %}
 
 
-                        <li>
-                            <a class="joinButton_link" href="{{ path('page_rejoindre') }}">Rejoignez nous</a>
-                        </li>
-                    </ul>
-
-
-
+            <li>
+                <a class="joinButton_link" href="{{ path('page_rejoindre') }}">Rejoignez nous</a>
+			</li>
+            <li>
+                {% set nb_panier = app.session.get('panier')|length %}
+                <a class="joinButton_link" href="{{ path('panier') }}">Panier <span class="badge">{{ nb_panier|default(0) }}</span></a>
+			</li>
+        <ul>
     </div>
     <!-- /.nav-collapse -->
 </nav>
