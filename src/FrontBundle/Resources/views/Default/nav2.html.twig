@@ -58,23 +58,35 @@
                 <a href="{{ path('page_accueil_principale') }}#formulaire_contact">Contact</a>
             </li>
         </ul>
-        <ul class="joinButton nav navbar-nav navbar-right">
-
-            {% if is_granted("IS_AUTHENTICATED_FULLY") %}
-                <span>Bienvenue <b>{{ app.user.username }}</b></span><br />
-                <li>   <a class="joinButton_link" href="{{ path('fos_user_security_logout') }}">Déconnexion</a> </li>
-
-            {% else %}
-			<li>
-                <a class="joinButton_link" href="{{ path('fos_user_security_login') }}">Connexion / Inscription</a>
-            </li>
-            {% endif %}
 
 
-            <li>
-                <a class="joinButton_link" href="{{ path('page_rejoindre') }}">Rejoignez nous</a>
-			</li>
-		<ul>
+
+                    <ul class="joinButton nav navbar-nav navbar-right">
+
+
+
+                        {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                            <li>
+                                <div class="log" >Bienvenue <b>{{ app.user.username }}</b></div>
+                            </li>
+                            <li>
+                                 <a class="joinButton_link" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                            </li>
+
+                        {% else %}
+                        <li>
+                            <a class="joinButton_link" href="{{ path('fos_user_security_login') }}">Connexion / Inscription</a>
+                        </li>
+                        {% endif %}
+
+
+                        <li>
+                            <a class="joinButton_link" href="{{ path('page_rejoindre') }}">Rejoignez nous</a>
+                        </li>
+                    </ul>
+
+
+
     </div>
     <!-- /.nav-collapse -->
 </nav>
