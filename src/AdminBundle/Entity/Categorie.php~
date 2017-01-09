@@ -33,12 +33,11 @@ class Categorie
      * @var string
      *
      * @ORM\Column(name="couleur", type="string", length=7)
-     * @ORM\OneToMany(targetEntity="Formation")
      */
     private $couleur;
 
     /**
-     * @ORM\OneToMany(targetEntity="Formation", mappedBy="categories")
+     * @ORM\OneToMany(targetEntity="Formation", mappedBy="categorie")
      */
     private $formations;
 

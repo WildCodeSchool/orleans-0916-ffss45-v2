@@ -29,7 +29,7 @@
         <tbody class="table-hover">
         {% for reservation in reservations %}
             <tr>
-                <td><a href="{{ path('reservations_show', { 'id': reservation.id }) }}">{{ reservation.id }}</a></td>
+                <td><a href="{{ path('reservation_show', { 'id': reservation.id }) }}">{{ reservation.id }}</a></td>
                 <td> {{app.user.nom}}</td>
                 <td> {{app.user.prenom}}</td>
                 {#<td> {{app.user.dateNaissance}}</td>#}
@@ -47,10 +47,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('reservations_show', { 'id': reservation.id }) }}">show</a>
+                            <a href="{{ path('reservation_show', { 'id': reservation.id }) }}">show</a>
                         </li>
                         <li>
-                            <a href="{{ path('reservations_edit', { 'id': reservation.id }) }}">edit</a>
+                            <a href="{{ path('reservation_edit', { 'id': reservation.id }) }}">edit</a>
                         </li>
                         <li>
                             <a  class="button"  href="{{ path('presence_pdf', {'id':reservation.id})
@@ -65,7 +65,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('reservations_new') }}">Creer une nouvelle Inscription</a>
+            <a href="{{ path('reservation_new') }}">Creer une nouvelle Inscription</a>
         </li>
     </ul>
 
