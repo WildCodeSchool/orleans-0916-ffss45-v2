@@ -5,8 +5,10 @@
         {% if article.quantity is defined %}
             <h2>Formation {{ article.agenda.formation.nomLong }}</h2>
             {% for i in 1 .. article.quantity %}
-                <div id="load_form_valid_inscrit{{ i }}">
-                    {% render(controller('CommerceBundle:Panier:addInscrit', {'id':article_id, 'key':i} )) %}
+                <div class="row" id="load_form_valid_inscrit{{ i }}">
+                    <div class="col-sm-12">
+                        {% render(controller('CommerceBundle:Panier:addInscrit', {'id':article_id, 'key':i} )) %}
+                    </div>
                 </div>
             {% endfor %}
         {% else %}
