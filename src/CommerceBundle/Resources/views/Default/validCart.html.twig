@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% for article_id, article in panier %}
+        {% if article.quantity is defined %}
+            <h2>Formation {{ article.agenda.formation.nomLong }}</h2>
+            {% for i in 1 .. article.quantity %}
+                <div id="load_form_valid_inscrit{{ i }}">
+                    {% render(controller('CommerceBundle:Panier:addInscrit', {'id':article_id, 'key':i} )) %}
+                </div>
+            {% endfor %}
+        {% else %}
+            <div class="alert alert-danger">Erreur dans le panier, veuillez recommencer votre sélection
+                <a href="{{ path('panier') }}">Retour au panier</a>
+            </div>
+        {% endif %}
+    {% endfor %}
+
+    <a id="validAll" href="{{ path('payment') }}" class="btn btn-success btn-large btn-block">Payer</a>
+    <a class="btn btn-primary" href="{{ path('panier' ) }}">Back </a>
+    <script>
+        $('#validAll').click(function () {
+            $('[id^=valid_inscrit]').each(function () {
+                $(this).submit();
+            })
+        });
+    </script>
+
+{% endblock %}

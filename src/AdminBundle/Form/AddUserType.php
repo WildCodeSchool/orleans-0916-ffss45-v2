@@ -4,6 +4,7 @@ namespace AdminBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,7 +26,8 @@ class AddUserType extends AbstractType
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
             ->add('email', EmailType::class)
-            ->add('saveAndAdd', SubmitType::class, array('label' => 'Save and Add'))
+            ->add('key', HiddenType::class)
+          //  ->add('saveAndAdd', SubmitType::class, array('label' => 'Save and Add'))
         ;
 
 
