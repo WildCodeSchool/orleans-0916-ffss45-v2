@@ -51,16 +51,16 @@
                     </thead>
                     <tbody class="table-hover">
                         <tr>
-                            <td><a href="{{ path('reservations_show', { 'id': reservation.id }) }}">{{ reservation.id }}</a></td>
-                            <td> {{app.user.nom}}</td>
-                            <td> {{app.user.prenom}}</td>
+                            <td><a href="{{ path('reservation_show', { 'id': reservation.id }) }}">{{ reservation.id }}</a></td>
+                            <td> {{reservation.user.nom}}</td>
+                            <td> {{reservation.user.prenom}}</td>
                             {#<td> {{app.user.dateNaissance}}</td>#}
-                            <td> {{app.user.adresse}}</td>
-                            <td> {{app.user.lieuNaissance}}</td>
-                            <td> {{app.user.departementNaissance}}</td>
-                            <td> {{app.user.CodePostal}}</td>
-                            <td> {{app.user.ville}}</td>
-                            <td> {{app.user.tel}}</td>
+                            <td> {{reservation.user.adresse}}</td>
+                            <td> {{reservation.user.lieuNaissance}}</td>
+                            <td> {{reservation.user.departementNaissance}}</td>
+                            <td> {{reservation.user.CodePostal}}</td>
+                            <td> {{reservation.user.ville}}</td>
+                            <td> {{reservation.user.tel}}</td>
                             <td>{{ reservation.status }}</td>
                             <td>{{ reservation.numeroReservation }}</td>
                             <td>{{ reservation.convocation }}</td>
