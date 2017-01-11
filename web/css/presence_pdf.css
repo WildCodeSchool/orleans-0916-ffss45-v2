@@ -4,10 +4,22 @@
 
 .cachet {
     border: 1px solid black;
-    width: 280px;
+    width: 230px;
     height: 150px;
 }
 
 .italic {
     font-style: italic;
 }
+
+/*td {*/
+    /*border: 1px solid black;*/
+/*}*/
+
+/*th {*/
+    /*border: 1px solid black;*/
+/*}*/
+
+/*table {*/
+    /*border-collapse: collapse;*/
+/*}*/
