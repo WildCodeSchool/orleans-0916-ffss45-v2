@@ -195,7 +195,7 @@ class PanierController extends Controller
                 }
 
             }
-            die;
+
 
 
             $message = \Swift_Message::newInstance()
@@ -346,7 +346,7 @@ class PanierController extends Controller
                     if (!isset($article['inscrits'])) {
                         $errorBack = 1;
                     } elseif (!array_key_exists($i, $article['inscrits'])) {
-                        $errorBack = 1;
+                        $errorBack = 0;
                     }
                 }
             }
