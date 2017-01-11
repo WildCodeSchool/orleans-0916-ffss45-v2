@@ -321,7 +321,7 @@ class Agenda
      *
      * @param \CommerceBundle\Entity\Reservations $reservation
      */
-    public function removeReservation(\CommerceBundle\Entity\Reservations $reservation)
+    public function removeReservation(\CommerceBundle\Entity\Reservation $reservation)
     {
         $this->reservations->removeElement($reservation);
     }

@@ -22,8 +22,8 @@ class MailCommand extends ContainerAwareCommand
     {
         $this
             ->setName('ffss:mail-inscription')
-            ->setDescription('Envoie de mails.')
-            ->setHelp("Cette commande envoie un mail avant commencement de formation")
+            ->setDescription('Envoie de mails automatique.')
+            ->setHelp("Cette commande envoie un mail ~ 6 jours avant le début de formation")
         ;
     }
 
@@ -36,31 +36,53 @@ class MailCommand extends ContainerAwareCommand
         foreach ($reservations as $reservation){
             $dateDeb = $reservation -> getAgenda() -> getDateDeDebut();
 
-            $today = new DateTime('now');
-           // $dateDebut = new DateTime();
-            $interval = $today->diff($dateDeb);
-            $diff = $interval->format('%d');
-            var_dump($diff);
 
-            if ($diff) {
+            /////////////////////////////////////////CALCUL DATE
+            $today = new \DateTime('now');
+            // $dateDebut = new DateTime();
+            $interval = $today->diff($dateDeb);
+            $diff = $interval->format('%R%a');
+            $output->write($diff.'---');
+            /////////////////////////////////////////////////////
+
+            if ($diff=='+6') {
                 $utilisateur = $reservation -> getUser();
-                $output->write($utilisateur->getEmail());
+                $output->writeln($utilisateur->getEmail());
+                $output->writeln(['============',]);
+
                 // envoi du mail
                 // swiftmailer ...
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('La formation débute bientôt !')
+                    ->setFrom('contact@ffss.fr')
+                    ->setTo($utilisateur->getEmail())
+                    ->setBody(
+                        $this->getContainer()->get('templating')->render(
+                            'CommerceBundle:Default:reponse.html.twig',
+                            array('reservation'=>$reservation)
+
+                        ),
+                        'text/html'
+                    );
+
+
+
+                $this->getContainer()->get('mailer')->send($message);
+
+                // Du fait qu'il y est un spool de mail en mémoire définit dans le fichier de config et que ce spool est uber pratique dans le cadre des controller
+                // On force l'envoie des mails du spool avec le code-ci dessous
+                /* @var $mailer Swift_Mailer */
+                $mailer = $this->getContainer()->get('mailer');
+
+                $transport = $mailer->getTransport();
+                if ($transport instanceof Swift_Transport_SpoolTransport) {
+                    $spool = $transport->getSpool();
+                    $sent = $spool->flushQueue($this->getContainer()->get('swiftmailer.transport.real'));
+                }
             }
 
         }
 
-
-
-        $compte = count($reservations);
-
-        for ($i = 0; $i < $compte; $i++) {
-            $output->write([$reservations[$i]->getUsername()]);
-            $output->write(['  ',]);
-            $output->writeln([$reservations[$i]->getemail()]);
-            $output->writeln(['============',]);
-        }
 
     }
 }
