@@ -26,30 +26,30 @@ class Reservation
     /**
      * @var string
      *
-     * @ORM\Column(name="status", type="string", length=45)
+     * @ORM\Column(name="status", type="string", length=45, nullable=true)
      */
     private $status;
 
     /**
      * @var int
-     * @ORM\Column(name="numero_reservation", type="integer")
+     * @ORM\Column(name="numero_reservation", type="integer", nullable=true)
      */
     private $numeroReservation;
 
 	/**
-	 *
+	 * @ORM\Column(name="agenda_id", type="integer")
 	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Agenda", inversedBy="reservations")
 	 */
 	private $agenda;
 
 	/**
-	 *
+	 *@ORM\Column(name="user_id", type="integer")
 	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\User", inversedBy="reservations")
 	 */
 	private $user;
 
 	/**
-	 *
+	 * @ORM\Column(nullable=true)
 	 * @ORM\ManyToOne(targetEntity="FrontBundle\Entity\FormulaireSecours", inversedBy="reservations")
 	 */
 	private $formulaireSecours;
@@ -57,21 +57,21 @@ class Reservation
 	/**
      * @var string
      *
-     * @ORM\Column(name="convocation", type="string", length=45)
+     * @ORM\Column(name="convocation", type="string", length=45, nullable=true)
      */
     private $convocation;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="certificate", type="string", length=45)
+     * @ORM\Column(name="certificate", type="string", length=45, nullable=true)
      */
     private $certificate;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="delai_expiration", type="datetime")
+     * @ORM\Column(name="delai_expiration", type="datetime", nullable=true)
      */
     private $delaiExpiration;
 
@@ -379,18 +379,14 @@ class Reservation
     }
 
     /**
-     * Set agenda
-     *
-     * @param \AdminBundle\Entity\Agenda $agenda
-     *
-     * @return Reservation
+     * @param mixed $agenda
      */
-    public function setAgenda(\AdminBundle\Entity\Agenda $agenda = null)
+    public function setAgenda($agenda)
     {
         $this->agenda = $agenda;
-
-        return $this;
     }
+
+
 
     /**
      * Get agenda
@@ -403,18 +399,14 @@ class Reservation
     }
 
     /**
-     * Set user
-     *
-     * @param \AdminBundle\Entity\User $user
-     *
-     * @return Reservation
+     * @param mixed $user
      */
-    public function setUser(\AdminBundle\Entity\User $user = null)
+    public function setUser($user)
     {
         $this->user = $user;
-
-        return $this;
     }
+
+
 
     /**
      * Get user
