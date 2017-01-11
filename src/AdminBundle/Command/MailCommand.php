@@ -32,13 +32,33 @@ class MailCommand extends ContainerAwareCommand
         $output->writeln(['Mail Inscription','============',]);
 
         $em = $this->getContainer()->get('doctrine')->getManager();
-        $users = $em->getRepository('CommerceBundle:Reservations')->findAll();
+        $reservations = $em->getRepository('CommerceBundle:Reservation')->findAll();
+        foreach ($reservations as $reservation){
+            $dateDeb = $reservation -> getAgenda() -> getDateDeDebut();
+
+            $today = new DateTime('now');
+           // $dateDebut = new DateTime();
+            $interval = $today->diff($dateDeb);
+            $diff = $interval->format('%d');
+            var_dump($diff);
+
+            if ($diff) {
+                $utilisateur = $reservation -> getUser();
+                $output->write($utilisateur->getEmail());
+                // envoi du mail
+                // swiftmailer ...
+            }
+
+        }
 
 
-        for ($i = 0; $i <= $i; $i++) {
-            $output->write([$users[$i]->getUsername()]);
+
+        $compte = count($reservations);
+
+        for ($i = 0; $i < $compte; $i++) {
+            $output->write([$reservations[$i]->getUsername()]);
             $output->write(['  ',]);
-            $output->writeln([$users[$i]->getemail()]);
+            $output->writeln([$reservations[$i]->getemail()]);
             $output->writeln(['============',]);
         }
 
