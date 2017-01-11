@@ -99,5 +99,28 @@ class Upload
     {
         return $this->type;
     }
-}
 
+    /**
+     * Set user
+     *
+     * @param \AdminBundle\Entity\User $user
+     *
+     * @return Upload
+     */
+    public function setUser(\AdminBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AdminBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+}

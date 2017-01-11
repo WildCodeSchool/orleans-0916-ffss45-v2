@@ -33,6 +33,8 @@ class AgendaController extends Controller
         ));
     }
 
+
+
     /**
      * Creates a new Agenda entity.
      *
@@ -156,7 +158,7 @@ class AgendaController extends Controller
 
 		//recupération des agendas en cours pour une formation
 
-		$reservations = $em->getRepository('CommerceBundle:Reservations')->findByAgenda($agenda);
+		$reservations = $em->getRepository('CommerceBundle:Reservation')->findByAgenda($agenda);
 
 
 

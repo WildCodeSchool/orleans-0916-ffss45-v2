@@ -19,20 +19,17 @@ class Formation
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-
-
-
     private $id;
 
     /**
      * @ORM\OneToMany(targetEntity="Agenda", mappedBy="formation")
      */
-
     private $agendas;
+
     /**
      * @var string
      *
-     * @ORM\Column(name="nom_long", type="string", length=255)page3
+     * @ORM\Column(name="nom_long", type="string", length=255)
      */
     private $nomLong;
 

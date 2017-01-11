@@ -21,7 +21,7 @@ class Order
      * @var
      *
      */
-    private $inscrits;
+//    private $inscrits;
 
     /**
      * @return int
@@ -39,21 +39,21 @@ class Order
         $this->quantity = $quantity;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getInscrits()
-    {
-        return $this->inscrits;
-    }
-
-    /**
-     * @param mixed $inscrits
-     */
-    public function setInscrits($inscrits)
-    {
-        $this->inscrits = $inscrits;
-    }
+//    /**
+//     * @return mixed
+//     */
+//    public function getInscrits()
+//    {
+//        return $this->inscrits;
+//    }
+//
+//    /**
+//     * @param mixed $inscrits
+//     */
+//    public function setInscrits($inscrits)
+//    {
+//        $this->inscrits = $inscrits;
+//    }
 
 
 
