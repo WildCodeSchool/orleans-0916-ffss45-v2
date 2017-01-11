@@ -17,6 +17,7 @@
             </div>
         {% endif %}
     {% endfor %}
+    <a href="{{path ('final_subscription')}}" class="btn btn-danger pull-right" type="submit">Envoyer mail</a>
 
     <a id="validAll" href="{{ path('payment') }}" class="btn btn-success btn-large btn-block">Payer</a>
     <a class="btn btn-primary" href="{{ path('panier' ) }}">Back </a>
