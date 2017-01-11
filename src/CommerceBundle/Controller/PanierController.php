@@ -136,12 +136,14 @@ class PanierController extends Controller
                 $emails[] = $value->getEmail();
                 $usernames[] = $value->getUserName();
             }
-            var_dump($formation['inscrits']);
+            $inscrits = ($formation['inscrits']);
             foreach ($formation['inscrits'] as $newUser) {
                 $nom = $newUser['nom'];
                 $prenom = $newUser['prenom'];
                 $email = $newUser['email'];
 
+
+                // var_dump($emailInscrits); die;
 
                 if (in_array($email, $emails)) {
                     $user = $em->getRepository('AdminBundle:User')->findOneByEmail($email);
@@ -167,9 +169,11 @@ class PanierController extends Controller
                     // au final, récupérer le new user dans un $user
                     // et l'enregistrer en base
                     //$tokenGenerator = $this->container->get('fos_user.util.token_generator');
+
                     $password = uniqid(1, false);
                     $passwordcrypt = md5($password);
-
+                    $firstPassword[] =  $password;
+                    var_dump( $firstPassword);
                     $userManager = $this->container->get('fos_user.user_manager');
                     $user = $userManager->createUser();
                     $user->setUsername($username);
@@ -195,24 +199,23 @@ class PanierController extends Controller
                 }
 
             }
+            die;
 
+            foreach ($inscrits as $inscrit) {
 
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('FFSS45 : Finaliser votre inscription')
+                    ->setFrom('sancho4582@gmail.com')
+                    ->setTo($inscrit['email'])
+                    ->setBody(
+                        $this->renderView('emailSubscription.html.twig', array('nom' => $inscrit['nom'],
+                            'prenom' => $inscrit['prenom'],
 
-            $message = \Swift_Message::newInstance()
-                ->setSubject('FFSS45 : Finaliser votre inscription')
-                ->setFrom('sancho4582@gmail.com')
-                ->setTo('sancho4582@gmail.com')
-                ->setBody(
-                    $this->renderView(
-                        'emailSubscription.html.twig',
-                        array('nom' => $nom,
-                            'prenom' => $prenom,
-                            'email' => $email,)
-                    ),
-                    'text/html'
-                );
-            $this->get('mailer')->send($message);
-
+                        ),
+                            'text/html'
+                        ));
+                $this->get('mailer')->send($message);
+            }
             return $this->redirect($this->generateUrl('succes'));
             // }
             // return $this->render('@Front/Default/acceuil.html.twig', array(
