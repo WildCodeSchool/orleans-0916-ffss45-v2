@@ -16,8 +16,8 @@ class uploadType extends AbstractType
     {
         $builder->add('path')
                 ->add('type')
-                ->add('ciRecto', FileType::class)
-                ->add('diplome', FileType::class)
+                ->add('image', FileType::class)
+
         ;
     }
     

@@ -19,7 +19,7 @@ class AgendaController extends Controller
     /**
      * Lists all Agenda entities.
      *
-     * @Route("/", name="agenda_index")
+     * @Route("/", name="agenda_index"))
      * @Method("GET")
      */
     public function indexAction()

@@ -23,7 +23,9 @@ class ReservationType extends AbstractType
                 ->add('numeroReservation')
                 ->add('convocation')
                 ->add('certificate')
-                ->add('delaiExpiration')        ;
+                ->add('delaiExpiration')
+                ->add('image', 'file', array( 'required' => false))
+        ;
     }
     
     /**
