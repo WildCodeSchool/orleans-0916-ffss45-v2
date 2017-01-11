@@ -5,72 +5,83 @@
     <div class="row center-block">
         <div class="col-xs-12">
 
-    <table class="table-fill table-striped table-hover" style="width: 100%;">
-        <thead>
-            <tr>
-                <th>N°</th>
-                <th>Nom</th>
-                <th>Prénom</th>
-                {#<th>Date de naissance</th>#}
-                <th>Adresse</th>
-                <th>Lieu de naissance</th>
-                <th>Departement de naissance</th>
-                <th>Code Postal</th>
-                <th>Ville</th>
-                <th>Téléphone</th>
-                <th>Status</th>
-                <th>Numéro de réservation</th>
-                <th>Convocation</th>
-                <th>Certificat</th>
-                <th>Delai d' expiration</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody class="table-hover">
-        {% for reservation in reservations %}
-            <tr>
-                <td><a href="{{ path('reservation_show', { 'id': reservation.id }) }}">{{ reservation.id }}</a></td>
-                <td> {{app.user.nom}}</td>
-                <td> {{app.user.prenom}}</td>
-                {#<td> {{app.user.dateNaissance}}</td>#}
-                <td> {{app.user.adresse}}</td>
-                <td> {{app.user.lieuNaissance}}</td>
-                <td> {{app.user.departementNaissance}}</td>
-                <td> {{app.user.CodePostal}}</td>
-                <td> {{app.user.ville}}</td>
-                <td> {{app.user.tel}}</td>
-                <td>{{ reservation.status }}</td>
-                <td>{{ reservation.numeroReservation }}</td>
-                <td>{{ reservation.convocation }}</td>
-                <td>{{ reservation.certificate }}</td>
-                <td>{% if reservation.delaiExpiration %}{{ reservation.delaiExpiration|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
+            <table class="table-fill table-striped table-hover" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Nom</th>
+                        <th>Prénom</th>
+                        {#<th>Date de naissance</th>#}
+                        <th>Adresse</th>
+                        <th>Lieu de naissance</th>
+                        <th>Departement de naissance</th>
+                        <th>Code Postal</th>
+                        <th>Ville</th>
+                        <th>Téléphone</th>
+                        <th>Status</th>
+                        <th>Numéro de réservation</th>
+                        <th>Convocation</th>
+                        <th>Certificat</th>
+                        <th>Delai d' expiration</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody class="table-hover">
+                {% for reservation in agenda.reservations %}
+                    <tr>
+                        <td><a href="{{ path('reservation_show', { 'id': reservation.id }) }}">{{ reservation.id }}</a></td>
+                        <td> {{reservation.user.nom}}</td>
+                        <td> {{reservation.user.prenom}}</td>
+                        {#<td> {{app.user.dateNaissance}}</td>#}
+                        <td> {{reservation.user.adresse}}</td>
+                        <td> {{reservation.user.lieuNaissance}}</td>
+                        <td> {{reservation.user.departementNaissance}}</td>
+                        <td> {{reservation.user.CodePostal}}</td>
+                        <td> {{reservation.user.ville}}</td>
+                        <td> {{reservation.user.tel}}</td>
+                        <td>{{ reservation.status }}</td>
+                        <td>{{ reservation.numeroReservation }}</td>
+                        <td>{{ reservation.convocation }}</td>
+                        <td>{{ reservation.certificate }}</td>
+                        <td>{% if reservation.delaiExpiration %}{{ reservation.delaiExpiration|date('Y-m-d H:i:s') }}{% endif %}</td>
+                        <td>
+                            <ul>
+                                <li>
+                                    <a href="{{ path('reservation_show', { 'id': reservation.id }) }}">show</a>
+                                </li>
+                                <li>
+                                    <a href="{{ path('reservation_edit', { 'id': reservation.id }) }}">edit</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+
+
+                {% endfor %}
+                </tbody>
+            </table>
+
+
+           <div class="row">
+                <div class="col-xs-6">
                     <ul>
                         <li>
-                            <a href="{{ path('reservation_show', { 'id': reservation.id }) }}">show</a>
+                            <a href="{{ path('reservation_new', { 'id': agenda.id }) }}">Créer une nouvelle
+                                Inscription</a>
                         </li>
+                    </ul>
+                </div>
+               <div class="col-xs-2 col-xs-offset-4">
+                   <ul>
                         <li>
-                            <a href="{{ path('reservation_edit', { 'id': reservation.id }) }}">edit</a>
-                        </li>
-                        <li>
-                            <a  class="button"  href="{{ path('presence_pdf', {'id':reservation.id})
+                            <a  class="button"  href="{{ path('presence_pdf', {'id':agenda.id})
                             }}">Télécharger le PDF</a>
                         </li>
                     </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                </div>
+            </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('reservation_new') }}">Creer une nouvelle Inscription</a>
-        </li>
-    </ul>
-
-
+        </div>
     </div>
 </div>
-    </div>
 {% endblock %}

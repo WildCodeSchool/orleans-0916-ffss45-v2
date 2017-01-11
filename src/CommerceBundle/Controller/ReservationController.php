@@ -3,9 +3,12 @@
 namespace CommerceBundle\Controller;
 
 use CommerceBundle\Entity\Reservation;
+use AdminBundle\Entity\Agenda;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Reservation controller.
@@ -24,20 +27,35 @@ class ReservationController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $reservations = $em->getRepository('CommerceBundle:Reservation')->findAll();
-
+        $reservation = $em->getRepository('CommerceBundle:Reservation')->findAll();
         return $this->render('reservation/index.html.twig', array(
-            'reservations' => $reservations,
+            'reservation' => $reservation,
         ));
     }
+
+	/**
+	 * Lists all reservation entities.
+	 *
+	 * @Route("/agenda/{id}", name="reservation_agenda_index")
+	 * @Method("GET")
+	 */
+	public function resaAgendaAction(Agenda $agenda)
+	{
+		$em = $this->getDoctrine()->getManager();
+
+		$reservation = $em->getRepository('CommerceBundle:Reservation')->findAll();
+		return $this->render('reservation/index.html.twig', array(
+			'agenda' => $agenda,
+		));
+	}
 
     /**
      * Creates a new reservation entity.
      *
-     * @Route("/new", name="reservation_new")
+     * @Route("/new/{id}", name="reservation_new")
      * @Method({"GET", "POST"})
      */
-    public function newAction(Request $request)
+    public function newAction(Agenda $agenda, Request $request)
     {
         $reservation = new Reservation();
         $form = $this->createForm('CommerceBundle\Form\ReservationType', $reservation);
@@ -45,6 +63,7 @@ class ReservationController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $reservation->setAgenda($agenda);
             $em->persist($reservation);
             $em->flush($reservation);
 
@@ -52,7 +71,8 @@ class ReservationController extends Controller
         }
 
         return $this->render('reservation/new.html.twig', array(
-            'reservation' => $reservation,
+            'agenda' => $agenda,
+	       'reservation' => $reservation,
             'form' => $form->createView(),
         ));
     }
@@ -138,7 +158,7 @@ class ReservationController extends Controller
 	 * @Route("/presence_pdf/{id}/pdf", name="presence_pdf")
 	 *
 	 */
-	public function presence_pdfAction(Reservations $reservation)
+	public function presence_pdfAction(Reservation $reservation)
 	{
 		$html = $this->renderView('CommerceBundle:Default:presence_pdf.html.twig', array(
 			'reservation'  => $reservation

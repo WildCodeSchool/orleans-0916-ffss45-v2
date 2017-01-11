@@ -3,7 +3,7 @@
 
     <link href="{{ absolute_url(asset('css/bootstrap.min.css'))}}" rel="stylesheet">
     <link href="{{ absolute_url(asset('css/font-awesome.min.css'))}}" rel="stylesheet">
-    <link href="{{ absolute_url(asset('css/formation_pdf.css'))}}" rel="stylesheet">
+    <link href="{{ absolute_url(asset('css/presence_pdf.css'))}}" rel="stylesheet">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +14,26 @@
 </head>
 
 <body>
-    <h1>Liste des Inscriptions</h1>
+    <H2>FEUILLE D'EMARGEMENT</H2>
+    <div class='line'></div>
+    <br/>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-8">
+                <p>Intitulé de la formation :..........................................................................................................</p>
+                <p>Date[s] de la formation : du</p>
+                <p>Durée de la formation :</p>
+                <p>Horaires de la formation :</p>
+                <p>Lieu de la formation :...............................................................................................................</p>
+            </div>
+            <div class="col-xs-4">
+                <div class="cachet">
+                    <p class="italic">Cachet de l'organisme de formation :</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br/>
     <div class="container-fluid">
         <div class="row center-block">
             <div class="col-xs-12">
@@ -37,26 +56,29 @@
                         <th>Convocation</th>
                         <th>Certificat</th>
                         <th>Delai d' expiration</th>
-                        <th>Actions</th>
                     </tr>
                     </thead>
                     <tbody class="table-hover">
                         <tr>
-                            <td><a href="{{ path('reservations_show', { 'id': reservation.id }) }}">{{ reservation.id }}</a></td>
-                            <td> {{app.user.nom}}</td>
-                            <td> {{app.user.prenom}}</td>
+                            <td><a href="{{ path('reservation_show', { 'id': reservation.id }) }}">{{ reservation.id }}</a></td>
+                            <td> {{reservation.user.nom}}</td>
+                            <td> {{reservation.user.prenom}}</td>
                             {#<td> {{app.user.dateNaissance}}</td>#}
-                            <td> {{app.user.adresse}}</td>
-                            <td> {{app.user.lieuNaissance}}</td>
-                            <td> {{app.user.departementNaissance}}</td>
-                            <td> {{app.user.CodePostal}}</td>
-                            <td> {{app.user.ville}}</td>
-                            <td> {{app.user.tel}}</td>
+                            <td> {{reservation.user.adresse}}</td>
+                            <td> {{reservation.user.lieuNaissance}}</td>
+                            <td> {{reservation.user.departementNaissance}}</td>
+                            <td> {{reservation.user.CodePostal}}</td>
+                            <td> {{reservation.user.ville}}</td>
+                            <td> {{reservation.user.tel}}</td>
                             <td>{{ reservation.status }}</td>
                             <td>{{ reservation.numeroReservation }}</td>
                             <td>{{ reservation.convocation }}</td>
                             <td>{{ reservation.certificate }}</td>
-                            <td>{% if reservation.delaiExpiration %}{{ reservation.delaiExpiration|date('Y-m-d H:i:s') }}{% endif %}</td>
+
+
+                            <td>{% if reservation.delaiExpiration %}{{ reservation.delaiExpiration|date('Y-m-d H:i:s') }}
+                                {% endif %}
+                            </td>
                         </tr>
                     </tbody>
                 </table>
