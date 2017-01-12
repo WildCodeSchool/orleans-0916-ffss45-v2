@@ -175,5 +175,26 @@ class ReservationController extends Controller
 		);
 	}
 
+	/**
+	 * @Route("/attestation_presence_pdf/{id}/pdf", name="attestation_presence_pdf")
+	 *
+	 */
+	public function attestation_presence_pdfAction(Agenda $agenda )
+	{
+		$html = $this->renderView('AdminBundle:Default:attestation_presence_pdf.html.twig', array(
+			'agenda'  => $agenda
+		));
+
+
+		return new Response(
+			$this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+			200,
+			array(
+				'Content-Type'          => 'application/pdf',
+				'Content-Disposition'   => 'attachment; filename="file.pdf"'
+			)
+		);
+	}
+
 
 }

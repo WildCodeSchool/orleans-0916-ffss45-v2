@@ -4,7 +4,7 @@
 
 .cachet {
     border: 1px solid black;
-    width: 230px;
+    width: 300px;
     height: 150px;
 }
 
@@ -14,4 +14,16 @@
 
 .case {
     border:none;
+}
+
+thead {
+    font-size: 10px;
+}
+
+tbody {
+    font-size: 10px;
+}
+
+p {
+    font-size: 12px;
 }

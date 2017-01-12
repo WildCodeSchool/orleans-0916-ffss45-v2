@@ -21,9 +21,11 @@
     <div class="row">
         <div class="col-xs-7">
             <p>Intitulé de la formation : {{ agenda.formation.nomlong }}</p>
-            {#<p>Date[s] de la formation : du {{ agenda.datededebut }} au {{ agenda.datedefin }}</p>#}
-            <p>Durée de la formation :</p>
-            <p>Horaires de la formation :</p>
+            <p>Date[s] de la formation : du {{ agenda.datededebut | date('d/m/Y') }} au {{ agenda.datedefin | date
+                ('d/m/Y') }}</p>
+            <p>Durée de la formation : {{ agenda.formation.dureeformation }}</p>
+            <p>Horaires de la formation : de {{ agenda.heureDeDebutAm | date('H:i') }} à {{ agenda.heureDeFinAm | date('H:i')
+                }} et de {{ agenda.heureDeDebutPm | date('H:i') }} à {{ agenda.heureDeFinPm | date('H:i') }}</p>
             <p>Lieu de la formation
                 :...........................................................................................</p>
         </div>
@@ -44,7 +46,7 @@
                 <thead>
                     <tr>
                         <th class="case" colspan="2"></th>
-                        <th colspan="2">Date:.../.../...</th>
+                        <th colspan="2">Date: {{ agenda.datededebut | date('d/m/Y') }}</th>
                         <th colspan="2">Date:.../.../...</th>
                         <th colspan="2">Date:.../.../...</th>
                     </tr>
@@ -55,12 +57,12 @@
                         <th colspan="2">Signatures</th>
                     </tr>
                     <tr>
-                        <th>Matin:...h...</th>
-                        <th>Après-midi:...h...</th>
-                        <th>Matin:...h...</th>
-                        <th>Après-midi:...h...</th>
-                        <th>Matin:...h...</th>
-                        <th>Après-midi:...h...</th>
+                        <th>Matin: {{ agenda.heureDeDebutAm | date('H:i') }}</th>
+                        <th>Après-midi: {{ agenda.heureDeDebutPm | date('H:i') }}</th>
+                        <th>Matin: {{ agenda.heureDeDebutAm | date('H:i') }}</th>
+                        <th>Après-midi: {{ agenda.heureDeDebutPm | date('H:i') }}</th>
+                        <th>Matin: {{ agenda.heureDeDebutAm | date('H:i') }}</th>
+                        <th>Après-midi: {{ agenda.heureDeDebutPm | date('H:i') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -85,12 +87,12 @@
                     <tr>
                         <th>Entreprise</th>
                         <th>Stagiaire</th>
-                        <th>Matin:...h...</th>
-                        <th>Après-midi:...h...</th>
-                        <th>Matin:...h...</th>
-                        <th>Après-midi:...h...</th>
-                        <th>Matin:...h...</th>
-                        <th>Après-midi:...h...</th>
+                        <th>Matin: {{ agenda.heureDeDebutAm | date('H:i') }}</th>
+                        <th>Après-midi: {{ agenda.heureDeDebutPm | date('H:i') }}</th>
+                        <th>Matin: {{ agenda.heureDeDebutAm | date('H:i') }}</th>
+                        <th>Après-midi: {{ agenda.heureDeDebutPm | date('H:i') }}</th>
+                        <th>Matin: {{ agenda.heureDeDebutAm | date('H:i') }}</th>
+                        <th>Après-midi: {{ agenda.heureDeDebutPm | date('H:i') }}</th>
                     </tr>
                 {% for reservation in agenda.reservations %}
                     <tr>

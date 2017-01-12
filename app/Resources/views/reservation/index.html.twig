@@ -52,6 +52,10 @@
                                 <li>
                                     <a href="{{ path('reservation_edit', { 'id': reservation.id }) }}">edit</a>
                                 </li>
+                                <li>
+                                    <a  class="button"  href="{{ path('attestation_presence_pdf', {'id':agenda.id})
+                                    }}">Attestation de présence</a>
+                                </li>
                             </ul>
                         </td>
                     </tr>
@@ -75,7 +79,7 @@
                    <ul>
                         <li>
                             <a  class="button"  href="{{ path('presence_pdf', {'id':agenda.id})
-                            }}">Télécharger le PDF</a>
+                            }}">Feuille d'émargement</a>
                         </li>
                     </ul>
                 </div>

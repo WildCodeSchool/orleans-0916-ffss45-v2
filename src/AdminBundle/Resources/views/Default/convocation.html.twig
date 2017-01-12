@@ -1,19 +1,9 @@
-<html>
-<head>
-
-    <link href="{{ absolute_url(asset('css/bootstrap.min.css')) }}" rel="stylesheet">
-    <link href="{{ absolute_url(asset('css/font-awesome.min.css')) }}" rel="stylesheet">
-    <link href="{{ absolute_url(asset('css/presence_pdf.css')) }}" rel="stylesheet">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-
-</head>
-
-<body>
+{% extends 'Commerce::pdfLayout.html.twig' %}
+{% block stylesheets %}
+{% endblock %}
+{% block header %}
+{% endblock %}
+{% block body %}
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
@@ -34,3 +24,4 @@
         </tr>
     </table>
 </div>
+{% endblock %}
