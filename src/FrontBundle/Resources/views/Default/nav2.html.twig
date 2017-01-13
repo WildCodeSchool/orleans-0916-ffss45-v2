@@ -63,9 +63,11 @@
 
 
                         {% if is_granted("IS_AUTHENTICATED_FULLY") %}
+                        
                             <li>
-                                <div class="log" >Bienvenue <b>{{ app.user.username }}</b></div>
+                                <a href="{{ path('user_question') }}" class="log" >Bienvenue <b>{{ app.user.username }}</b></a>
                             </li>
+
                             <li>
                                  <a class="joinButton_link" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
                             </li>

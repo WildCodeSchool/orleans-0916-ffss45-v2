@@ -2,6 +2,7 @@
 
 namespace CommerceBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -23,7 +24,12 @@ class ReservationType extends AbstractType
                 ->add('numeroReservation')
                 ->add('convocation')
                 ->add('certificate')
-                ->add('delaiExpiration')        ;
+                ->add('delaiExpiration')
+               ->add('user', EntityType::class, [
+               	'class'=>'AdminBundle\Entity\User',
+	               'choice_label'=>'username'
+               ])
+        ;
     }
     
     /**
