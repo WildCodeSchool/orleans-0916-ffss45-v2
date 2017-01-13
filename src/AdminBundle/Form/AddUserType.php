@@ -27,7 +27,10 @@ class AddUserType extends AbstractType
             ->add('nom', TextType::class)
             ->add('prenom', TextType::class)
             ->add('email', EmailType::class)
+            ->add('password', HiddenType::class, ['required' => false])
             ->add('key', HiddenType::class)
+
+
           //  ->add('saveAndAdd', SubmitType::class, array('label' => 'Save and Add'))
         ;
 
