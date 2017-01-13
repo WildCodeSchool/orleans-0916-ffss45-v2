@@ -62,56 +62,56 @@ class User extends BaseUser
 	/**
 	 * @var date
 	 *
-	 * @ORM\Column(name="date_naissance", type="date")
+	 * @ORM\Column(name="date_naissance", type="date",nullable = true)
 	 */
 	private $date_naissance;
 
 	/**
 	 * @var string
 	 *
-	 * @ORM\Column(name="lieu_naissance", type="string", length=45)
+	 * @ORM\Column(name="lieu_naissance", type="string", length=45,nullable = true)
 	 */
 	private $lieu_naissance;
 
 	/**
 	 * @var string
 	 *
-	 * @ORM\Column(name="departement_naissance", type="string", length=45)
+	 * @ORM\Column(name="departement_naissance", type="string", length=45,nullable = true)
 	 */
 	private $departement_naissance;
 
 	/**
 	 * @var string
 	 *
-	 * @ORM\Column(name="adresse", type="string", length=45)
+	 * @ORM\Column(name="adresse", type="string", length=45,nullable = true)
 	 */
 	private $adresse;
 
 	/**
 	 * @var integer
 	 *
-	 * @ORM\Column(name="code_postal", type="integer", length=45)
+	 * @ORM\Column(name="code_postal", type="integer", length=45,nullable = true)
 	 */
 	private $code_postal;
 
 	/**
 	 * @var string
 	 *
-	 * @ORM\Column(name="ville", type="string", length=45)
+	 * @ORM\Column(name="ville", type="string", length=45,nullable = true)
 	 */
 	private $ville;
 
 	/**
 	 * @var integer
 	 *
-	 * @ORM\Column(name="tel", type="string", length=45)
+	 * @ORM\Column(name="tel", type="string", length=45,nullable = true)
 	 */
 	private $tel;
 
 	/**
 	 * @var text
 	 *
-	 * @ORM\Column(name="relation", type="text", length=45)
+	 * @ORM\Column(name="relation", type="text", length=45,nullable = true)
 	 */
 	private $relation;
 
@@ -125,14 +125,14 @@ class User extends BaseUser
     private $imageFile;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable = true)
      *
      * @var string
      */
     private $imageName;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime",nullable = true)
      *
      * @var \DateTime
      */
