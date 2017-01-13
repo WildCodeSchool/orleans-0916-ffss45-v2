@@ -19,4 +19,7 @@
 
 <h1>Paiement</h1>
 {{ dump(panier) }}
+
+<a href="{{path ('final_subscription')}}" class="btn btn-danger pull-right" type="submit">Envoyer mail</a>
+
 <a class="btn btn-primary" href="{{ path('valid_cart' ) }}">Back </a>

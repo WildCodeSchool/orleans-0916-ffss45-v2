@@ -28,7 +28,8 @@
         "friendsofsymfony/user-bundle": "~2.0@dev",
         "knplabs/knp-snappy-bundle": "~1.4",
         "h4cc/wkhtmltopdf-amd64": "0.12.3",
-        "baptiste-dulac/systempay-bundle": "dev-master"
+        "baptiste-dulac/systempay-bundle": "dev-master",
+        "vich/uploader-bundle": "^1.4"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
