@@ -45,7 +45,7 @@ class MailCommand extends ContainerAwareCommand
             $output->write($diff.'---');
             /////////////////////////////////////////////////////
 
-            if ($diff=='+6') {
+            if ($diff=='+4') {
                 $utilisateur = $reservation -> getUser();
                 $output->writeln($utilisateur->getEmail());
                 $output->writeln(['============',]);

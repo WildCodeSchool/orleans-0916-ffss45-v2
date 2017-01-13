@@ -1,8 +1,15 @@
 
 
 <body>
-dfsdsf
-{{ reservation.id }}
 
+<h1>Rappel :</h1>
+
+Bonjour {{ reservation.user }} {{ reservation.user.nom }}. <br />
+N'oubliez pas, votre formation débute le :
+{{ reservation.agenda.datededebut | date('d/m/Y') }}
+
+<br />
+
+<a href="http://www.secourisme45.com/login">Votre espace perso</a>
 
 </body>
