@@ -259,9 +259,9 @@ class PanierController extends Controller
         $session = $request->getSession();
         $panier = $session->get('panier');
         $id = $agenda->getId();
-
         $form = $this->createForm('AdminBundle\Form\AddUserType');
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             //$data->setPassword(uniqid(1, false));
@@ -277,6 +277,7 @@ class PanierController extends Controller
                 }
             }
             $session->set('panier', $panier);
+
             //return $this->redirectToRoute('valid_cart');
         }
 

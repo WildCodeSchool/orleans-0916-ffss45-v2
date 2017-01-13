@@ -86,9 +86,12 @@ class ReservationController extends Controller
     public function showAction(Reservation $reservation)
     {
         $deleteForm = $this->createDeleteForm($reservation);
-
+        $webPath = $reservation->getWebPath();
+        $alt = $reservation->getAlt();
         return $this->render('reservation/show.html.twig', array(
             'reservation' => $reservation,
+            'webPath' => $webPath,
+            'alt' => $alt,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -104,6 +107,12 @@ class ReservationController extends Controller
         $deleteForm = $this->createDeleteForm($reservation);
         $editForm = $this->createForm('CommerceBundle\Form\ReservationType', $reservation);
         $editForm->handleRequest($request);
+        $webPath = $reservation->getWebPath();
+        $alt = $reservation->getAlt();
+//        var_dump($editForm->getData());
+//        if($editForm->getData()->getAlt()){
+//
+//        }
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
@@ -113,6 +122,8 @@ class ReservationController extends Controller
 
         return $this->render('reservation/edit.html.twig', array(
             'reservation' => $reservation,
+            'webPath' => $webPath,
+            'alt' => $alt,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
