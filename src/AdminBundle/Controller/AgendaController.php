@@ -34,6 +34,8 @@ class AgendaController extends Controller
         ));
     }
 
+
+
     /**
      * Creates a new Agenda entity.
      *
