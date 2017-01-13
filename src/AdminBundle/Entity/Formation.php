@@ -120,6 +120,7 @@ class Formation
     private $prix;
 
 
+
     /**
      * Set prix
      *
