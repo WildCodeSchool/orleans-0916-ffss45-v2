@@ -2,12 +2,13 @@
 
 namespace CommerceBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
-class ReservationsType extends AbstractType
+class ReservationType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -23,7 +24,12 @@ class ReservationsType extends AbstractType
                 ->add('numeroReservation')
                 ->add('convocation')
                 ->add('certificate')
-                ->add('delaiExpiration')        ;
+                ->add('delaiExpiration')
+               ->add('user', EntityType::class, [
+               	'class'=>'AdminBundle\Entity\User',
+	               'choice_label'=>'username'
+               ])
+        ;
     }
     
     /**
@@ -32,7 +38,7 @@ class ReservationsType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'CommerceBundle\Entity\Reservations'
+            'data_class' => 'CommerceBundle\Entity\Reservation'
         ));
     }
 
@@ -41,7 +47,7 @@ class ReservationsType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'commercebundle_reservations';
+        return 'commercebundle_reservation';
     }
 
 

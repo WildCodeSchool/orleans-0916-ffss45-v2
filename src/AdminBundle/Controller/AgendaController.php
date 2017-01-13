@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AdminBundle\Entity\Agenda;
 use AdminBundle\Form\AgendaType;
+use CommerceBundle\Entity\Reservation;
 
 /**
  * Agenda controller.
@@ -32,6 +33,8 @@ class AgendaController extends Controller
             'agendas' => $agendas,
         ));
     }
+
+
 
     /**
      * Creates a new Agenda entity.
@@ -156,7 +159,7 @@ class AgendaController extends Controller
 
 		//recupération des agendas en cours pour une formation
 
-		$reservations = $em->getRepository('CommerceBundle:Reservations')->findByAgenda($agenda);
+		$reservations = $em->getRepository('CommerceBundle:Reservation')->findByAgenda($agenda);
 
 
 

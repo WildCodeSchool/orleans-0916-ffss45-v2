@@ -56,18 +56,18 @@ strong{
     margin-top: 1em;
     padding: 10px 0px 10px 70px;
     background: #DAE1E9;
-	border-left:12px solid #003770;
+    border-left:12px solid #003770;
 }
 
 .information .subtitle {
-	color:#003770;
+    color:#003770;
 }
 
 
 
 .chiffres {
     padding-top: 1.5em;
- 	border-left:12px solid #FFCC06;
+    border-left:12px solid #FFCC06;
     padding-bottom: 2em;
     padding-left: 2em;
     background:#FFF1BA;
@@ -76,7 +76,7 @@ strong{
 }
 
 .chiffres .fa, .chiffres strong {
-	color: #FFCC06;
+    color: #FFCC06;
 }
 
 i.fa{

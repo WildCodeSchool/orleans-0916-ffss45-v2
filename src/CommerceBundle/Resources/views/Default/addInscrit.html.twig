@@ -1,0 +1,22 @@
+{% set panier =  app.session.get('panier') %}
+<dd>Inscrit #{{ key }}</dd>
+{% if panier[id]['inscrits'][key]['nom'] is defined %}
+    {{ panier[id]['inscrits'][key]['nom'] }}
+    <a href="{{ path('edit_inscrit', {'id':id, 'key':key} ) }}">edit</a>
+{% else %}
+    {{ form_start(form, {'attr':{'id':'valid_inscrit' ~  key }, 'action':path('add_inscrit', {'id':id, 'key':key})}) }}
+        <dl>{{ form_errors(form.nom) }}
+            {{ form_label(form.nom) }}
+            {{ form_widget(form.nom) }}
+            {{ form_errors(form.prenom) }}
+            {{ form_label(form.prenom) }}
+            {{ form_widget(form.prenom) }}
+            {{ form_errors(form.email) }}
+            {{ form_label(form.email) }}
+            {{ form_widget(form.email) }}
+            {% if key==1 %}
+                <a href="{{ path('user_inscrit', {'id':id} ) }}">pour moi</a>
+            {% endif %}
+    {{ form_end(form) }}</dl>
+{% endif %}
+

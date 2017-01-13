@@ -5,12 +5,12 @@ namespace CommerceBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * Reservations
+ * Reservation
  *
- * @ORM\Table(name="reservations")
- * @ORM\Entity(repositoryClass="CommerceBundle\Repository\ReservationsRepository")
+ * @ORM\Table(name="reservation")
+ * @ORM\Entity(repositoryClass="CommerceBundle\Repository\ReservationRepository")
  */
-class Reservations
+class Reservation
 {
     /**
      * @var int
@@ -36,21 +36,21 @@ class Reservations
 
 	/**
 	 *
-	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Agenda", inversedBy="Reservationss")
+	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Agenda", inversedBy="reservations")
 	 */
 	private $agenda;
 
 	/**
 	 *
-	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\User", inversedBy="Reservationss")
+	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\User", inversedBy="reservations")
 	 */
 	private $user;
 
 	/**
 	 *
-	 * @ORM\ManyToOne(targetEntity="FrontBundle\Entity\FormulaireSecours", inversedBy="Reservationss")
+	 * @ORM\ManyToOne(targetEntity="FrontBundle\Entity\FormulaireSecours", inversedBy="reservations")
 	 */
-	private $formulairesecours;
+	private $formulaireSecours;
 
 	/**
      * @var string
@@ -89,7 +89,7 @@ class Reservations
      *
      * @param string $status
      *
-     * @return Reservations
+     * @return Reservation
      */
     public function setStatus($status)
     {
@@ -113,7 +113,7 @@ class Reservations
      *
      * @param integer $numeroReservation
      *
-     * @return Reservations
+     * @return Reservation
      */
     public function setnumeroReservation($numeroReservation)
     {
@@ -137,7 +137,7 @@ class Reservations
      *
      * @param string $convocation
      *
-     * @return Reservations
+     * @return Reservation
      */
     public function setConvocation($convocation)
     {
@@ -161,7 +161,7 @@ class Reservations
      *
      * @param string $certificate
      *
-     * @return Reservations
+     * @return Reservation
      */
     public function setCertificate($certificate)
     {
@@ -185,7 +185,7 @@ class Reservations
      *
      * @param \DateTime $delaiExpiration
      *
-     * @return Reservations
+     * @return Reservation
      */
     public function setDelaiExpiration($delaiExpiration)
     {
@@ -209,7 +209,7 @@ class Reservations
      *
      * @param \AdminBundle\Entity\Agenda $agenda
      *
-     * @return Reservations
+     * @return Reservation
      */
     public function setAgenda(\AdminBundle\Entity\Agenda $agenda = null)
     {
@@ -233,7 +233,7 @@ class Reservations
      *
      * @param \AdminBundle\Entity\User $user
      *
-     * @return Reservations
+     * @return Reservation
      */
     public function setUser(\AdminBundle\Entity\User $user = null)
     {
@@ -257,7 +257,7 @@ class Reservations
      *
      * @param \FrontBundle\Entity\FormulaireSecours $formulairesecours
      *
-     * @return Reservations
+     * @return Reservation
      */
     public function setFormulairesecours(\FrontBundle\Entity\FormulaireSecours $formulairesecours = null)
     {

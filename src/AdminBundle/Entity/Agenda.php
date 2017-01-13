@@ -28,7 +28,7 @@ class Agenda
     private $formation;
 
 	/**
-	 * @ORM\OneToMany(targetEntity="CommerceBundle\Entity\Reservations", mappedBy="agenda")
+	 * @ORM\OneToMany(targetEntity="CommerceBundle\Entity\Reservation", mappedBy="agenda")
 	 * @ORM\JoinColumn(name="agenda_id", referencedColumnName="id")
 	 */
 	private $reservations;
@@ -309,7 +309,7 @@ class Agenda
      *
      * @return Agenda
      */
-    public function addReservation(\CommerceBundle\Entity\Reservations $reservation)
+    public function addReservation(\CommerceBundle\Entity\Reservation $reservation)
     {
         $this->reservations[] = $reservation;
 
@@ -321,7 +321,7 @@ class Agenda
      *
      * @param \CommerceBundle\Entity\Reservations $reservation
      */
-    public function removeReservation(\CommerceBundle\Entity\Reservations $reservation)
+    public function removeReservation(\CommerceBundle\Entity\Reservation $reservation)
     {
         $this->reservations->removeElement($reservation);
     }
