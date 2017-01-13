@@ -69,10 +69,9 @@ doctrine:
 swiftmailer:
     transport: "%mailer_transport%"
     host:      "%mailer_host%"
-    port:  "%mailer_port%"
     username:  "%mailer_user%"
-    encryption:  "%mailer_encryption%"
     password:  "%mailer_password%"
+    port:      "%mailer_port%"
     auth_mode: "%mailer_auth_mode%"
     spool:     { type: memory }
 
@@ -107,3 +106,22 @@ tlconseil_systempay:
     key_prod: XXXXX
     # Return
     url_return: http://www.example.com/payment_return
+
+    # Optionnal fields (here the fields have their default values) :
+
+    # Debug values : ON / OFF
+    debug: ON
+    # Return mode
+    return_mode: GET
+    # Possible values for ctx_mode : TEST / PRODUCTION
+    ctx_mode: TEST
+    # Language
+    language: fr
+    # Success
+    redirect_success_timeout: 1
+    redirect_success_message: Redirection vers Les Annonces de la Seine dans quelques instants
+    # Error
+    redirect_error_timeout: 1
+    redirect_error_message: Redirection vers Les Annonces de la Seine dans quelques instants
+
+

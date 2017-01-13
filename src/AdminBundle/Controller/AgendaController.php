@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use AdminBundle\Entity\Agenda;
 use AdminBundle\Form\AgendaType;
+use CommerceBundle\Entity\Reservation;
 
 /**
  * Agenda controller.

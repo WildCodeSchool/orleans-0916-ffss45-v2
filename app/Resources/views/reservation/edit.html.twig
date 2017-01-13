@@ -12,7 +12,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('reservation_index') }}">Back to the list</a>
+            <a href="{{ path('reservation_agenda_index', { 'id': reservation.agenda.id }) }}">Back to the list</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
