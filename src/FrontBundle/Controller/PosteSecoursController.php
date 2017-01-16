@@ -21,13 +21,22 @@ class PosteSecoursController extends Controller
      */
     public function createPosteSecoursAction()
     {
+        $usersLog = $this->get('security.token_storage')->getToken()->getUser();
+
+        if ($usersLog === 'anon.') {
+            return $this->redirectToRoute('fos_user_security_login');
+        }
+
         $formData = new FormulaireSecours(); // Your form data class. Has to be an object, won't work properly with an array.
 
         $flow = $this->get('form.flow.createPosteSecours'); // must match the flow's service id
         $flow->bind($formData);
 
-        // form of the current step
+       // form of the current step
         $form = $flow->createForm();
+        $form->getData()->setUser($this->get('security.token_storage')->getToken()->getUser()->getId());
+        $form->getData()->setStatut('en attente');
+      //  var_dump($form->getData());Die;
         if ($flow->isValid($form)) {
             $flow->saveCurrentStepData($form);
 
@@ -51,8 +60,7 @@ class PosteSecoursController extends Controller
 
                         ),
                         'text/html'
-                    )
-                    /*
+                    )/*
                      * If you also want to include a plaintext version of the message
                     ->addPart(
                         $this->renderView(

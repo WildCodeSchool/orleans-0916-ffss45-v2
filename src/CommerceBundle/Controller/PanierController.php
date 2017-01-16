@@ -200,12 +200,11 @@ class PanierController extends Controller
 
             }
 
-
             foreach ($inscrits as $inscrit) {
 
                 $message = \Swift_Message::newInstance()
                     ->setSubject('FFSS45 : Finaliser votre inscription')
-                    ->setFrom('sancho4582@gmail.com')
+                    ->setFrom('tuko45@hotmail.fr')
                     ->setTo($inscrit['email'])
                     ->setBody(
                         $this->renderView('emailSubscription.html.twig', array('nom' => $inscrit['nom'],

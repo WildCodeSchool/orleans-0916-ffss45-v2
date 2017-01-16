@@ -45,6 +45,8 @@ class FormulaireSecoursController extends Controller
         $form = $this->createForm('FrontBundle\Form\FormulaireSecoursType', $formulaireSecour);
         $form->handleRequest($request);
 
+
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($formulaireSecour);

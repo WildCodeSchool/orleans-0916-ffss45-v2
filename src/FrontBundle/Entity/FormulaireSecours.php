@@ -21,6 +21,13 @@ class FormulaireSecours
      */
     private $id;
 
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\User")
+     */
+    private $user;
+
+
 	/**
 	 *
 	 * @ORM\OneToMany(targetEntity="CommerceBundle\Entity\Reservation", mappedBy="formulaireSecours")
@@ -566,6 +573,19 @@ class FormulaireSecours
      */
     private $devis;
 
+    /**
+     * @var string
+     * @ORM\Column(name="message", type="text", nullable=true)
+     */
+    private $message;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="statut", type="string", nullable=true)
+     */
+    private $statut;
+
 
     /**
      * Set devis
@@ -612,6 +632,8 @@ class FormulaireSecours
 
         return $this;
     }
+
+
 
     /**
      * Get nomManif
@@ -2388,4 +2410,57 @@ class FormulaireSecours
     {
         return $this->reservations;
     }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+
+    /**
+     * Get user
+     *
+     * @return \AdminBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->message;
+    }
+
+    /**
+     * @param string $message
+     */
+    public function setMessage($message)
+    {
+        $this->message = $message;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    /**
+     * @param string $statut
+     */
+    public function setStatut($statut)
+    {
+        $this->statut = $statut;
+    }
+
+
 }
