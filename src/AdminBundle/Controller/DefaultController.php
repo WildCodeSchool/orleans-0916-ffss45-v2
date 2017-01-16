@@ -12,8 +12,8 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-	    $em = $this->getDoctrine()->getManager();
-	    $formulaire_secours = $em->getRepository('FrontBundle:FormulaireSecours')->findByStatus($formulaire_secours);
+//	    $em = $this->getDoctrine()->getManager();
+//	    $formulaire_secours = $em->getRepository('FrontBundle:FormulaireSecours')->findByStatus($formulaire_secours);
 
 
         return $this->render('AdminBundle:Default:index.html.twig');
