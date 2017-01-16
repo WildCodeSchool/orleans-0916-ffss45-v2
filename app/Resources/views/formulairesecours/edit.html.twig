@@ -3,9 +3,12 @@
 
 {% block body %}
     <h1>Mise à jour demande de Poste de Secours</h1>
+    <h2>{{ formulaireSecours.nomManif }} du {{ formulaireSecours.dateDebutManif | date('d m Y') }} </h2>
 
     {{ form_start(edit_form) }}
         {{ form_row(edit_form.devis) }}
+        {{ form_row(edit_form.statut) }}
+        {{ form_row(edit_form.message) }}
     <div class="hidden">
         {{ form_widget(edit_form) }}
     </div>
@@ -14,7 +17,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('formulairesecours_index') }}">Retour à la liste</a>
+            <a href="{{ path('admin') }}">Retour</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
