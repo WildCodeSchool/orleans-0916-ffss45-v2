@@ -42,7 +42,6 @@ class ReservationController extends Controller
 	public function resaAgendaAction(Agenda $agenda)
 	{
 		$em = $this->getDoctrine()->getManager();
-
 		$reservation = $em->getRepository('CommerceBundle:Reservation')->findAll();
 		return $this->render('reservation/index.html.twig', array(
 			'agenda' => $agenda,
@@ -193,6 +192,27 @@ class ReservationController extends Controller
 	public function attestation_presence_pdfAction(Agenda $agenda )
 	{
 		$html = $this->renderView('AdminBundle:Default:attestation_presence_pdf.html.twig', array(
+			'agenda'  => $agenda
+		));
+
+
+		return new Response(
+			$this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+			200,
+			array(
+				'Content-Type'          => 'application/pdf',
+				'Content-Disposition'   => 'attachment; filename="file.pdf"'
+			)
+		);
+	}
+
+	/**
+	 * @Route("/convocation_pdf/{id}/pdf", name="convocation_pdf")
+	 *
+	 */
+	public function convocation_pdfAction(Agenda $agenda )
+	{
+		$html = $this->renderView('AdminBundle:Default:convocation.html.twig', array(
 			'agenda'  => $agenda
 		));
 

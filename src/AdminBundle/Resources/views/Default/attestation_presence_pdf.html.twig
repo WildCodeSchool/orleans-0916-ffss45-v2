@@ -33,6 +33,6 @@
         qui s'est déroulée à {{ agenda.adresse }} du {{ agenda.dateDeDebut | date('d/m/Y') }} au {{ agenda.dateDeFin
             | date
             ('d/m/Y') }}.</p>
-        <p>Fait le {{ date ('d/m/Y') }}</p>
+        <p>Fait le {{ 'now' | date ('d/m/Y') }}</p>
     </div>
 </body>

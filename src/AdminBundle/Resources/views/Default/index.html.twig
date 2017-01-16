@@ -1,5 +1,11 @@
 {% extends 'AdminBundle::adminLayout.html.twig' %}
 {% block body %}
-
     <div class="alert alert-success">Bienvenue dans la partie administration</div>
+
+    <h1>Attente de validation</h1>
+
+    {% for reservation in  reservations %}
+        <p>{{ reservation.status }}</p>
+    {% endfor %}
+
 {% endblock %}

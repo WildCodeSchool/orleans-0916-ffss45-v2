@@ -30,7 +30,7 @@ class ReservationType extends AbstractType
 	               'choice_label'=>'username'
                ])
                 ->add('delaiExpiration')
-                ->add('image', 'file', array( 'required' => false))
+//                ->add('image', 'file', array( 'required' => false))
         ;
     }
     

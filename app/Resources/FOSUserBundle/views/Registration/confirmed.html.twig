@@ -3,7 +3,10 @@
 {% trans_default_domain 'FOSUserBundle' %}
 {% block body %}
     {% block fos_user_content %}
+        <div class="space" style="height: 500px">
         <p>{{ 'registration.confirmed'|trans({'%username%': app.user.username}) }}</p>
+        <a class="btn btn-primary" href="{{ path('user_question') }}" class="log" >Espace Client</a>
+        </div>
         {% if targetUrl %}
             <p><a href="{{ targetUrl }}">{{ 'registration.back'|trans }}</a></p>
         {% endif %}
