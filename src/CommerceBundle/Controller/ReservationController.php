@@ -85,12 +85,12 @@ class ReservationController extends Controller
     public function showAction(Reservation $reservation)
     {
         $deleteForm = $this->createDeleteForm($reservation);
-        $webPath = $reservation->getWebPath();
-        $alt = $reservation->getAlt();
+//        $webPath = $reservation->getWebPath();
+//        $alt = $reservation->getAlt();
         return $this->render('reservation/show.html.twig', array(
             'reservation' => $reservation,
-            'webPath' => $webPath,
-            'alt' => $alt,
+//            'webPath' => $webPath,
+//            'alt' => $alt,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -106,8 +106,8 @@ class ReservationController extends Controller
         $deleteForm = $this->createDeleteForm($reservation);
         $editForm = $this->createForm('CommerceBundle\Form\ReservationType', $reservation);
         $editForm->handleRequest($request);
-        $webPath = $reservation->getWebPath();
-        $alt = $reservation->getAlt();
+//        $webPath = $reservation->getWebPath();
+//        $alt = $reservation->getAlt();
 //        var_dump($editForm->getData());
 //        if($editForm->getData()->getAlt()){
 //
@@ -121,8 +121,8 @@ class ReservationController extends Controller
 
         return $this->render('reservation/edit.html.twig', array(
             'reservation' => $reservation,
-            'webPath' => $webPath,
-            'alt' => $alt,
+//            'webPath' => $webPath,
+//            'alt' => $alt,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -189,10 +189,11 @@ class ReservationController extends Controller
 	 * @Route("/attestation_presence_pdf/{id}/pdf", name="attestation_presence_pdf")
 	 *
 	 */
-	public function attestation_presence_pdfAction(Agenda $agenda )
+	public function attestation_presence_pdfAction(Agenda $agenda, Reservation $reservation)
 	{
 		$html = $this->renderView('AdminBundle:Default:attestation_presence_pdf.html.twig', array(
-			'agenda'  => $agenda
+			'agenda'  => $agenda,
+			'reservation'  => $reservation
 		));
 
 

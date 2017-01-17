@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-xs-12">
 
-            {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+                {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
                 {{ form_widget(form) }}
 
                 {{form_label(form.nom, 'nom')}}
@@ -17,7 +17,7 @@
                 <div>
                     <input type="submit" value="{{ 'profile.edit.submit'|trans }}" />
                 </div>
-            {{ form_end(form) }}
+                {{ form_end(form) }}
 
             </div>
         </div>
