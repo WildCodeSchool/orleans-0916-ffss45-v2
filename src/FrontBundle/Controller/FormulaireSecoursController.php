@@ -8,6 +8,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use FrontBundle\Entity\FormulaireSecours;
 use FrontBundle\Form\FormulaireSecoursType;
+use FrontBundle\Form\PrixType;
 
 /**
  * FormulaireSecours controller.
@@ -44,8 +45,6 @@ class FormulaireSecoursController extends Controller
         $formulaireSecour = new FormulaireSecours();
         $form = $this->createForm('FrontBundle\Form\FormulaireSecoursType', $formulaireSecour);
         $form->handleRequest($request);
-
-
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -86,8 +85,10 @@ class FormulaireSecoursController extends Controller
     public function editAction(Request $request, FormulaireSecours $formulaireSecour)
     {
         $deleteForm = $this->createDeleteForm($formulaireSecour);
-        $editForm = $this->createForm('FrontBundle\Form\FormulaireSecoursType', $formulaireSecour);
+        $editForm = $this->createForm('FrontBundle\Form\PrixType', $formulaireSecour);
         $editForm->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
+        $formulaireSecours = $em->getRepository('FrontBundle:FormulaireSecours')->find($formulaireSecour);
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
@@ -101,6 +102,7 @@ class FormulaireSecoursController extends Controller
             'formulaireSecour' => $formulaireSecour,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
+            'formulaireSecours' => $formulaireSecours,
         ));
     }
 
