@@ -20,6 +20,7 @@
                         <th>Téléphone</th>
                         <th>Status</th>
                         <th>Numéro de réservation</th>
+                        <th>Diplôme</th>
                         <th>Convocation</th>
                         <th>Certificat</th>
                         <th>Delai d' expiration</th>
@@ -44,6 +45,7 @@
                                 <td> {{ reservation.user.tel }}</td>
                                 <td>{{ reservation.status }}</td>
                                 <td>{{ reservation.numeroReservation }}</td>
+                                <td>{{ reservation.imagename }}</td>
                                 <td>{{ reservation.convocation }}</td>
                                 <td>{{ reservation.certificate }}</td>
                                 <td>{% if reservation.delaiExpiration %}{{ reservation.delaiExpiration|date('Y-m-d H:i:s') }}{% endif %}</td>
