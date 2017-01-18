@@ -4,7 +4,8 @@ namespace CommerceBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-
+use AdminBundle\Entity\Agenda;
+use AdminBundle\Entity\User;
 /**
  * Reservation
  *
@@ -37,14 +38,15 @@ class Reservation
     private $numeroReservation;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Agenda", inversedBy="reservations")
+     *
+	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Agenda", inversedBy="reservations",cascade={"persist"} )
 	 */
 	private $agenda;
 
 
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\User", inversedBy="reservations")
+	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\User", inversedBy="reservations",cascade={"persist"} )
 	 */
 	private $user;
 
@@ -209,7 +211,7 @@ class Reservation
     /**
      * @param mixed $agenda
      */
-    public function setAgenda($agenda)
+    public function setAgenda(Agenda $agenda)
     {
         $this->agenda = $agenda;
     }
@@ -229,7 +231,7 @@ class Reservation
     /**
      * @param mixed $user
      */
-    public function setUser($user)
+    public function setUser(User $user)
     {
         $this->user = $user;
     }

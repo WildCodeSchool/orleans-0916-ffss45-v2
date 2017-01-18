@@ -95,6 +95,30 @@ class FormulaireSecoursController extends Controller
             $em->persist($formulaireSecour);
             $em->flush();
 
+            $userEmail = $formulaireSecours->getUser()->getEmail();
+            $userFirstName = $formulaireSecours->getUser()->getPrenom();
+            $userName = $formulaireSecours->getUser()->getNom();
+            $nomManif = $formulaireSecours->getNomManif();
+            $dateDebutManif = $formulaireSecours->getDateDebutManif();
+            $devis = $formulaireSecours->getDevis();
+            $message = $formulaireSecours->getMessage();
+
+            $message = \Swift_Message::newInstance()
+                ->setSubject('FFSS45 : Votre devis Poste de Secours')
+                ->setFrom('tuko45@hotmail.fr')
+                ->setTo($userEmail)
+                ->setBody(
+                    $this->renderView('emailDevis.html.twig', ['prenom' => $userFirstName,
+                        'nom' => $userName,
+                        'nomManif' => $nomManif,
+                        'date' => $dateDebutManif,
+                        'devis' => $devis,
+                        'message' => $message]));
+
+
+            $this->get('mailer')->send($message);
+
+
             return $this->redirectToRoute('formulairesecours_edit', array('id' => $formulaireSecour->getId()));
         }
 
@@ -103,7 +127,7 @@ class FormulaireSecoursController extends Controller
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
             'formulaireSecours' => $formulaireSecours,
-        ));
+        ));'text/html';
     }
 
     /**
@@ -138,7 +162,6 @@ class FormulaireSecoursController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('formulairesecours_delete', array('id' => $formulaireSecour->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }

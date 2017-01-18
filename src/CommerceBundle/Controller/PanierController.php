@@ -150,16 +150,7 @@ class PanierController extends Controller
 
                 if (in_array($email, $emails)) {
                     $user = $em->getRepository('AdminBundle:User')->findOneByEmail($email);
-                    $iduser = $user->getId();
                     //Enregistrer la formation dans le compte user
-                    $reservation = new Reservation();
-                    $reservation->setUser($iduser);
-
-                    $idagenda = $formation['agenda']->getId();
-                    $reservation->setAgenda($idagenda);
-
-                    $em->persist($reservation);
-                    $em->flush();
 
                 } else {
                     $username = $prenom . $nom; //toto //toto2
@@ -169,11 +160,10 @@ class PanierController extends Controller
                         $nb++;
                     }
 
-
                     $passwordcrypt = md5($password);
                     $firstPassword[] = $password;
 
-                    var_dump($firstPassword);
+                    //var_dump($firstPassword);
                     $userManager = $this->container->get('fos_user.user_manager');
                     $user = $userManager->createUser();
                     $user->setUsername($username);
@@ -184,21 +174,22 @@ class PanierController extends Controller
 
                     $userManager->updateUser($user);
 
-                    $user = $em->getRepository('AdminBundle:User')->findOneByEmail($email);
-                    $iduser = $user->getId();
+                    //$user = $em->getRepository('AdminBundle:User')->findOneByEmail($email);
+                    //$iduser = $user->getId();
 
-                    $reservation = new Reservation();
-                    $reservation->setUser($user);
-
-                    $agenda = $formation['agenda'];
-                    $reservation->setAgenda($agenda);
-
-                    $em->persist($reservation);
-                    $em->flush();
 
                 }
+                $reservation = new Reservation();
+                $reservation->setUser($user);
+
+                $agenda = $formation['agenda'];
+                $reservation->setAgenda($agenda);
+                dump($reservation);
+                $em->persist($reservation);
+
 
             }
+            $em->flush();
 
             foreach ($inscrits as $inscrit) {
 

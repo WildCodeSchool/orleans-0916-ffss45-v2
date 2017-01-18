@@ -37,13 +37,14 @@ class Reservation
     private $numeroReservation;
 
 	/**
-	 * @ORM\Column(name="agenda_id", type="integer")
+     *
 	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Agenda", inversedBy="reservations")
 	 */
 	private $agenda;
 
+
+
 	/**
-	 *@ORM\Column(name="user_id", type="integer")
 	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\User", inversedBy="reservations")
 	 */
 	private $user;
@@ -269,4 +270,6 @@ class Reservation
     {
         return $this->formulairesecours;
     }
+
+
 }
