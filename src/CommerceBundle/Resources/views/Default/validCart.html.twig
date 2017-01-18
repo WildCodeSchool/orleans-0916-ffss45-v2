@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'FrontBundle:Default:frontLayout.html.twig' %}
 {% set panier = app.session.get('panier') %}
 {% block body %}
     {% for article_id, article in panier %}
@@ -8,7 +8,8 @@
                 <div class="row" id="load_form_valid_inscrit{{ i }}">
                     <div class="col-sm-12">
                         {% render(controller('CommerceBundle:Panier:addInscrit', {'id':article_id, 'key':i} )) %}
-                    </div>
+                        <a id="validAll" href="{{ path('payment') }}" class="btn btn-success">Payer</a>
+                        <a class="btn btn-primary" href="{{ path('panier' ) }}">Retour</a></div>
                 </div>
             {% endfor %}
         {% else %}
@@ -18,8 +19,7 @@
         {% endif %}
     {% endfor %}
 
-    <a id="validAll" href="{{ path('payment') }}" class="btn btn-success btn-large btn-block">Payer</a>
-    <a class="btn btn-primary" href="{{ path('panier' ) }}">Back </a>
+
     <script>
         $('#validAll').click(function () {
             $('[id^=valid_inscrit]').each(function () {
