@@ -106,8 +106,8 @@
                                         </tr>
                                         <tr>
                                             <td>{{ formulaireSecour.nomManif }}</td>
-                                            <td>{% if formulaireSecour.dateDebutManif %}{{ formulaireSecour.dateDebutManif|date('Y-m-d') }}{% endif %}</td>
-                                            <td>{% if formulaireSecour.dateFinManif %}{{ formulaireSecour.dateFinManif|date('Y-m-d') }}{% endif %}</td>
+                                            <td>{% if formulaireSecour.dateDebutManif %}{{ formulaireSecour.dateDebutManif|date('d-m-Y') }}{% endif %}</td>
+                                            <td>{% if formulaireSecour.dateFinManif %}{{ formulaireSecour.dateFinManif|date('d-m-Y') }}{% endif %}</td>
                                             <td>{{ formulaireSecour.devis }}€</td>
                                             <td><a class="btn btn-primary" href="#">Payer la prestation</a></td>
                                     </tr>
