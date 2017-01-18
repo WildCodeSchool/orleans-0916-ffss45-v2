@@ -21,6 +21,7 @@ use AdminBundle\Form\FormationType;
 use AdminBundle\Form\AgendaType;
 use Symfony\Component\HttpFoundation\File\File;
 use AdminBundle\Entity\User;
+use CommerceBundle\Entity\Reservation;
 
 
 class PanierController extends Controller
@@ -57,21 +58,19 @@ class PanierController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $session = $request->getSession();
-
         if (!$session->has('panier')) {
             $session->set('panier', []);
         }
         $panier = $session->get('panier');
         //dump($panier);
         $totalfinal = 0;
-
         if (is_array($panier)) {
             foreach ($session->get('panier') as $id => $article) {
                 $agenda = $em->getRepository('AdminBundle:Agenda')->find($id);
-
                 $panier[$agenda->getId()]['totalitem'] = $agenda->getFormation()->getPrix() * $article['quantity'];
                 $totalfinal += $panier[$agenda->getId()]['totalitem'];
             }
+
 
         } else {
             $this->addFlash(
@@ -79,12 +78,9 @@ class PanierController extends Controller
                 'Le panier est vide, veuillez ajouter des formations'
             );
         }
-
         return $this->render('@Commerce/Default/panier.html.twig', array(
             'panier' => $panier, 'totalfinal' => $totalfinal,
-
         ));
-
     }
 
 
@@ -117,8 +113,116 @@ class PanierController extends Controller
 
         return $this->render('@Commerce/Default/quantityForm.html.twig', array(
             'form' => $form->createView(),
-            'id'   => $agenda->getId(),
+            'id' => $agenda->getId(),
         ));
+    }
+
+    /**
+     * @Route("/finalSubscription", name="final_subscription")
+     */
+    public function finalSubscriptionAction(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $session = $request->getSession();
+
+        $panier = $session->get('panier');
+
+        $n = 1;
+        foreach ($panier as $formation) {
+            //$nom = 'to';
+            //$prenom = 'to';
+            //$email = 'ettdddde.d@gmail.com';
+            $users = $em->getRepository('AdminBundle:User')->findAll();
+            foreach ($users as $value) {
+                $emails[] = $value->getEmail();
+                $usernames[] = $value->getUserName();
+
+            }
+            $inscrits = ($formation['inscrits']);
+
+            foreach ($formation['inscrits'] as $newUser) {
+                $nom = $newUser['nom'];
+                $prenom = $newUser['prenom'];
+                $email = $newUser['email'];
+                $password = $inscrits[$n]['password'] = uniqid(1, false);
+                $n++;
+
+
+                if (in_array($email, $emails)) {
+                    $user = $em->getRepository('AdminBundle:User')->findOneByEmail($email);
+                    $iduser = $user->getId();
+                    //Enregistrer la formation dans le compte user
+                    $reservation = new Reservation();
+                    $reservation->setUser($iduser);
+
+                    $idagenda = $formation['agenda']->getId();
+                    $reservation->setAgenda($idagenda);
+
+                    $em->persist($reservation);
+                    $em->flush();
+
+                } else {
+                    $username = $prenom . $nom; //toto //toto2
+                    $nb = 2;
+                    while (in_array($username, $usernames)) {
+                        $username = $prenom . $nom . $nb;
+                        $nb++;
+                    }
+
+
+                    $passwordcrypt = md5($password);
+                    $firstPassword[] = $password;
+
+                    var_dump($firstPassword);
+                    $userManager = $this->container->get('fos_user.user_manager');
+                    $user = $userManager->createUser();
+                    $user->setUsername($username);
+                    $user->setEmail($email);
+                    $user->setNom($nom);
+                    $user->setPrenom($prenom);
+                    $user->setPassword($passwordcrypt);
+
+                    $userManager->updateUser($user);
+
+                    $user = $em->getRepository('AdminBundle:User')->findOneByEmail($email);
+                    $iduser = $user->getId();
+
+                    $reservation = new Reservation();
+                    $reservation->setUser($user);
+
+                    $agenda = $formation['agenda'];
+                    $reservation->setAgenda($agenda);
+
+                    $em->persist($reservation);
+                    $em->flush();
+
+                }
+
+            }
+
+            foreach ($inscrits as $inscrit) {
+
+                $message = \Swift_Message::newInstance()
+                    ->setSubject('FFSS45 : Finaliser votre inscription')
+                    ->setFrom('tuko45@hotmail.fr')
+                    ->setTo($inscrit['email'])
+                    ->setBody(
+                        $this->renderView('emailSubscription.html.twig', array('nom' => $inscrit['nom'],
+                            'prenom' => $inscrit['prenom'], 'password' => $inscrit['password']
+
+                        ),
+                            'text/html'
+                        ));
+                $this->get('mailer')->send($message);
+            }
+            return $this->redirect($this->generateUrl('succes'));
+            // }
+            // return $this->render('@Front/Default/acceuil.html.twig', array(
+            //   'form' => $form->createView(),
+            //));
+
+
+        }
     }
 
     /**
@@ -154,28 +258,31 @@ class PanierController extends Controller
         $session = $request->getSession();
         $panier = $session->get('panier');
         $id = $agenda->getId();
-
         $form = $this->createForm('AdminBundle\Form\AddUserType');
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
+            //$data->setPassword(uniqid(1, false));
+
             if (array_key_exists($id, $panier)) {
                 if ($data['nom'] && $data['prenom'] && $data['email']) {
 
                     $panier[$id]['inscrits'][$key] = [
-                        'nom'    => $data['nom'],
+                        'nom' => $data['nom'],
                         'prenom' => $data['prenom'],
-                        'email'  => $data['email'],
+                        'email' => $data['email'],
                     ];
                 }
             }
             $session->set('panier', $panier);
+
             //return $this->redirectToRoute('valid_cart');
         }
 
         return $this->render('@Commerce/Default/addInscrit.html.twig', array(
-            'id'   => $id,
-            'key'  => $key,
+            'id' => $id,
+            'key' => $key,
             'form' => $form->createView(),
         ));
     }
@@ -209,7 +316,7 @@ class PanierController extends Controller
         $panier = $session->get('panier');
         $id = $agenda->getId();
         $user = $this->getUser();
-        $panier[$id]['inscrits'][1]=['nom'=>$user->getNom(), 'prenom'=>$user->getPrenom(), 'email'=>$user->getEmail()];
+        $panier[$id]['inscrits'][1] = ['nom' => $user->getNom(), 'prenom' => $user->getPrenom(), 'email' => $user->getEmail()];
         $session->set('panier', $panier);
         return $this->redirectToRoute('valid_cart');
     }
@@ -241,10 +348,10 @@ class PanierController extends Controller
         if ($panier) {
             foreach ($panier as $article) {
                 for ($i = 0; $i < $article['quantity']; $i++) {
-                    if (!isset($article['inscrits']))  {
-                        $errorBack=1;
-                    } elseif (!array_key_exists($i, $article['inscrits'])) {
+                    if (!isset($article['inscrits'])) {
                         $errorBack = 1;
+                    } elseif (!array_key_exists($i, $article['inscrits'])) {
+                        $errorBack = 0;
                     }
                 }
             }

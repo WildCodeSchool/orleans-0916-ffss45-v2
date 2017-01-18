@@ -32,6 +32,10 @@
                 <th>Delaiexpiration</th>
                 <td>{% if reservation.delaiExpiration %}{{ reservation.delaiExpiration|date('Y-m-d H:i:s') }}{% endif %}</td>
             </tr>
+            {#<tr>#}
+                {#<th>Image</th>#}
+                {#<td><img class="imgInscription" src="{{ asset(webPath) }}" alt="{{ alt }}"/></td>#}
+            {#</tr>#}
         </tbody>
     </table>
 

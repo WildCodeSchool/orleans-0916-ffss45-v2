@@ -119,6 +119,14 @@ class Formation
      */
     private $prix;
 
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="user", type="text")
+     */
+    private $user;
+
+
 
     /**
      * Set prix
@@ -421,5 +429,23 @@ class Formation
     {
         $this->actualisation = $actualisation;
     }
+
+    /**
+     * @return text
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param text $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+
 
 }

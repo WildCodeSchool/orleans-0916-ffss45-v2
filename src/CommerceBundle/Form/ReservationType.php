@@ -29,6 +29,8 @@ class ReservationType extends AbstractType
                	'class'=>'AdminBundle\Entity\User',
 	               'choice_label'=>'username'
                ])
+                ->add('delaiExpiration')
+//                ->add('image', 'file', array( 'required' => false))
         ;
     }
     

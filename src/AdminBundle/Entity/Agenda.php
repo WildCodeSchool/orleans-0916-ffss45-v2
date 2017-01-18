@@ -23,15 +23,17 @@ class Agenda
     private $id;
     /**
      * @ORM\ManyToOne(targetEntity="Formation", inversedBy="agendas")
-     * @ORM\JoinColumn(name="formation_id", referencedColumnName="id")
+     *
      */
     private $formation;
 
 	/**
 	 * @ORM\OneToMany(targetEntity="CommerceBundle\Entity\Reservation", mappedBy="agenda")
-	 * @ORM\JoinColumn(name="agenda_id", referencedColumnName="id")
+	 *
 	 */
 	private $reservations;
+
+
 
     /**
      * @var \DateTime
@@ -305,7 +307,7 @@ class Agenda
     /**
      * Add reservation
      *
-     * @param \CommerceBundle\Entity\Reservations $reservation
+     * @param \CommerceBundle\Entity\Reservation $reservation
      *
      * @return Agenda
      */
@@ -319,7 +321,7 @@ class Agenda
     /**
      * Remove reservation
      *
-     * @param \CommerceBundle\Entity\Reservations $reservation
+     * @param \CommerceBundle\Entity\Reservation $reservation
      */
     public function removeReservation(\CommerceBundle\Entity\Reservation $reservation)
     {
@@ -327,7 +329,7 @@ class Agenda
     }
 
     /**
-     * Get reservations
+     * Get reservation
      *
      * @return \Doctrine\Common\Collections\Collection
      */

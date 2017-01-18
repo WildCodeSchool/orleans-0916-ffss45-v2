@@ -42,7 +42,6 @@ class ReservationController extends Controller
 	public function resaAgendaAction(Agenda $agenda)
 	{
 		$em = $this->getDoctrine()->getManager();
-
 		$reservation = $em->getRepository('CommerceBundle:Reservation')->findAll();
 		return $this->render('reservation/index.html.twig', array(
 			'agenda' => $agenda,
@@ -86,9 +85,12 @@ class ReservationController extends Controller
     public function showAction(Reservation $reservation)
     {
         $deleteForm = $this->createDeleteForm($reservation);
-
+//        $webPath = $reservation->getWebPath();
+//        $alt = $reservation->getAlt();
         return $this->render('reservation/show.html.twig', array(
             'reservation' => $reservation,
+//            'webPath' => $webPath,
+//            'alt' => $alt,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -104,6 +106,12 @@ class ReservationController extends Controller
         $deleteForm = $this->createDeleteForm($reservation);
         $editForm = $this->createForm('CommerceBundle\Form\ReservationType', $reservation);
         $editForm->handleRequest($request);
+//        $webPath = $reservation->getWebPath();
+//        $alt = $reservation->getAlt();
+//        var_dump($editForm->getData());
+//        if($editForm->getData()->getAlt()){
+//
+//        }
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
@@ -113,6 +121,8 @@ class ReservationController extends Controller
 
         return $this->render('reservation/edit.html.twig', array(
             'reservation' => $reservation,
+//            'webPath' => $webPath,
+//            'alt' => $alt,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
@@ -158,9 +168,31 @@ class ReservationController extends Controller
 	 * @Route("/presence_pdf/{id}/pdf", name="presence_pdf")
 	 *
 	 */
-	public function presence_pdfAction(Reservation $reservation)
+	public function presence_pdfAction(Agenda $agenda )
 	{
 		$html = $this->renderView('CommerceBundle:Default:presence_pdf.html.twig', array(
+			'agenda'  => $agenda
+		));
+
+
+		return new Response(
+			$this->get('knp_snappy.pdf')->getOutputFromHtml($html, array('orientation'=>'Landscape')),
+			200,
+			array(
+				'Content-Type'          => 'application/pdf',
+				'Content-Disposition'   => 'attachment; filename="file.pdf"'
+			)
+		);
+	}
+
+	/**
+	 * @Route("/attestation_presence_pdf/{id}/pdf", name="attestation_presence_pdf")
+	 *
+	 */
+	public function attestation_presence_pdfAction(Agenda $agenda, Reservation $reservation)
+	{
+		$html = $this->renderView('AdminBundle:Default:attestation_presence_pdf.html.twig', array(
+			'agenda'  => $agenda,
 			'reservation'  => $reservation
 		));
 
@@ -174,5 +206,27 @@ class ReservationController extends Controller
 			)
 		);
 	}
+
+	/**
+	 * @Route("/convocation_pdf/{id}/pdf", name="convocation_pdf")
+	 *
+	 */
+	public function convocation_pdfAction(Agenda $agenda )
+	{
+		$html = $this->renderView('AdminBundle:Default:convocation.html.twig', array(
+			'agenda'  => $agenda
+		));
+
+
+		return new Response(
+			$this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+			200,
+			array(
+				'Content-Type'          => 'application/pdf',
+				'Content-Disposition'   => 'attachment; filename="file.pdf"'
+			)
+		);
+	}
+
 
 }

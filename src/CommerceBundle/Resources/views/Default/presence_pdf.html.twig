@@ -1,9 +1,9 @@
 <html>
 <head>
 
-    <link href="{{ absolute_url(asset('css/bootstrap.min.css'))}}" rel="stylesheet">
-    <link href="{{ absolute_url(asset('css/font-awesome.min.css'))}}" rel="stylesheet">
-    <link href="{{ absolute_url(asset('css/presence_pdf.css'))}}" rel="stylesheet">
+    <link href="{{ absolute_url(asset('css/bootstrap.min.css')) }}" rel="stylesheet">
+    <link href="{{ absolute_url(asset('css/font-awesome.min.css')) }}" rel="stylesheet">
+    <link href="{{ absolute_url(asset('css/presence_pdf.css')) }}" rel="stylesheet">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,78 +14,99 @@
 </head>
 
 <body>
-    <H2>FEUILLE D'EMARGEMENT</H2>
-    <div class='line'></div>
-    <br/>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-xs-8">
-                <p>Intitulé de la formation :..........................................................................................................</p>
-                <p>Date[s] de la formation : du</p>
-                <p>Durée de la formation :</p>
-                <p>Horaires de la formation :</p>
-                <p>Lieu de la formation :...............................................................................................................</p>
-            </div>
-            <div class="col-xs-4">
-                <div class="cachet">
-                    <p class="italic">Cachet de l'organisme de formation :</p>
-                </div>
+<H2>FEUILLE D'&Eacute;MARGEMENT</H2>
+<div class='line'></div>
+<br/>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-7">
+            <p>Intitulé de la formation : {{ agenda.formation.nomlong }}</p>
+            <p>Date[s] de la formation : du {{ agenda.datededebut | date('d/m/Y') }} au {{ agenda.datedefin | date
+                ('d/m/Y') }}</p>
+            <p>Durée de la formation : {{ agenda.formation.dureeformation }}</p>
+            <p>Horaires de la formation : de {{ agenda.heureDeDebutAm | date('H:i') }} à {{ agenda.heureDeFinAm | date('H:i')
+                }} et de {{ agenda.heureDeDebutPm | date('H:i') }} à {{ agenda.heureDeFinPm | date('H:i') }}</p>
+            <p>Lieu de la formation
+                :...........................................................................................</p>
+        </div>
+        <div class="col-xs-5">
+            <div class="cachet">
+                <p class="italic">Cachet de l'organisme de formation :</p>
             </div>
         </div>
     </div>
-    <br/>
-    <div class="container-fluid">
-        <div class="row center-block">
-            <div class="col-xs-12">
+</div>
+<br/>
+<br/>
+<div class="container-fluid">
+    <div class="row center-block">
+        <div class="col-xs-12">
 
-                <table class="table-fill table-striped table-hover" style="width: 100%;">
-                    <thead>
+            <table class="table table-striped table-condensed table-bordered" style="width: 100%;">
+                <thead>
                     <tr>
-                        <th>N°</th>
-                        <th>Nom</th>
-                        <th>Prénom</th>
-                        {#<th>Date de naissance</th>#}
-                        <th>Adresse</th>
-                        <th>Lieu de naissance</th>
-                        <th>Departement de naissance</th>
-                        <th>Code Postal</th>
-                        <th>Ville</th>
-                        <th>Téléphone</th>
-                        <th>Status</th>
-                        <th>Numéro de réservation</th>
-                        <th>Convocation</th>
-                        <th>Certificat</th>
-                        <th>Delai d' expiration</th>
+                        <th class="case" colspan="2"></th>
+                        <th colspan="2">Date: {{ agenda.datededebut | date('d/m/Y') }}</th>
+                        <th colspan="2">Date:.../.../...</th>
+                        <th colspan="2">Date:.../.../...</th>
                     </tr>
-                    </thead>
-                    <tbody class="table-hover">
-                        <tr>
-                            <td><a href="{{ path('reservation_show', { 'id': reservation.id }) }}">{{ reservation.id }}</a></td>
-                            <td> {{reservation.user.nom}}</td>
-                            <td> {{reservation.user.prenom}}</td>
-                            {#<td> {{app.user.dateNaissance}}</td>#}
-                            <td> {{reservation.user.adresse}}</td>
-                            <td> {{reservation.user.lieuNaissance}}</td>
-                            <td> {{reservation.user.departementNaissance}}</td>
-                            <td> {{reservation.user.CodePostal}}</td>
-                            <td> {{reservation.user.ville}}</td>
-                            <td> {{reservation.user.tel}}</td>
-                            <td>{{ reservation.status }}</td>
-                            <td>{{ reservation.numeroReservation }}</td>
-                            <td>{{ reservation.convocation }}</td>
-                            <td>{{ reservation.certificate }}</td>
-
-
-                            <td>{% if reservation.delaiExpiration %}{{ reservation.delaiExpiration|date('Y-m-d H:i:s') }}
-                                {% endif %}
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-
-            </div>
+                    <tr>
+                        <th rowspan="2" colspan="2">Nom et prénom du (des) formateurs</th>
+                        <th colspan="2">Signatures</th>
+                        <th colspan="2">Signatures</th>
+                        <th colspan="2">Signatures</th>
+                    </tr>
+                    <tr>
+                        <th>Matin: {{ agenda.heureDeDebutAm | date('H:i') }}</th>
+                        <th>Après-midi: {{ agenda.heureDeDebutPm | date('H:i') }}</th>
+                        <th>Matin: {{ agenda.heureDeDebutAm | date('H:i') }}</th>
+                        <th>Après-midi: {{ agenda.heureDeDebutPm | date('H:i') }}</th>
+                        <th>Matin: {{ agenda.heureDeDebutAm | date('H:i') }}</th>
+                        <th>Après-midi: {{ agenda.heureDeDebutPm | date('H:i') }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"></td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <th>Entreprise</th>
+                        <th>Stagiaire</th>
+                        <th>Matin: {{ agenda.heureDeDebutAm | date('H:i') }}</th>
+                        <th>Après-midi: {{ agenda.heureDeDebutPm | date('H:i') }}</th>
+                        <th>Matin: {{ agenda.heureDeDebutAm | date('H:i') }}</th>
+                        <th>Après-midi: {{ agenda.heureDeDebutPm | date('H:i') }}</th>
+                        <th>Matin: {{ agenda.heureDeDebutAm | date('H:i') }}</th>
+                        <th>Après-midi: {{ agenda.heureDeDebutPm | date('H:i') }}</th>
+                    </tr>
+                {% for reservation in agenda.reservations %}
+                    <tr>
+                        <td>&nbsp;</td>
+                        <td>{{ reservation.user.nom|upper }} {{ reservation.user.prenom }}</td>
+                        {% for i in 0..5 %}
+                            <td>&nbsp;</td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
+</div>
 </body>
 </html>

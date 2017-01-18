@@ -1,0 +1,53 @@
+<html>
+<head>
+
+    <link href="{{ absolute_url(asset('css/bootstrap.min.css')) }}" rel="stylesheet">
+    <link href="{{ absolute_url(asset('css/font-awesome.min.css')) }}" rel="stylesheet">
+    <link href="{{ absolute_url(asset('css/convocation.css')) }}" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6">
+            <img src="{{ absolute_url(asset('images/logo.jpg')) }}">
+        </div>
+        <div class="col-xs-6">
+            <p class="adresse">Secouristes du Loiret - Formations SST<br/>
+            15 Quai du Roi 45000 ORLEANS<br/>
+            Tél: 0238431273 - Email : contact@secourisme45.com<br/>
+            Numéro de déclaration: n° 24 45 01 71 345</p>
+        </div>
+    </div>
+    <h1>CONVOCATION</h1>
+    <P class="decale">Suite à votre inscription à la formation cité ci-dessous, j'ai l'honneur de vous convoquer <br/> aux
+        dates
+        suivantes : {{ agenda.formation.nomlong }}</P>
+    <table class="table table-condensed table-bordered">
+        <tr>
+            <thead>
+                <th>Dates</th>
+                <th>Horaires</th>
+            </thead>
+            <tbody>
+                <td>Le {{ agenda.datededebut | date('d/m/Y') }}</td>
+                <td>{{ agenda.heureDeDebutAm |date('H:i')}} - {{ agenda.heureDeFinPm |date('H:i')}}</td>
+            </tbody>
+        </tr>
+    </table>
+    <p class="italic">La pause repas sera comprise entre 12:30 et 13:30</p>
+    <p>Volume Horaire : {{ agenda.formation.dureeFormation }}</p>
+    <p>Effectif formé : 1 groupe de 6 à 12 personnes</p>
+    <p>Lieu : {{ agenda.adresse }}</p>
+    <p class="decale">Je vous informe que vous devez vous munir de la présente convocation et d'une pièce d'identité
+        lors des
+        épreuves et vous rappelle que la restauration n'est pas prise en charge par le centre de formation</p>
+    <p class="signature">Le Responsable Pédagogique</p>
+</div>
+</body>
