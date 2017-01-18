@@ -10,7 +10,7 @@
 
     <div class="container page">
         <div class="row">
-            <div class="col-xs-12">
+            <div class="col-xs-12"><br/>
                 <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#Profile">Profile</a></li>
                     <li><a data-toggle="tab" href="#Formations">Formations</a></li>
@@ -20,21 +20,19 @@
                     <div id="Profile" class="tab-pane fade in active">
                         <div class="page">
                             {#<div class="info">#}
-                            <h1> Page utilisateur</h1>
 
-                                <p>Vous êtes un :
+                            <h1> Espace Client</h1>
                                             {% if is_granted('ROLE_ADMIN') %}
                                     <div class="row">
-                                        <div class="col-xs-6">
-                                            <b>Admin</b>
-                                        </div>
                                             <div class="col-xs-6">
-                                                <a href="{{ path('admin') }}"><i class="fa fa-lock" aria-hidden="true"></i></a>
+                                                <p>Se rendre dans l'espace Administration :  <a href="{{ path('admin') }}"><i
+                                                                                                class="fa fa-lock"
+                                                                                                aria-hidden="true"></i></a></p>
                                             </div>
                                             {% endif %}
 
                                             {% if is_granted('ROLE_USER') %}
-                                                <b>client</b>
+
                                             {% endif %}
                                     </div>
 
@@ -43,26 +41,42 @@
 
 
                                 <p>Vos Informations</p>
+                            <table class="table table-bordered table-condensed table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Indentifiant</th>
+                                        <th>Pseudo</th>
+                                        <th>Nom</th>
+                                        <th>Prénom</th>
+                                        <th>Adresse</th>
+                                       {# <th>age : {{app.user.age}}</th>#}
+                                        <th>Code Postal</th>
+                                        <th>Ville</th>
+                                        <th>Tel</th>
+                                        <th>Mail</th>
+                                        <th>Comment avez vous connu l'association FFSS</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>{{app.user.id}}</td>
+                                        <td>{{app.user.username}}</td>
+                                        <td>{{app.user.nom}}</td>
+                                        <td>{{app.user.prenom}}</td>
+                                        <td>{{app.user.adresse}}</td>
+                                        <td>{{app.user.codepostal}}</td>
+                                        <td>{{app.user.ville}}</td>
+                                        <td>{{app.user.tel}}</td>
+                                        <td>{{app.user.email}}</td>
+                                        <td>{{app.user.relation}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
 
-                                <ul>
-                                    <li>Indentifiant : {{app.user.id}}</li>
-                                    <li>Pseudo : {{app.user.username}}</li>
-                                    <li>Nom : {{app.user.nom}}</li>
-                                    <li>Prénom : {{app.user.prenom}}</li>
-                                    <li>Adresse : {{app.user.adresse}}</li>
-                                   {# <li>age : {{app.user.age}}</li>#}
-                                    <li>Code Postal : {{app.user.codepostal}}</li>
-                                    <li>Ville : {{app.user.ville}}</li>
-                                    <li>Tel : {{app.user.tel}}</li>
-                                    <li>Mail : {{app.user.email}}</li>
-                                    <li>Comment avez vous connu l'association FFSS : {{app.user.relation}}</li>
-                                </ul>
 
 
 
-
-
-                                <p><a href="{{ path('fos_user_security_logout') }}">se déconnecter</a> </p>
+                                {#<p><a href="{{ path('fos_user_security_logout') }}">se déconnecter</a> </p>#}
                                 <p><a href="{{ path('fos_user_profile_edit') }}">Modifier ses informations</a> </p>
                         </div>
                     </div>
@@ -70,7 +84,7 @@
                         {% if formations %}
                             {% for formation in formations %}
                             {#{{ dump(formation) }}#}
-                                <table>
+                                <table class="table table-bordered table-striped table-condensed">
                                     <tbody>
                                         <tr>
                                             <th>Nom de la formation</th>

@@ -16,3 +16,8 @@
 h1 {
     background-color: #223E7A;
 }
+
+table {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
