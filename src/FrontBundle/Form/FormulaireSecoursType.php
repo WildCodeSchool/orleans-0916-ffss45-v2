@@ -2,7 +2,9 @@
 
 namespace FrontBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType ;
@@ -92,7 +94,6 @@ class FormulaireSecoursType extends AbstractType
             ->add('communicationSecours')
             ->add('autresSecours')
             ->add('infosCompl')
-            ->add('devis', MoneyType :: class)
         ;
     }
     

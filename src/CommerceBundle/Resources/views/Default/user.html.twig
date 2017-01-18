@@ -15,7 +15,6 @@
                     <li class="active"><a data-toggle="tab" href="#Profile">Profile</a></li>
                     <li><a data-toggle="tab" href="#Formations">Formations</a></li>
                     <li><a data-toggle="tab" href="#Poste_Secours">Poste de Secours</a></li>
-
                 </ul>
                 <div class="tab-content">
                     <div id="Profile" class="tab-pane fade in active">
@@ -67,7 +66,58 @@
                                 <p><a href="{{ path('fos_user_profile_edit') }}">Modifier ses informations</a> </p>
                         </div>
                     </div>
-                    <div id="Formations" class="tab-pane fade">test</div>
+                    <div id="Formations" class="tab-pane fade">
+                        {% if formations %}
+                            {% for formation in formations %}
+                            {#{{ dump(formation) }}#}
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <th>Nom de la formation</th>
+                                            <th>Date début la formation</th>
+                                            {#<th>Diplome</th>#}
+                                            <th>Categorie</th>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ formation.formation.nomLong }}</td>
+                                            <td>{% if formation.dateDeDebut %}{{ formation.dateDeDebut|date('d-m-Y') }}{% endif %}</td>
+                                            <td>{{ formation.formation.categorie.nomCategorie}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            {% endfor %}
+                        {% else %}
+                            <p>Vous n'avez pas de formation</p>
+                        {% endif %}
+                    </div>
+                    <div id="Poste_Secours" class="tab-pane fade">
+                        {% if formulaireSecours %}
+                            {% for formulaireSecour in formulaireSecours %}
+                                <table>
+                                    <tbody>
+
+                                        <tr>
+                                            <th>Nom de la manifestation</th>
+                                            <th>Date début manif</th>
+                                            <th>Date fin manif</th>
+                                            <th>Prix de la prestation</th>
+
+                                        </tr>
+                                        <tr>
+                                            <td>{{ formulaireSecour.nomManif }}</td>
+                                            <td>{% if formulaireSecour.dateDebutManif %}{{ formulaireSecour.dateDebutManif|date('d-m-Y') }}{% endif %}</td>
+                                            <td>{% if formulaireSecour.dateFinManif %}{{ formulaireSecour.dateFinManif|date('d-m-Y') }}{% endif %}</td>
+                                            <td>{{ formulaireSecour.devis }}€</td>
+                                            <td><a class="btn btn-primary" href="#">Payer la prestation</a></td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            {% endfor %}
+                        {% else %}
+                            <p>Vous n'avez pas de demande de poste de secours</p>
+                        {% endif %}
+                    </div>
                 </div>
 
 
