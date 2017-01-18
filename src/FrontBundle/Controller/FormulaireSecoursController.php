@@ -26,7 +26,6 @@ class FormulaireSecoursController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $formulaireSecours = $em->getRepository('FrontBundle:FormulaireSecours')->findAll();
 
         return $this->render('formulairesecours/index.html.twig', array(
