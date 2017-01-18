@@ -37,7 +37,7 @@
                         <td>{#prix x quantité#}
                             {{ item.totalitem }} €
                         </td>
-                        <td><a href="{{ path('remove', {'id': item.agenda.id}) }}">Sup</a>
+                        <td><a href="{{ path('remove', {'id': item.agenda.id}) }}">Supprimer</a>
                         </td>
                         <td>
                         </td>
@@ -53,8 +53,8 @@
                 <dd></dd>
             </dl>
             <div class="clearfix"></div>
-            <a href="{{path ('valid_cart')}}" class="btn btn-success btn-lg pull-right">Valider mon panier</a>
-            <a href="{{path ('empty_cart')}}" class="btn btn-danger btn-sm pull-right">Vider mon panier</a>
+            <a href="{{path ('valid_cart')}}" class="btn btn-success pull-right">Valider mon panier</a>
+            <a href="{{path ('empty_cart')}}" class="btn btn-danger pull-right">Vider mon panier</a>
             {% endif %}
             <a href="{{path ('page_accueil_principale')}}" class="btn btn-primary">Acheter d'autres formations</a>
         </div>
