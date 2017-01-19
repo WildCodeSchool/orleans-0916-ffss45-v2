@@ -1,10 +1,11 @@
 {% set panier =  app.session.get('panier') %}
+<div class="container" style="padding-left: 10%">
 <dd>Inscrit #{{ key }}</dd>
 {% if panier[id]['inscrits'][key]['nom'] is defined %}
     {{ panier[id]['inscrits'][key]['nom'] }}
     <a href="{{ path('edit_inscrit', {'id':id, 'key':key} ) }}">edit</a>
 {% else %}
-<div class="container" style="width: 50%;">
+
     {{ form_start(form, {'attr':{'id':'valid_inscrit' ~  key }, 'action':path('add_inscrit', {'id':id, 'key':key})}) }}
     <form>
         <table>
@@ -30,10 +31,11 @@
 
         </table>
     </form>
+
             {% if key==1 %}
                <b><a href="{{ path('user_inscrit', {'id':id} ) }}">pour moi</a></b>
             {% endif %}
     {{ form_end(form) }}
-    <div>
-{% endif %}
 
+</div>
+{% endif %}

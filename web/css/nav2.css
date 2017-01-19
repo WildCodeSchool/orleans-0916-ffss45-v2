@@ -13,7 +13,16 @@
 
 .titre_de_la_page{
     position:absolute;
-    right: 18vw;
+    right: 40vw;
+    bottom: 6.3vw;
+    font-size: 2vw;
+    color:#FFFFFF;
+    font-family: Bebasneue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight:bold;
+}
+.titre_de_la_pageAcceuil{
+    position:absolute;
+    right: 20vw;
     bottom: 10vw;
     font-size: 2vw;
     color:#FFFFFF;
@@ -22,8 +31,18 @@
 }
 
 
-
 .sous_titre_de_la_page{
+    position:absolute;
+    right:53.8vw;
+    bottom: 3.3vw;
+    font-size: 1.5vw;
+    color:#FFFFFF;
+    font-family: Bebasneue, Helvetica Neue, Helvetica, Arial, sans-serif;
+    font-weight:bold;
+
+}
+
+.sous_titre_de_la_pageAcceuil{
     position:absolute;
     right:32.3vw;
     bottom: 7vw;
@@ -153,7 +172,7 @@ i.fa.fa-arrow-up{
     color: white;
 }
 .navbar-collapse {
-	padding-right:0px;
+    padding-right:0px;
 }
 
 .log{
