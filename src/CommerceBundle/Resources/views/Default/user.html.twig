@@ -18,7 +18,7 @@
 
                 </ul>
                 <div class="tab-content">
-                    <div id="Profil" class="tab-pane fade in active">
+                    <div id="Profil" class="tab-pane fade in active" style="min-height: 350px">
                         <div class="page">
                             {#<div class="info">#}
 
@@ -79,7 +79,7 @@
                         </div>
                     </div>
 
-                    <div id="Formations" class="tab-pane fade" style="min-height: 100px">
+                    <div id="Formations" class="tab-pane fade" style="min-height: 350px">
                         <div class="espace"><br/><br/>
                             {% if formations %}
                                 {% for formation in formations %}
@@ -113,7 +113,7 @@
                             {% endif %}
                         </div>
                     </div>
-                    <div id="Poste_Secours" class="tab-pane fade">
+                    <div id="Poste_Secours" class="tab-pane fade" style="min-height: 350px">
                         <br/><br/><br/>
                         {% if formulaireSecours %}
                             {% for formulaireSecour in formulaireSecours %}
