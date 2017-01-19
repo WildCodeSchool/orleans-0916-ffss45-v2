@@ -62,7 +62,7 @@
                                 <p><a href="{{ path('fos_user_profile_edit') }}">Modifier ses informations</a> </p>
                         </div>
                     </div>
-                    <div id="Formations" class="tab-pane fade">
+                    <div style="min-height: 100px" id="Formations" class="tab-pane fade">
                         {% if formations %}
                             {% for formation in formations %}
                             {#{{ dump(formation) }}#}
@@ -86,7 +86,7 @@
                             <p>Vous n'avez pas de formation</p>
                         {% endif %}
                     </div>
-                    <div id="Poste_Secours" class="tab-pane fade">
+                    <div style="min-height: 100px" id="Poste_Secours" class="tab-pane fade">
                         {% if formulaireSecours %}
                             {% for formulaireSecour in formulaireSecours %}
                                 <table>
