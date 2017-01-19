@@ -22,7 +22,7 @@
     <div class="collapse navbar-collapse js-navbar-collapse">
         <ul class="nav navbar-nav ">
             <li class="dropdown dropdown-large">
-                <a href="{{ path('page_accueil_principale') }}">Accueil</a>
+                <a class="glyphicon glyphicon-home" href="{{ path('page_accueil_principale') }}"></a>
             </li>
             <li class="dropdown dropdown-large">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Particuliers<b class="caret"></b></a>
@@ -65,11 +65,11 @@
                         {% if is_granted("IS_AUTHENTICATED_FULLY") %}
                         
                             <li>
-                                <a href="{{ path('user_question') }}" class="log" >Bienvenue <b>{{ app.user.username }}</b></a>
+                                <a href="{{ path('user_question') }}" class="log" ><b>{{ app.user.username }}</b></a>
                             </li>
 
                             <li>
-                                 <a class="joinButton_link" href="{{ path('fos_user_security_logout') }}">Déconnexion</a>
+                                 <a class="joinButton_link glyphicon glyphicon-log-out" href="{{ path('fos_user_security_logout') }}"></a>
                             </li>
 
                         {% else %}
@@ -84,7 +84,7 @@
 			</li>
             <li>
                 {% set nb_panier = app.session.get('panier')|length %}
-                <a class="joinButton_link" href="{{ path('panier') }}">Panier <span class="badge">{{ nb_panier|default(0) }}</span></a>
+                <a class="joinButton_link glyphicon glyphicon-shopping-cart" href="{{ path('panier') }}"> <span class="badge">{{ nb_panier|default(0) }}</span></a>
 			</li>
         <ul>
     </div>

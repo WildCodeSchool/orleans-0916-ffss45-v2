@@ -4,12 +4,28 @@
 
 <h1>Rappel :</h1>
 
-Bonjour {{ reservation.user }} {{ reservation.user.nom }}. <br />
-N'oubliez pas, votre formation débute le :
-{{ reservation.agenda.datededebut | date('d/m/Y') }}
+Bonjour {{ reservation.user }} {{ reservation.user.nom }}.
 
-<br />
+<br /><br />
 
+N'oubliez pas, votre formation débute bientôt !
+<br /><br />
+
+
+Date de commencement : <br />
+<b>{{ reservation.agenda.datededebut | date('d/m/Y') }}</b>
+<br /><br />
+
+Intitulé :<br />
+<b>{{ reservation.agenda.formation.nomLong }}</b>
+
+<br /><br />
+
+Descriptif :<br />
+<b>{{ reservation.agenda.formation.descriptif }}</b>
+<br /><br />
+
+Pour plus d'informations, n'hésitez pas à vous rendre sur votre espace perso.<br />
 <a href="http://www.secourisme45.com/login">Votre espace perso</a>
 
 </body>

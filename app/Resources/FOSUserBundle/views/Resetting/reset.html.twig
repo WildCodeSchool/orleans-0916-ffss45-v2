@@ -1,5 +1,26 @@
-{% extends 'FrontBundle:Default:frontLayout.html.twig' %}
+{% extends 'base.html.twig' %}
 
-{% block fos_user_content %}
-{% include "FOSUserBundle:Resetting:reset_content.html.twig" %}
-{% endblock fos_user_content %}
+{% block stylesheets %}
+    <link href="{{ asset('css/nav2.css')}}" rel="stylesheet">
+    <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/general.css')}}" rel="stylesheet">
+{% endblock %}
+
+{% block title %}FFSS 45{% endblock %}
+
+
+        {% block header %}
+            {% include '@Front/Default/nav2.html.twig' %}
+        {% endblock %}
+
+
+{% block body %}
+
+    {% block fos_user_content %}
+     {% include "FOSUserBundle:Resetting:reset_content.html.twig" %}
+    {% endblock fos_user_content %}
+
+{% endblock %}
+        {% block footer %}
+            {% include '@Front/Default/footer.html.twig' %}
+        {% endblock %}
