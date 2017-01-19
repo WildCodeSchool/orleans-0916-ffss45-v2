@@ -155,11 +155,11 @@ class PanierController extends Controller
                     $reservation = new Reservation();
                     $reservation->setUser($iduser);
 
-                    $idagenda = $formation['agenda']->getId();
-                    $reservation->setAgenda($idagenda);
+                    $agenda = $formation['agenda'];
+                    $reservation->setAgenda($agenda);
 
                     $em->persist($reservation);
-                    $em->flush();
+
 
                 } else {
                     $username = $prenom . $nom; //toto //toto2
