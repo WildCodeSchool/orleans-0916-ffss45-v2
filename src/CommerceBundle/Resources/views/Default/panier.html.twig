@@ -10,41 +10,7 @@
                 {% if panier %}
                     <table class="table table-striped table-hover">
 
-<<<<<<< HEAD
-                    <thead>
-                    <tr>
-                        <th>Formation</th>
-                        <th>Date</th>
-                        <th>Quantité</th>
-                        <th>Prix unitaire</th>
-                        <th>Prix total</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>{% for item in panier %}
-                        <td>
-                            {{ item.formation }}
-                        </td>
-                        <td>{#Datedebute#}
-                            Du {{ item.agenda.dateDeDebut |date('d-m-Y') }} au {{ item.agenda.dateDeFin |date('d-m-Y') }}
-                            {{ item.agenda.HeureDeDebutAm |date('H:i') }}-{{ item.agenda.HeureDeFinAm |date('H:i') }} {{ item.agenda.HeureDeDebutPm |date('H:i') }}-{{ item.agenda.HeureDeFinPm |date('H:i') }}
-                        </td>
-                        <td>{#quantité#}
-                           {{ render(controller('CommerceBundle:Panier:quantityForm', {'id': item.agenda.id})) }}
-                        </td>
-                        <td>
-                            {{ item.agenda.formation.prix }} €
-                        </td>
-                        <td>{#prix x quantité#}
-                            {{ item.totalitem }} €
-                        </td>
-                        <td><a href="{{ path('remove', {'id': item.agenda.id}) }}">Supprimer</a>
-                        </td>
-                        <td>
-                        </td>
-                    </tr>
-                    {% endfor %}
-=======
+
                         <thead>
                         <tr>
                             <th>Formation</th>
@@ -81,13 +47,13 @@
                             </td>
                         </tr>
                         {% endfor %}
->>>>>>> 2fef7511ef33d90bb18d6fc09a5362a27ccfda8b
+
 
 
                         </tbody>
                     </table>
 
-<<<<<<< HEAD
+
             <dl class="dl-horizontal pull-right">
                 <dt>Total: {{ totalfinal }} € TTC</dt>
                 <dd></dd>
@@ -97,18 +63,8 @@
             <a href="{{path ('empty_cart')}}" class="btn btn-danger pull-right">Vider mon panier</a>
             {% endif %}
             <a href="{{path ('page_accueil_principale')}}" class="btn btn-primary">Acheter d'autres formations</a>
-=======
-                    <dl class="dl-horizontal pull-right">
-                        <dt>Total: {{ totalfinal }} € TTC</dt>
-                        <dd></dd>
-                    </dl>
-                    <div class="clearfix"></div>
-                    <a href="{{ path ('valid_cart') }}" class="btn btn-success btn-lg pull-right">Valider mon panier</a>
-                    <a href="{{ path ('empty_cart') }}" class="btn btn-danger btn-sm pull-right">Vider mon panier</a>
-                {% endif %}
-                <a href="{{ path ('page_accueil_principale') }}" class="btn btn-primary">Acheter d'autres formations</a>
+
             </div>
->>>>>>> 2fef7511ef33d90bb18d6fc09a5362a27ccfda8b
         </div>
     </div>
 

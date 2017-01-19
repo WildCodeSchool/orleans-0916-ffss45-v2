@@ -6,21 +6,34 @@
 {% else %}
 <div class="container" style="width: 50%;">
     {{ form_start(form, {'attr':{'id':'valid_inscrit' ~  key }, 'action':path('add_inscrit', {'id':id, 'key':key})}) }}
-        <dl>{{form_label(form.nom, 'nom')}}
-            {{form_widget(form.nom, {'attr':{'class':'form-control'}}) }}
-            {{form_errors(form.nom)}}
+    <form>
+        <table>
 
-            {{form_label(form.prenom, 'prenom')}}
-            {{form_widget(form.prenom, {'attr':{'class':'form-control'}}) }}
-            {{form_errors(form.prenom)}}
+            <tr>
+                <td>
+                    {{form_label(form.nom, 'nom')}}
+                    {{form_widget(form.nom, {'attr':{'class':'form-control'}}) }}
+                    {{form_errors(form.nom)}}
+                </td>
+                <td>
 
-            {{form_label(form.email, 'email')}}
-            {{form_widget(form.email, {'attr':{'class':'form-control'}}) }}
-            {{form_errors(form.email)}}
+                    {{form_label(form.prenom, 'prenom')}}
+                    {{form_widget(form.prenom, {'attr':{'class':'form-control'}}) }}
+                    {{form_errors(form.prenom)}}
+                </td>
+                <td>
+                    {{form_label(form.email, 'email')}}
+                    {{form_widget(form.email, {'attr':{'class':'form-control'}}) }}
+                    {{form_errors(form.email)}}
+                </td>
+            </tr>
+
+        </table>
+    </form>
             {% if key==1 %}
-                <a href="{{ path('user_inscrit', {'id':id} ) }}">pour moi</a>
+               <b><a href="{{ path('user_inscrit', {'id':id} ) }}">pour moi</a></b>
             {% endif %}
-    {{ form_end(form) }}</dl>
+    {{ form_end(form) }}
     <div>
 {% endif %}
 
