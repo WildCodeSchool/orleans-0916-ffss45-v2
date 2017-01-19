@@ -1,5 +1,9 @@
 {% extends 'AdminBundle::adminLayout.html.twig' %}
 {% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/reservation_edit.css.css') }}">
+{% endblock %}
 {% block body %}
     <h1>Editer une Inscription</h1>
 <div class="container">

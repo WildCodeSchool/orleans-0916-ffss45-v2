@@ -57,6 +57,4 @@ class ReservationType extends AbstractType
     {
         return 'commercebundle_reservation';
     }
-
-
 }

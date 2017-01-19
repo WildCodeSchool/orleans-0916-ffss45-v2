@@ -24,6 +24,7 @@
                         <th>Convocation</th>
                         <th>Certificat</th>
                         <th>Delai d' expiration</th>
+                        <th>Carte d'identité</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -49,6 +50,8 @@
                                 <td>{{ reservation.convocation }}</td>
                                 <td>{{ reservation.certificate }}</td>
                                 <td>{% if reservation.delaiExpiration %}{{ reservation.delaiExpiration|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td><img class="smallPic" src="{{ asset('upload/img/'~img.imageName) }}"
+                                         alt="{{ img.titre }}"/></td>
                                 <td>
                                     <ul>
                                         <li>

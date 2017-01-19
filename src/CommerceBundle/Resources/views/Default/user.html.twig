@@ -27,7 +27,7 @@
                                 {% if is_granted('ROLE_ADMIN') %}
 
                                     <div class="col-xs-6">
-                                        <p>Se rendre dans l'espace Administration :  <a href="{{ path('admin') }}"><i
+                                        <p>Se rendre dans l'espace Administration : <a href="{{ path('admin') }}"><i
                                                         class="fa fa-lock"
                                                         aria-hidden="true"></i></a></p>
                                     </div>
@@ -55,25 +55,22 @@
                                 </thead>
                                 <tbody>
                                 <tr>
-                                    <td>{{app.user.username}}</td>
-                                    <td>{{app.user.nom}}</td>
-                                    <td>{{app.user.prenom}}</td>
-                                    <td>{{app.user.adresse}}</td>
-                                    <td>{{app.user.codepostal}}</td>
-                                    <td>{{app.user.ville}}</td>
-                                    <td>{{app.user.tel}}</td>
-                                    <td>{{app.user.email}}</td>
-                                    <td>{{app.user.relation}}</td>
+                                    <td>{{ app.user.username }}</td>
+                                    <td>{{ app.user.nom }}</td>
+                                    <td>{{ app.user.prenom }}</td>
+                                    <td>{{ app.user.adresse }}</td>
+                                    <td>{{ app.user.codepostal }}</td>
+                                    <td>{{ app.user.ville }}</td>
+                                    <td>{{ app.user.tel }}</td>
+                                    <td>{{ app.user.email }}</td>
+                                    <td>{{ app.user.relation }}</td>
                                 </tr>
                                 </tbody>
                             </table>
 
 
-
-
-
                             {#<p><a href="{{ path('fos_user_security_logout') }}">se déconnecter</a> </p>#}
-                            <p><a href="{{ path('fos_user_profile_edit') }}">Modifier mes informations</a> </p>
+                            <p><a href="{{ path('fos_user_profile_edit') }}">Modifier mes informations</a></p>
                         </div>
                     </div>
 
@@ -103,15 +100,21 @@
                                         <td>{% if formation.dateDeDebut %}{{ formation.dateDeDebut|date('d-m-Y') }}{% endif %}</td>
                                         <td>{% for reservation in agenda.reservations %}{{ reservation
                                             .statusLabel }}{% endfor %}</td>
-                                        <td><img class="smallPic" src="{{ asset('upload/img/' ~ img.imageName) }}"
-                                                 alt="{{ img.titre }}" /></td>
-                                        <td>{{ formation.formation.categorie.nomCategorie}}</td>
+                                        <td><img class="smallPic" src="{{ asset('upload/img/'~img.imageName) }}"
+                                                 alt="{{ img.titre }}"/></td>
+                                        <td>{{ formation.formation.categorie.nomCategorie }}</td>
                                         <td>{% for reservation in agenda.reservations %}<a class="button"
                                                                                            href="{{ path('convocation_pdf',
-                                                                                           {'id':agenda.id})
-                                                                                           }}">Convocation</a>{% endfor %}</td>
+                                                                                           {'id':agenda.id}) }}">
+                                                    Convocation</a>{% endfor %}</td>
                                     </tr>
                                     </tbody>
+
+                                    {% for reservation in agenda.reservations %}<a class="button"
+                                                                                   href="{{ path('convocation_pdf',
+                                                                                   {'id':agenda.id}) }}">
+                                            Convocation</a>{% endfor %}
+
 
                                 {% endfor %}
                             </table>
@@ -120,7 +123,7 @@
                         {% endif %}
                     </div>
                     <div id="Poste_Secours" class="tab-pane fade" style="min-height: 350px">
-                        <br/><br/><br/>
+
                         {% if formulaireSecours %}
                             {% for formulaireSecour in formulaireSecours %}
                                 <table>
@@ -147,7 +150,6 @@
                         {% else %}
                             <p>Vous n'avez pas de demande de poste de secours</p>
                         {% endif %}
-                        <br/><br/><br/>
                     </div>
                 </div>
 
