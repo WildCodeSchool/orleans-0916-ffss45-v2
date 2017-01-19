@@ -17,6 +17,7 @@ use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 
 class RegistrationFormType extends AbstractType
@@ -53,6 +54,11 @@ class RegistrationFormType extends AbstractType
 			->add('ville')
 			->add('tel')
 			->add('relation')
+			->add('imageFile', VichImageType::class, [
+				'required' => false,
+				'allow_delete' => true, // not mandatory, default is true
+				'download_link' => true, // not mandatory, default is true
+			]);
 		;
 	}
 
