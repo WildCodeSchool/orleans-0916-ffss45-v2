@@ -1,6 +1,7 @@
 {% extends 'FrontBundle:Default:frontLayout.html.twig' %}
 {% set panier = app.session.get('panier') %}
 {% block body %}
+<div class="container-fluid">
 
     {% for article_id, article in panier %}
 
@@ -24,17 +25,21 @@
     {% endfor %}
 
 
-    <div class="text-center" style="margin-bottom: 45px;">
+    <div class="text-center" style="margin-top: 20px;">
         <a id="validAll" href="{{ path('payment') }}" class="btn btn-success">Payer</a>
         <a class="btn btn-primary" href="{{ path('panier' ) }}">Retour</a>
     </div>
 
-    <script>
-        $('#validAll').click(function () {
-            $('[id^=valid_inscrit]').each(function () {
-                $(this).submit();
-            })
-        });
-    </script>
-
+</div>
 {% endblock %}
+
+ {% block javascripts %}
+     <script>
+         $('#validAll').click(function () {
+             $('[id^=valid_inscrit]').each(function () {
+                 $(this).submit();
+             })
+         });
+     </script>
+
+ {% endblock %}
