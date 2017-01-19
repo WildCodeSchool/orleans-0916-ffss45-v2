@@ -41,11 +41,10 @@ framework:
 
 # Twig Configuration
 twig:
-    debug:            "%kernel.debug%"
-    strict_variables: "%kernel.debug%"
     form_themes:
         # other form themes
         - 'VichUploaderBundle:Form:fields.html.twig'
+
 
 # Doctrine Configuration
 doctrine:
@@ -135,13 +134,16 @@ vich_uploader:
     db_driver: orm # or mongodb or propel or phpcr
 
     mappings:
-        cni_image:
-            uri_prefix:         /uploads/img
-            upload_destination: '%kernel.root_dir%/../web/uploads/img'
-            inject_on_load:     false
-            delete_on_update:   true
-            delete_on_remove:   true
-            upload_destination: cni_image_fs
-            namer:              vich_uploader.namer_uniqid
+        img_image:
+            uri_prefix:         '/upload/img'
+            upload_destination: '%kernel.root_dir%/../web/upload/img'
+#            inject_on_load:     false
+#            delete_on_update:   true
+#            delete_on_remove:   true
+#            upload_destination: product_image_fs
+#            namer:              vich_uploader.namer_uniqid
 
 
+        user_image:
+            uri_prefix:         /upload/img
+            upload_destination: '%kernel.root_dir%/../web/upload/img'

@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ReservationType extends AbstractType
 {
@@ -29,8 +30,13 @@ class ReservationType extends AbstractType
                	'class'=>'AdminBundle\Entity\User',
 	               'choice_label'=>'username'
                ])
-                ->add('delaiExpiration')
-//                ->add('image', 'file', array( 'required' => false))
+               ->add('delaiExpiration')
+               ->add('imageFile', VichImageType::class, [
+		               'required' => false,
+		               'allow_delete' => true, // not mandatory, default is true
+		               'download_link' => true, // not mandatory, default is true
+	        ])
+
         ;
     }
     
