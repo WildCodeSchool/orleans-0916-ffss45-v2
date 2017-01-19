@@ -12,20 +12,20 @@
         <div class="row">
             <div class="col-xs-12">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#Profile">Profile</a></li>
+                    <li class="active"><a data-toggle="tab" href="#Profil">Profil</a></li>
                     <li><a data-toggle="tab" href="#Formations">Formations</a></li>
                     <li><a data-toggle="tab" href="#Poste_Secours">Poste de Secours</a></li>
 
                 </ul>
                 <div class="tab-content">
-                    <div id="Profile" class="tab-pane fade in active">
+                    <div id="Profil" class="tab-pane fade in active">
                         <div class="page">
                             {#<div class="info">#}
                             <h1> Page utilisateur</h1>
 
                                 <p>Vous êtes un :
-                                            {% if is_granted('ROLE_ADMIN') %}
                                     <div class="row">
+                                            {% if is_granted('ROLE_ADMIN') %}
                                         <div class="col-xs-6">
                                             <b>Admin</b>
                                         </div>
@@ -38,11 +38,6 @@
                                                 <b>client</b>
                                             {% endif %}
                                     </div>
-
-
-
-
-
                                 <p>Vos Informations</p>
 
                                 <ul>
