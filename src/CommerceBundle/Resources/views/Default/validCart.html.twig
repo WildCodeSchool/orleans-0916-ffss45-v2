@@ -1,17 +1,21 @@
 {% extends 'FrontBundle:Default:frontLayout.html.twig' %}
 {% set panier = app.session.get('panier') %}
 {% block body %}
+
     {% for article_id, article in panier %}
+
         {% if article.quantity is defined %}
             <h2>Formation {{ article.agenda.formation.nomLong }}</h2>
+
             {% for i in 1 .. article.quantity %}
                 <div class="row" id="load_form_valid_inscrit{{ i }}">
-                    <div class="col-sm-12">
+                    <div>
                         {% render(controller('CommerceBundle:Panier:addInscrit', {'id':article_id, 'key':i} )) %}
-                        <a id="validAll" href="{{ path('payment') }}" class="btn btn-success">Payer</a>
-                        <a class="btn btn-primary" href="{{ path('panier' ) }}">Retour</a></div>
+
+                    </div>
                 </div>
             {% endfor %}
+
         {% else %}
             <div class="alert alert-danger">Erreur dans le panier, veuillez recommencer votre sélection
                 <a href="{{ path('panier') }}">Retour au panier</a>
@@ -19,6 +23,11 @@
         {% endif %}
     {% endfor %}
 
+
+    <div class="text-center" style="margin-bottom: 45px;">
+        <a id="validAll" href="{{ path('payment') }}" class="btn btn-success">Payer</a>
+        <a class="btn btn-primary" href="{{ path('panier' ) }}">Retour</a>
+    </div>
 
     <script>
         $('#validAll').click(function () {
