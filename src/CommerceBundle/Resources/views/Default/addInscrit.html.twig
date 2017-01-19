@@ -4,7 +4,7 @@
     {{ panier[id]['inscrits'][key]['nom'] }}
     <a href="{{ path('edit_inscrit', {'id':id, 'key':key} ) }}">edit</a>
 {% else %}
-<div class="container" style="width: 50%;">
+<div class="container-fluid" style="width: 50%;">
     {{ form_start(form, {'attr':{'id':'valid_inscrit' ~  key }, 'action':path('add_inscrit', {'id':id, 'key':key})}) }}
     <form>
         <table>
