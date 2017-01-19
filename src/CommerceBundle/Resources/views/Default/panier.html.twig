@@ -10,6 +10,7 @@
                 {% if panier %}
                     <table class="table table-striped table-hover">
 
+
                         <thead>
                         <tr>
                             <th>Formation</th>
@@ -23,6 +24,14 @@
                         <tr>{% for item in panier %}
                             <td>
                                 {{ item.formation }}
+                                <form method="post">
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox" name="courrier" value=5>
+                                            <p class="courrier">Envoyer le diplôme par courrier (5€/personne)</p>
+                                        </label>
+                                    </div>
+                                </form>
                             </td>
                             <td>{#Datedebute#}
                                 Du {{ item.agenda.dateDeDebut |date('d-m-Y') }}
@@ -51,16 +60,17 @@
                         </tbody>
                     </table>
 
+
                     <dl class="dl-horizontal pull-right">
                         <dt>Total: {{ totalfinal }} € TTC</dt>
                         <dd></dd>
                     </dl>
-
                     <div class="clearfix"></div>
-                    <a href="{{ path ('valid_cart') }}" class="btn btn-success btn-lg pull-right">Valider mon panier</a>
-                    <a href="{{ path ('empty_cart') }}" class="btn btn-danger btn-sm pull-right">Vider mon panier</a>
+                    <a href="{{ path ('valid_cart') }}" class="btn btn-success pull-right">Valider mon panier</a>
+                    <a href="{{ path ('empty_cart') }}" class="btn btn-danger pull-right">Vider mon panier</a>
                 {% endif %}
                 <a href="{{ path ('page_accueil_principale') }}" class="btn btn-primary">Acheter d'autres formations</a>
+
             </div>
         </div>
     </div>

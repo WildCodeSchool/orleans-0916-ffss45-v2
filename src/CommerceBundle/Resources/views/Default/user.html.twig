@@ -15,6 +15,7 @@
                     <li class="active"><a data-toggle="tab" href="#Profil">Profil</a></li>
                     <li><a data-toggle="tab" href="#Formations">Formations</a></li>
                     <li><a data-toggle="tab" href="#Poste_Secours">Poste de Secours</a></li>
+
                 </ul>
                 <div class="tab-content">
                     <div id="Profil" class="tab-pane fade in active">
@@ -22,8 +23,9 @@
                             {#<div class="info">#}
 
                             <h1> Espace Client</h1>
+                            <div class="row">
                                             {% if is_granted('ROLE_ADMIN') %}
-                                    <div class="row">
+
                                             <div class="col-xs-6">
                                                 <p>Se rendre dans l'espace Administration :  <a href="{{ path('admin') }}"><i
                                                                                                 class="fa fa-lock"
@@ -68,19 +70,6 @@
                                 </tbody>
                             </table>
 
-                                <ul>
-                                    <li>Indentifiant : {{app.user.id}}</li>
-                                    <li>Pseudo : {{app.user.username}}</li>
-                                    <li>Nom : {{app.user.nom}}</li>
-                                    <li>Prénom : {{app.user.prenom}}</li>
-                                    <li>Adresse : {{app.user.adresse}}</li>
-                                   {# <li>age : {{app.user.age}}</li>#}
-                                    <li>Code Postal : {{app.user.codepostal}}</li>
-                                    <li>Ville : {{app.user.ville}}</li>
-                                    <li>Tel : {{app.user.tel}}</li>
-                                    <li>Mail : {{app.user.email}}</li>
-                                    <li>Comment avez vous connu l'association FFSS : {{app.user.relation}}</li>
-                                </ul>
 
 
 

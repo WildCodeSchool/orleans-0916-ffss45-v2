@@ -64,12 +64,19 @@ class PanierController extends Controller
         $panier = $session->get('panier');
         //dump($panier);
         $totalfinal = 0;
+        $test = 0;
         if (is_array($panier)) {
             foreach ($session->get('panier') as $id => $article) {
                 $agenda = $em->getRepository('AdminBundle:Agenda')->find($id);
                 $panier[$agenda->getId()]['totalitem'] = $agenda->getFormation()->getPrix() * $article['quantity'];
                 $totalfinal += $panier[$agenda->getId()]['totalitem'];
-            }
+
+                if (!empty($_POST['courrier'])) {
+                    $test = $_POST['courrier'];
+                    //$totalfinal += $test;
+
+               }
+            }       var_dump($test);
 
 
         } else {
@@ -369,39 +376,37 @@ class PanierController extends Controller
         }
     }
 
-	/**
-	 * @Route("/initiate-payment/id-{id}", name="pay_online")
-	 *
-	 */
-	public function payOnlineAction($id)
-	{
-		// ...
-		$systempay = $this->get('tlconseil.systempay')
-			->init()
-			->setOptionnalFields(array(
-				'shop_url' => 'http://www.example.com'
-			))
-		;
+    /**
+     * @Route("/initiate-payment/id-{id}", name="pay_online")
+     *
+     */
+    public function payOnlineAction($id)
+    {
+        // ...
+        $systempay = $this->get('tlconseil.systempay')
+            ->init()
+            ->setOptionnalFields(array(
+                'shop_url' => 'http://www.example.com'
+            ));
 
-		return $this-> render ('@Commerce/Default/payment.html.twig', array(
-			'paymentUrl' => $systempay->getPaymentUrl(),
-			'fields' => $systempay->getResponse(),
-		));
-	}
+        return $this->render('@Commerce/Default/payment.html.twig', array(
+            'paymentUrl' => $systempay->getPaymentUrl(),
+            'fields' => $systempay->getResponse(),
+        ));
+    }
 
-	/**
-	 * @Route("/payment/verification")
-	 * @param Request $request
-	 * @return \Symfony\Component\HttpFoundation\Response
-	 */
-	public function paymentVerificationAction(Request $request)
-	{
-		// ...
-		$this->get('tlconseil.systempay')
-			->responseHandler($request)
-		;
+    /**
+     * @Route("/payment/verification")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function paymentVerificationAction(Request $request)
+    {
+        // ...
+        $this->get('tlconseil.systempay')
+            ->responseHandler($request);
 
-		return new Response();
-	}
+        return new Response();
+    }
 
 }
