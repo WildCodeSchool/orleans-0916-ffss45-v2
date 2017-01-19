@@ -40,37 +40,38 @@
                             <p>Vos Informations</p>
                             <table class="table table-bordered table-condensed table-striped">
                                 <thead>
-                                <tr>
-                                    <th>Pseudo</th>
-                                    <th>Nom</th>
-                                    <th>Prénom</th>
-                                    <th>Adresse</th>
-                                    {# <th>age : {{app.user.age}}</th>#}
-                                    <th>Code Postal</th>
-                                    <th>Ville</th>
-                                    <th>Tel</th>
-                                    <th>Mail</th>
-                                    <th>Comment avez vous connu l'association FFSS</th>
-                                </tr>
+                                    <tr>
+                                        <th>Pseudo</th>
+                                        <th>Nom</th>
+                                        <th>Prénom</th>
+                                        <th>Adresse</th>
+                                        {# <th>age : {{app.user.age}}</th>#}
+                                        <th>Code Postal</th>
+                                        <th>Ville</th>
+                                        <th>Tel</th>
+                                        <th>Mail</th>
+                                        <th>Comment avez vous connu l'association FFSS</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>{{ app.user.username }}</td>
-                                    <td>{{ app.user.nom }}</td>
-                                    <td>{{ app.user.prenom }}</td>
-                                    <td>{{ app.user.adresse }}</td>
-                                    <td>{{ app.user.codepostal }}</td>
-                                    <td>{{ app.user.ville }}</td>
-                                    <td>{{ app.user.tel }}</td>
-                                    <td>{{ app.user.email }}</td>
-                                    <td>{{ app.user.relation }}</td>
-                                </tr>
+                                    <tr>
+                                        <td>{{ app.user.username }}</td>
+                                        <td>{{ app.user.nom }}</td>
+                                        <td>{{ app.user.prenom }}</td>
+                                        <td>{{ app.user.adresse }}</td>
+                                        <td>{{ app.user.codepostal }}</td>
+                                        <td>{{ app.user.ville }}</td>
+                                        <td>{{ app.user.tel }}</td>
+                                        <td>{{ app.user.email }}</td>
+                                        <td>{{ app.user.relation }}</td>
+                                    </tr>
                                 </tbody>
                             </table>
 
 
                             {#<p><a href="{{ path('fos_user_security_logout') }}">se déconnecter</a> </p>#}
-                            <p><a href="{{ path('fos_user_profile_edit') }}">Modifier mes informations</a></p>
+                            <p><a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}">Modifier mes
+                                    informations</a></p>
                         </div>
                     </div>
 
@@ -79,14 +80,14 @@
                         {% if formations %}
                             <table class="table table-bordered table-hover table-striped table-condensed">
                                 <thead>
-                                <tr>
-                                    <th>Nom de la formation</th>
-                                    <th>Date début la formation</th>
-                                    <th>Statut</th>
-                                    <th>Diplôme</th>
-                                    <th>Categorie</th>
-                                    <th>Convocation</th>
-                                </tr>
+                                    <tr>
+                                        <th>Nom de la formation</th>
+                                        <th>Date début la formation</th>
+                                        <th>Statut</th>
+                                        <th>Diplôme</th>
+                                        <th>Categorie</th>
+                                        <th>Convocation</th>
+                                    </tr>
                                 </thead>
 
 
@@ -95,19 +96,19 @@
 
 
                                     <tbody>
-                                    <tr>
-                                        <td>{{ formation.formation.nomLong }}</td>
-                                        <td>{% if formation.dateDeDebut %}{{ formation.dateDeDebut|date('d-m-Y') }}{% endif %}</td>
-                                        <td>{% for reservation in agenda.reservations %}{{ reservation
-                                            .statusLabel }}{% endfor %}</td>
-                                        <td><img class="smallPic" src="{{ asset('upload/img/'~img.imageName) }}"
-                                                 alt="{{ img.titre }}"/></td>
-                                        <td>{{ formation.formation.categorie.nomCategorie }}</td>
-                                        <td>{% for reservation in agenda.reservations %}<a class="button"
-                                                                                           href="{{ path('convocation_pdf',
-                                                                                           {'id':agenda.id}) }}">
-                                                    Convocation</a>{% endfor %}</td>
-                                    </tr>
+                                        <tr>
+                                            <td>{{ formation.formation.nomLong }}</td>
+                                            <td>{% if formation.dateDeDebut %}{{ formation.dateDeDebut|date('d-m-Y') }}{% endif %}</td>
+                                            <td>{% for reservation in agenda.reservations %}{{ reservation
+                                                .statusLabel }}{% endfor %}</td>
+                                            <td><img class="smallPic" src="{{ asset('upload/img/'~img.imageName) }}"
+                                                     alt="{{ img.titre }}"/></td>
+                                            <td>{{ formation.formation.categorie.nomCategorie }}</td>
+                                            <td>{% for reservation in agenda.reservations %}<a class="button"
+                                                                                               href="{{ path('convocation_pdf',
+                                                                                               {'id':agenda.id}) }}">
+                                                        Convocation</a>{% endfor %}</td>
+                                        </tr>
                                     </tbody>
 
                                     {% for reservation in agenda.reservations %}<a class="button"
@@ -126,23 +127,22 @@
 
                         {% if formulaireSecours %}
                             {% for formulaireSecour in formulaireSecours %}
-                                <table>
+                                <table class="table table-bordered table-hover table-striped table-condensed">
                                     <tbody>
 
-                                    <tr>
-                                        <th>Nom de la manifestation</th>
-                                        <th>Date début manif</th>
-                                        <th>Date fin manif</th>
-                                        <th>Prix de la prestation</th>
-
-                                    </tr>
-                                    <tr>
-                                        <td>{{ formulaireSecour.nomManif }}</td>
-                                        <td>{% if formulaireSecour.dateDebutManif %}{{ formulaireSecour.dateDebutManif|date('d-m-Y') }}{% endif %}</td>
-                                        <td>{% if formulaireSecour.dateFinManif %}{{ formulaireSecour.dateFinManif|date('d-m-Y') }}{% endif %}</td>
-                                        <td>{{ formulaireSecour.devis }}€</td>
-                                        <td><a class="btn btn-primary" href="#">Payer la prestation</a></td>
-                                    </tr>
+                                        <tr>
+                                            <th>Nom de la manifestation</th>
+                                            <th>Date début manif</th>
+                                            <th>Date fin manif</th>
+                                            <th>Prix de la prestation</th>
+                                        </tr>
+                                        <tr>
+                                            <td>{{ formulaireSecour.nomManif }}</td>
+                                            <td>{% if formulaireSecour.dateDebutManif %}{{ formulaireSecour.dateDebutManif|date('d-m-Y') }}{% endif %}</td>
+                                            <td>{% if formulaireSecour.dateFinManif %}{{ formulaireSecour.dateFinManif|date('d-m-Y') }}{% endif %}</td>
+                                            <td>{{ formulaireSecour.devis }}€</td>
+                                            <td><a class="btn btn-primary" href="#">Payer la prestation</a></td>
+                                        </tr>
 
                                     </tbody>
                                 </table>

@@ -18,7 +18,7 @@
                 {#{{ form_row(edit_form.image) }}#}
                 {#<td><img class="imgInscription" src="{{ asset(webPath) }}" alt="{{ alt }}"/></td><br/>#}
 
-                <input type="submit" value="Edit" />
+                <input type="submit"  class="btn btn-success" value="Editer" />
             {{ form_end(edit_form) }}
 
         <div class="row">
@@ -27,7 +27,7 @@
                     à la
                     liste</a>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-offset-5 col-xs-1">
                 {{ form_start(delete_form) }}
                     <input type="submit" class="btn btn-danger" value="Delete">
                 {{ form_end(delete_form) }}

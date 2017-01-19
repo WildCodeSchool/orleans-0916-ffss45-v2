@@ -84,20 +84,18 @@
 
                 <div class="row">
                     <div class="col-xs-6">
-                        <ul>
-                            <li>
-                                <a href="{{ path('reservation_new', { 'id': agenda.id }) }}">Créer une nouvelle
+
+                                <a class="btn btn-primary" href="{{ path('reservation_new', { 'id': agenda.id }) }}">Créer
+                                    une nouvelle
                                     Inscription</a>
-                            </li>
-                        </ul>
+                           
                     </div>
                     <div class="col-xs-2 col-xs-offset-4">
-                        <ul>
-                            <li>
-                                <a class="button" href="{{ path('presence_pdf', {'id':agenda.id}) }}">Feuille
+
+                                <a class="btn btn-primary" href="{{ path('presence_pdf', {'id':agenda.id})
+                                }}">Feuille
                                     d'émargement</a>
-                            </li>
-                        </ul>
+
                     </div>
                 </div>
 
