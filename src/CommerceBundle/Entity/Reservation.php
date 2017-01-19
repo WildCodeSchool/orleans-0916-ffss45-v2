@@ -114,6 +114,17 @@ class Reservation
         return $this->status;
     }
 
+    public function getStatusLabel ()
+    {
+    	     $statuses =  [
+    	     	1=>'Status1',
+	          2=>'Status2',
+	          3=>'Status3',
+	          4=>'Status4',
+          ];
+    	     return $statuses[$this->status];
+    }
+
     /**
      * Set numeroReservation
      *
