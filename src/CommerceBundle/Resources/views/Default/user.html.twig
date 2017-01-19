@@ -79,7 +79,7 @@
                         </div>
                     </div>
 
-                    <div id="Formations" class="tab-pane fade">
+                    <div id="Formations" class="tab-pane fade" style="min-height: 100px">
                         <div class="espace"><br/><br/>
                             {% if formations %}
                                 {% for formation in formations %}
@@ -90,6 +90,7 @@
                                             <tr>
                                                 <th>Nom de la formation</th>
                                                 <th>Date début la formation</th>
+                                                <th>Statut</th>
                                                 {#<th>Diplome</th>#}
                                                 <th>Categorie</th>
                                                 <th>Convocation</th>
@@ -97,6 +98,7 @@
                                             <tr>
                                                 <td>{{ formation.formation.nomLong }}</td>
                                                 <td>{% if formation.dateDeDebut %}{{ formation.dateDeDebut|date('d-m-Y') }}{% endif %}</td>
+                                                <td>{{ reservation.statusLabel }}</td>
                                                 <td>{{ formation.formation.categorie.nomCategorie}}</td>
                                                 {#<td><a class="button"#}
                                                        {#href="{{ path('convocation_pdf',#}
@@ -104,7 +106,7 @@
                                                        {#}}">Convocation</a></td>#}
                                             </tr>
                                         </tbody>
-                                    </table><br/><br/><br/>
+                                    </table>
                                 {% endfor %}
                             {% else %}
                                 <p>Vous n'avez pas de formation</p>
