@@ -10,10 +10,8 @@
 
 namespace AdminBundle\Command;
 
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Console\Tester\CommandTester;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 
 class MailCommand extends ContainerAwareCommand
@@ -45,7 +43,7 @@ class MailCommand extends ContainerAwareCommand
             $output->write($diff.'---');
             /////////////////////////////////////////////////////
 
-            if ($diff=='+4') {
+            if ($diff=='+6') {
                 $utilisateur = $reservation -> getUser();
                 $output->writeln($utilisateur->getEmail());
                 $output->writeln(['============',]);
@@ -69,9 +67,7 @@ class MailCommand extends ContainerAwareCommand
 
                 $this->getContainer()->get('mailer')->send($message);
 
-                // Du fait qu'il y est un spool de mail en mémoire définit dans le fichier de config et que ce spool est uber pratique dans le cadre des controller
-                // On force l'envoie des mails du spool avec le code-ci dessous
-                /* @var $mailer Swift_Mailer */
+
                 $mailer = $this->getContainer()->get('mailer');
 
                 $transport = $mailer->getTransport();
