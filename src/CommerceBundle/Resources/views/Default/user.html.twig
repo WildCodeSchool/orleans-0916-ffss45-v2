@@ -77,34 +77,44 @@
 
 
                                 {#<p><a href="{{ path('fos_user_security_logout') }}">se déconnecter</a> </p>#}
-                                <p><a href="{{ path('fos_user_profile_edit') }}">Modifier ses informations</a> </p>
+                                <p><a href="{{ path('fos_user_profile_edit') }}">Modifier mes informations</a> </p>
                         </div>
                     </div>
+
                     <div id="Formations" class="tab-pane fade">
-                        {% if formations %}
-                            {% for formation in formations %}
-                            {#{{ dump(formation) }}#}
-                                <table class="table table-bordered table-striped table-condensed">
-                                    <tbody>
-                                        <tr>
-                                            <th>Nom de la formation</th>
-                                            <th>Date début la formation</th>
-                                            {#<th>Diplome</th>#}
-                                            <th>Categorie</th>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ formation.formation.nomLong }}</td>
-                                            <td>{% if formation.dateDeDebut %}{{ formation.dateDeDebut|date('d-m-Y') }}{% endif %}</td>
-                                            <td>{{ formation.formation.categorie.nomCategorie}}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            {% endfor %}
-                        {% else %}
-                            <p>Vous n'avez pas de formation</p>
-                        {% endif %}
+                        <div class="espace"><br/><br/>
+                            {% if formations %}
+                                {% for formation in formations %}
+                                {#{{ dump(formation) }}#}
+                                    <h1>Liste des formations</h1><br/>
+                                    <table class="table table-bordered table-striped table-condensed">
+                                        <tbody>
+                                            <tr>
+                                                <th>Nom de la formation</th>
+                                                <th>Date début la formation</th>
+                                                {#<th>Diplome</th>#}
+                                                <th>Categorie</th>
+                                                <th>Convocation</th>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ formation.formation.nomLong }}</td>
+                                                <td>{% if formation.dateDeDebut %}{{ formation.dateDeDebut|date('d-m-Y') }}{% endif %}</td>
+                                                <td>{{ formation.formation.categorie.nomCategorie}}</td>
+                                                {#<td><a class="button"#}
+                                                       {#href="{{ path('convocation_pdf',#}
+                                                       {#{'id':agenda.id})#}
+                                                       {#}}">Convocation</a></td>#}
+                                            </tr>
+                                        </tbody>
+                                    </table><br/><br/><br/>
+                                {% endfor %}
+                            {% else %}
+                                <p>Vous n'avez pas de formation</p>
+                            {% endif %}
+                        </div>
                     </div>
                     <div id="Poste_Secours" class="tab-pane fade">
+                        <br/><br/><br/>
                         {% if formulaireSecours %}
                             {% for formulaireSecour in formulaireSecours %}
                                 <table>
@@ -131,6 +141,7 @@
                         {% else %}
                             <p>Vous n'avez pas de demande de poste de secours</p>
                         {% endif %}
+                        <br/><br/><br/>
                     </div>
                 </div>
 
