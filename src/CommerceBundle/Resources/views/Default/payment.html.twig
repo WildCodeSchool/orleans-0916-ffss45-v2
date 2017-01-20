@@ -2,12 +2,12 @@
 {% block body%}
 <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
-        {# <div class="widget widget-white text-center">
+         <div class="widget widget-white text-center">
             <i class="fa fa-refresh fa-spin margin-top margin-bottom" style="font-size: 50px"></i>
             <h3>Redirection vers la page de paiement en cours...</h3>
            <form action="{{ paymentUrl }}" method="POST" id="systempay-form">
                 {{ systempayForm(fields) | raw }}
-            </form>#}
+            </form>
         </div>
     </div>
 </div>
@@ -18,7 +18,7 @@
 
 
 <h1>Paiement</h1>
-{{ dump(panier) }}
+{#{{ dump(panier) }}#}
 
 <a href="{{path ('final_subscription')}}" class="btn btn-danger pull-right" type="submit">Envoyer mail</a>
 
