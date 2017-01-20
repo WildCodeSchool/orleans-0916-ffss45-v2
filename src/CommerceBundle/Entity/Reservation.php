@@ -118,10 +118,10 @@ class Reservation
     public function getStatusLabel ()
     {
     	     $statuses =  [
-    	     	1=>'Status1',
-	          2=>'Status2',
-	          3=>'Status3',
-	          4=>'Status4',
+    	     	1=>'En cours d \'inscription',
+	          2=>'Inscrit',
+	          3=>'Inscription annulée',
+	          4=>'Inscription reportée',
           ];
     	     return $statuses[$this->status];
     }

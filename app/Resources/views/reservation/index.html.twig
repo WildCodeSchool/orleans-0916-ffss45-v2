@@ -24,6 +24,7 @@
                         <th>Convocation</th>
                         <th>Certificat</th>
                         <th>Delai d' expiration</th>
+                        <th>Carte d'identité</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -49,6 +50,8 @@
                                 <td>{{ reservation.convocation }}</td>
                                 <td>{{ reservation.certificate }}</td>
                                 <td>{% if reservation.delaiExpiration %}{{ reservation.delaiExpiration|date('Y-m-d H:i:s') }}{% endif %}</td>
+                                <td><img class="smallPic" src="{{ asset('upload/img/'~img.imageName) }}"
+                                         alt="{{ img.titre }}"/></td>
                                 <td>
                                     <ul>
                                         <li>
@@ -81,20 +84,18 @@
 
                 <div class="row">
                     <div class="col-xs-6">
-                        <ul>
-                            <li>
-                                <a href="{{ path('reservation_new', { 'id': agenda.id }) }}">Créer une nouvelle
+
+                                <a class="btn btn-primary" href="{{ path('reservation_new', { 'id': agenda.id }) }}">Créer
+                                    une nouvelle
                                     Inscription</a>
-                            </li>
-                        </ul>
+                           
                     </div>
                     <div class="col-xs-2 col-xs-offset-4">
-                        <ul>
-                            <li>
-                                <a class="button" href="{{ path('presence_pdf', {'id':agenda.id}) }}">Feuille
+
+                                <a class="btn btn-primary" href="{{ path('presence_pdf', {'id':agenda.id})
+                                }}">Feuille
                                     d'émargement</a>
-                            </li>
-                        </ul>
+
                     </div>
                 </div>
 

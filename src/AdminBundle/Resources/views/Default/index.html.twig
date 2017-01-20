@@ -1,21 +1,22 @@
 {% extends 'AdminBundle::adminLayout.html.twig' %}
 {% block body %}
-    <div class="alert alert-success">Bienvenue dans la partie administration</div>
+    <div class="container">
+        <div class="alert alert-success">Bienvenue dans la partie administration</div>
 
-    <h1>En attente de validation</h1>
-    {% for enAttente in  enAttentes %}
-        {% if enAttente.statut == 'en attente' %}
-            <p>{{ enAttente.nomManif }} du {{ enAttente.dateDebutManif | date('d m Y')}} <a class="btn btn-primary" href={{ path('formulairesecours_edit', { 'id': enAttente.id }) }}> Devis</a></p>
-        {% endif %}
+        <h1>En attente de validation</h1>
+        {% for enAttente in  enAttentes %}
+            {% if enAttente.statut == 'en attente' %}
+                <p>{{ enAttente.nomManif }} du {{ enAttente.dateDebutManif | date('d m Y')}} <a class="btn btn-primary" href={{ path('formulairesecours_edit', { 'id': enAttente.id }) }}> Devis</a></p>
+            {% endif %}
 
-    {% endfor %}
-    <h1>Attente de paiement</h1>
-    {% for enAttentesPaiement in  enAttentesPaiements %}
-        {% if enAttentesPaiement.statut == 'en attente paiement' %}
-            <p>{{ enAttentesPaiement.nomManif }} du {{ enAttentesPaiement.dateDebutManif | date('d m Y')}} <a class="btn btn-primary" href={{ path('formulairesecours_edit', { 'id': enAttentesPaiement.id }) }}> Devis</a></p>
-        {% endif %}
-    {% endfor %}
-
+        {% endfor %}
+        <h1>Attente de paiement</h1>
+        {% for enAttentesPaiement in  enAttentesPaiements %}
+            {% if enAttentesPaiement.statut == 'en attente paiement' %}
+                <p>{{ enAttentesPaiement.nomManif }} du {{ enAttentesPaiement.dateDebutManif | date('d m Y')}} <a class="btn btn-primary" href={{ path('formulairesecours_edit', { 'id': enAttentesPaiement.id }) }}> Devis</a></p>
+            {% endif %}
+        {% endfor %}
+    </div>
 
 
 {% endblock %}

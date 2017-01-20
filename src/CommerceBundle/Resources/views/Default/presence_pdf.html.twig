@@ -47,8 +47,8 @@
                     <tr>
                         <th class="case" colspan="2"></th>
                         <th colspan="2">Date: {{ agenda.datededebut | date('d/m/Y') }}</th>
-                        <th colspan="2">Date:.../.../...</th>
-                        <th colspan="2">Date:.../.../...</th>
+                        <th colspan="2">Date: {{ agenda.datededebut | date('d/m/Y') +1 }}</th>
+                        <th colspan="2">Date: {{ agenda.datededebut | date('d/m/Y') +2 }}</th>
                     </tr>
                     <tr>
                         <th rowspan="2" colspan="2">Nom et prénom du (des) formateurs</th>
