@@ -4,6 +4,7 @@ namespace CommerceBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -46,6 +47,7 @@ class PanierController extends Controller
                 $panier[$agenda->getId()] = ['agenda' => $agenda, 'formation' => $agenda->getFormation()->getNomLong(), 'quantity' => 1, 'inscrits' => null];
             }
         }
+
         $session->set('panier', $panier);
 
         return $this->redirect($this->generateUrl('panier'));
@@ -57,27 +59,29 @@ class PanierController extends Controller
     public function panierAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+
         $session = $request->getSession();
         if (!$session->has('panier')) {
             $session->set('panier', []);
         }
+        if (!$session->has('totalLivraison')) {
+            $session->set('totalLivraison', false);
+        }
         $panier = $session->get('panier');
-        //dump($panier);
+        $totalLivraison = 0;
+        $prixLivraison = 5;
+
         $totalfinal = 0;
-        $test = 0;
         if (is_array($panier)) {
             foreach ($session->get('panier') as $id => $article) {
                 $agenda = $em->getRepository('AdminBundle:Agenda')->find($id);
                 $panier[$agenda->getId()]['totalitem'] = $agenda->getFormation()->getPrix() * $article['quantity'];
-                $totalfinal += $panier[$agenda->getId()]['totalitem'];
+                if ($session->get('totalLivraison')){
+                    $totalLivraison = $prixLivraison * $article['quantity'];
+                 }
+                $totalfinal += $panier[$agenda->getId()]['totalitem'] + $totalLivraison;
 
-                if (!empty($_POST['courrier'])) {
-                    $test = $_POST['courrier'];
-                    //$totalfinal += $test;
-
-               }
-            }       var_dump($test);
-
+            }
 
         } else {
             $this->addFlash(
@@ -108,10 +112,9 @@ class PanierController extends Controller
             ->add('quantity', ChoiceType::class, array('label' => false, 'choices' => $choices, 'data' => $panier[$agenda->getId()]['quantity']))
             ->getForm();
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
-
             $qte = $order->getQuantity();
-
             $panier[$agenda->getId()]['quantity'] = $qte;
             $session->set('panier', $panier);
 
@@ -121,6 +124,56 @@ class PanierController extends Controller
         return $this->render('@Commerce/Default/quantityForm.html.twig', array(
             'form' => $form->createView(),
             'id' => $agenda->getId(),
+        ));
+    }
+
+    /**
+     * @Route("/livraisonForm/", name="livraison")
+     */
+    public function livraisonFormAction(Request $request)
+    {
+        $session = $request->getSession();
+        $totalLivraison = $session->get('totalLivraison');
+
+
+        $panier = $session->get('panier');
+        $nbInscrits = 0;
+        foreach ($panier as $article) {
+            $nbInscrits += $article['quantity'];
+        }
+
+        $order = new Order();
+        $order->setLivraison(false);
+        if ($session->get('checked')) {
+            $order->setLivraison(true);
+        }
+
+        $form = $this->createFormBuilder($order)
+            ->add('livraison', CheckboxType::class, [
+
+            ])
+            ->getForm();
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+
+            if ($order->getLivraison()) {
+                $totalLivraison = true;
+                $session->set('checked', true);
+            } else {
+                $totalLivraison = false;
+                $session->set('checked', false);
+
+            }
+
+            $session->set('totalLivraison', $totalLivraison);
+
+            return $this->redirectToRoute('panier');
+        }
+
+        return $this->render('@Commerce/Default/livraison.html.twig', array(
+            'form' => $form->createView(),
         ));
     }
 
@@ -136,9 +189,7 @@ class PanierController extends Controller
 
         $n = 1;
         foreach ($panier as $formation) {
-            //$nom = 'to';
-            //$prenom = 'to';
-            //$email = 'ettdddde.d@gmail.com';
+
             $users = $em->getRepository('AdminBundle:User')->findAll();
             foreach ($users as $value) {
                 $emails[] = $value->getEmail();
@@ -170,7 +221,6 @@ class PanierController extends Controller
                     $passwordcrypt = md5($password);
                     $firstPassword[] = $password;
 
-                    //var_dump($firstPassword);
                     $userManager = $this->container->get('fos_user.user_manager');
                     $user = $userManager->createUser();
                     $user->setUsername($username);
@@ -182,9 +232,7 @@ class PanierController extends Controller
                     $userManager->updateUser($user);
 
                     //$user = $em->getRepository('AdminBundle:User')->findOneByEmail($email);
-                    //$iduser = $user->getId();
-
-
+                   //$iduser = $user->getId();
                 }
                 $reservation = new Reservation();
                 $reservation->setUser($user);
@@ -193,8 +241,6 @@ class PanierController extends Controller
                 $reservation->setAgenda($agenda);
                 dump($reservation);
                 $em->persist($reservation);
-
-
             }
             $em->flush();
 

@@ -24,14 +24,7 @@
                         <tr>{% for item in panier %}
                             <td>
                                 {{ item.formation }}
-                                <form method="post">
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox" name="courrier" value=5>
-                                            <p class="courrier">Envoyer le diplôme par courrier (5€/personne)</p>
-                                        </label>
-                                    </div>
-                                </form>
+
                             </td>
                             <td>{#Datedebute#}
                                 Du {{ item.agenda.dateDeDebut |date('d-m-Y') }}
@@ -59,6 +52,7 @@
 
                         </tbody>
                     </table>
+                    {{ render(controller('CommerceBundle:Panier:livraisonForm')) }}
 
 
                     <dl class="dl-horizontal pull-right">
@@ -78,6 +72,10 @@
     <script>
         $('.qtSelect').change(function () {
             $(this).parent('div').parent('div').parent('form').submit();
+        });
+        $('#form_livraison').change(function () {
+            //console.log('aaa');
+            $('#livraison').submit();
         });
     </script>
 
