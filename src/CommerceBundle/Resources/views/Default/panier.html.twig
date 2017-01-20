@@ -49,9 +49,9 @@
                         {% endfor %}
 
 
-
                         </tbody>
                     </table>
+                    {{ render(controller('CommerceBundle:Panier:livraisonForm')) }}
 
 
                     <dl class="dl-horizontal pull-right">
@@ -59,10 +59,10 @@
                         <dd></dd>
                     </dl>
                     <div class="clearfix"></div>
-                    <a href="{{path ('valid_cart')}}" class="btn btn-success pull-right">Valider mon panier</a>
-                    <a href="{{path ('empty_cart')}}" class="btn btn-danger pull-right">Vider mon panier</a>
+                    <a href="{{ path ('valid_cart') }}" class="btn btn-success pull-right">Valider mon panier</a>
+                    <a href="{{ path ('empty_cart') }}" class="btn btn-danger pull-right">Vider mon panier</a>
                 {% endif %}
-                <a href="{{path ('page_accueil_principale')}}" class="btn btn-primary">Acheter d'autres formations</a>
+                <a href="{{ path ('page_accueil_principale') }}" class="btn btn-primary">Acheter d'autres formations</a>
 
             </div>
         </div>
@@ -71,6 +71,10 @@
     <script>
         $('.qtSelect').change(function () {
             $(this).parent('div').parent('div').parent('form').submit();
+        });
+        $('#form_livraison').change(function () {
+            //console.log('aaa');
+            $('#livraison').submit();
         });
     </script>
 

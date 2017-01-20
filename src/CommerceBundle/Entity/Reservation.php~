@@ -45,8 +45,6 @@ class Reservation
 	 */
 	private $agenda;
 
-
-
 	/**
 	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\User", inversedBy="reservations")
 	 */
