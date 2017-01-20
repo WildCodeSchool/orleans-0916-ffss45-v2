@@ -1,7 +1,7 @@
 {% extends 'FrontBundle:Default:frontLayout.html.twig' %}
 {% set panier = app.session.get('panier') %}
 {% block body %}
-<div class="container-fluid">
+<div class="container">
 
     {% for article_id, article in panier %}
 
@@ -25,7 +25,7 @@
     {% endfor %}
 
 
-    <div class="text-center" style="margin-top: 20px;">
+    <div class="text-center" style="margin-top: 20px; margin-bottom: 45px">
         <a id="validAll" href="{{ path('payment') }}" class="btn btn-success">Payer</a>
         <a class="btn btn-primary" href="{{ path('panier' ) }}">Retour</a>
     </div>
