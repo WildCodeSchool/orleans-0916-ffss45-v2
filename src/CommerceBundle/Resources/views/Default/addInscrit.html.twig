@@ -4,6 +4,7 @@
 {% if panier[id]['inscrits'][key]['nom'] is defined %}
     {{ panier[id]['inscrits'][key]['nom'] }}
     <a href="{{ path('edit_inscrit', {'id':id, 'key':key} ) }}">edit</a>
+</div>
 {% else %}
 
     {{ form_start(form, {'attr':{'id':'valid_inscrit' ~  key }, 'action':path('add_inscrit', {'id':id, 'key':key})}) }}
