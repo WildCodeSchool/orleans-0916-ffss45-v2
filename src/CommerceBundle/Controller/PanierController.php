@@ -4,6 +4,7 @@ namespace CommerceBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\DependencyInjection\Container;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -61,16 +62,24 @@ class PanierController extends Controller
         if (!$session->has('panier')) {
             $session->set('panier', []);
         }
+        if (!$session->has('totalLivraison')) {
+            $session->set('totalLivraison', false);
+        }
         $panier = $session->get('panier');
-        //dump($panier);
+        $totalLivraison = 0;
+        $prixLivraison = 5;
+
         $totalfinal = 0;
         if (is_array($panier)) {
             foreach ($session->get('panier') as $id => $article) {
                 $agenda = $em->getRepository('AdminBundle:Agenda')->find($id);
                 $panier[$agenda->getId()]['totalitem'] = $agenda->getFormation()->getPrix() * $article['quantity'];
-                $totalfinal += $panier[$agenda->getId()]['totalitem'];
-            }
+                if ($session->get('totalLivraison')){
+                    $totalLivraison = $prixLivraison * $article['quantity'];
+                 }
+                $totalfinal += $panier[$agenda->getId()]['totalitem'] + $totalLivraison;
 
+            }
 
         } else {
             $this->addFlash(
@@ -102,9 +111,7 @@ class PanierController extends Controller
             ->getForm();
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-
             $qte = $order->getQuantity();
-
             $panier[$agenda->getId()]['quantity'] = $qte;
             $session->set('panier', $panier);
 
@@ -114,6 +121,56 @@ class PanierController extends Controller
         return $this->render('@Commerce/Default/quantityForm.html.twig', array(
             'form' => $form->createView(),
             'id' => $agenda->getId(),
+        ));
+    }
+
+    /**
+     * @Route("/livraisonForm/", name="livraison")
+     */
+    public function livraisonFormAction(Request $request)
+    {
+        $session = $request->getSession();
+        $totalLivraison = $session->get('totalLivraison');
+
+
+        $panier = $session->get('panier');
+        $nbInscrits = 0;
+        foreach ($panier as $article) {
+            $nbInscrits += $article['quantity'];
+        }
+
+        $order = new Order();
+        $order->setLivraison(false);
+        if ($session->get('checked')) {
+            $order->setLivraison(true);
+        }
+
+        $form = $this->createFormBuilder($order)
+            ->add('livraison', CheckboxType::class, [
+
+            ])
+            ->getForm();
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+
+            if ($order->getLivraison()) {
+                $totalLivraison = true;
+                $session->set('checked', true);
+            } else {
+                $totalLivraison = false;
+                $session->set('checked', false);
+
+            }
+
+            $session->set('totalLivraison', $totalLivraison);
+
+            return $this->redirectToRoute('panier');
+        }
+
+        return $this->render('@Commerce/Default/livraison.html.twig', array(
+            'form' => $form->createView(),
         ));
     }
 
@@ -129,9 +186,7 @@ class PanierController extends Controller
 
         $n = 1;
         foreach ($panier as $formation) {
-            //$nom = 'to';
-            //$prenom = 'to';
-            //$email = 'ettdddde.d@gmail.com';
+
             $users = $em->getRepository('AdminBundle:User')->findAll();
             foreach ($users as $value) {
                 $emails[] = $value->getEmail();
@@ -150,16 +205,7 @@ class PanierController extends Controller
 
                 if (in_array($email, $emails)) {
                     $user = $em->getRepository('AdminBundle:User')->findOneByEmail($email);
-                    $iduser = $user->getId();
                     //Enregistrer la formation dans le compte user
-                    $reservation = new Reservation();
-                    $reservation->setUser($iduser);
-
-                    $agenda = $formation['agenda'];
-                    $reservation->setAgenda($agenda);
-
-                    $em->persist($reservation);
-
 
                 } else {
                     $username = $prenom . $nom; //toto //toto2
@@ -169,11 +215,9 @@ class PanierController extends Controller
                         $nb++;
                     }
 
-
                     $passwordcrypt = md5($password);
                     $firstPassword[] = $password;
 
-                    var_dump($firstPassword);
                     $userManager = $this->container->get('fos_user.user_manager');
                     $user = $userManager->createUser();
                     $user->setUsername($username);
@@ -184,21 +228,18 @@ class PanierController extends Controller
 
                     $userManager->updateUser($user);
 
-                    $user = $em->getRepository('AdminBundle:User')->findOneByEmail($email);
-                    $iduser = $user->getId();
-
-                    $reservation = new Reservation();
-                    $reservation->setUser($user);
-
-                    $agenda = $formation['agenda'];
-                    $reservation->setAgenda($agenda);
-
-                    $em->persist($reservation);
-                    $em->flush();
-
+                    //$user = $em->getRepository('AdminBundle:User')->findOneByEmail($email);
+                   //$iduser = $user->getId();
                 }
+                $reservation = new Reservation();
+                $reservation->setUser($user);
 
+                $agenda = $formation['agenda'];
+                $reservation->setAgenda($agenda);
+                dump($reservation);
+                $em->persist($reservation);
             }
+            $em->flush();
 
             foreach ($inscrits as $inscrit) {
 
@@ -378,39 +419,37 @@ class PanierController extends Controller
         }
     }
 
-	/**
-	 * @Route("/initiate-payment/id-{id}", name="pay_online")
-	 *
-	 */
-	public function payOnlineAction($id)
-	{
-		// ...
-		$systempay = $this->get('tlconseil.systempay')
-			->init()
-			->setOptionnalFields(array(
-				'shop_url' => 'http://www.example.com'
-			))
-		;
+    /**
+     * @Route("/initiate-payment/id-{id}", name="pay_online")
+     *
+     */
+    public function payOnlineAction($id)
+    {
+        // ...
+        $systempay = $this->get('tlconseil.systempay')
+            ->init()
+            ->setOptionnalFields(array(
+                'shop_url' => 'http://www.example.com'
+            ));
 
-		return $this-> render ('@Commerce/Default/payment.html.twig', array(
-			'paymentUrl' => $systempay->getPaymentUrl(),
-			'fields' => $systempay->getResponse(),
-		));
-	}
+        return $this->render('@Commerce/Default/payment.html.twig', array(
+            'paymentUrl' => $systempay->getPaymentUrl(),
+            'fields' => $systempay->getResponse(),
+        ));
+    }
 
-	/**
-	 * @Route("/payment/verification")
-	 * @param Request $request
-	 * @return \Symfony\Component\HttpFoundation\Response
-	 */
-	public function paymentVerificationAction(Request $request)
-	{
-		// ...
-		$this->get('tlconseil.systempay')
-			->responseHandler($request)
-		;
+    /**
+     * @Route("/payment/verification")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function paymentVerificationAction(Request $request)
+    {
+        // ...
+        $this->get('tlconseil.systempay')
+            ->responseHandler($request);
 
-		return new Response();
-	}
+        return new Response();
+    }
 
 }

@@ -28,8 +28,6 @@ class FormulaireSuccessController extends Controller
     /**
      * @Route("/succes", name="succes")
      */
-
-
     public function ValidationSecoursAction()
     {
         {
