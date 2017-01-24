@@ -57,7 +57,7 @@ class Reservation
 	 * @ORM\Column(nullable=true)
 	 * @ORM\ManyToOne(targetEntity="FrontBundle\Entity\FormulaireSecours", inversedBy="reservations")
 	 */
-	private $formulaireSecours;
+	protected $formulaireSecours;
 
 	/**
      * @var string
@@ -263,27 +263,27 @@ class Reservation
     }
 
     /**
-     * Set formulairesecours
+     * Set FormulaireSecours
      *
-     * @param \FrontBundle\Entity\FormulaireSecours $formulairesecours
+     * @param \FrontBundle\Entity\FormulaireSecours $formulaireSecours
      *
      * @return Reservation
      */
-    public function setFormulairesecours(\FrontBundle\Entity\FormulaireSecours $formulairesecours = null)
+    public function setFormulaireSecours(\FrontBundle\Entity\FormulaireSecours $formulaireSecours = null)
     {
-        $this->formulairesecours = $formulairesecours;
+        $this->formulaireSecours = $formulaireSecours;
 
         return $this;
     }
 
     /**
-     * Get formulairesecours
+     * Get FormulaireSecours
      *
      * @return \FrontBundle\Entity\FormulaireSecours
      */
-    public function getFormulairesecours()
+    public function getFormulaireSecours()
     {
-        return $this->formulairesecours;
+        return $this->formulaireSecours;
     }
 
 	/**

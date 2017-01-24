@@ -6,8 +6,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-
-
+use AdminBundle\Entity\Agenda;
+use AdminBundle\Entity\User;
 /**
  * Reservation
  *
@@ -41,12 +41,15 @@ class Reservation
     private $numeroReservation;
 
 	/**
-	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Agenda", inversedBy="reservations")
+     *
+	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Agenda", inversedBy="reservations",cascade={"persist"} )
 	 */
 	private $agenda;
 
+
+
 	/**
-	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\User", inversedBy="reservations")
+	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\User", inversedBy="reservations",cascade={"persist"} )
 	 */
 	private $user;
 
@@ -54,7 +57,7 @@ class Reservation
 	 * @ORM\Column(nullable=true)
 	 * @ORM\ManyToOne(targetEntity="FrontBundle\Entity\FormulaireSecours", inversedBy="reservations")
 	 */
-	private $formulaireSecours;
+	protected $formulaireSecours;
 
 	/**
      * @var string
@@ -110,6 +113,17 @@ class Reservation
     public function getStatus()
     {
         return $this->status;
+    }
+
+    public function getStatusLabel ()
+    {
+    	     $statuses =  [
+    	     	1=>'En cours d \'inscription',
+	          2=>'Inscrit',
+	          3=>'Inscription annulée',
+	          4=>'Inscription reportée',
+          ];
+    	     return $statuses[$this->status];
     }
 
     /**
@@ -211,7 +225,7 @@ class Reservation
     /**
      * @param mixed $agenda
      */
-    public function setAgenda($agenda)
+    public function setAgenda(Agenda $agenda)
     {
         $this->agenda = $agenda;
     }
@@ -231,7 +245,7 @@ class Reservation
     /**
      * @param mixed $user
      */
-    public function setUser($user)
+    public function setUser(User $user)
     {
         $this->user = $user;
     }
@@ -249,40 +263,40 @@ class Reservation
     }
 
     /**
-     * Set formulairesecours
+     * Set FormulaireSecours
      *
-     * @param \FrontBundle\Entity\FormulaireSecours $formulairesecours
+     * @param \FrontBundle\Entity\FormulaireSecours $formulaireSecours
      *
      * @return Reservation
      */
-    public function setFormulairesecours(\FrontBundle\Entity\FormulaireSecours $formulairesecours = null)
+    public function setFormulaireSecours(\FrontBundle\Entity\FormulaireSecours $formulaireSecours = null)
     {
-        $this->formulairesecours = $formulairesecours;
+        $this->formulaireSecours = $formulaireSecours;
 
         return $this;
     }
 
     /**
-     * Get formulairesecours
+     * Get FormulaireSecours
      *
      * @return \FrontBundle\Entity\FormulaireSecours
      */
-    public function getFormulairesecours()
+    public function getFormulaireSecours()
     {
-        return $this->formulairesecours;
+        return $this->formulaireSecours;
     }
 
 	/**
 	 * NOTE: This is not a mapped field of entity metadata, just a simple property.
 	 *
-	 * @Vich\UploadableField(mapping="reservation_image", fileNameProperty="imageName")
+	 * @Vich\UploadableField(mapping="img_image", fileNameProperty="imageName")
 	 *
 	 * @var File
 	 */
 	private $imageFile;
 
 	/**
-	 * @ORM\Column(type="string", length=255)
+	 * @ORM\Column(type="string", length=255,  nullable=true)
 	 *
 	 * @var string
 	 */
@@ -304,7 +318,7 @@ class Reservation
 	 *
 	 * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
 	 *
-	 * @return Product
+	 * @return img
 	 */
 	public function setImageFile(File $image = null)
 	{
@@ -330,7 +344,7 @@ class Reservation
 	/**
 	 * @param string $imageName
 	 *
-	 * @return Product
+	 * @return img
 	 */
 	public function setImageName($imageName)
 	{
@@ -354,7 +368,7 @@ class Reservation
      *
      * @param \DateTime $updatedAt
      *
-     * @return Reservation
+     * @return img
      */
     public function setUpdatedAt($updatedAt)
     {

@@ -72,22 +72,23 @@ class DefaultController extends Controller
      */
     public function determineUser()
     {
-        $formations=null;
         $em = $this->getDoctrine()->getManager();
-        $userId = $this->get('security.token_storage')->getToken()->getUser()->getId();
-        $formulaireSecours = $em->getRepository('FrontBundle:FormulaireSecours')->findByUser($userId);
-        $agendas = $em->getRepository('AdminBundle:Agenda')->findAll();
-        foreach ($agendas as $agenda) {
-            foreach ($agenda->getReservations() as $item) {
-                if ($item->getUser()->getId() == $userId) {
-                    $formations[] = $agenda;
-                }
-            }
-        }
+        $user = $this->getUser();
+        $formulaireSecours = $em->getRepository('FrontBundle:FormulaireSecours')->findByUser($user);
+        $reservations =  $em->getRepository('CommerceBundle:Reservation')->findByUser($user);
+        dump($reservations);
+//        $agendas = $em->getRepository('AdminBundle:Agenda')->findAll();
+//        foreach ($agendas as $agenda) {
+//            foreach ($agenda->getReservations() as $item) {
+//                if ($item->getUser()->getId() == $userId) {
+//                    $formations[] = $agenda;
+//                }
+//            }
+//        }
 //        var_dump($formations[0]->getDateDeDebut());
         return $this->render('CommerceBundle:Default:user.html.twig', array(
             'formulaireSecours' => $formulaireSecours,
-            'formations' => $formations,
+            'reservations' => $reservations,
         ));
     }
 
