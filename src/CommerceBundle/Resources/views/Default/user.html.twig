@@ -91,30 +91,26 @@
                                 </thead>
 
 
-                                {% for formation in formations %}
+                                {% for reservation in reservations %}
                                     {#{{ dump(formation) }}#}
 
 
                                     <tbody>
                                         <tr>
-                                            <td>{{ formation.formation.nomLong }}</td>
-                                            <td>{% if formation.dateDeDebut %}{{ formation.dateDeDebut|date('d-m-Y') }}{% endif %}</td>
-                                            <td>{% for reservation in agenda.reservations %}{{ reservation
-                                                .statusLabel }}{% endfor %}</td>
-                                            <td><img class="smallPic" src="{{ asset('upload/img/'~img.imageName) }}"
-                                                     alt="{{ img.titre }}"/></td>
-                                            <td>{{ formation.formation.categorie.nomCategorie }}</td>
-                                            <td>{% for reservation in agenda.reservations %}<a class="button"
-                                                                                               href="{{ path('convocation_pdf',
-                                                                                               {'id':agenda.id}) }}">
-                                                        Convocation</a>{% endfor %}</td>
+                                            <td>{{ reservation.agenda.formation.formation.nomLong }}</td>
+                                            <td>{% if reservation.agenda.dateDeDebut %}{{ reservation.agenda.dateDeDebut|date('d-m-Y') }}{% endif %}</td>
+                                            <td>{{ reservation.statusLabel }}</td>
+                                            <td><img class="smallPic" src="{{ asset('upload/img/'~reservation.imageName)
+                                                }}"
+                                                     alt="{{ reservation.titre }}"/></td>
+                                            <td>{{ reservation.agenda.formation.categorie.nomCategorie }}</td>
+                                            <td>
+                                                <a class="button" href="{{ path('convocation_pdf', {'id':agenda.id}) }}">
+                                                    Convocation
+                                                </a>
+                                            </td>
                                         </tr>
                                     </tbody>
-
-                                    {% for reservation in agenda.reservations %}<a class="button"
-                                                                                   href="{{ path('convocation_pdf',
-                                                                                   {'id':agenda.id}) }}">
-                                            Convocation</a>{% endfor %}
 
 
                                 {% endfor %}
