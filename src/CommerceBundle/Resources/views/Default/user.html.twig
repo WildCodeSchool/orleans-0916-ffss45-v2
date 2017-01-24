@@ -77,7 +77,8 @@
 
                     <div id="Formations" class="tab-pane fade" style="min-height: 350px">
                         <h1>Liste des formations</h1><br/>
-                        {% if formations %}
+                        {% if reservations %}
+
                             <table class="table table-bordered table-hover table-striped table-condensed">
                                 <thead>
                                     <tr>
@@ -97,15 +98,13 @@
 
                                     <tbody>
                                         <tr>
-                                            <td>{{ reservation.agenda.formation.formation.nomLong }}</td>
-                                            <td>{% if reservation.agenda.dateDeDebut %}{{ reservation.agenda.dateDeDebut|date('d-m-Y') }}{% endif %}</td>
+                                            <td>{{ reservation.agenda.formation.nomLong }}</td>
+                                            <td>{{ reservation.agenda.dateDeDebut|date('d-m-Y') }}</td>
                                             <td>{{ reservation.statusLabel }}</td>
-                                            <td><img class="smallPic" src="{{ asset('upload/img/'~reservation.imageName)
-                                                }}"
-                                                     alt="{{ reservation.titre }}"/></td>
+                                            <td><img class="smallPic" src="{{ asset('upload/img/'~reservation.imageName) }}" alt="{{ reservation.titre }}"/></td>
                                             <td>{{ reservation.agenda.formation.categorie.nomCategorie }}</td>
                                             <td>
-                                                <a class="button" href="{{ path('convocation_pdf', {'id':agenda.id}) }}">
+                                                <a class="button" href="{{ path('convocation_pdf', {'id':reservation.agenda.id}) }}">
                                                     Convocation
                                                 </a>
                                             </td>

@@ -613,7 +613,7 @@ class FormulaireSecours
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -638,7 +638,7 @@ class FormulaireSecours
     /**
      * Get nomManif
      *
-     * @return string 
+     * @return string
      */
     public function getNomManif()
     {
@@ -661,7 +661,7 @@ class FormulaireSecours
     /**
      * Get presentationManif
      *
-     * @return string 
+     * @return string
      */
     public function getPresentationManif()
     {
@@ -684,7 +684,7 @@ class FormulaireSecours
     /**
      * Get dateDebutManif
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateDebutManif()
     {
@@ -707,7 +707,7 @@ class FormulaireSecours
     /**
      * Get dateFinManif
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getDateFinManif()
     {
@@ -730,7 +730,7 @@ class FormulaireSecours
     /**
      * Get heureDebutManif
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getHeureDebutManif()
     {
@@ -753,7 +753,7 @@ class FormulaireSecours
     /**
      * Get heureFinManif
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getHeureFinManif()
     {
@@ -776,7 +776,7 @@ class FormulaireSecours
     /**
      * Get adresseManif
      *
-     * @return string 
+     * @return string
      */
     public function getAdresseManif()
     {
@@ -799,7 +799,7 @@ class FormulaireSecours
     /**
      * Get villeManif
      *
-     * @return string 
+     * @return string
      */
     public function getVilleManif()
     {
@@ -822,7 +822,7 @@ class FormulaireSecours
     /**
      * Get pompiersLieu
      *
-     * @return string 
+     * @return string
      */
     public function getPompiersLieu()
     {
@@ -845,7 +845,7 @@ class FormulaireSecours
     /**
      * Get urgencesLieu
      *
-     * @return string 
+     * @return string
      */
     public function getUrgencesLieu()
     {
@@ -868,7 +868,7 @@ class FormulaireSecours
     /**
      * Get raisonSociale
      *
-     * @return string 
+     * @return string
      */
     public function getRaisonSociale()
     {
@@ -891,7 +891,7 @@ class FormulaireSecours
     /**
      * Get nomRep
      *
-     * @return string 
+     * @return string
      */
     public function getNomRep()
     {
@@ -914,7 +914,7 @@ class FormulaireSecours
     /**
      * Get telRep
      *
-     * @return integer 
+     * @return integer
      */
     public function getTelRep()
     {
@@ -937,7 +937,7 @@ class FormulaireSecours
     /**
      * Get mailRep
      *
-     * @return string 
+     * @return string
      */
     public function getMailRep()
     {
@@ -960,7 +960,7 @@ class FormulaireSecours
     /**
      * Get nomChef
      *
-     * @return string 
+     * @return string
      */
     public function getNomChef()
     {
@@ -983,7 +983,7 @@ class FormulaireSecours
     /**
      * Get telChef
      *
-     * @return integer 
+     * @return integer
      */
     public function getTelChef()
     {
@@ -1006,7 +1006,7 @@ class FormulaireSecours
     /**
      * Get mailChef
      *
-     * @return string 
+     * @return string
      */
     public function getMailChef()
     {
@@ -1029,7 +1029,7 @@ class FormulaireSecours
     /**
      * Get siteWeb
      *
-     * @return string 
+     * @return string
      */
     public function getSiteWeb()
     {
@@ -1052,7 +1052,7 @@ class FormulaireSecours
     /**
      * Get typeManif
      *
-     * @return string 
+     * @return string
      */
     public function getTypeManif()
     {
@@ -1075,7 +1075,7 @@ class FormulaireSecours
     /**
      * Get federation
      *
-     * @return string 
+     * @return string
      */
     public function getFederation()
     {
@@ -1098,7 +1098,7 @@ class FormulaireSecours
     /**
      * Get regleFed
      *
-     * @return string 
+     * @return string
      */
     public function getRegleFed()
     {
@@ -1121,7 +1121,7 @@ class FormulaireSecours
     /**
      * Get nbSportifs
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbSportifs()
     {
@@ -1144,7 +1144,7 @@ class FormulaireSecours
     /**
      * Get nbPublicInsta
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbPublicInsta()
     {
@@ -1167,7 +1167,7 @@ class FormulaireSecours
     /**
      * Get licenceSportif
      *
-     * @return string 
+     * @return string
      */
     public function getLicenceSportif()
     {
@@ -1190,7 +1190,7 @@ class FormulaireSecours
     /**
      * Get certifMedical
      *
-     * @return string 
+     * @return string
      */
     public function getCertifMedical()
     {
@@ -1213,7 +1213,7 @@ class FormulaireSecours
     /**
      * Get typeEvtSportif
      *
-     * @return string 
+     * @return string
      */
     public function getTypeEvtSportif()
     {
@@ -1236,7 +1236,7 @@ class FormulaireSecours
     /**
      * Get typeCourse
      *
-     * @return string 
+     * @return string
      */
     public function getTypeCourse()
     {
@@ -1259,7 +1259,7 @@ class FormulaireSecours
     /**
      * Get distParcours1
      *
-     * @return integer 
+     * @return integer
      */
     public function getDistParcours1()
     {
@@ -1282,7 +1282,7 @@ class FormulaireSecours
     /**
      * Get distParcours2
      *
-     * @return integer 
+     * @return integer
      */
     public function getDistParcours2()
     {
@@ -1305,7 +1305,7 @@ class FormulaireSecours
     /**
      * Get obstacles
      *
-     * @return string 
+     * @return string
      */
     public function getObstacles()
     {
@@ -1328,7 +1328,7 @@ class FormulaireSecours
     /**
      * Get signaleur
      *
-     * @return string 
+     * @return string
      */
     public function getSignaleur()
     {
@@ -1351,7 +1351,7 @@ class FormulaireSecours
     /**
      * Get typePiste
      *
-     * @return string 
+     * @return string
      */
     public function getTypePiste()
     {
@@ -1374,7 +1374,7 @@ class FormulaireSecours
     /**
      * Get commentaire
      *
-     * @return string 
+     * @return string
      */
     public function getCommentaire()
     {
@@ -1397,7 +1397,7 @@ class FormulaireSecours
     /**
      * Get typeSportCo
      *
-     * @return string 
+     * @return string
      */
     public function getTypeSportCo()
     {
@@ -1420,7 +1420,7 @@ class FormulaireSecours
     /**
      * Get niveauCompet
      *
-     * @return string 
+     * @return string
      */
     public function getNiveauCompet()
     {
@@ -1443,7 +1443,7 @@ class FormulaireSecours
     /**
      * Get nbTerrains
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbTerrains()
     {
@@ -1466,7 +1466,7 @@ class FormulaireSecours
     /**
      * Get catSportif
      *
-     * @return string 
+     * @return string
      */
     public function getCatSportif()
     {
@@ -1489,7 +1489,7 @@ class FormulaireSecours
     /**
      * Get typeSportIndiv
      *
-     * @return string 
+     * @return string
      */
     public function getTypeSportIndiv()
     {
@@ -1512,7 +1512,7 @@ class FormulaireSecours
     /**
      * Get typeSportMeca
      *
-     * @return string 
+     * @return string
      */
     public function getTypeSportMeca()
     {
@@ -1535,7 +1535,7 @@ class FormulaireSecours
     /**
      * Get commissaire
      *
-     * @return string 
+     * @return string
      */
     public function getCommissaire()
     {
@@ -1558,7 +1558,7 @@ class FormulaireSecours
     /**
      * Get protection
      *
-     * @return string 
+     * @return string
      */
     public function getProtection()
     {
@@ -1581,7 +1581,7 @@ class FormulaireSecours
     /**
      * Get typeSportAqua
      *
-     * @return string 
+     * @return string
      */
     public function getTypeSportAqua()
     {
@@ -1604,7 +1604,7 @@ class FormulaireSecours
     /**
      * Get dispositifSecu
      *
-     * @return string 
+     * @return string
      */
     public function getDispositifSecu()
     {
@@ -1627,7 +1627,7 @@ class FormulaireSecours
     /**
      * Get typePlanEau
      *
-     * @return string 
+     * @return string
      */
     public function getTypePlanEau()
     {
@@ -1650,7 +1650,7 @@ class FormulaireSecours
     /**
      * Get typeSportEquestre
      *
-     * @return string 
+     * @return string
      */
     public function getTypeSportEquestre()
     {
@@ -1673,7 +1673,7 @@ class FormulaireSecours
     /**
      * Get typeSportAutre
      *
-     * @return string 
+     * @return string
      */
     public function getTypeSportAutre()
     {
@@ -1719,7 +1719,7 @@ class FormulaireSecours
     /**
      * Get typeEvtCulturel
      *
-     * @return string 
+     * @return string
      */
     public function getTypeEvtCulturel()
     {
@@ -1742,7 +1742,7 @@ class FormulaireSecours
     /**
      * Get prixEvt
      *
-     * @return string 
+     * @return string
      */
     public function getPrixEvt()
     {
@@ -1765,7 +1765,7 @@ class FormulaireSecours
     /**
      * Get evtIntExt
      *
-     * @return string 
+     * @return string
      */
     public function getEvtIntExt()
     {
@@ -1788,7 +1788,7 @@ class FormulaireSecours
     /**
      * Get typeSalle
      *
-     * @return string 
+     * @return string
      */
     public function getTypeSalle()
     {
@@ -1811,7 +1811,7 @@ class FormulaireSecours
     /**
      * Get typeSite
      *
-     * @return string 
+     * @return string
      */
     public function getTypeSite()
     {
@@ -1834,7 +1834,7 @@ class FormulaireSecours
     /**
      * Get nbPersoTotal
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbPersoTotal()
     {
@@ -1857,7 +1857,7 @@ class FormulaireSecours
     /**
      * Get typeSiege
      *
-     * @return string 
+     * @return string
      */
     public function getTypeSiege()
     {
@@ -1880,7 +1880,7 @@ class FormulaireSecours
     /**
      * Get typePublic
      *
-     * @return string 
+     * @return string
      */
     public function getTypePublic()
     {
@@ -1903,7 +1903,7 @@ class FormulaireSecours
     /**
      * Get capaciteSite
      *
-     * @return integer 
+     * @return integer
      */
     public function getCapaciteSite()
     {
@@ -1926,7 +1926,7 @@ class FormulaireSecours
     /**
      * Get superficieSite
      *
-     * @return integer 
+     * @return integer
      */
     public function getSuperficieSite()
     {
@@ -1949,7 +1949,7 @@ class FormulaireSecours
     /**
      * Get nbAcces
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbAcces()
     {
@@ -1972,7 +1972,7 @@ class FormulaireSecours
     /**
      * Get nbScene
      *
-     * @return integer 
+     * @return integer
      */
     public function getNbScene()
     {
@@ -1995,7 +1995,7 @@ class FormulaireSecours
     /**
      * Get simulScene
      *
-     * @return string 
+     * @return string
      */
     public function getSimulScene()
     {
@@ -2018,7 +2018,7 @@ class FormulaireSecours
     /**
      * Get amenagTemp
      *
-     * @return string 
+     * @return string
      */
     public function getAmenagTemp()
     {
@@ -2041,7 +2041,7 @@ class FormulaireSecours
     /**
      * Get typeRdP
      *
-     * @return string 
+     * @return string
      */
     public function getTypeRdP()
     {
@@ -2064,7 +2064,7 @@ class FormulaireSecours
     /**
      * Get animation
      *
-     * @return string 
+     * @return string
      */
     public function getAnimation()
     {
@@ -2087,7 +2087,7 @@ class FormulaireSecours
     /**
      * Get mvtPublic
      *
-     * @return string 
+     * @return string
      */
     public function getMvtPublic()
     {
@@ -2110,7 +2110,7 @@ class FormulaireSecours
     /**
      * Get medecin
      *
-     * @return string 
+     * @return string
      */
     public function getMedecin()
     {
@@ -2133,7 +2133,7 @@ class FormulaireSecours
     /**
      * Get nomMed
      *
-     * @return string 
+     * @return string
      */
     public function getNomMed()
     {
@@ -2156,7 +2156,7 @@ class FormulaireSecours
     /**
      * Get speMed
      *
-     * @return string 
+     * @return string
      */
     public function getSpeMed()
     {
@@ -2179,7 +2179,7 @@ class FormulaireSecours
     /**
      * Get contactMed
      *
-     * @return string 
+     * @return string
      */
     public function getContactMed()
     {
@@ -2202,7 +2202,7 @@ class FormulaireSecours
     /**
      * Get prenomMed
      *
-     * @return string 
+     * @return string
      */
     public function getPrenomMed()
     {
@@ -2225,7 +2225,7 @@ class FormulaireSecours
     /**
      * Get pieceSecours
      *
-     * @return string 
+     * @return string
      */
     public function getPieceSecours()
     {
@@ -2248,7 +2248,7 @@ class FormulaireSecours
     /**
      * Get repasSecours
      *
-     * @return string 
+     * @return string
      */
     public function getRepasSecours()
     {
@@ -2271,7 +2271,7 @@ class FormulaireSecours
     /**
      * Get prestaMed
      *
-     * @return string 
+     * @return string
      */
     public function getPrestaMed()
     {
@@ -2294,7 +2294,7 @@ class FormulaireSecours
     /**
      * Get telSite
      *
-     * @return string 
+     * @return string
      */
     public function getTelSite()
     {
@@ -2317,7 +2317,7 @@ class FormulaireSecours
     /**
      * Get communicationSecours
      *
-     * @return string 
+     * @return string
      */
     public function getCommunicationSecours()
     {
@@ -2340,7 +2340,7 @@ class FormulaireSecours
     /**
      * Get autresSecours
      *
-     * @return string 
+     * @return string
      */
     public function getAutresSecours()
     {
@@ -2363,7 +2363,7 @@ class FormulaireSecours
     /**
      * Get infosCompl
      *
-     * @return string 
+     * @return string
      */
     public function getInfosCompl()
     {

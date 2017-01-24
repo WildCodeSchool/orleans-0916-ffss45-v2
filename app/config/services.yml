@@ -12,14 +12,14 @@ services:
 #              - { name: kernel.event_subscriber }
 
       app.form.registration:
-          class: FrontBundle\FOSUserBundle\Form\RegistrationFormType
+          class: FrontBundle\Form\RegistrationFormType
           tags:
               - { name: form.type, alias: app_user_registration }
 
 
 
       app.form.profile:
-                class: FrontBundle\FOSUserBundle\Form\ProfileFormType
+                class: FrontBundle\Form\ProfileFormType
                 tags:
                     - { name: form.type, alias: app_user_profile }
 

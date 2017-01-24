@@ -92,9 +92,9 @@ fos_user:
 
     profile:
        form:
-            type: FrontBundle\FOSUserBundle\Form\ProfileFormType
+            type: FrontBundle\Form\ProfileFormType
 
-    
+
 knp_snappy:  
     pdf:
         enabled:    true
