@@ -27,6 +27,7 @@ class AppKernel extends Kernel
             new CommerceBundle\CommerceBundle(),
             new Tlconseil\SystempayBundle\TlconseilSystempayBundle(),
             new Vich\UploaderBundle\VichUploaderBundle(),
+            new Gregwar\CaptchaBundle\GregwarCaptchaBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'), true)) {
