@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-xs-offset-3 col-xs-7 tableau">
                 {% for demande in demandes %}
-                    <table>
+                    <table class="table table-condensed table-hover table-striped">
                         <tbody>
                         <tr>
                             <th>Nom de la manifestation</th>
@@ -316,6 +316,12 @@
                         <tr>
                             <th>Infos complémentaires</th>
                             <td>{{ demande.infosCompl }}</td>
+                        </tr>
+                        <tr>
+                            <th>Images</th>
+                            {#<td><img src="{{ vich_uploader_asset(demande.imageName, 'image') }}" alt="{{ demande.imageName }}" /></td>#}
+                            <td><img src="{{ asset('/upload/img/' ~ demande.imageName) }}"  /></td>
+                            <td><img src="{{ asset('/upload/img/' ~ demande.imageName2) }}"  /></td>
                         </tr>
                         </tbody>
                     </table>

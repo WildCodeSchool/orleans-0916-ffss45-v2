@@ -34,7 +34,7 @@ class PosteSecoursController extends Controller
 
        // form of the current step
         $form = $flow->createForm();
-        $form->getData()->setUser($this->get('security.token_storage')->getToken()->getUser()->getId());
+        $form->getData()->setUser($this->get('security.token_storage')->getToken()->getUser());
         $form->getData()->setStatut('en attente');
       //  var_dump($form->getData());Die;
         if ($flow->isValid($form)) {
