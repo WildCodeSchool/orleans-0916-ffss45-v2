@@ -327,7 +327,7 @@
                     <tr>
                         <th>Image 1</th>
                         {#<td><img src="{{ vich_uploader_asset(demande.imageName, 'image') }}" alt="{{ demande.imageName }}" /></td>#}
-                        <td><img style="width: 175px;" src="{{ asset('/upload/img/' ~ formulaireSecours.imageName) }}"  /></td>
+                        <td><img style="width: 175px;" src="{{ asset('/upload/img/' ~ app.demande.imageName) }}"  /></td>
                     </tr>
                     <tr>
                         <th>Image 2</th>
