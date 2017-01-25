@@ -49,6 +49,7 @@ class AgendaController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+$form->
             $em = $this->getDoctrine()->getManager();
             $em->persist($agenda);
             $em->flush();

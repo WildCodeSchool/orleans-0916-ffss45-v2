@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Response;
+use Gregwar\CaptchaBundle\Type\CaptchaType;
 
 class DefaultController extends Controller
 {
@@ -32,7 +33,9 @@ class DefaultController extends Controller
             ))
             ->add('message', TextareaType::class, array('label'=>false,'attr'=>array('placeholder'=>'Votre demande')
             ))
+            ->add('anti-robot', CaptchaType::class, array('label'=>false,'attr'=>array('placeholder'=>'Merci de recopier les caractères')))
             ->add('save', SubmitType::class, array('label' => 'Envoyer'))
+
             ->getForm();
 
         $form->handleRequest($request);

@@ -151,3 +151,5 @@ vich_uploader:
         poste_image:
             uri_prefix:         /upload/img
             upload_destination: %kernel.root_dir%/../web/upload/img
+
+gregwar_captcha: ~
