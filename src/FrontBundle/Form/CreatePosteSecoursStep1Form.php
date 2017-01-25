@@ -59,6 +59,21 @@ class CreatePosteSecoursStep1Form extends AbstractType
 				'allow_delete' => true, // not mandatory, default is true
 				'download_link' => true, // not mandatory, default is true
 			])
+			->add('imageFile3', VichImageType::class, [
+				'required' => false,
+				'allow_delete' => true, // not mandatory, default is true
+				'download_link' => true, // not mandatory, default is true
+			])
+			->add('imageFile4', VichImageType::class, [
+				'required' => false,
+				'allow_delete' => true, // not mandatory, default is true
+				'download_link' => true, // not mandatory, default is true
+			])
+			->add('imageFile5', VichImageType::class, [
+				'required' => false,
+				'allow_delete' => true, // not mandatory, default is true
+				'download_link' => true, // not mandatory, default is true
+			])
 			->add(
 				'typeManif',
 				ChoiceType::class,

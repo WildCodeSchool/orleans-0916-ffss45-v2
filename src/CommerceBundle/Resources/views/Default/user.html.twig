@@ -101,7 +101,7 @@
                                             <td>{{ reservation.agenda.formation.nomLong }}</td>
                                             <td>{{ reservation.agenda.dateDeDebut|date('d-m-Y') }}</td>
                                             <td>{{ reservation.statusLabel }}</td>
-                                            <td><img class="smallPic" src="{{ asset('upload/img/'~reservation.imageName) }}" alt="{{ reservation.titre }}"/></td>
+                                            <td><img style="width: 150px;" class="smallPic" src="{{ asset('upload/img/'~reservation.imageName) }}" alt="{{ reservation.titre }}"/></td>
                                             <td>{{ reservation.agenda.formation.categorie.nomCategorie }}</td>
                                             <td>
                                                 <a class="button" href="{{ path('convocation_pdf', {'id':reservation.agenda.id}) }}">
