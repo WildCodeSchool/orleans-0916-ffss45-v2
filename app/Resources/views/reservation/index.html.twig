@@ -5,20 +5,20 @@
         <div class="row center-block">
             <div class="col-xs-12">
 
-                <table class="table-fill table-striped table-hover" style="width: 100%;">
+                <table class="table-fill table-striped table-hover table-condensed table" style="width: 100%; text-align: center;">
                     <thead>
                     <tr>
                         <th>N°</th>
                         <th>Nom</th>
                         <th>Prénom</th>
-                        {#<th>Date de naissance</th>#}
+                        <th>Date de naissance</th>
                         <th>Adresse</th>
                         <th>Lieu de naissance</th>
                         <th>Departement de naissance</th>
                         <th>Code Postal</th>
                         <th>Ville</th>
                         <th>Téléphone</th>
-                        {#<th>Status</th>#}
+                        <th>Status</th>
                         <th>Numéro de réservation</th>
                         <th>Diplôme</th>
                         <th>Convocation</th>
@@ -37,20 +37,20 @@
                                 </td>
                                 <td> {{ reservation.user.nom }}</td>
                                 <td> {{ reservation.user.prenom }}</td>
-                                {#<td> {{app.user.dateNaissance}}</td>#}
+                                <td> {{ user.dateNaissance|date('d-m-Y')}}</td>
                                 <td> {{ reservation.user.adresse }}</td>
                                 <td> {{ reservation.user.lieuNaissance }}</td>
                                 <td> {{ reservation.user.departementNaissance }}</td>
                                 <td> {{ reservation.user.CodePostal }}</td>
                                 <td> {{ reservation.user.ville }}</td>
                                 <td> {{ reservation.user.tel }}</td>
-                                {#<td>{{ reservation.statusLabel }}</td>#}
+                                <td>{{ reservation.statusLabel }}</td>
                                 <td>{{ reservation.numeroReservation }}</td>
-                                <td>{{ reservation.imagename }}</td>
+                                <td><img style="width: 150px;" class="smallPic" src="{{ asset('upload/img/'~user.imageName) }}" alt="{{ user.titre }}"/></td>
                                 <td>{{ reservation.convocation }}</td>
                                 <td>{{ reservation.certificate }}</td>
                                 <td>{% if reservation.delaiExpiration %}{{ reservation.delaiExpiration|date('Y-m-d H:i:s') }}{% endif %}</td>
-                                <td><img class="smallPic" src="{{ asset('upload/img/'~img.imageName) }}"
+                                <td><img style="width: 75px;" class="smallPic" src="{{ asset('upload/img/'~reservation.imageName) }}"
                                          alt="{{ img.titre }}"/></td>
                                 <td>
                                     <ul>

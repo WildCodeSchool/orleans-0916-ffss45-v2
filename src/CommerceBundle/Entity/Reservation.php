@@ -286,6 +286,8 @@ class Reservation
         return $this->formulaireSecours;
     }
 
+    /////////////////UploadImage Diplôme
+
 	/**
 	 * NOTE: This is not a mapped field of entity metadata, just a simple property.
 	 *

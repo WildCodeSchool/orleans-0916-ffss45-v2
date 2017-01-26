@@ -111,7 +111,31 @@ class Formation
      */
     private $actualisation;
 
+	/**
+	 * @var int
+	 *
+	 * @ORM\Column(name="recyclage", type="integer", nullable=true)
+	 */
+	private $recyclage;
 
+	/**
+	 * @return int
+	 */
+	public function getRecyclage()
+	{
+		return $this->recyclage;
+	}
+
+	/**
+	 * @param int $recyclage
+	 */
+	public function setRecyclage($recyclage)
+	{
+		$this->recyclage = $recyclage;
+	}
+
+
+	
     /**
      * @var int
      *

@@ -84,6 +84,7 @@
                                     <tr>
                                         <th>Nom de la formation</th>
                                         <th>Date début la formation</th>
+                                        <th>Recyclage</th>
                                         <th>Statut</th>
                                         <th>Diplôme</th>
                                         <th>Categorie</th>
@@ -100,6 +101,7 @@
                                         <tr>
                                             <td>{{ reservation.agenda.formation.nomLong }}</td>
                                             <td>{{ reservation.agenda.dateDeDebut|date('d-m-Y') }}</td>
+                                            <td>{{ reservation.agenda.formation.recyclage }} Mois</td>
                                             <td>{{ reservation.statusLabel }}</td>
                                             <td><img style="width: 150px;" class="smallPic" src="{{ asset('upload/img/'~reservation.imageName) }}" alt="{{ reservation.titre }}"/></td>
                                             <td>{{ reservation.agenda.formation.categorie.nomCategorie }}</td>
