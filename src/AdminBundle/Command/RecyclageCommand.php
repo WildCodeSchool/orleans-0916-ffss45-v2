@@ -21,7 +21,7 @@ class RecyclageCommand extends ContainerAwareCommand
         $this
             ->setName('ffss:mail-recyclage')
             ->setDescription('Envoie de mails automatique.')
-            ->setHelp("Cette commande envoie un mail ~ 15 jours avant l'expiration de la formation")
+            ->setHelp("Cette commande envoie un mail ~ 1 mois avant l'expiration de la formation")
         ;
     }
 
@@ -43,7 +43,7 @@ class RecyclageCommand extends ContainerAwareCommand
             $output->write($diff.'---');
             /////////////////////////////////////////////////////
 
-            if ($diff=='+15') {
+            if ($diff=='+1') {
                 $utilisateur = $reservation -> getUser();
                 $output->writeln($utilisateur->getEmail());
                 $output->writeln(['============',]);

@@ -23,14 +23,13 @@ class ReservationType extends AbstractType
 			        3 => 'Inscription annulée',
 			        4 => 'Inscription reportée')))
                 ->add('numeroReservation')
-                ->add('convocation')
-                ->add('certificate')
-                ->add('delaiExpiration')
+//                ->add('convocation')
+//                ->add('certificate')
+//                ->add('delaiExpiration')
                ->add('user', EntityType::class, [
                	'class'=>'AdminBundle\Entity\User',
 	               'choice_label'=>'username'
                ])
-               ->add('delaiExpiration')
                ->add('imageFile', VichImageType::class, [
 		               'required' => false,
 		               'allow_delete' => true, // not mandatory, default is true

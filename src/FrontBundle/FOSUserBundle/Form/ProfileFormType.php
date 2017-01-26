@@ -62,7 +62,7 @@ class ProfileFormType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => $this->class,
+            'data_class' => 'AdminBundle\Entity\User',
             'csrf_token_id' => 'profile',
             // BC for SF < 2.8
             'intention' => 'profile',
