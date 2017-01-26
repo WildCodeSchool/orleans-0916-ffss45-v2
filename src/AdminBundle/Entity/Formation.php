@@ -42,7 +42,6 @@ class Formation
 
     /**
      * @ORM\ManyToOne(targetEntity="Categorie", inversedBy="formations")
-     * @ORM\JoinColumn(name="categorie_id", referencedColumnName="id")
      */
     private $categorie;
     /**

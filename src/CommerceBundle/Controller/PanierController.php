@@ -147,6 +147,7 @@ class PanierController extends Controller
 
         $form = $this->createFormBuilder($order)
             ->add('livraison', CheckboxType::class, [
+                'label' => '5€ / inscrit'
 
             ])
             ->getForm();
@@ -180,6 +181,7 @@ class PanierController extends Controller
     public function finalSubscriptionAction(Request $request)
     {
         $em = $this->getDoctrine()->getManager();
+
         $session = $request->getSession();
 
         $panier = $session->get('panier');
@@ -199,13 +201,36 @@ class PanierController extends Controller
                 $nom = $newUser['nom'];
                 $prenom = $newUser['prenom'];
                 $email = $newUser['email'];
-                $password = $inscrits[$n]['password'] = uniqid(1, false);
+                $password = uniqid(1, false);
                 $n++;
 
                 if (in_array($email, $emails)) {
                     $user = $em->getRepository('AdminBundle:User')->findOneByEmail($email);
 
-                    //Envoyer mail user existant
+                    $reservation = new Reservation();
+                    $reservation->setUser($user);
+
+                    $agenda_panier = $formation['agenda'];
+                    $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_panier->getId());
+                    $reservation->setAgenda($agenda);
+                    $reservation->setnumeroReservation(100);//à changer avec validation systempay
+
+
+                    $em->persist($reservation);
+
+
+                    $message = \Swift_Message::newInstance()
+                        ->setSubject('FFSS45 : Finaliser votre inscription')
+                        ->setFrom('tuko45@hotmail.fr')
+                        ->setTo($email)
+                        ->setBody(
+                            $this->renderView('emailMember.html.twig', array('nom' => $nom,
+                                'prenom' => $prenom
+                            ),
+                                'text/html'
+                            ));
+                    $this->get('mailer')->send($message);
+
 
                 } else {
                     $username = $prenom . $nom;
@@ -229,36 +254,36 @@ class PanierController extends Controller
                     $userManager->updateUser($user);
 
 
-                    //$user = $em->getRepository('AdminBundle:User')->findOneByEmail($email);
-                    //$iduser = $user->getId();
+                    $reservation = new Reservation();
+                    $reservation->setUser($user);
+
+                    $agenda_panier = $formation['agenda'];
+                    $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_panier->getId());
+                    $reservation->setAgenda($agenda);
+                    $reservation->setnumeroReservation(100);
+
+                    // dump($reservation);
+                    $em->persist($reservation);
+
+
+                    $message = \Swift_Message::newInstance()
+                        ->setSubject('FFSS45 : Finaliser votre inscription')
+                        ->setFrom('tuko45@hotmail.fr')
+                        ->setTo($email)
+                        ->setBody(
+                            $this->renderView('emailSubscription.html.twig', array('nom' => $nom,
+                                'prenom' => $prenom, 'password' => $password
+
+                            ),
+                                'text/html'
+                            ));
+                    $this->get('mailer')->send($message);
                 }
-                $reservation = new Reservation();
-                $reservation->setUser($user);
-
-                $agenda = $formation['agenda'];
-                $reservation->setAgenda($agenda);
-                dump($reservation);
-                $em->persist($reservation);
-                $em->flush();
             }
 
 
-            foreach ($inscrits as $inscrit) {
-
-                $message = \Swift_Message::newInstance()
-                    ->setSubject('FFSS45 : Finaliser votre inscription')
-                    ->setFrom('tuko45@hotmail.fr')
-                    ->setTo($inscrit['email'])
-                    ->setBody(
-                        $this->renderView('emailSubscription.html.twig', array('nom' => $inscrit['nom'],
-                            'prenom' => $inscrit['prenom'], 'password' => $inscrit['password']
-
-                        ),
-                            'text/html'
-                        ));
-                $this->get('mailer')->send($message);
-            }
         }
+        $em->flush();
         return $this->redirect($this->generateUrl('page_accueil_principale'));
         // }
         // return $this->render('@Front/Default/acceuil.html.twig', array(
@@ -389,10 +414,11 @@ class PanierController extends Controller
         $errorBack = 0;
         if ($panier) {
             foreach ($panier as $article) {
-                for ($i = 0; $i < $article['quantity']; $i++) {
+                for ($i = 1; $i <= $article['quantity']; $i++) {
                     if (!isset($article['inscrits'])) {
                         $errorBack = 1;
                     } elseif (!array_key_exists($i, $article['inscrits'])) {
+                        //echo $i;die;
                         $errorBack = 1;
                     }
                 }
