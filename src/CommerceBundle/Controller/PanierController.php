@@ -236,7 +236,7 @@ class PanierController extends Controller
 
                 $agenda = $formation['agenda'];
                 $reservation->setAgenda($agenda);
-                dump($reservation);
+//                dump($reservation);
                 $em->persist($reservation);
             }
             $em->flush();
@@ -304,6 +304,7 @@ class PanierController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
+
             //$data->setPassword(uniqid(1, false));
 
             if (array_key_exists($id, $panier)) {
@@ -335,7 +336,7 @@ class PanierController extends Controller
     {
         $session = $request->getSession();
         $panier = $session->get('panier');
-        dump($panier);
+
         $id = $agenda->getId();
         if (isset($panier[$id]['inscrits'][$key])) {
             unset($panier[$id]['inscrits'][$key]);
@@ -369,7 +370,7 @@ class PanierController extends Controller
     {
         $session = $request->getSession();
         $panier = $session->get('panier');
-        dump($panier);
+//        dump($panier);
 
         return $this->render('@Commerce/Default/validCart.html.twig', array(
             'panier' => $panier,
