@@ -8,7 +8,7 @@
 {% else %}
 
     {{ form_start(form, {'attr':{'id':'valid_inscrit' ~  key }, 'action':path('add_inscrit', {'id':id, 'key':key})}) }}
-    <form>
+
         <table>
 
             <tr>
@@ -31,12 +31,11 @@
             </tr>
 
         </table>
-    </form>
 
             {% if key==1 %}
                <b><a href="{{ path('user_inscrit', {'id':id} ) }}">pour moi</a></b>
             {% endif %}
     {{ form_end(form) }}
 
-</div>
+
 {% endif %}
