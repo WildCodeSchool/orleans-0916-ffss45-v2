@@ -74,9 +74,9 @@ class PanierController extends Controller
             foreach ($session->get('panier') as $id => $article) {
                 $agenda = $em->getRepository('AdminBundle:Agenda')->find($id);
                 $panier[$agenda->getId()]['totalitem'] = $agenda->getFormation()->getPrix() * $article['quantity'];
-                if ($session->get('totalLivraison')){
+                if ($session->get('totalLivraison')) {
                     $totalLivraison = $prixLivraison * $article['quantity'];
-                 }
+                }
                 $totalfinal += $panier[$agenda->getId()]['totalitem'] + $totalLivraison;
 
             }
@@ -202,24 +202,24 @@ class PanierController extends Controller
                 $password = $inscrits[$n]['password'] = uniqid(1, false);
                 $n++;
 
-
                 if (in_array($email, $emails)) {
                     $user = $em->getRepository('AdminBundle:User')->findOneByEmail($email);
-                    //Enregistrer la formation dans le compte user
+
+                    //Envoyer mail user existant
 
                 } else {
-                    $username = $prenom . $nom; //toto //toto2
+                    $username = $prenom . $nom;
                     $nb = 2;
                     while (in_array($username, $usernames)) {
                         $username = $prenom . $nom . $nb;
                         $nb++;
                     }
-
                     $passwordcrypt = md5($password);
                     $firstPassword[] = $password;
 
                     $userManager = $this->container->get('fos_user.user_manager');
                     $user = $userManager->createUser();
+
                     $user->setUsername($username);
                     $user->setEmail($email);
                     $user->setNom($nom);
@@ -228,8 +228,9 @@ class PanierController extends Controller
 
                     $userManager->updateUser($user);
 
+
                     //$user = $em->getRepository('AdminBundle:User')->findOneByEmail($email);
-                   //$iduser = $user->getId();
+                    //$iduser = $user->getId();
                 }
                 $reservation = new Reservation();
                 $reservation->setUser($user);
@@ -238,8 +239,9 @@ class PanierController extends Controller
                 $reservation->setAgenda($agenda);
                 dump($reservation);
                 $em->persist($reservation);
+                $em->flush();
             }
-            $em->flush();
+
 
             foreach ($inscrits as $inscrit) {
 
@@ -256,14 +258,13 @@ class PanierController extends Controller
                         ));
                 $this->get('mailer')->send($message);
             }
-            return $this->redirect($this->generateUrl('succes'));
-            // }
-            // return $this->render('@Front/Default/acceuil.html.twig', array(
-            //   'form' => $form->createView(),
-            //));
-
-
         }
+        return $this->redirect($this->generateUrl('page_accueil_principale'));
+        // }
+        // return $this->render('@Front/Default/acceuil.html.twig', array(
+        //   'form' => $form->createView(),
+        //));
+
     }
 
     /**
@@ -392,7 +393,7 @@ class PanierController extends Controller
                     if (!isset($article['inscrits'])) {
                         $errorBack = 1;
                     } elseif (!array_key_exists($i, $article['inscrits'])) {
-                        $errorBack = 0;
+                        $errorBack = 1;
                     }
                 }
             }
