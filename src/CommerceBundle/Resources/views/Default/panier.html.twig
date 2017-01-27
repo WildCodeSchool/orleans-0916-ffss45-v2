@@ -3,7 +3,7 @@
 {% block body %}
 
 
-    <div class="container" style="margin-bottom: 15px;">
+    <div class="container">
         <div class="row">
             <div class="span9">
                 <h2>Votre panier</h2>
@@ -52,6 +52,7 @@
 
                         </tbody>
                     </table>
+                    {{ render(controller('CommerceBundle:Panier:livraisonForm')) }}
 
 
             <dl class="dl-horizontal pull-right">
@@ -71,6 +72,10 @@
     <script>
         $('.qtSelect').change(function () {
             $(this).parent('div').parent('div').parent('form').submit();
+        });
+        $('#form_livraison').change(function () {
+            //console.log('aaa');
+            $('#livraison').submit();
         });
     </script>
 

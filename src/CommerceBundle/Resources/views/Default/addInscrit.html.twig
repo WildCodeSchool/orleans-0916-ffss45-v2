@@ -1,15 +1,18 @@
 {% set panier =  app.session.get('panier') %}
-<dd>Inscrit #{{ key }}</dd>
+<div class="container" style="padding-left: 10%">
+
 {% if panier[id]['inscrits'][key]['nom'] is defined %}
     {{ panier[id]['inscrits'][key]['nom'] }}
     <a href="{{ path('edit_inscrit', {'id':id, 'key':key} ) }}">edit</a>
+</div>
 {% else %}
-<div class="container" style="width: 50%;">
+
     {{ form_start(form, {'attr':{'id':'valid_inscrit' ~  key }, 'action':path('add_inscrit', {'id':id, 'key':key})}) }}
     <form>
         <table>
 
             <tr>
+                <td ROWSPAN=2 style="padding-right: 10px;"><span style="color: #23527c;">Inscrit {{ key }}</span></td>
                 <td>
                     {{form_label(form.nom, 'nom')}}
                     {{form_widget(form.nom, {'attr':{'class':'form-control'}}) }}
@@ -26,14 +29,22 @@
                     {{form_widget(form.email, {'attr':{'class':'form-control'}}) }}
                     {{form_errors(form.email)}}
                 </td>
+
+
             </tr>
+
+               <td>{% if key==1 %}
+                        <a style="background-color: #FFCC06;" class="btn btn-warning" href="{{ path('user_inscrit', {'id':id} ) }}">Cette formation est pour moi</a>
+                    {% endif %}
+            </td>
+
 
         </table>
     </form>
-            {% if key==1 %}
-               <b><a href="{{ path('user_inscrit', {'id':id} ) }}">pour moi</a></b>
-            {% endif %}
-    {{ form_end(form) }}
-    <div>
-{% endif %}
 
+
+
+    {{ form_end(form) }}
+
+</div>
+{% endif %}

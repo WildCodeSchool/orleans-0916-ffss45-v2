@@ -16,6 +16,7 @@ class Order
      *
      */
     private $quantity;
+    private $livraison;
 
     /**
      * @var
@@ -39,6 +40,23 @@ class Order
         $this->quantity = $quantity;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getLivraison()
+    {
+        return $this->livraison;
+    }
+
+    /**
+     * @param mixed $livraison
+     */
+    public function setLivraison($livraison)
+    {
+        $this->livraison = $livraison;
+    }
+
+    
 //    /**
 //     * @return mixed
 //     */

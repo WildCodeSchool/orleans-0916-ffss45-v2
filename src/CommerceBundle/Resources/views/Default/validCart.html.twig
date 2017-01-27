@@ -2,39 +2,46 @@
 {% set panier = app.session.get('panier') %}
 {% block body %}
 
-    {% for article_id, article in panier %}
+    <div class="container">
 
-        {% if article.quantity is defined %}
-            <h2>Formation {{ article.agenda.formation.nomLong }}</h2>
+        {% for article_id, article in panier %}
 
-            {% for i in 1 .. article.quantity %}
-                <div class="row" id="load_form_valid_inscrit{{ i }}">
-                    <div>
-                        {% render(controller('CommerceBundle:Panier:addInscrit', {'id':article_id, 'key':i} )) %}
+            {% if article.quantity is defined %}
+                <h2>Formation {{ article.agenda.formation.nomLong }}</h2>
 
+                {% for i in 1 .. article.quantity %}
+                    <div class="row" id="load_form_valid_inscrit{{ i }}">
+                        <div>
+                            {% render(controller('CommerceBundle:Panier:addInscrit', {'id':article_id, 'key':i} )) %}
+
+                        </div>
                     </div>
+                {% endfor %}
+
+            {% else %}
+                <div class="alert alert-danger">Erreur dans le panier, veuillez recommencer votre sélection
+                    <a href="{{ path('panier') }}">Retour au panier</a>
                 </div>
-            {% endfor %}
-
-        {% else %}
-            <div class="alert alert-danger">Erreur dans le panier, veuillez recommencer votre sélection
-                <a href="{{ path('panier') }}">Retour au panier</a>
-            </div>
-        {% endif %}
-    {% endfor %}
+            {% endif %}
+        {% endfor %}
 
 
-    <div class="text-center" style="margin-bottom: 45px;">
-        <a id="validAll" href="{{ path('payment') }}" class="btn btn-success">Payer</a>
-        <a class="btn btn-primary" href="{{ path('panier' ) }}">Retour</a>
+        <div class="text-center" style="margin-top: 20px; margin-bottom: 45px">
+            <a id="validAll" href="{{ path('payment') }}" class="btn btn-success">Payer</a>
+            <a class="btn btn-primary" href="{{ path('panier' ) }}">Retour</a>
+        </div>
+
     </div>
-
-    <script>
-        $('#validAll').click(function () {
-            $('[id^=valid_inscrit]').each(function () {
-                $(this).submit();
-            })
-        });
-    </script>
-
 {% endblock %}
+
+ {% block javascripts %}
+     <script>
+         $('#validAll').click(function () {
+             $('[id^=valid_inscrit]').each(function () {
+                 $(this).submit();
+             })
+         });
+     </script>
+
+ {% endblock %}
+

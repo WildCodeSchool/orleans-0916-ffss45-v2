@@ -18,104 +18,149 @@
 
                 </ul>
                 <div class="tab-content">
-                    <div id="Profil" class="tab-pane fade in active">
+                    <div id="Profil" class="tab-pane fade in active" style="min-height: 350px">
                         <div class="page">
                             {#<div class="info">#}
 
                             <h1> Espace Client</h1>
                             <div class="row">
-                                            {% if is_granted('ROLE_ADMIN') %}
+                                {% if is_granted('ROLE_ADMIN') %}
 
-                                            <div class="col-xs-6">
-                                                <p>Se rendre dans l'espace Administration :  <a href="{{ path('admin') }}"><i
-                                                                                                class="fa fa-lock"
-                                                                                                aria-hidden="true"></i></a></p>
-                                            </div>
-                                            {% endif %}
-
-                                            {% if is_granted('ROLE_USER') %}
-
-                                            {% endif %}
+                                    <div class="col-xs-6">
+                                        <p>Se rendre dans l'espace Administration : <a href="{{ path('admin') }}"><i
+                                                        class="fa fa-lock"
+                                                        aria-hidden="true"></i></a></p>
                                     </div>
-                                <p>Vos Informations</p>
+                                {% endif %}
+
+                                {% if is_granted('ROLE_USER') %}
+
+                                {% endif %}
+                            </div>
+                            <p>Vos Informations</p>
                             <table class="table table-bordered table-condensed table-striped">
                                 <thead>
-                                    <tr>
-                                        <th>Indentifiant</th>
-                                        <th>Pseudo</th>
-                                        <th>Nom</th>
-                                        <th>Prénom</th>
-                                        <th>Adresse</th>
-                                       {# <th>age : {{app.user.age}}</th>#}
-                                        <th>Code Postal</th>
-                                        <th>Ville</th>
-                                        <th>Tel</th>
-                                        <th>Mail</th>
-                                        <th>Comment avez vous connu l'association FFSS</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>{{app.user.id}}</td>
-                                        <td>{{app.user.username}}</td>
-                                        <td>{{app.user.nom}}</td>
-                                        <td>{{app.user.prenom}}</td>
-                                        <td>{{app.user.adresse}}</td>
-                                        <td>{{app.user.codepostal}}</td>
-                                        <td>{{app.user.ville}}</td>
-                                        <td>{{app.user.tel}}</td>
-                                        <td>{{app.user.email}}</td>
-                                        <td>{{app.user.relation}}</td>
-                                    </tr>
+                                <tr>
+                                    <th>Pseudo</th>
+                                    <td>{{ app.user.username }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nom</th>
+                                    <td>{{ app.user.nom }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Prénom</th>
+                                    <td>{{ app.user.prenom }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Adresse</th>
+                                    <td>{{ app.user.adresse }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Département de naissance</th>
+                                    <td>{{ app.user.departementnaissance }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Lieu de naissance</th>
+                                    <td>{{ app.user.lieunaissance }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Date de naissance</th>
+                                    <td>{{ app.user.datenaissance | date('d/m/Y') }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Code Postal</th>
+                                    <td>{{ app.user.codepostal }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Ville</th>
+                                    <td>{{ app.user.Ville }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Tel</th>
+                                    <td>{{ app.user.Tel }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Mail</th>
+                                    <td>{{ app.user.email }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Comment avez vous connu l'association FFSS</th>
+                                    <td>{{ app.user.relation }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Photo</th>
+                                    <td><img style="width: 25%;" src="{{ asset('upload/img/'~app.user.imagename) }}"  alt="" /></td>
+                                </tr>
+
+
                                 </tbody>
                             </table>
 
 
-
-
-
-                                {#<p><a href="{{ path('fos_user_security_logout') }}">se déconnecter</a> </p>#}
-                                <p><a href="{{ path('fos_user_profile_edit') }}">Modifier mes informations</a> </p>
+                            {#<p><a href="{{ path('fos_user_security_logout') }}">se déconnecter</a> </p>#}
+                            <p><a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}">Modifier mes
+                                    informations</a></p>
                         </div>
                     </div>
 
-                    <div id="Formations" class="tab-pane fade">
-                        <div class="espace"><br/><br/>
-                            {% if formations %}
+                    <div id="Formations" class="tab-pane fade" style="min-height: 350px">
+                        <h1>Liste des formations</h1><br/>
+                        {% if formations %}
+                            <table class="table table-bordered table-hover table-striped table-condensed">
+                                <thead>
+                                    <tr>
+                                        <th>Nom de la formation</th>
+                                        <th>Date début la formation</th>
+                                        <th>Statut</th>
+                                        <th>Diplôme</th>
+                                        <th>Categorie</th>
+                                        <th>Convocation</th>
+                                    </tr>
+                                </thead>
+
+
                                 {% for formation in formations %}
-                                {#{{ dump(formation) }}#}
-                                    <h1>Liste des formations</h1><br/>
-                                    <table class="table table-bordered table-striped table-condensed">
-                                        <tbody>
-                                            <tr>
-                                                <th>Nom de la formation</th>
-                                                <th>Date début la formation</th>
-                                                {#<th>Diplome</th>#}
-                                                <th>Categorie</th>
-                                                <th>Convocation</th>
-                                            </tr>
-                                            <tr>
-                                                <td>{{ formation.formation.nomLong }}</td>
-                                                <td>{% if formation.dateDeDebut %}{{ formation.dateDeDebut|date('d-m-Y') }}{% endif %}</td>
-                                                <td>{{ formation.formation.categorie.nomCategorie}}</td>
-                                                {#<td><a class="button"#}
-                                                       {#href="{{ path('convocation_pdf',#}
-                                                       {#{'id':agenda.id})#}
-                                                       {#}}">Convocation</a></td>#}
-                                            </tr>
-                                        </tbody>
-                                    </table><br/><br/><br/>
+                                    {#{{ dump(formation) }}#}
+
+
+                                    <tbody>
+                                        <tr>
+                                            <td>{{ formation.formation.nomLong }}</td>
+                                            <td>{% if formation.dateDeDebut %}{{ formation.dateDeDebut|date('d-m-Y') }}{% endif %}</td>
+                                            <td>{% for reservation in agenda.reservations %}{{ reservation
+                                                .statusLabel }}{% endfor %}</td>
+                                            <td><img class="smallPic" src="{{ asset('upload/img/'~img.imageName) }}"
+                                                     alt="{{ img.titre }}"/></td>
+                                            <td>{{ formation.formation.categorie.nomCategorie }}</td>
+                                            <td>{% for reservation in agenda.reservations %}<a class="button"
+                                                                                               href="{{ path('convocation_pdf',
+                                                                                               {'id':agenda.id}) }}">
+                                                        Convocation</a>{% endfor %}</td>
+                                        </tr>
+                                    </tbody>
+
+                                    {% for reservation in agenda.reservations %}<a class="button"
+                                                                                   href="{{ path('convocation_pdf',
+                                                                                   {'id':agenda.id}) }}">
+                                            Convocation</a>{% endfor %}
+
+
                                 {% endfor %}
-                            {% else %}
-                                <p>Vous n'avez pas de formation</p>
-                            {% endif %}
-                        </div>
+                            </table>
+                        {% else %}
+                            <p>Vous n'avez pas de formation</p>
+                        {% endif %}
                     </div>
-                    <div id="Poste_Secours" class="tab-pane fade">
-                        <br/><br/><br/>
+                    <div id="Poste_Secours" class="tab-pane fade" style="min-height: 350px">
+
                         {% if formulaireSecours %}
                             {% for formulaireSecour in formulaireSecours %}
-                                <table>
+                                <table class="table table-bordered table-hover table-striped table-condensed">
                                     <tbody>
 
                                         <tr>
@@ -123,7 +168,6 @@
                                             <th>Date début manif</th>
                                             <th>Date fin manif</th>
                                             <th>Prix de la prestation</th>
-
                                         </tr>
                                         <tr>
                                             <td>{{ formulaireSecour.nomManif }}</td>
@@ -131,7 +175,7 @@
                                             <td>{% if formulaireSecour.dateFinManif %}{{ formulaireSecour.dateFinManif|date('d-m-Y') }}{% endif %}</td>
                                             <td>{{ formulaireSecour.devis }}€</td>
                                             <td><a class="btn btn-primary" href="#">Payer la prestation</a></td>
-                                    </tr>
+                                        </tr>
 
                                     </tbody>
                                 </table>
@@ -139,7 +183,6 @@
                         {% else %}
                             <p>Vous n'avez pas de demande de poste de secours</p>
                         {% endif %}
-                        <br/><br/><br/>
                     </div>
                 </div>
 

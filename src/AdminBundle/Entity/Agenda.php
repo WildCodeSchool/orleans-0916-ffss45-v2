@@ -13,6 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Agenda
 {
+
     /**
      * @var int
      *
@@ -22,7 +23,8 @@ class Agenda
      */
     private $id;
     /**
-     * @ORM\ManyToOne(targetEntity="Formation", inversedBy="agendas")
+     *
+     * @ORM\ManyToOne(targetEntity="Formation", inversedBy="agendas",cascade={"persist"})
      *
      */
     private $formation;
