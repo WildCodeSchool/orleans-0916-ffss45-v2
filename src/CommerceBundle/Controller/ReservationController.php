@@ -228,5 +228,35 @@ class ReservationController extends Controller
 		);
 	}
 
+	/**
+	 *
+	 * @Route("/", name="reservation_profil")
+	 * @Method("GET")
+	 */
+	public function reservationProfilAction()
+	{
+		$em = $this->getDoctrine()->getManager();
+		$user = $this->getUser();
+		$reservations = $em->getRepository('CommerceBundle:Reservation')->findByUser($user);
+		return $this->render('CommerceBundle:Default:index.html.twig', array(
+			'reservations' => $reservations,
+		));
+	}
+
+	/**
+	 *
+	 * @Route("/", name="reservation_poste")
+	 * @Method("GET")
+	 */
+	public function reservationPosteAction()
+	{
+		$em = $this->getDoctrine()->getManager();
+		$user = $this->getUser();
+		$formulaireSecours = $em->getRepository('FrontBundle:FormulaireSecours')->findByUser($user);
+		return $this->render('CommerceBundle:Default:poste.html.twig', array(
+			'formulaireSecours' => $formulaireSecours,
+		));
+	}
+
 
 }

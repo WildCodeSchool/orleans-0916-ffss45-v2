@@ -92,7 +92,8 @@ fos_user:
 
     profile:
        form:
-            type: FrontBundle\Form\ProfileFormType
+            type: AdminBundle\Form\ProfileFormType
+
 
 
 knp_snappy:  
