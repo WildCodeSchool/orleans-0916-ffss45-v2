@@ -111,13 +111,44 @@ class Formation
      */
     private $actualisation;
 
+	/**
+	 * @var date
+	 *
+	 * @ORM\Column(name="recyclage", type="date", nullable=true)
+	 */
+	private $recyclage;
 
+	/**
+	 * @return date
+	 */
+	public function getRecyclage()
+	{
+		return $this->recyclage;
+	}
+
+	/**
+	 * @param date $recyclage
+	 */
+	public function setRecyclage($recyclage)
+	{
+		$this->recyclage = $recyclage;
+	}
+
+
+	
     /**
      * @var int
      *
      * @ORM\Column(name="prix", type="integer")
      */
     private $prix;
+
+    /**
+     * @var text
+     *
+     * @ORM\Column(name="user", type="text")
+     */
+    private $user;
 
 
 
@@ -422,5 +453,23 @@ class Formation
     {
         $this->actualisation = $actualisation;
     }
+
+    /**
+     * @return text
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param text $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+
 
 }

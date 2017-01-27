@@ -110,12 +110,14 @@
 
                     <div id="Formations" class="tab-pane fade" style="min-height: 350px">
                         <h1>Liste des formations</h1><br/>
-                        {% if formations %}
+                        {% if reservations %}
+
                             <table class="table table-bordered table-hover table-striped table-condensed">
                                 <thead>
                                     <tr>
                                         <th>Nom de la formation</th>
                                         <th>Date début la formation</th>
+                                        <th>Recyclage</th>
                                         <th>Statut</th>
                                         <th>Diplôme</th>
                                         <th>Categorie</th>
@@ -124,30 +126,25 @@
                                 </thead>
 
 
-                                {% for formation in formations %}
+                                {% for reservation in reservations %}
                                     {#{{ dump(formation) }}#}
 
 
                                     <tbody>
                                         <tr>
-                                            <td>{{ formation.formation.nomLong }}</td>
-                                            <td>{% if formation.dateDeDebut %}{{ formation.dateDeDebut|date('d-m-Y') }}{% endif %}</td>
-                                            <td>{% for reservation in agenda.reservations %}{{ reservation
-                                                .statusLabel }}{% endfor %}</td>
-                                            <td><img class="smallPic" src="{{ asset('upload/img/'~img.imageName) }}"
-                                                     alt="{{ img.titre }}"/></td>
-                                            <td>{{ formation.formation.categorie.nomCategorie }}</td>
-                                            <td>{% for reservation in agenda.reservations %}<a class="button"
-                                                                                               href="{{ path('convocation_pdf',
-                                                                                               {'id':agenda.id}) }}">
-                                                        Convocation</a>{% endfor %}</td>
+                                            <td>{{ reservation.agenda.formation.nomLong }}</td>
+                                            <td>{{ reservation.agenda.dateDeDebut|date('d-m-Y') }}</td>
+                                            <td>{{ reservation.agenda.formation.recyclage }} Mois</td>
+                                            <td>{{ reservation.statusLabel }}</td>
+                                            <td><img style="width: 150px;" class="smallPic" src="{{ asset('upload/img/'~reservation.imageName) }}" alt="{{ reservation.titre }}"/></td>
+                                            <td>{{ reservation.agenda.formation.categorie.nomCategorie }}</td>
+                                            <td>
+                                                <a class="button" href="{{ path('convocation_pdf', {'id':reservation.agenda.id}) }}">
+                                                    Télécharger la Convocation
+                                                </a>
+                                            </td>
                                         </tr>
                                     </tbody>
-
-                                    {% for reservation in agenda.reservations %}<a class="button"
-                                                                                   href="{{ path('convocation_pdf',
-                                                                                   {'id':agenda.id}) }}">
-                                            Convocation</a>{% endfor %}
 
 
                                 {% endfor %}
@@ -157,7 +154,7 @@
                         {% endif %}
                     </div>
                     <div id="Poste_Secours" class="tab-pane fade" style="min-height: 350px">
-
+                        <h1>Liste des postes de secours</h1><br/>
                         {% if formulaireSecours %}
                             {% for formulaireSecour in formulaireSecours %}
                                 <table class="table table-bordered table-hover table-striped table-condensed">

@@ -115,6 +115,8 @@ class User extends BaseUser
 	 */
 	private $relation;
 
+	///////////////////////// UploadImage CarteIdentité
+
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *

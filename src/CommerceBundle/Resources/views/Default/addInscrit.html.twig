@@ -8,7 +8,7 @@
 {% else %}
 
     {{ form_start(form, {'attr':{'id':'valid_inscrit' ~  key }, 'action':path('add_inscrit', {'id':id, 'key':key})}) }}
-    <form>
+
         <table>
 
             <tr>
@@ -40,11 +40,10 @@
 
 
         </table>
-    </form>
 
 
 
     {{ form_end(form) }}
 
-</div>
+
 {% endif %}

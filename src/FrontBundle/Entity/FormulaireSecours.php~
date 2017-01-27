@@ -3,16 +3,12 @@
 namespace FrontBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use Symfony\Component\HttpFoundation\File\File;
-
 
 /**
  * FormulaireSecours
  *
  * @ORM\Table(name="formulaire_secours")
  * @ORM\Entity(repositoryClass="FrontBundle\Repository\FormulaireSecoursRepository")
- * @Vich\Uploadable
  */
 class FormulaireSecours
 {
@@ -573,7 +569,7 @@ class FormulaireSecours
     /**
      * @var int
      *
-     * @ORM\Column(name="devis", type="integer", nullable=true)
+     * @ORM\Column(name="devis", type="integer")
      */
     private $devis;
 
@@ -617,7 +613,7 @@ class FormulaireSecours
     /**
      * Get id
      *
-     * @return integer
+     * @return integer 
      */
     public function getId()
     {
@@ -642,7 +638,7 @@ class FormulaireSecours
     /**
      * Get nomManif
      *
-     * @return string
+     * @return string 
      */
     public function getNomManif()
     {
@@ -665,7 +661,7 @@ class FormulaireSecours
     /**
      * Get presentationManif
      *
-     * @return string
+     * @return string 
      */
     public function getPresentationManif()
     {
@@ -688,7 +684,7 @@ class FormulaireSecours
     /**
      * Get dateDebutManif
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getDateDebutManif()
     {
@@ -711,7 +707,7 @@ class FormulaireSecours
     /**
      * Get dateFinManif
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getDateFinManif()
     {
@@ -734,7 +730,7 @@ class FormulaireSecours
     /**
      * Get heureDebutManif
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getHeureDebutManif()
     {
@@ -757,7 +753,7 @@ class FormulaireSecours
     /**
      * Get heureFinManif
      *
-     * @return \DateTime
+     * @return \DateTime 
      */
     public function getHeureFinManif()
     {
@@ -780,7 +776,7 @@ class FormulaireSecours
     /**
      * Get adresseManif
      *
-     * @return string
+     * @return string 
      */
     public function getAdresseManif()
     {
@@ -803,7 +799,7 @@ class FormulaireSecours
     /**
      * Get villeManif
      *
-     * @return string
+     * @return string 
      */
     public function getVilleManif()
     {
@@ -826,7 +822,7 @@ class FormulaireSecours
     /**
      * Get pompiersLieu
      *
-     * @return string
+     * @return string 
      */
     public function getPompiersLieu()
     {
@@ -849,7 +845,7 @@ class FormulaireSecours
     /**
      * Get urgencesLieu
      *
-     * @return string
+     * @return string 
      */
     public function getUrgencesLieu()
     {
@@ -872,7 +868,7 @@ class FormulaireSecours
     /**
      * Get raisonSociale
      *
-     * @return string
+     * @return string 
      */
     public function getRaisonSociale()
     {
@@ -895,7 +891,7 @@ class FormulaireSecours
     /**
      * Get nomRep
      *
-     * @return string
+     * @return string 
      */
     public function getNomRep()
     {
@@ -918,7 +914,7 @@ class FormulaireSecours
     /**
      * Get telRep
      *
-     * @return integer
+     * @return integer 
      */
     public function getTelRep()
     {
@@ -941,7 +937,7 @@ class FormulaireSecours
     /**
      * Get mailRep
      *
-     * @return string
+     * @return string 
      */
     public function getMailRep()
     {
@@ -964,7 +960,7 @@ class FormulaireSecours
     /**
      * Get nomChef
      *
-     * @return string
+     * @return string 
      */
     public function getNomChef()
     {
@@ -987,7 +983,7 @@ class FormulaireSecours
     /**
      * Get telChef
      *
-     * @return integer
+     * @return integer 
      */
     public function getTelChef()
     {
@@ -1010,7 +1006,7 @@ class FormulaireSecours
     /**
      * Get mailChef
      *
-     * @return string
+     * @return string 
      */
     public function getMailChef()
     {
@@ -1033,7 +1029,7 @@ class FormulaireSecours
     /**
      * Get siteWeb
      *
-     * @return string
+     * @return string 
      */
     public function getSiteWeb()
     {
@@ -1056,7 +1052,7 @@ class FormulaireSecours
     /**
      * Get typeManif
      *
-     * @return string
+     * @return string 
      */
     public function getTypeManif()
     {
@@ -1079,7 +1075,7 @@ class FormulaireSecours
     /**
      * Get federation
      *
-     * @return string
+     * @return string 
      */
     public function getFederation()
     {
@@ -1102,7 +1098,7 @@ class FormulaireSecours
     /**
      * Get regleFed
      *
-     * @return string
+     * @return string 
      */
     public function getRegleFed()
     {
@@ -1125,7 +1121,7 @@ class FormulaireSecours
     /**
      * Get nbSportifs
      *
-     * @return integer
+     * @return integer 
      */
     public function getNbSportifs()
     {
@@ -1148,7 +1144,7 @@ class FormulaireSecours
     /**
      * Get nbPublicInsta
      *
-     * @return integer
+     * @return integer 
      */
     public function getNbPublicInsta()
     {
@@ -1171,7 +1167,7 @@ class FormulaireSecours
     /**
      * Get licenceSportif
      *
-     * @return string
+     * @return string 
      */
     public function getLicenceSportif()
     {
@@ -1194,7 +1190,7 @@ class FormulaireSecours
     /**
      * Get certifMedical
      *
-     * @return string
+     * @return string 
      */
     public function getCertifMedical()
     {
@@ -1217,7 +1213,7 @@ class FormulaireSecours
     /**
      * Get typeEvtSportif
      *
-     * @return string
+     * @return string 
      */
     public function getTypeEvtSportif()
     {
@@ -1240,7 +1236,7 @@ class FormulaireSecours
     /**
      * Get typeCourse
      *
-     * @return string
+     * @return string 
      */
     public function getTypeCourse()
     {
@@ -1263,7 +1259,7 @@ class FormulaireSecours
     /**
      * Get distParcours1
      *
-     * @return integer
+     * @return integer 
      */
     public function getDistParcours1()
     {
@@ -1286,7 +1282,7 @@ class FormulaireSecours
     /**
      * Get distParcours2
      *
-     * @return integer
+     * @return integer 
      */
     public function getDistParcours2()
     {
@@ -1309,7 +1305,7 @@ class FormulaireSecours
     /**
      * Get obstacles
      *
-     * @return string
+     * @return string 
      */
     public function getObstacles()
     {
@@ -1332,7 +1328,7 @@ class FormulaireSecours
     /**
      * Get signaleur
      *
-     * @return string
+     * @return string 
      */
     public function getSignaleur()
     {
@@ -1355,7 +1351,7 @@ class FormulaireSecours
     /**
      * Get typePiste
      *
-     * @return string
+     * @return string 
      */
     public function getTypePiste()
     {
@@ -1378,7 +1374,7 @@ class FormulaireSecours
     /**
      * Get commentaire
      *
-     * @return string
+     * @return string 
      */
     public function getCommentaire()
     {
@@ -1401,7 +1397,7 @@ class FormulaireSecours
     /**
      * Get typeSportCo
      *
-     * @return string
+     * @return string 
      */
     public function getTypeSportCo()
     {
@@ -1424,7 +1420,7 @@ class FormulaireSecours
     /**
      * Get niveauCompet
      *
-     * @return string
+     * @return string 
      */
     public function getNiveauCompet()
     {
@@ -1447,7 +1443,7 @@ class FormulaireSecours
     /**
      * Get nbTerrains
      *
-     * @return integer
+     * @return integer 
      */
     public function getNbTerrains()
     {
@@ -1470,7 +1466,7 @@ class FormulaireSecours
     /**
      * Get catSportif
      *
-     * @return string
+     * @return string 
      */
     public function getCatSportif()
     {
@@ -1493,7 +1489,7 @@ class FormulaireSecours
     /**
      * Get typeSportIndiv
      *
-     * @return string
+     * @return string 
      */
     public function getTypeSportIndiv()
     {
@@ -1516,7 +1512,7 @@ class FormulaireSecours
     /**
      * Get typeSportMeca
      *
-     * @return string
+     * @return string 
      */
     public function getTypeSportMeca()
     {
@@ -1539,7 +1535,7 @@ class FormulaireSecours
     /**
      * Get commissaire
      *
-     * @return string
+     * @return string 
      */
     public function getCommissaire()
     {
@@ -1562,7 +1558,7 @@ class FormulaireSecours
     /**
      * Get protection
      *
-     * @return string
+     * @return string 
      */
     public function getProtection()
     {
@@ -1585,7 +1581,7 @@ class FormulaireSecours
     /**
      * Get typeSportAqua
      *
-     * @return string
+     * @return string 
      */
     public function getTypeSportAqua()
     {
@@ -1608,7 +1604,7 @@ class FormulaireSecours
     /**
      * Get dispositifSecu
      *
-     * @return string
+     * @return string 
      */
     public function getDispositifSecu()
     {
@@ -1631,7 +1627,7 @@ class FormulaireSecours
     /**
      * Get typePlanEau
      *
-     * @return string
+     * @return string 
      */
     public function getTypePlanEau()
     {
@@ -1654,7 +1650,7 @@ class FormulaireSecours
     /**
      * Get typeSportEquestre
      *
-     * @return string
+     * @return string 
      */
     public function getTypeSportEquestre()
     {
@@ -1677,7 +1673,7 @@ class FormulaireSecours
     /**
      * Get typeSportAutre
      *
-     * @return string
+     * @return string 
      */
     public function getTypeSportAutre()
     {
@@ -1723,7 +1719,7 @@ class FormulaireSecours
     /**
      * Get typeEvtCulturel
      *
-     * @return string
+     * @return string 
      */
     public function getTypeEvtCulturel()
     {
@@ -1746,7 +1742,7 @@ class FormulaireSecours
     /**
      * Get prixEvt
      *
-     * @return string
+     * @return string 
      */
     public function getPrixEvt()
     {
@@ -1769,7 +1765,7 @@ class FormulaireSecours
     /**
      * Get evtIntExt
      *
-     * @return string
+     * @return string 
      */
     public function getEvtIntExt()
     {
@@ -1792,7 +1788,7 @@ class FormulaireSecours
     /**
      * Get typeSalle
      *
-     * @return string
+     * @return string 
      */
     public function getTypeSalle()
     {
@@ -1815,7 +1811,7 @@ class FormulaireSecours
     /**
      * Get typeSite
      *
-     * @return string
+     * @return string 
      */
     public function getTypeSite()
     {
@@ -1838,7 +1834,7 @@ class FormulaireSecours
     /**
      * Get nbPersoTotal
      *
-     * @return integer
+     * @return integer 
      */
     public function getNbPersoTotal()
     {
@@ -1861,7 +1857,7 @@ class FormulaireSecours
     /**
      * Get typeSiege
      *
-     * @return string
+     * @return string 
      */
     public function getTypeSiege()
     {
@@ -1884,7 +1880,7 @@ class FormulaireSecours
     /**
      * Get typePublic
      *
-     * @return string
+     * @return string 
      */
     public function getTypePublic()
     {
@@ -1907,7 +1903,7 @@ class FormulaireSecours
     /**
      * Get capaciteSite
      *
-     * @return integer
+     * @return integer 
      */
     public function getCapaciteSite()
     {
@@ -1930,7 +1926,7 @@ class FormulaireSecours
     /**
      * Get superficieSite
      *
-     * @return integer
+     * @return integer 
      */
     public function getSuperficieSite()
     {
@@ -1953,7 +1949,7 @@ class FormulaireSecours
     /**
      * Get nbAcces
      *
-     * @return integer
+     * @return integer 
      */
     public function getNbAcces()
     {
@@ -1976,7 +1972,7 @@ class FormulaireSecours
     /**
      * Get nbScene
      *
-     * @return integer
+     * @return integer 
      */
     public function getNbScene()
     {
@@ -1999,7 +1995,7 @@ class FormulaireSecours
     /**
      * Get simulScene
      *
-     * @return string
+     * @return string 
      */
     public function getSimulScene()
     {
@@ -2022,7 +2018,7 @@ class FormulaireSecours
     /**
      * Get amenagTemp
      *
-     * @return string
+     * @return string 
      */
     public function getAmenagTemp()
     {
@@ -2045,7 +2041,7 @@ class FormulaireSecours
     /**
      * Get typeRdP
      *
-     * @return string
+     * @return string 
      */
     public function getTypeRdP()
     {
@@ -2068,7 +2064,7 @@ class FormulaireSecours
     /**
      * Get animation
      *
-     * @return string
+     * @return string 
      */
     public function getAnimation()
     {
@@ -2091,7 +2087,7 @@ class FormulaireSecours
     /**
      * Get mvtPublic
      *
-     * @return string
+     * @return string 
      */
     public function getMvtPublic()
     {
@@ -2114,7 +2110,7 @@ class FormulaireSecours
     /**
      * Get medecin
      *
-     * @return string
+     * @return string 
      */
     public function getMedecin()
     {
@@ -2137,7 +2133,7 @@ class FormulaireSecours
     /**
      * Get nomMed
      *
-     * @return string
+     * @return string 
      */
     public function getNomMed()
     {
@@ -2160,7 +2156,7 @@ class FormulaireSecours
     /**
      * Get speMed
      *
-     * @return string
+     * @return string 
      */
     public function getSpeMed()
     {
@@ -2183,7 +2179,7 @@ class FormulaireSecours
     /**
      * Get contactMed
      *
-     * @return string
+     * @return string 
      */
     public function getContactMed()
     {
@@ -2206,7 +2202,7 @@ class FormulaireSecours
     /**
      * Get prenomMed
      *
-     * @return string
+     * @return string 
      */
     public function getPrenomMed()
     {
@@ -2229,7 +2225,7 @@ class FormulaireSecours
     /**
      * Get pieceSecours
      *
-     * @return string
+     * @return string 
      */
     public function getPieceSecours()
     {
@@ -2252,7 +2248,7 @@ class FormulaireSecours
     /**
      * Get repasSecours
      *
-     * @return string
+     * @return string 
      */
     public function getRepasSecours()
     {
@@ -2275,7 +2271,7 @@ class FormulaireSecours
     /**
      * Get prestaMed
      *
-     * @return string
+     * @return string 
      */
     public function getPrestaMed()
     {
@@ -2298,7 +2294,7 @@ class FormulaireSecours
     /**
      * Get telSite
      *
-     * @return string
+     * @return string 
      */
     public function getTelSite()
     {
@@ -2321,7 +2317,7 @@ class FormulaireSecours
     /**
      * Get communicationSecours
      *
-     * @return string
+     * @return string 
      */
     public function getCommunicationSecours()
     {
@@ -2344,7 +2340,7 @@ class FormulaireSecours
     /**
      * Get autresSecours
      *
-     * @return string
+     * @return string 
      */
     public function getAutresSecours()
     {
@@ -2367,7 +2363,7 @@ class FormulaireSecours
     /**
      * Get infosCompl
      *
-     * @return string
+     * @return string 
      */
     public function getInfosCompl()
     {
@@ -2465,373 +2461,6 @@ class FormulaireSecours
     {
         $this->statut = $statut;
     }
-
-//////////////////////////////////////////////////	UploadImage 1
-
-	/**
-	 * NOTE: This is not a mapped field of entity metadata, just a simple property.
-	 *
-	 * @Vich\UploadableField(mapping="poste_image", fileNameProperty="imageName")
-	 *
-	 * @var File
-	 */
-	private $imageFile;
-
-	/**
-	 * @ORM\Column(type="string", length=255, nullable=true)
-	 *
-	 * @var string
-	 */
-	private $imageName;
-
-	/**
-	 * @ORM\Column(type="datetime", nullable=true)
-	 *
-	 * @var \DateTime
-	 */
-	private $updatedAt;
-
-	/**
-	 * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
-	 * of 'UploadedFile' is injected into this setter to trigger the  update. If this
-	 * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
-	 * must be able to accept an instance of 'File' as the bundle will inject one here
-	 * during Doctrine hydration.
-	 *
-	 * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-	 *
-	 * @return Poste
-	 */
-	public function setImageFile(File $image = null)
-	{
-		$this->imageFile = $image;
-
-		if ($image) {
-			// It is required that at least one field changes if you are using doctrine
-			// otherwise the event listeners won't be called and the file is lost
-			$this->updatedAt = new \DateTimeImmutable();
-		}
-
-		return $this;
-	}
-
-	/**
-	 * @return File|null
-	 */
-	public function getImageFile()
-	{
-		return $this->imageFile;
-	}
-
-	/**
-	 * @param string $imageName
-	 *
-	 * @return Poste
-	 */
-	public function setImageName($imageName)
-	{
-		$this->imageName = $imageName;
-
-		return $this;
-	}
-
-	/**
-	 * @return string|null
-	 */
-	public function getImageName()
-	{
-		return $this->imageName;
-	}
-
-
-////////////////////////////////////////////////////	UploadImage 2
-
-	/**
-	 * NOTE: This is not a mapped field of entity metadata, just a simple property.
-	 *
-	 * @Vich\UploadableField(mapping="poste_image", fileNameProperty="imageName2")
-	 *
-	 * @var File
-	 */
-	private $imageFile2;
-
-	/**
-	 * @ORM\Column(type="string", length=255, nullable=true)
-	 *
-	 * @var string
-	 */
-	private $imageName2;
-
-
-
-	/**
-	 * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
-	 * of 'UploadedFile' is injected into this setter to trigger the  update. If this
-	 * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
-	 * must be able to accept an instance of 'File' as the bundle will inject one here
-	 * during Doctrine hydration.
-	 *
-	 * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-	 *
-	 * @return Poste
-	 */
-	public function setImageFile2(File $image2 = null)
-	{
-		$this->imageFile2 = $image2;
-
-		if ($image2) {
-			// It is required that at least one field changes if you are using doctrine
-			// otherwise the event listeners won't be called and the file is lost
-			$this->updatedAt = new \DateTimeImmutable();
-		}
-
-		return $this;
-	}
-
-	/**
-	 * @return File|null
-	 */
-	public function getImageFile2()
-	{
-		return $this->imageFile2;
-	}
-
-	/**
-	 * @param string $imageName2
-	 *
-	 * @return Poste
-	 */
-	public function setImageName2($imageName2)
-	{
-		$this->imageName2 = $imageName2;
-
-		return $this;
-	}
-
-	/**
-	 * @return string|null
-	 */
-	public function getImageName2()
-	{
-		return $this->imageName2;
-	}
-
-	////////////////////////////////////////////////////	UploadImage 3
-
-	/**
-	 * NOTE: This is not a mapped field of entity metadata, just a simple property.
-	 *
-	 * @Vich\UploadableField(mapping="poste_image", fileNameProperty="imageName3")
-	 *
-	 * @var File
-	 */
-	private $imageFile3;
-
-	/**
-	 * @ORM\Column(type="string", length=255, nullable=true)
-	 *
-	 * @var string
-	 */
-	private $imageName3;
-
-
-
-	/**
-	 * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
-	 * of 'UploadedFile' is injected into this setter to trigger the  update. If this
-	 * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
-	 * must be able to accept an instance of 'File' as the bundle will inject one here
-	 * during Doctrine hydration.
-	 *
-	 * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-	 *
-	 * @return Poste
-	 */
-	public function setImageFile3(File $image3 = null)
-	{
-		$this->imageFile3 = $image3;
-
-		if ($image3) {
-			// It is required that at least one field changes if you are using doctrine
-			// otherwise the event listeners won't be called and the file is lost
-			$this->updatedAt = new \DateTimeImmutable();
-		}
-
-		return $this;
-	}
-
-	/**
-	 * @return File|null
-	 */
-	public function getImageFile3()
-	{
-		return $this->imageFile3;
-	}
-
-	/**
-	 * @param string $imageName3
-	 *
-	 * @return Poste
-	 */
-	public function setImageName3($imageName3)
-	{
-		$this->imageName3 = $imageName3;
-
-		return $this;
-	}
-
-	/**
-	 * @return string|null
-	 */
-	public function getImageName3()
-	{
-		return $this->imageName3;
-	}
-
-	////////////////////////////////////////////////////	UploadImage 4
-
-	/**
-	 * NOTE: This is not a mapped field of entity metadata, just a simple property.
-	 *
-	 * @Vich\UploadableField(mapping="poste_image", fileNameProperty="imageName4")
-	 *
-	 * @var File
-	 */
-	private $imageFile4;
-
-	/**
-	 * @ORM\Column(type="string", length=255, nullable=true)
-	 *
-	 * @var string
-	 */
-	private $imageName4;
-
-
-
-	/**
-	 * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
-	 * of 'UploadedFile' is injected into this setter to trigger the  update. If this
-	 * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
-	 * must be able to accept an instance of 'File' as the bundle will inject one here
-	 * during Doctrine hydration.
-	 *
-	 * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-	 *
-	 * @return Poste
-	 */
-	public function setImageFile4(File $image4 = null)
-	{
-		$this->imageFile4 = $image4;
-
-		if ($image4) {
-			// It is required that at least one field changes if you are using doctrine
-			// otherwise the event listeners won't be called and the file is lost
-			$this->updatedAt = new \DateTimeImmutable();
-		}
-
-		return $this;
-	}
-
-	/**
-	 * @return File|null
-	 */
-	public function getImageFile4()
-	{
-		return $this->imageFile4;
-	}
-
-	/**
-	 * @param string $imageName4
-	 *
-	 * @return Poste
-	 */
-	public function setImageName4($imageName4)
-	{
-		$this->imageName4 = $imageName4;
-
-		return $this;
-	}
-
-	/**
-	 * @return string|null
-	 */
-	public function getImageName4()
-	{
-		return $this->imageName4;
-	}
-
-	////////////////////////////////////////////////////	UploadImage 5
-
-	/**
-	 * NOTE: This is not a mapped field of entity metadata, just a simple property.
-	 *
-	 * @Vich\UploadableField(mapping="poste_image", fileNameProperty="imageName5")
-	 *
-	 * @var File
-	 */
-	private $imageFile5;
-
-	/**
-	 * @ORM\Column(type="string", length=255, nullable=true)
-	 *
-	 * @var string
-	 */
-	private $imageName5;
-
-
-
-	/**
-	 * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
-	 * of 'UploadedFile' is injected into this setter to trigger the  update. If this
-	 * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
-	 * must be able to accept an instance of 'File' as the bundle will inject one here
-	 * during Doctrine hydration.
-	 *
-	 * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
-	 *
-	 * @return Poste
-	 */
-	public function setImageFile5(File $image5 = null)
-	{
-		$this->imageFile5 = $image5;
-
-		if ($image5) {
-			// It is required that at least one field changes if you are using doctrine
-			// otherwise the event listeners won't be called and the file is lost
-			$this->updatedAt = new \DateTimeImmutable();
-		}
-
-		return $this;
-	}
-
-	/**
-	 * @return File|null
-	 */
-	public function getImageFile5()
-	{
-		return $this->imageFile5;
-	}
-
-	/**
-	 * @param string $imageName5
-	 *
-	 * @return Poste
-	 */
-	public function setImageName5($imageName5)
-	{
-		$this->imageName5 = $imageName5;
-
-		return $this;
-	}
-
-	/**
-	 * @return string|null
-	 */
-	public function getImageName5()
-	{
-		return $this->imageName5;
-	}
-
 
 
 }

@@ -57,7 +57,7 @@ class Reservation
 	 * @ORM\Column(nullable=true)
 	 * @ORM\ManyToOne(targetEntity="FrontBundle\Entity\FormulaireSecours", inversedBy="reservations")
 	 */
-	private $formulaireSecours;
+	protected $formulaireSecours;
 
 	/**
      * @var string
@@ -263,28 +263,30 @@ class Reservation
     }
 
     /**
-     * Set formulairesecours
+     * Set FormulaireSecours
      *
-     * @param \FrontBundle\Entity\FormulaireSecours $formulairesecours
+     * @param \FrontBundle\Entity\FormulaireSecours $formulaireSecours
      *
      * @return Reservation
      */
-    public function setFormulairesecours(\FrontBundle\Entity\FormulaireSecours $formulairesecours = null)
+    public function setFormulaireSecours(\FrontBundle\Entity\FormulaireSecours $formulaireSecours = null)
     {
-        $this->formulairesecours = $formulairesecours;
+        $this->formulaireSecours = $formulaireSecours;
 
         return $this;
     }
 
     /**
-     * Get formulairesecours
+     * Get FormulaireSecours
      *
      * @return \FrontBundle\Entity\FormulaireSecours
      */
-    public function getFormulairesecours()
+    public function getFormulaireSecours()
     {
-        return $this->formulairesecours;
+        return $this->formulaireSecours;
     }
+
+    /////////////////UploadImage Diplôme
 
 	/**
 	 * NOTE: This is not a mapped field of entity metadata, just a simple property.
@@ -309,7 +311,12 @@ class Reservation
 	 */
 	private $updatedAt;
 
-	/**
+    public function __construct()
+    {
+        $this->updatedAt = new \DateTime();
+    }
+
+    /**
 	 * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
 	 * of 'UploadedFile' is injected into this setter to trigger the  update. If this
 	 * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
