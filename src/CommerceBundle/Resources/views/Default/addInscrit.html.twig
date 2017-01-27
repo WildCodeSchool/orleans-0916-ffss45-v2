@@ -1,49 +1,54 @@
 {% set panier =  app.session.get('panier') %}
-<div class="container" style="padding-left: 10%">
 
-{% if panier[id]['inscrits'][key]['nom'] is defined %}
-    {{ panier[id]['inscrits'][key]['nom'] }}
-    <a href="{{ path('edit_inscrit', {'id':id, 'key':key} ) }}">edit</a>
-</div>
-{% else %}
+{% block stylesheet %}
+    <link rel="stylesheet" href="{{ asset('css/addinscrit.css') }}">
+{% endblock %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+
+            <span class="inscritcolor">Inscrit {{ key }}</span>{% if key==1 %}
+            <a class="btn btn-sm btn-warning" href="{{ path('user_inscrit', {'id':id} ) }}">Cette formation est pour
+                moi</a>
+            {% endif %}
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="espace">
+    {% if panier[id]['inscrits'][key]['nom'] is defined %}
+     {{ panier[id]['inscrits'][key]['email'] }}
+
+    <a class="btn btn-sm btn-info" href="{{ path('edit_inscrit', {'id':id, 'key':key} ) }}">Edit</a>
+            </div>
+        </div>
+    </div>
+    {% else %}
 
     {{ form_start(form, {'attr':{'id':'valid_inscrit' ~  key }, 'action':path('add_inscrit', {'id':id, 'key':key})}) }}
 
-        <table>
 
-            <tr>
-                <td ROWSPAN=2 style="padding-right: 10px;"><span style="color: #23527c;">Inscrit {{ key }}</span></td>
-                <td>
-                    {{form_label(form.nom, 'nom')}}
-                    {{form_widget(form.nom, {'attr':{'class':'form-control'}}) }}
-                    {{form_errors(form.nom)}}
-                </td>
-                <td>
+        <div class="col-sm-4">
+            {{ form_widget(form.nom, {'attr':{'class':'form-control', 'placeholder': "Votre nom"}}) }}
+            {{ form_errors(form.nom) }}
+        </div>
+        <div class="col-sm-4">
 
-                    {{form_label(form.prenom, 'prenom')}}
-                    {{form_widget(form.prenom, {'attr':{'class':'form-control'}}) }}
-                    {{form_errors(form.prenom)}}
-                </td>
-                <td>
-                    {{form_label(form.email, 'email')}}
-                    {{form_widget(form.email, {'attr':{'class':'form-control'}}) }}
-                    {{form_errors(form.email)}}
-                </td>
+            {{ form_widget(form.prenom, {'attr':{'class':'form-control', 'placeholder': "Votre prenom"}}) }}
+            {{ form_errors(form.prenom) }}
+        </div>
 
+        <div class="col-sm-4">
 
-            </tr>
-
-               <td>{% if key==1 %}
-                        <a style="background-color: #FFCC06;" class="btn btn-warning" href="{{ path('user_inscrit', {'id':id} ) }}">Cette formation est pour moi</a>
-                    {% endif %}
-            </td>
-
-
-        </table>
-
-
+            {{ form_widget(form.email, {'attr':{'class':'form-control', 'placeholder': "Votre email"}}) }}
+            {{ form_errors(form.email) }}
+        </div>
+    </div>
 
     {{ form_end(form) }}
-
+</div>
 
 {% endif %}

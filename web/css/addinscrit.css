@@ -1,0 +1,19 @@
+.btn-warning {
+    background-color: #FFCC06;
+}
+.inscrit {
+    padding-right: 10px;
+}
+.inscritcolor {
+    color: #23527c;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.espace {
+    padding:15px;
+    font-family :Helvetica, Arial, sans-serif;
+    font-size : 18px;
+}
