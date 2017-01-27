@@ -23,6 +23,8 @@ use AdminBundle\Form\AgendaType;
 use Symfony\Component\HttpFoundation\File\File;
 use AdminBundle\Entity\User;
 use CommerceBundle\Entity\Reservation;
+use Tlconseil\SystempayBundle\Service\SystemPay;
+
 
 
 class PanierController extends Controller
@@ -209,6 +211,7 @@ class PanierController extends Controller
 
                     $reservation = new Reservation();
                     $reservation->setUser($user);
+                    $reservation->setStatus(1);
 
                     $agenda_panier = $formation['agenda'];
                     $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_panier->getId());
@@ -256,6 +259,7 @@ class PanierController extends Controller
 
                     $reservation = new Reservation();
                     $reservation->setUser($user);
+                    $reservation->setStatus(1);
 
                     $agenda_panier = $formation['agenda'];
                     $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_panier->getId());
@@ -456,7 +460,7 @@ class PanierController extends Controller
         $systempay = $this->get('tlconseil.systempay')
             ->init()
             ->setOptionnalFields(array(
-                'shop_url' => 'http://www.example.com'
+                'shop_url' => 'https://paiement.systempay.fr/vads-payment/'
             ));
 
         return $this->render('@Commerce/Default/payment.html.twig', array(
