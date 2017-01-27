@@ -86,13 +86,14 @@ fos_user:
 
     registration:
             form:
-                type: FrontBundle\FOSUserBundle\Form\RegistrationFormType
+                type: FrontBundle\Form\RegistrationFormType
                 # if you are using Symfony < 2.8 you should use the type name instead
                 # type: app_user_registration
 
     profile:
        form:
-            type: FrontBundle\Form\ProfileFormType
+            type: AdminBundle\Form\ProfileFormType
+
 
 
 knp_snappy:  

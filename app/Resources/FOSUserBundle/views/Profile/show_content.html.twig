@@ -1,6 +1,199 @@
 {% trans_default_domain 'FOSUserBundle' %}
+{% extends 'FrontBundle:Default:frontLayout.html.twig' %}
+{% block stylesheet %}
+    {{ parent }}
+    <link rel="stylesheet" href="{{ asset('css/user.css') }}">
+{% endblock %}
 
-<div class="fos_user_user_show">
-    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
-</div>
+{% block body %}
+
+
+    <div class="container page">
+        <div class="row">
+            <div class="col-xs-12"><br/>
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#Profil">Profil</a></li>
+                    <li><a data-toggle="tab" href="#Formations">Formations</a></li>
+                    <li><a data-toggle="tab" href="#Poste_Secours">Poste de Secours</a></li>
+
+                </ul>
+                <div class="tab-content">
+                    <div id="Profil" class="tab-pane fade in active" style="min-height: 350px">
+                        <div class="page">
+                            {#<div class="info">#}
+
+                            <h1> Espace Client</h1>
+                            <div class="row">
+                                {% if is_granted('ROLE_ADMIN') %}
+
+                                    <div class="col-xs-6">
+                                        <p>Se rendre dans l'espace Administration : <a href="{{ path('admin') }}"><i
+                                                        class="fa fa-lock"
+                                                        aria-hidden="true"></i></a></p>
+                                    </div>
+                                {% endif %}
+
+                                {% if is_granted('ROLE_USER') %}
+
+                                {% endif %}
+                            </div>
+                            <p>Vos Informations</p>
+                            <table class="table table-bordered table-condensed table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Pseudo</th>
+                                    <td>{{ app.user.username }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nom</th>
+                                    <td>{{ app.user.nom }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Prénom</th>
+                                    <td>{{ app.user.prenom }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Adresse</th>
+                                    <td>{{ app.user.adresse }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Département de naissance</th>
+                                    <td>{{ app.user.departementnaissance }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Lieu de naissance</th>
+                                    <td>{{ app.user.lieunaissance }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Date de naissance</th>
+                                    <td>{{ app.user.datenaissance | date('d/m/Y') }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Code Postal</th>
+                                    <td>{{ app.user.codepostal }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Ville</th>
+                                    <td>{{ app.user.Ville }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Tel</th>
+                                    <td>{{ app.user.Tel }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Mail</th>
+                                    <td>{{ app.user.email }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Comment avez vous connu l'association FFSS</th>
+                                    <td>{{ app.user.relation }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Photo</th>
+                                    <td><img style="width: 25%;" src="{{ asset('upload/img/'~app.user.imagename) }}"  alt="" /></td>
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+
+
+                            {#<p><a href="{{ path('fos_user_security_logout') }}">se déconnecter</a> </p>#}
+                            <p><a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}">Modifier mes
+                                    informations</a></p>
+                        </div>
+                    </div>
+
+                    {#<div id="Formations" class="tab-pane fade" style="min-height: 350px">#}
+                        {#<h1>Liste des formations</h1><br/>#}
+                        {{ render(controller('CommerceBundle:Reservation:reservationProfil')) }}
+
+                        {#{% if reservations %}#}
+                            {#<table class="table table-bordered table-hover table-striped table-condensed">#}
+                                {#<thead>#}
+                                {#<tr>#}
+                                    {#<th>Nom de la formation</th>#}
+                                    {#<th>Date début la formation</th>#}
+                                    {#<th>Recyclage</th>#}
+                                    {#<th>Statut</th>#}
+                                    {#<th>Diplôme</th>#}
+                                    {#<th>Categorie</th>#}
+                                    {#<th>Convocation</th>#}
+                                {#</tr>#}
+                                {#</thead>#}
+
+
+                                {#{% for reservation in reservations %}#}
+                                    {#{{ dump(formation) }}#}
+
+
+                                    {#<tbody>#}
+                                    {#<tr>#}
+                                        {#<td>{{ reservation.agenda.formation.nomLong }}</td>#}
+                                        {#<td>{{ reservation.agenda.dateDeDebut|date('d-m-Y') }}</td>#}
+                                        {#<td>{{ reservation.agenda.formation.recyclage }} Mois</td>#}
+                                        {#<td>{{ reservation.statusLabel }}</td>#}
+                                        {#<td><img style="width: 150px;" class="smallPic" src="{{ asset('upload/img/'~reservation.imageName) }}" alt="{{ reservation.titre }}"/></td>#}
+                                        {#<td>{{ reservation.agenda.formation.categorie.nomCategorie }}</td>#}
+                                        {#<td>#}
+                                            {#<a class="button" href="{{ path('convocation_pdf', {'id':reservation.agenda.id}) }}">#}
+                                                {#Télécharger la Convocation#}
+                                            {#</a>#}
+                                        {#</td>#}
+                                    {#</tr>#}
+                                    {#</tbody>#}
+
+
+                                {#{% endfor %}#}
+                            {#</table>#}
+                        {#{% else %}#}
+                            {#<p>Vous n'avez pas de formation</p>#}
+                        {#{% endif %}#}
+                    {#</div>#}
+
+
+                    {{ render(controller('CommerceBundle:Reservation:reservationPoste')) }}
+
+
+                    {#<div id="Poste_Secours" class="tab-pane fade" style="min-height: 350px">#}
+                        {#<h1>Liste des postes de secours</h1><br/>#}
+                        {#{% if formulaireSecours %}#}
+                            {#{% for formulaireSecour in formulaireSecours %}#}
+                                {#<table class="table table-bordered table-hover table-striped table-condensed">#}
+                                    {#<tbody>#}
+
+                                    {#<tr>#}
+                                        {#<th>Nom de la manifestation</th>#}
+                                        {#<th>Date début manif</th>#}
+                                        {#<th>Date fin manif</th>#}
+                                        {#<th>Prix de la prestation</th>#}
+                                    {#</tr>#}
+                                    {#<tr>#}
+                                        {#<td>{{ formulaireSecour.nomManif }}</td>#}
+                                        {#<td>{% if formulaireSecour.dateDebutManif %}{{ formulaireSecour.dateDebutManif|date('d-m-Y') }}{% endif %}</td>#}
+                                        {#<td>{% if formulaireSecour.dateFinManif %}{{ formulaireSecour.dateFinManif|date('d-m-Y') }}{% endif %}</td>#}
+                                        {#<td>{{ formulaireSecour.devis }}€</td>#}
+                                        {#<td><a class="btn btn-primary" href="#">Payer la prestation</a></td>#}
+                                    {#</tr>#}
+
+                                    {#</tbody>#}
+                                {#</table>#}
+                            {#{% endfor %}#}
+                        {#{% else %}#}
+                            {#<p>Vous n'avez pas de demande de poste de secours</p>#}
+                        {#{% endif %}#}
+                    {#</div>#}
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
