@@ -65,7 +65,7 @@
                         {% if is_granted("IS_AUTHENTICATED_FULLY") %}
                         
                             <li>
-                                <a href="{{ path('user_question') }}" class="log" ><b>{{ app.user.username }}</b></a>
+                                <a href="{{ path('fos_user_profile_show') }}" class="log" ><b>{{ app.user.username }}</b></a>
                             </li>
 
                             <li>
