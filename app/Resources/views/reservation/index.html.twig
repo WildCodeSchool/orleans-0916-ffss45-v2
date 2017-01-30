@@ -49,7 +49,7 @@
                                          src="{{ asset('upload/img/'~user.imageName) }}" alt="{{ user.titre }}"/></td>
                                 <td>{% if reservation.delaiExpiration %}{{ reservation.delaiExpiration|date('Y-m-d H:i:s') }}{% endif %}</td>
                                 <td><img style="width: 75px;" class="smallPic"
-                                         src="{{ asset('upload/img/'~reservation.imageName) }}"
+                                         src="{{ asset('upload/user/'~reservation.imageName) }}"
                                          alt="{{ img.titre }}"/></td>
                                 <td>
                                     <ul>

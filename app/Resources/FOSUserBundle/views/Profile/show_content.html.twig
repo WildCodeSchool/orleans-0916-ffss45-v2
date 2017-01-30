@@ -26,11 +26,11 @@
                             <div class="row">
                                 {% if is_granted('ROLE_ADMIN') %}
 
-                                    <div class="col-xs-6">
+
                                         <p>Se rendre dans l'espace Administration : <a href="{{ path('admin') }}"><i
                                                         class="fa fa-lock"
                                                         aria-hidden="true"></i></a></p>
-                                    </div>
+
                                 {% endif %}
 
                                 {% if is_granted('ROLE_USER') %}
@@ -38,7 +38,7 @@
                                 {% endif %}
                             </div>
                             <p>Vos Informations</p>
-                            <table class="table table-bordered table-condensed table-striped">
+                            <table class="table table-bordered table-condensed table-striped table-responsive">
                                 <thead>
                                 <tr>
                                     <th>Pseudo</th>
@@ -93,8 +93,8 @@
                                 </tr>
 
                                 <tr>
-                                    <th>Photo</th>
-                                    <td><img style="width: 25%;" src="{{ asset('upload/img/'~app.user.imagename) }}"  alt="" /></td>
+                                    <th>Carte Identité</th>
+                                    <td>{% if user.imageName %}<img style="width: 25%;" src="{{ asset('upload/user/'~user.imageName) }}"  alt="" />{% endif %}</td>
                                 </tr>
 
 
@@ -103,8 +103,7 @@
 
 
                             {#<p><a href="{{ path('fos_user_security_logout') }}">se déconnecter</a> </p>#}
-                            <p><a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}">Modifier mes
-                                    informations</a></p>
+                            <p><a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}">Modifier mes informations</a></p>
                         </div>
                     </div>
 
