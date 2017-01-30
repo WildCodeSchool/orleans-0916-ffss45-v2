@@ -21,9 +21,9 @@
                         <th>Téléphone</th>
                         <th>Status</th>
                         <th>Numéro de réservation</th>
-                        <th>Diplôme</th>
-                        <th>Delai d' expiration</th>
                         <th>Carte d'identité</th>
+                        <th>Delai d' expiration</th>
+                        <th>Diplôme</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -45,12 +45,9 @@
                                 <td> {{ reservation.user.tel }}</td>
                                 <td>{{ reservation.statusLabel }}</td>
                                 <td>{{ reservation.numeroReservation }}</td>
-                                <td><img style="width: 150px;" class="smallPic"
-                                         src="{{ asset('upload/img/'~user.imageName) }}" alt="{{ user.titre }}"/></td>
+                                <td>{% if reservation.user.imageName %}<img style="width: 75px;" class="smallPic" src="{{ asset('upload/identite/'~reservation.user.imageName) }}" alt="{{ user.titre }}"/>{% endif %}</td>
                                 <td>{% if reservation.delaiExpiration %}{{ reservation.delaiExpiration|date('Y-m-d H:i:s') }}{% endif %}</td>
-                                <td><img style="width: 75px;" class="smallPic"
-                                         src="{{ asset('upload/img/'~reservation.imageName) }}"
-                                         alt="{{ img.titre }}"/></td>
+                                <td>{% if reservation.imageName %}<img style="width: 75px;" class="smallPic" src="{{ asset('upload/diplome/'~reservation.imageName) }}" alt="{{ img.titre }}"/>{% endif %}</td>
                                 <td>
                                     <ul>
                                         <li>

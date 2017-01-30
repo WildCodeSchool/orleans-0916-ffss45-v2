@@ -136,8 +136,8 @@ vich_uploader:
 
     mappings:
         img_image:
-            uri_prefix:         /upload/img
-            upload_destination: %kernel.root_dir%/../web/upload/img
+            uri_prefix:         /upload/diplome
+            upload_destination: %kernel.root_dir%/../web/upload/diplome
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
@@ -146,11 +146,22 @@ vich_uploader:
 
 
         user_image:
-            uri_prefix:         /upload/img
-            upload_destination: %kernel.root_dir%/../web/upload/img
+            uri_prefix:         /upload/identite
+            upload_destination: %kernel.root_dir%/../web/upload/identite
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            upload_destination: product_image_fs
+            namer:              vich_uploader.namer_uniqid
+
 
         poste_image:
-            uri_prefix:         /upload/img
-            upload_destination: %kernel.root_dir%/../web/upload/img
+            uri_prefix:         /upload/poste
+            upload_destination: %kernel.root_dir%/../web/upload/poste
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            upload_destination: product_image_fs
+            namer:              vich_uploader.namer_uniqid
 
 gregwar_captcha: ~
