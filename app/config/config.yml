@@ -104,13 +104,12 @@ knp_snappy:
 
 tlconseil_systempay:
     # Credentials
-    site_id: 14235591
+    site_id: "%site_id%"
     # Keys
-    key_dev: 7201504303739237
-    key_prod: XXXXX
+    key_dev: "%key_dev%"
+    key_prod:
     # Return
-    url_return: https://193.70.38.206/orleans-0916-ffss45-v2/web/app.php/
-
+    url_return: "%url_return%"
     # Optionnal fields (here the fields have their default values) :
 
     # Debug values : ON / OFF
@@ -123,10 +122,10 @@ tlconseil_systempay:
     language: fr
     # Success
     redirect_success_timeout: 1
-    redirect_success_message: Redirection vers Les Annonces de la Seine dans quelques instants
+    redirect_success_message: Redirection vers FFSS45 dans quelques instants
     # Error
     redirect_error_timeout: 1
-    redirect_error_message: Redirection vers Les Annonces de la Seine dans quelques instants
+    redirect_error_message: Redirection vers FFSS45 dans quelques instants
 
 
 
