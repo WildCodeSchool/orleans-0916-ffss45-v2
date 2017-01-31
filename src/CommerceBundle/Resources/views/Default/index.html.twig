@@ -26,7 +26,7 @@
                     <td>{{ reservation.agenda.dateDeDebut|date('d-m-Y') }}</td>
                     <td>{{ reservation.agenda.formation.recyclage }} Mois</td>
                     <td>{{ reservation.statusLabel }}</td>
-                    <td>{% if reservation.imageName %}<img style="width: 150px;" class="smallPic" src="{{ asset('upload/img/'~reservation.imageName) }}" alt="{{ reservation.titre }}"/>{% endif %}</td>
+                    <td>{% if reservation.imageName %}<img style="width: 150px;" class="smallPic" src="{{ asset('upload/diplome/'~reservation.imageName) }}" alt="{{ reservation.titre }}"/>{% endif %}</td>
                     <td>{{ reservation.agenda.formation.categorie.nomCategorie }}</td>
                     <td>
                         <a class="button" href="{{ path('convocation_pdf', {'id':reservation.agenda.id}) }}">

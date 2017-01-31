@@ -13,19 +13,31 @@
                         <td>{{ reservation.id }}</td>
                     </tr>
                     <tr>
-                        <th>Status</th>
-                        <td>{{ reservation.status }}</td>
+                        <th>Nom</th>
+                        <td>{{ reservation.user.nom }}</td>
                     </tr>
                     <tr>
-                        <th>Numberreservation</th>
-                        <td>{{ reservation.numeroReservation }}</td>
+                        <th>Prénom</th>
+                        <td>{{ reservation.user.prenom }}</td>
+                    </tr>
+                    <tr>
+                        <th>Date de Naissance</th>
+                        <td>{{ user.dateNaissance|date('d-m-Y') }}</td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>{{ user.dateNaissance|date('d-m-Y') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>{{ reservation.status }}</td>
                     </tr>
                     <tr>
                         <th>Convocation</th>
                         <td>{{ reservation.convocation }}</td>
                     </tr>
                     <tr>
-                        <th>Certificate</th>
+                        <th>Certificat</th>
                         <td>{{ reservation.certificate }}</td>
                     </tr>
                     <tr>

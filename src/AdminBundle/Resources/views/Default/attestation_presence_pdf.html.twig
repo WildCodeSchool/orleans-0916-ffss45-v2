@@ -26,13 +26,9 @@
         15 Quai du Roi<br/>
         45000 ORLEANS</P>
         <p>atteste que :</p>
-        {#{% for reservation in agenda.reservations %}#}
         <p class="eleve">{{ reservation.user.prenom }} {{ reservation.user.nom }}</p>
-        {#{% endfor %}#}
-        <p>a suivi l'ansemble de la Formation continue PSE1<br/>
-        qui s'est déroulée à {{ agenda.adresse }} du {{ agenda.dateDeDebut | date('d/m/Y') }} au {{ agenda.dateDeFin
-            | date
-            ('d/m/Y') }}.</p>
+        <p>a suivi l'ansemble de la Formation continue {{ reservation.agenda.formation.nomCourt }}<br/>
+        qui s'est déroulée à {{ reservation.agenda.adresse }} du {{ reservation.agenda.dateDeDebut | date('d/m/Y') }} au {{ reservation.agenda.dateDeFin | date('d/m/Y') }}.</p>
         <p>Fait le {{ 'now' | date ('d/m/Y') }}</p>
     </div>
 </body>
