@@ -180,13 +180,13 @@ class PanierController extends Controller
 
     /**
      * @Route("/finalSubscription", name="final_subscription")
-     * @Method({"POST"})
+     *
      */
     public function finalSubscriptionAction(Request $request)
     {
 
 
-        var_dump($reponse);
+//        var_dump($reponse);
 
         $em = $this->getDoctrine()->getManager();
 
@@ -293,7 +293,7 @@ class PanierController extends Controller
 
 
         }
-        $em->flush();die;
+        $em->flush();
         return $this->redirect($this->generateUrl('page_accueil_principale'));
         // }
         // return $this->render('@Front/Default/acceuil.html.twig', array(
