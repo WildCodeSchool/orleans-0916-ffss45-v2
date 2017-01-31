@@ -186,7 +186,7 @@ class PanierController extends Controller
        $reponse = $this->get('tlconseil.systempay')
             ->responseHandler($request);
 
-        var_dump($reponse);die;
+        //dump($reponse);die;
 
         $em = $this->getDoctrine()->getManager();
 
@@ -371,7 +371,7 @@ class PanierController extends Controller
     {
         $session = $request->getSession();
         $panier = $session->get('panier');
-        dump($panier);
+        //dump($panier);
         $id = $agenda->getId();
         if (isset($panier[$id]['inscrits'][$key])) {
             unset($panier[$id]['inscrits'][$key]);
@@ -446,7 +446,7 @@ class PanierController extends Controller
 
             }
 
-            return $this->render('@Commerce/Default/payment.html.twig', array(
+            return $this->render('@Commerce/Default/payOnline.html.twig', array(
                 'panier' => $panier,
             ));
         } else {
