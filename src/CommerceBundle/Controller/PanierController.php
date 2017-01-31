@@ -186,7 +186,7 @@ class PanierController extends Controller
        $reponse = $this->get('tlconseil.systempay')
             ->responseHandler($request);
 
-        dump($reponse);die;
+        var_dump($reponse);die;
 
         $em = $this->getDoctrine()->getManager();
 
@@ -408,7 +408,7 @@ class PanierController extends Controller
     {
         $session = $request->getSession();
         $panier = $session->get('panier');
-        dump($panier);
+
 
         return $this->render('@Commerce/Default/validCart.html.twig', array(
             'panier' => $panier,
