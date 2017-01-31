@@ -183,6 +183,11 @@ class PanierController extends Controller
      */
     public function finalSubscriptionAction(Request $request)
     {
+       $reponse = $this->get('tlconseil.systempay')
+            ->responseHandler($request);
+
+        dump($reponse);die;
+
         $em = $this->getDoctrine()->getManager();
 
         $session = $request->getSession();
@@ -502,8 +507,7 @@ class PanierController extends Controller
     public function paymentVerificationAction(Request $request)
     {
         // ...
-        $this->get('tlconseil.systempay')
-            ->responseHandler($request);
+
 
         return new Response();
     }

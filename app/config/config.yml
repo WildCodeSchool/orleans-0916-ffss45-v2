@@ -108,8 +108,7 @@ tlconseil_systempay:
     key_dev: "%key_dev%"
     key_prod:
     # Return
-    url_return: http://193.70.38.206/ffss45/app.php
-
+    url_return: "%url_return%"
     # Optionnal fields (here the fields have their default values) :
 
     # Debug values : ON / OFF
@@ -122,10 +121,10 @@ tlconseil_systempay:
     language: fr
     # Success
     redirect_success_timeout: 1
-    redirect_success_message: Redirection vers Les Annonces de la Seine dans quelques instants
+    redirect_success_message: Redirection vers FFSS45 dans quelques instants
     # Error
     redirect_error_timeout: 1
-    redirect_error_message: Redirection vers Les Annonces de la Seine dans quelques instants
+    redirect_error_message: Redirection vers FFSS45 dans quelques instants
 
 
 
