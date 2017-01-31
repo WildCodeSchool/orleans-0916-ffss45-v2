@@ -180,13 +180,13 @@ class PanierController extends Controller
 
     /**
      * @Route("/finalSubscription", name="final_subscription")
+     *
      */
     public function finalSubscriptionAction(Request $request)
     {
-       $reponse = $this->get('tlconseil.systempay')
-            ->responseHandler($request);
 
-        dump($reponse);die;
+
+//        var_dump($reponse);
 
         $em = $this->getDoctrine()->getManager();
 
@@ -371,7 +371,7 @@ class PanierController extends Controller
     {
         $session = $request->getSession();
         $panier = $session->get('panier');
-        dump($panier);
+        //dump($panier);
         $id = $agenda->getId();
         if (isset($panier[$id]['inscrits'][$key])) {
             unset($panier[$id]['inscrits'][$key]);
@@ -408,7 +408,7 @@ class PanierController extends Controller
     {
         $session = $request->getSession();
         $panier = $session->get('panier');
-        dump($panier);
+
 
         return $this->render('@Commerce/Default/validCart.html.twig', array(
             'panier' => $panier,
@@ -446,7 +446,7 @@ class PanierController extends Controller
 
             }
 
-            return $this->render('@Commerce/Default/payment.html.twig', array(
+            return $this->render('@Commerce/Default/payOnline.html.twig', array(
                 'panier' => $panier,
             ));
         } else {
@@ -487,9 +487,9 @@ class PanierController extends Controller
         $systempay = $this->get('tlconseil.systempay')
             ->init($currency = 978, $amount = ($totalfinal*100))
             ->setOptionnalFields(array(
-                'shop_url' => 'http://193.70.38.206/ffss45/app.php'
+                'shop_url' => 'http://193.70.38.206/ffss45/app.php565556',
+                'vads_trans_id' => '12345'
             ));
-
 
         return array(
             'paymentUrl' => $systempay->getPaymentUrl(),
@@ -507,7 +507,8 @@ class PanierController extends Controller
     public function paymentVerificationAction(Request $request)
     {
         // ...
-
+        $this->get('tlconseil.systempay')
+            ->responseHandler($request);
 
         return new Response();
     }
