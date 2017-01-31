@@ -22,10 +22,6 @@ class ReservationType extends AbstractType
 			        2 => 'Inscrit',
 			        3 => 'Inscription annulée',
 			        4 => 'Inscription reportée')))
-                ->add('numeroReservation')
-//                ->add('convocation')
-//                ->add('certificate')
-//                ->add('delaiExpiration')
                ->add('user', EntityType::class, [
                	'class'=>'AdminBundle\Entity\User',
 	               'choice_label'=>'username'
