@@ -23,6 +23,8 @@ use AdminBundle\Form\AgendaType;
 use Symfony\Component\HttpFoundation\File\File;
 use AdminBundle\Entity\User;
 use CommerceBundle\Entity\Reservation;
+use Tlconseil\SystempayBundle\Service\SystemPay;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
 
 class PanierController extends Controller
@@ -87,6 +89,7 @@ class PanierController extends Controller
                 'Le panier est vide, veuillez ajouter des formations'
             );
         }
+
         return $this->render('@Commerce/Default/panier.html.twig', array(
             'panier' => $panier, 'totalfinal' => $totalfinal,
         ));
@@ -180,6 +183,11 @@ class PanierController extends Controller
      */
     public function finalSubscriptionAction(Request $request)
     {
+       $reponse = $this->get('tlconseil.systempay')
+            ->responseHandler($request);
+
+        dump($reponse);die;
+
         $em = $this->getDoctrine()->getManager();
 
         $session = $request->getSession();
@@ -209,6 +217,7 @@ class PanierController extends Controller
 
                     $reservation = new Reservation();
                     $reservation->setUser($user);
+                    $reservation->setStatus(1);
 
                     $agenda_panier = $formation['agenda'];
                     $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_panier->getId());
@@ -256,6 +265,7 @@ class PanierController extends Controller
 
                     $reservation = new Reservation();
                     $reservation->setUser($user);
+                    $reservation->setStatus(1);
 
                     $agenda_panier = $formation['agenda'];
                     $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_panier->getId());
@@ -381,6 +391,9 @@ class PanierController extends Controller
     {
         $session = $request->getSession();
         $panier = $session->get('panier');
+
+
+
         $id = $agenda->getId();
         $user = $this->getUser();
         $panier[$id]['inscrits'][1] = ['nom' => $user->getNom(), 'prenom' => $user->getPrenom(), 'email' => $user->getEmail()];
@@ -447,22 +460,43 @@ class PanierController extends Controller
     }
 
     /**
-     * @Route("/initiate-payment/id-{id}", name="pay_online")
-     *
+     * @Route("/initiate-payment", name="pay_online")
+     * @Template()
      */
-    public function payOnlineAction($id)
+    public function payOnlineAction(Request $request)
     {
-        // ...
+        $session = $request->getSession();
+        $montantTotal = $session->get('panier');
+        $em = $this->getDoctrine()->getManager();
+
+        $totalLivraison = 0;
+        $prixLivraison = 5;
+        $totalfinal = 0;
+
+        foreach ($session->get('panier') as $id => $article) {
+
+            $agenda = $em->getRepository('AdminBundle:Agenda')->find($id);
+            $panier[$agenda->getId()]['totalitem'] = $agenda->getFormation()->getPrix() * $article['quantity'];
+            if ($session->get('totalLivraison')) {
+                $totalLivraison = $prixLivraison * $article['quantity'];
+            }
+            $totalfinal += $panier[$agenda->getId()]['totalitem'] + $totalLivraison;
+
+        }
+
         $systempay = $this->get('tlconseil.systempay')
-            ->init()
+            ->init($currency = 978, $amount = ($totalfinal*100))
             ->setOptionnalFields(array(
-                'shop_url' => 'http://www.example.com'
+                'shop_url' => 'http://193.70.38.206/ffss45/app.php'
             ));
 
-        return $this->render('@Commerce/Default/payment.html.twig', array(
+
+        return array(
             'paymentUrl' => $systempay->getPaymentUrl(),
             'fields' => $systempay->getResponse(),
-        ));
+
+
+        );
     }
 
     /**
@@ -473,8 +507,7 @@ class PanierController extends Controller
     public function paymentVerificationAction(Request $request)
     {
         // ...
-        $this->get('tlconseil.systempay')
-            ->responseHandler($request);
+
 
         return new Response();
     }
