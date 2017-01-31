@@ -180,13 +180,14 @@ class PanierController extends Controller
 
     /**
      * @Route("/finalSubscription", name="final_subscription")
+     * @Method({"POST"})
      */
     public function finalSubscriptionAction(Request $request)
     {
        $reponse = $this->get('tlconseil.systempay')
             ->responseHandler($request);
 
-        //dump($reponse);die;
+        dump($reponse);die;
 
         $em = $this->getDoctrine()->getManager();
 
