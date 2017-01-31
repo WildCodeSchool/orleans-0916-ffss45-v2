@@ -187,7 +187,7 @@ class PanierController extends Controller
        $reponse = $this->get('tlconseil.systempay')
             ->responseHandler($request);
 
-        dump($reponse);die;
+        dump($reponse);
 
         $em = $this->getDoctrine()->getManager();
 
