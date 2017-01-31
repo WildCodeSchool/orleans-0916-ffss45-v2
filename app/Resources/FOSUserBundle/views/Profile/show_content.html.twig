@@ -1,6 +1,123 @@
 {% trans_default_domain 'FOSUserBundle' %}
+{% extends 'FrontBundle:Default:frontLayout.html.twig' %}
+{% block stylesheet %}
+    {{ parent }}
+    <link rel="stylesheet" href="{{ asset('css/user.css') }}">
+{% endblock %}
 
-<div class="fos_user_user_show">
-    <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
-    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
-</div>
+{% block body %}
+
+
+    <div class="container page">
+        <div class="row">
+            <div class="col-xs-12"><br/>
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#Profil">Profil</a></li>
+                    <li><a data-toggle="tab" href="#Formations">Formations</a></li>
+                    <li><a data-toggle="tab" href="#Poste_Secours">Poste de Secours</a></li>
+
+                </ul>
+                <div class="tab-content">
+                    <div id="Profil" class="tab-pane fade in active" style="min-height: 350px">
+                        <div class="page">
+                            {#<div class="info">#}
+
+                            <h1> Espace Client</h1>
+                            <div class="row">
+                                {% if is_granted('ROLE_ADMIN') %}
+
+
+                                        <p>Se rendre dans l'espace Administration : <a href="{{ path('admin') }}"><i
+                                                        class="fa fa-lock"
+                                                        aria-hidden="true"></i></a></p>
+
+                                {% endif %}
+
+                                {% if is_granted('ROLE_USER') %}
+
+                                {% endif %}
+                            </div>
+                            <p>Vos Informations</p>
+                            <table class="table table-bordered table-condensed table-striped table-responsive">
+                                <thead>
+                                <tr>
+                                    <th>Pseudo</th>
+                                    <td>{{ app.user.username }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Nom</th>
+                                    <td>{{ app.user.nom }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Prénom</th>
+                                    <td>{{ app.user.prenom }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Adresse</th>
+                                    <td>{{ app.user.adresse }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Département de naissance</th>
+                                    <td>{{ app.user.departementnaissance }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Lieu de naissance</th>
+                                    <td>{{ app.user.lieunaissance }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Date de naissance</th>
+                                    <td>{{ app.user.datenaissance | date('d/m/Y') }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Code Postal</th>
+                                    <td>{{ app.user.codepostal }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Ville</th>
+                                    <td>{{ app.user.Ville }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Tel</th>
+                                    <td>{{ app.user.Tel }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Mail</th>
+                                    <td>{{ app.user.email }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Comment avez vous connu l'association FFSS</th>
+                                    <td>{{ app.user.relation }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Carte Identité</th>
+                                    <td>{% if user.imageName %}<img style="width: 25%;" src="{{ asset('upload/user/'~user.imageName) }}"  alt="" />{% endif %}</td>
+                                </tr>
+
+
+                                </tbody>
+                            </table>
+
+
+                            {#<p><a href="{{ path('fos_user_security_logout') }}">se déconnecter</a> </p>#}
+                            <p><a class="btn btn-primary" href="{{ path('fos_user_profile_edit') }}">Modifier mes informations</a></p>
+                        </div>
+                    </div>
+
+                    {{ render(controller('CommerceBundle:Reservation:reservationProfil')) }}
+
+                    {{ render(controller('CommerceBundle:Reservation:reservationPoste')) }}
+
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}

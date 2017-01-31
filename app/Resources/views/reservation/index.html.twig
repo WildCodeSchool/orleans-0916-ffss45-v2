@@ -5,7 +5,8 @@
         <div class="row center-block">
             <div class="col-xs-12">
 
-                <table class="table-fill table-striped table-hover table-condensed table" style="width: 100%; text-align: center;">
+                <table class="table-fill table-striped table-hover table-condensed table"
+                       style="width: 100%; text-align: center;">
                     <thead>
                     <tr>
                         <th>N°</th>
@@ -20,11 +21,9 @@
                         <th>Téléphone</th>
                         <th>Status</th>
                         <th>Numéro de réservation</th>
-                        <th>Diplôme</th>
-                        <th>Convocation</th>
-                        <th>Certificat</th>
-                        <th>Delai d' expiration</th>
                         <th>Carte d'identité</th>
+                        <th>Delai d' expiration</th>
+                        <th>Diplôme</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -37,7 +36,7 @@
                                 </td>
                                 <td> {{ reservation.user.nom }}</td>
                                 <td> {{ reservation.user.prenom }}</td>
-                                <td> {{ user.dateNaissance|date('d-m-Y')}}</td>
+                                <td> {{ user.dateNaissance|date('d-m-Y') }}</td>
                                 <td> {{ reservation.user.adresse }}</td>
                                 <td> {{ reservation.user.lieuNaissance }}</td>
                                 <td> {{ reservation.user.departementNaissance }}</td>
@@ -46,12 +45,9 @@
                                 <td> {{ reservation.user.tel }}</td>
                                 <td>{{ reservation.statusLabel }}</td>
                                 <td>{{ reservation.numeroReservation }}</td>
-                                <td><img style="width: 150px;" class="smallPic" src="{{ asset('upload/img/'~user.imageName) }}" alt="{{ user.titre }}"/></td>
-                                <td>{{ reservation.convocation }}</td>
-                                <td>{{ reservation.certificate }}</td>
+                                <td>{% if reservation.user.imageName %}<img style="width: 75px;" class="smallPic" src="{{ asset('upload/identite/'~reservation.user.imageName) }}" alt="{{ user.titre }}"/>{% endif %}</td>
                                 <td>{% if reservation.delaiExpiration %}{{ reservation.delaiExpiration|date('Y-m-d H:i:s') }}{% endif %}</td>
-                                <td><img style="width: 75px;" class="smallPic" src="{{ asset('upload/img/'~reservation.imageName) }}"
-                                         alt="{{ img.titre }}"/></td>
+                                <td>{% if reservation.imageName %}<img style="width: 75px;" class="smallPic" src="{{ asset('upload/diplome/'~reservation.imageName) }}" alt="{{ img.titre }}"/>{% endif %}</td>
                                 <td>
                                     <ul>
                                         <li>
@@ -67,8 +63,7 @@
                                         </li>
                                         <li>
                                             <a class="button"
-                                               href="{{ path('convocation_pdf', {'id':agenda.id})
-                                               }}">Convocation</a>
+                                               href="{{ path('convocation_pdf', {'id':agenda.id}) }}">Convocation</a>
                                         </li>
                                     </ul>
                                 </td>
@@ -85,16 +80,15 @@
                 <div class="row">
                     <div class="col-xs-6">
 
-                                <a class="btn btn-primary" href="{{ path('reservation_new', { 'id': agenda.id }) }}">Créer
-                                    une nouvelle
-                                    Inscription</a>
-                           
+                        <a class="btn btn-primary" href="{{ path('reservation_new', { 'id': agenda.id }) }}">Créer
+                            une nouvelle
+                            Inscription</a>
+
                     </div>
                     <div class="col-xs-2 col-xs-offset-4">
 
-                                <a class="btn btn-primary" href="{{ path('presence_pdf', {'id':agenda.id})
-                                }}">Feuille
-                                    d'émargement</a>
+                        <a class="btn btn-primary" href="{{ path('presence_pdf', {'id':agenda.id}) }}">Feuille
+                            d'émargement</a>
 
                     </div>
                 </div>

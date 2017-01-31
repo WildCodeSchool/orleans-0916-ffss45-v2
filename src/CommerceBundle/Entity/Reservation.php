@@ -59,26 +59,26 @@ class Reservation
 	 */
 	protected $formulaireSecours;
 
-	/**
-     * @var string
-     *
-     * @ORM\Column(name="convocation", type="string", length=45, nullable=true)
-     */
-    private $convocation;
+//	/**
+//     * @var string
+//     *
+//     * @ORM\Column(name="convocation", type="string", length=45, nullable=true)
+//     */
+//    private $convocation;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="certificate", type="string", length=45, nullable=true)
-     */
-    private $certificate;
+//    /**
+//     * @var string
+//     *
+//     * @ORM\Column(name="certificate", type="string", length=45, nullable=true)
+//     */
+//    private $certificate;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="delai_expiration", type="datetime", nullable=true)
-     */
-    private $delaiExpiration;
+//    /**
+//     * @var \DateTime
+//     *
+//     * @ORM\Column(name="delai_expiration", type="datetime", nullable=true)
+//     */
+//    private $delaiExpiration;
 
 
     /**
@@ -150,77 +150,77 @@ class Reservation
         return $this->numeroReservation;
     }
 
-    /**
-     * Set convocation
-     *
-     * @param string $convocation
-     *
-     * @return Reservation
-     */
-    public function setConvocation($convocation)
-    {
-        $this->convocation = $convocation;
-
-        return $this;
-    }
-
-    /**
-     * Get convocation
-     *
-     * @return string
-     */
-    public function getConvocation()
-    {
-        return $this->convocation;
-    }
-
-    /**
-     * Set certificate
-     *
-     * @param string $certificate
-     *
-     * @return Reservation
-     */
-    public function setCertificate($certificate)
-    {
-        $this->certificate = $certificate;
-
-        return $this;
-    }
-
-    /**
-     * Get certificate
-     *
-     * @return string
-     */
-    public function getCertificate()
-    {
-        return $this->certificate;
-    }
-
-    /**
-     * Set delaiExpiration
-     *
-     * @param \DateTime $delaiExpiration
-     *
-     * @return Reservation
-     */
-    public function setDelaiExpiration($delaiExpiration)
-    {
-        $this->delaiExpiration = $delaiExpiration;
-
-        return $this;
-    }
-
-    /**
-     * Get delaiExpiration
-     *
-     * @return \DateTime
-     */
-    public function getDelaiExpiration()
-    {
-        return $this->delaiExpiration;
-    }
+//    /**
+//     * Set convocation
+//     *
+//     * @param string $convocation
+//     *
+//     * @return Reservation
+//     */
+//    public function setConvocation($convocation)
+//    {
+//        $this->convocation = $convocation;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Get convocation
+//     *
+//     * @return string
+//     */
+//    public function getConvocation()
+//    {
+//        return $this->convocation;
+//    }
+//
+//    /**
+//     * Set certificate
+//     *
+//     * @param string $certificate
+//     *
+//     * @return Reservation
+//     */
+//    public function setCertificate($certificate)
+//    {
+//        $this->certificate = $certificate;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Get certificate
+//     *
+//     * @return string
+//     */
+//    public function getCertificate()
+//    {
+//        return $this->certificate;
+//    }
+//
+//    /**
+//     * Set delaiExpiration
+//     *
+//     * @param \DateTime $delaiExpiration
+//     *
+//     * @return Reservation
+//     */
+//    public function setDelaiExpiration($delaiExpiration)
+//    {
+//        $this->delaiExpiration = $delaiExpiration;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Get delaiExpiration
+//     *
+//     * @return \DateTime
+//     */
+//    public function getDelaiExpiration()
+//    {
+//        return $this->delaiExpiration;
+//    }
 
     /**
      * @param mixed $agenda
@@ -305,7 +305,7 @@ class Reservation
 	private $imageName;
 
 	/**
-	 * @ORM\Column(type="datetime")
+	 * @ORM\Column(type="datetime", nullable=true)
 	 *
 	 * @var \DateTime
 	 */

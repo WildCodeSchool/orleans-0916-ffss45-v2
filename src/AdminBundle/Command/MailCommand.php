@@ -40,10 +40,10 @@ class MailCommand extends ContainerAwareCommand
             // $dateDebut = new DateTime();
             $interval = $today->diff($dateDeb);
             $diff = $interval->format('%R%a');
-            $output->write($diff.'---');
+            
             /////////////////////////////////////////////////////
 
-            if ($diff=='+6') {
+            if ($diff=='+26a') {
                 $utilisateur = $reservation -> getUser();
                 $output->writeln($utilisateur->getEmail());
                 $output->writeln(['============',]);

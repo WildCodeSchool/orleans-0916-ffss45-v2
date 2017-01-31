@@ -2,29 +2,22 @@
 
 <body>
 
-<h1>Rappel :</h1>
-
 Bonjour {{ reservation.user }} {{ reservation.user.nom }}.
 
 <br /><br />
 
-N'oubliez pas, votre formation débute bientôt !
-<br /><br />
-
-
-Date de commencement : <br />
-<b>{{ reservation.agenda.datededebut | date('d/m/Y') }}</b>
-<br /><br />
-
-Intitulé :<br />
-<b>{{ reservation.agenda.formation.nomLong }}</b>
+Suite à votre inscription à la formation <b>{{ reservation.agenda.formation.nomCourt }} / {{ reservation.agenda.formation.nomLong }}</b><br />
+Nous avons le plaisir de vous rappeler que celle-ci se déroule a la date suivante : <b>{{ reservation.agenda.datededebut | date('d/m/Y') }}</b>,
+de <b>{{ reservation.agenda.heureDeDebutAm | date('h:i') }} à {{ reservation.agenda.heureDeFinAm | date('h:i') }}</b> et de <b>{{ reservation.agenda.heureDeDebutPm | date('G:i') }} à {{ reservation.agenda.heureDeFinPm | date('G:i') }}</b>
 
 <br /><br />
 
-Descriptif :<br />
-<b>{{ reservation.agenda.formation.descriptif }}</b>
-<br /><br />
 
+Nous tenons à vous rappeler que la restauration n'est pas pris en charge par le centre de formation, toutefois un frigo et un micro-onde est à votre disposition.
+<br /><br />
+Cordialement<br />
+Le responsable pédagogique.
+<br /><br />
 Pour plus d'informations, n'hésitez pas à vous rendre sur votre espace perso.<br />
 <a href="http://www.secourisme45.com/login">Votre espace perso</a>
 
