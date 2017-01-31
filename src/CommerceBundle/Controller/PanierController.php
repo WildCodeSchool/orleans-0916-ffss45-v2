@@ -184,10 +184,9 @@ class PanierController extends Controller
      */
     public function finalSubscriptionAction(Request $request)
     {
-       $reponse = $this->get('tlconseil.systempay')
-            ->responseHandler($request);
 
-        dump($reponse);
+
+        var_dump($reponse);
 
         $em = $this->getDoctrine()->getManager();
 
@@ -488,9 +487,9 @@ class PanierController extends Controller
         $systempay = $this->get('tlconseil.systempay')
             ->init($currency = 978, $amount = ($totalfinal*100))
             ->setOptionnalFields(array(
-                'shop_url' => 'http://193.70.38.206/ffss45/app.php'
+                'shop_url' => 'http://193.70.38.206/ffss45/app.php',
+                'trans_id' => '12345'
             ));
-
 
         return array(
             'paymentUrl' => $systempay->getPaymentUrl(),
@@ -508,7 +507,8 @@ class PanierController extends Controller
     public function paymentVerificationAction(Request $request)
     {
         // ...
-
+        $reponse = $this->get('tlconseil.systempay')
+            ->responseHandler($request);
 
         return new Response();
     }
