@@ -293,7 +293,7 @@ class PanierController extends Controller
 
 
         }
-        $em->flush();
+        $em->flush();die;
         return $this->redirect($this->generateUrl('page_accueil_principale'));
         // }
         // return $this->render('@Front/Default/acceuil.html.twig', array(
