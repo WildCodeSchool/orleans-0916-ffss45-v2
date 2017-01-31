@@ -488,7 +488,7 @@ class PanierController extends Controller
             ->init($currency = 978, $amount = ($totalfinal*100))
             ->setOptionnalFields(array(
                 'shop_url' => 'http://193.70.38.206/ffss45/app.php',
-                'trans_id' => '12345'
+                'vads_trans_id' => '12345'
             ));
 
         return array(
