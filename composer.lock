@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "337551ac2474c8609b76e25480f49deb",
+    "hash": "3b3c0f3453344e937d1b8f2677b62bf7",
     "content-hash": "97ec60aae5e93983a2741b21b0f3d436",
     "packages": [
         {
@@ -949,12 +949,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "86a156577bd7a360b2e28b47d23819537d5317f5"
+                "reference": "d01739f70df32e6ab441b23b88395ae26715c5f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/86a156577bd7a360b2e28b47d23819537d5317f5",
-                "reference": "86a156577bd7a360b2e28b47d23819537d5317f5",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/d01739f70df32e6ab441b23b88395ae26715c5f3",
+                "reference": "d01739f70df32e6ab441b23b88395ae26715c5f3",
                 "shasum": ""
             },
             "require": {
@@ -1017,7 +1017,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2017-01-26 10:33:07"
+            "time": "2017-01-30 16:02:42"
         },
         {
             "name": "gregwar/captcha",
