@@ -483,12 +483,12 @@ class PanierController extends Controller
             $totalfinal += $panier[$agenda->getId()]['totalitem'] + $totalLivraison;
 
         }
-
+        $orderId = uniqid(1, false);
         $systempay = $this->get('tlconseil.systempay')
             ->init($currency = 978, $amount = ($totalfinal*100))
             ->setOptionnalFields(array(
                 'shop_url' => 'http://193.70.38.206/ffss45/app.php',
-                'order_id' => '12345'
+                'order_id' => $orderId
             ));
 
         return array(
