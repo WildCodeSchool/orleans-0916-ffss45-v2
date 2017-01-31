@@ -35,7 +35,7 @@
 
                                 {% endif %}
                             </div>
-                            <p>Vos Informations</p>
+                            <p>Vos Informations :</p>
                             <table class="table table-bordered table-condensed table-striped">
                                 <thead>
                                 <tr>
@@ -133,7 +133,7 @@
                                             <td>{{ reservation.agenda.formation.nomLong }}</td>
                                             <td>{{ reservation.agenda.dateDeDebut|date('d-m-Y') }}</td>
                                             <td>{{ reservation.agenda.formation.recyclage }} Mois</td>
-                                           {#<td>{{ reservation.statusLabel }}</td>#}
+                                            <td>{{ reservation.statusLabel }}</td>
                                             <td><img style="width: 150px;" class="smallPic" src="{{ asset('upload/img/'~reservation.imageName) }}" alt="{{ reservation.titre }}"/></td>
                                             <td>{{ reservation.agenda.formation.categorie.nomCategorie }}</td>
                                             <td>

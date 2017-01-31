@@ -9,14 +9,18 @@
             {{ form_start(form) }}
 
             {{ form_widget(form) }}
-            <input type="submit" value="Create"/>
+            <div class="col-xs-4">
+                <input class="btn btn-primary" type="submit" value="Créer"/>
+            </div>
             {{ form_end(form) }}
 
-            <ul>
-                <li>
-                    <a href="{{ path('reservation_agenda_index', { 'id': agenda.id }) }}">Back to the list</a>
-                </li>
-            </ul>
+            <div class="col-xs-2 col-xs-offset-6">
+                <ul>
+                    <li>
+                        <a href="{{ path('reservation_agenda_index', { 'id': agenda.id }) }}">Back to the list</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 {% endblock %}
