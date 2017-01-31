@@ -6,7 +6,7 @@
         <div class="row">
 
 
-            <table class="table">
+            <table class="table table-condensed table-hover table-striped table-responsive">
                 <tbody>
                     <tr>
                         <th>Id</th>
@@ -22,28 +22,46 @@
                     </tr>
                     <tr>
                         <th>Date de Naissance</th>
-                        <td>{{ user.dateNaissance|date('d-m-Y') }}</td>
+                        <td>{{ reservation.user.dateNaissance|date('d-m-Y') }}</td>
                     </tr>
                     <tr>
-                        <th></th>
-                        <td>{{ user.dateNaissance|date('d-m-Y') }}</td>
+                        <th>Adresse</th>
+                        <td>{{ reservation.user.adresse }}</td>
+                    </tr>
+                    <tr>
+                        <th>Lieu de Naissance</th>
+                        <td>{{ reservation.user.lieuNaissance }}</td>
+                    </tr>
+                    <tr>
+                        <th>Departement de Naissance</th>
+                        <td>{{ reservation.user.departementNaissance }}</td>
+                    </tr>
+                    <tr>
+                        <th>Code Postal</th>
+                        <td>{{ reservation.user.codePostal }}</td>
+                    </tr>
+                    <tr>
+                        <th>Ville</th>
+                        <td>{{ reservation.user.ville }}</td>
+                    </tr>
+                    <tr>
+                        <th>Téléphone</th>
+                        <td>{{ reservation.user.tel }}</td>
                     </tr>
                     <tr>
                         <th>Status</th>
                         <td>{{ reservation.status }}</td>
                     </tr>
                     <tr>
-                        <th>Convocation</th>
-                        <td>{{ reservation.convocation }}</td>
+                        <th>Carte d'identité</th>
+                        <td>{% if reservation.user.imageName %}<img style="width: 75px;" class="smallPic" src="{{ asset('upload/identite/'~reservation.user.imageName) }}" alt="{{ user.titre }}"/>{% endif %}</td>
                     </tr>
                     <tr>
-                        <th>Certificat</th>
-                        <td>{{ reservation.certificate }}</td>
+                        <th>Diplôme</th>
+                        <td>{% if reservation.imageName %}<img style="width: 75px;" class="smallPic" src="{{ asset('upload/diplome/'~reservation.imageName) }}" alt="{{ img.titre }}"/>{% endif %}</td>
+
                     </tr>
-                    <tr>
-                        <th>Delaiexpiration</th>
-                        <td>{% if reservation.delaiExpiration %}{{ reservation.delaiExpiration|date('Y-m-d H:i:s') }}{% endif %}</td>
-                    </tr>
+
                     {#<tr>#}
                         {#<th>Image</th>#}
                         {#<td><img class="imgInscription" src="{{ asset(webPath) }}" alt="{{ alt }}"/></td>#}

@@ -24,7 +24,7 @@
                 <tr>
                     <td>{{ reservation.agenda.formation.nomLong }}</td>
                     <td>{{ reservation.agenda.dateDeDebut|date('d-m-Y') }}</td>
-                    <td>{{ reservation.agenda.formation.recyclage }} Mois</td>
+                    <td>{% if reservation.agenda.formation.recyclage %}{{ reservation.agenda.formation.recyclage }} Mois {% endif %}</td>
                     <td>{{ reservation.statusLabel }}</td>
                     <td>{% if reservation.imageName %}<img style="width: 150px;" class="smallPic" src="{{ asset('upload/diplome/'~reservation.imageName) }}" alt="{{ reservation.titre }}"/>{% endif %}</td>
                     <td>{{ reservation.agenda.formation.categorie.nomCategorie }}</td>
