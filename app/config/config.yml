@@ -78,6 +78,7 @@ swiftmailer:
     auth_mode: "%mailer_auth_mode%"
     spool:     { type: memory }
 
+
 # app/config/config.yml
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
@@ -109,13 +110,13 @@ tlconseil_systempay:
     key_dev: "%key_dev%"
     key_prod:
     # Return
-    url_return: "%url_return%"
+    url_return: http://193.70.38.206/ffss45
     # Optionnal fields (here the fields have their default values) :
 
     # Debug values : ON / OFF
     debug: ON
     # Return mode
-    return_mode: GET
+    return_mode: POST
     # Possible values for ctx_mode : TEST / PRODUCTION
     ctx_mode: TEST
     # Language
