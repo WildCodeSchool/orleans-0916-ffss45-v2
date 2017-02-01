@@ -27,7 +27,7 @@ class RecyclageCommand extends ContainerAwareCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln(['Mail Inscription','============',]);
+        $output->writeln(['Mail recyclage','============',]);
 
         $em = $this->getContainer()->get('doctrine')->getManager();
         $formations = $em->getRepository('AdminBundle:Formation')->findAll();
