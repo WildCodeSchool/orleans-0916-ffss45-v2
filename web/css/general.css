@@ -1,13 +1,13 @@
 
 @font-face {
     font-family: myFont;
-    src: url(../fonts/BebasNeue.otf);
+    src: url(../fonts/OpenSans-Regular.ttf);
 }
 
 
 body{
     width:100%;
-    font-family: 'Bebasneue';
+    font-family: 'MyFont';
     font-size:18px;
 }
 
@@ -21,6 +21,8 @@ h1, h2, h3, h4, h5, h6{
 
 p{
     font-size:20px;
+    font-family: myFont, sans-serif;
+
 }
 .containerBody{
     min-height: 24em!important;
