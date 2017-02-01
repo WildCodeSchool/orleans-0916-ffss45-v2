@@ -186,7 +186,7 @@ class PanierController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-
+        var_dump($id_systempay);
         $session = $request->getSession();
 
         $panier = $session->get('panier');
@@ -520,6 +520,7 @@ class PanierController extends Controller
     /**
      * @Route("/payment/verification", name="payment_verification")
      * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function paymentVerificationAction(Request $request)
     {
@@ -532,6 +533,4 @@ class PanierController extends Controller
             'id_systempay' => $id_systempay
         ]);
     }
-
-
 }
