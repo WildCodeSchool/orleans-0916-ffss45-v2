@@ -1,109 +1,112 @@
-
 <footer>
     <div class="container-fluid">
-    <a href="{{ path('page_accueil_principale') }}"> <img class="logo-footer" src="{{ asset('images/logo2.png') }}" alt="Logo FFSS45"></a>
+        <a href="{{ path('page_accueil_principale') }}"> <img class="logo-footer" src="{{ asset('images/logo2.png') }}"
+                                                              alt="Logo FFSS45"></a>
 
 
-    <div class="row">
-        <!--  Footer gauche -->
-        <div class="col-md-8">
-            <div class="col-md-6">
+        <div class="row">
+            <!--  Footer gauche -->
+            <div class="col-md-8">
+                <div class="col-md-6">
+                    <ul>
+                        <li><a href="{{ path('espace_formation',{'typeFormation':'particulier'}) }}">Particuliers</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('espace_formation',{'typeFormation':'professionnel'}) }}">Professionnels</a>
+                        </li>
+                        <li><a href="{{ path('formulaire') }}">Poste de Secours</a></li>
+                        <li><a href="{{ path('page_actualites') }}">News</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul>
+                        <li><a href="{{ path('page_accueil_principale') }}#identite">Qui sommes-nous</a></li>
+                        <li><a href="{{ path('mentionsLegales') }}">Mentions légales</a></li>
+                        <li><a href="http://eos.ffss.fr">Intranet</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
                 <ul>
-					<li><a href="{{ path('espace_formation',{'typeFormation':'particulier'}) }}">Particuliers</a> </li>
-					<li><a href="{{ path('espace_formation',{'typeFormation':'professionnel'}) }}">Professionnels</a> </li>
-					<li><a href="{{ path('formulaire') }}">Poste de Secours</a> </li>
-					<li><a href="{{ path('page_actualites') }}">News</a></li>
+                    <li><a href="{{ path('page_accueil_principale') }}#formulaire_contact">Contact</a></li>
+                    <li><a href="{{ path('page_rejoindre') }}">Rejoignez-nous</a></li>
+                    <li>Réalisé par <a href="http://www.wildcodeschool.fr"><img
+                                    src="{{ asset('images/logo_small_orange_horizontal.png') }}" class="logo_WCS"></a>
+                    </li>
                 </ul>
             </div>
-            <div class="col-md-6">
-				<ul>
-					<li><a href="{{ path('page_accueil_principale') }}#identite">Qui sommes-nous</a> </li>
-					<li><a href="{{ path('mentionsLegales') }}">Mentions légales</a> </li>
-					<li><a href="http://eos.ffss.fr">Intranet</a> </li>
-				</ul>
+
         </div>
-    </div>
-    <div class="col-md-4">
-        <ul>
-			<li><a href="{{ path('page_accueil_principale') }}#formulaire_contact">Contact</a> </li>
-			<li><a href="{{ path('page_rejoindre') }}">Rejoignez-nous</a></li>
-			<li>Réalisé par <a href="http://www.wildcodeschool.fr"><img src="{{ asset('images/logo_small_orange_horizontal.png') }}" class="logo_WCS"></a></li>
-		</ul>
-    </div>
-
-</div>
-<!-- 2eme container-->
+        <!-- 2eme container-->
 
 
-    <div class="row2">
-        <div class="hidden-xs">
+        <div class="row2">
+            <div class="hidden-xs">
 
-            <div class='last_footer_responsive color_ml'> FFSS Fédération Française de Secourisme et de Sauvetage - Tous droits réservés. Orléans
+                <div class='last_footer_responsive color_ml'> FFSS Fédération Française de Secourisme et de Sauvetage -
+                    Tous droits réservés. Orléans
+
+                </div>
+            </div>
+
+            <div class="visible-xs">
+
+                <p id="footer">FFSS45 à ORLEANS</p>
 
             </div>
-        </div>
 
-        <div class="visible-xs">
-
-            <p id="footer">FFSS45 à ORLEANS</p>
 
         </div>
 
 
-    </div>
+        <a href="#" title="Haut de page" class="scrollup"><i class="fa fa-arrow-up"></i></a>
 
 
+        <script>
 
+            ScrollToTop = function () {
+                var s = $(window).scrollTop();
+                if (s > 250) {
+                    $('.scrollup').fadeIn();
+                } else {
+                    $('.scrollup').fadeOut();
+                }
 
-<a href="#" title="Haut de page" class="scrollup"><i class="fa fa-arrow-up"></i></a>
-
-
-
-<script>
-
-    ScrollToTop=function() {
-        var s = $(window).scrollTop();
-        if (s > 250) {
-            $('.scrollup').fadeIn();
-        } else {
-            $('.scrollup').fadeOut();
-        }
-
-        $('.scrollup').click(function () {
-            $("html, body").animate({ scrollTop: 0 }, 500);
-            return false;
-        });
-    }
-
-    StopAnimation=function() {
-        $("html, body").bind("scroll mousedown DOMMouseScroll mousewheel keyup", function(){
-            $('html, body').stop();
-        });
-    }
-
-
-    $(window).scroll(function() {
-        ScrollToTop();
-        StopAnimation();
-    });
-
-
-</script>
-    <script>
-        $(window).scroll(function (event) {
-            // A chaque fois que l'utilisateur va scroller
-            var y = $(this).scrollTop(); // On récupérer la valeur du scroll vertical
-            var hauteur = document.getElementById('test').scrollHeight; // on récupère la "hauteur de la bannière
-            //si scroll > à bannière on ajoute la class
-            if (y >= hauteur) {
-                $('.firstnav').addClass('fixed');
-            } else {
-                // sinon, on l'enlève
-                $('.firstnav').removeClass('fixed');
+                $('.scrollup').click(function () {
+                    $("html, body").animate({scrollTop: 0}, 500);
+                    return false;
+                });
             }
-        });
 
-    </script>
+            StopAnimation = function () {
+                $("html, body").bind("scroll mousedown DOMMouseScroll mousewheel keyup", function () {
+                    $('html, body').stop();
+                });
+            }
+
+
+            $(window).scroll(function () {
+                ScrollToTop();
+                StopAnimation();
+            });
+
+
+        </script>
+        <script>
+            $(window).scroll(function (event) {
+                // A chaque fois que l'utilisateur va scroller
+                var y = $(this).scrollTop(); // On récupérer la valeur du scroll vertical
+                var hauteur = document.getElementById('test').scrollHeight; // on récupère la "hauteur de la bannière
+                //si scroll > à bannière on ajoute la class
+                if (y >= hauteur) {
+                    $('.firstnav').addClass('fixed');
+                } else {
+                    // sinon, on l'enlève
+                    $('.firstnav').removeClass('fixed');
+                }
+            });
+
+        </script>
     </div>
 </footer>
 

@@ -105,29 +105,28 @@ knp_snappy:
 
 tlconseil_systempay:
     # Credentials
-    site_id: XXXXX
+    site_id: "%site_id%"
     # Keys
-    key_dev: XXXXX
-    key_prod: XXXXX
+    key_dev: "%key_dev%"
+    key_prod:
     # Return
-    url_return: http://www.example.com/payment_return
-
+    url_return: http://193.70.38.206/ffss45
     # Optionnal fields (here the fields have their default values) :
 
     # Debug values : ON / OFF
     debug: ON
     # Return mode
-    return_mode: GET
+    return_mode: POST
     # Possible values for ctx_mode : TEST / PRODUCTION
     ctx_mode: TEST
     # Language
     language: fr
     # Success
     redirect_success_timeout: 1
-    redirect_success_message: Redirection vers Les Annonces de la Seine dans quelques instants
+    redirect_success_message: Redirection vers FFSS45 dans quelques instants
     # Error
     redirect_error_timeout: 1
-    redirect_error_message: Redirection vers Les Annonces de la Seine dans quelques instants
+    redirect_error_message: Redirection vers FFSS45 dans quelques instants
 
 
 
@@ -137,8 +136,8 @@ vich_uploader:
 
     mappings:
         img_image:
-            uri_prefix:         /upload/img
-            upload_destination: %kernel.root_dir%/../web/upload/img
+            uri_prefix:         /upload/diplome
+            upload_destination: %kernel.root_dir%/../web/upload/diplome
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
@@ -147,11 +146,22 @@ vich_uploader:
 
 
         user_image:
-            uri_prefix:         /upload/img
-            upload_destination: %kernel.root_dir%/../web/upload/img
+            uri_prefix:         /upload/identite
+            upload_destination: %kernel.root_dir%/../web/upload/identite
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            upload_destination: product_image_fs
+            namer:              vich_uploader.namer_uniqid
+
 
         poste_image:
-            uri_prefix:         /upload/img
-            upload_destination: %kernel.root_dir%/../web/upload/img
+            uri_prefix:         /upload/poste
+            upload_destination: %kernel.root_dir%/../web/upload/poste
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            upload_destination: product_image_fs
+            namer:              vich_uploader.namer_uniqid
 
 gregwar_captcha: ~

@@ -56,21 +56,20 @@
 
                     {{form_label(form.relation, 'Comment avez vous connu FFSS ?')}}
                     {{form_widget(form.relation, {'attr':{'class':'form-control'}}) }}
-                    {{form_errors(form.relation)}}
+                    {{form_errors(form.relation)}}<br/>
 
 
-                    {{form_label(form.plainPassword, 'Mot de passe')}}<br />
+                    {{form_label(form.plainPassword, 'Mot de passe')}}<br/>
 					{{ form_widget (form.plainPassword.children['first'],  { 'attr': {'class': "span12",
         			'placeholder': "Mot de passe"} }) }}
 
 					{{ form_widget (form.plainPassword.children['second'], { 'attr': {'class': "span12",
         			'placeholder': "Confimation mot de passe"} }) }}
-    <br />
-    <br />
+    <br/><br/>
 
-                    {{form_label(form.imageFile, 'télécharger vos documents ')}}
+                    {{form_label(form.imageFile, 'Carte d\'identité')}}
                     {{form_widget(form.imageFile, {'attr':{'class':'form-control'}}) }}
-                    {{form_errors(form.imageFile)}}
+                    {{form_errors(form.imageFile)}}<br/><br/>
 
 
 

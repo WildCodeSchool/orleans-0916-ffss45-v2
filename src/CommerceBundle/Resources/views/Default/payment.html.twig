@@ -1,5 +1,5 @@
 {% extends 'FrontBundle:Default:frontLayout.html.twig' %}
-{% block body%}
+{% block body %}
 {#<div class="row">#}
     {#<div class="col-sm-8 col-sm-offset-2">#}
          {#<div class="widget widget-white text-center">#}
@@ -20,10 +20,6 @@
 <h1>Paiement</h1>
 {#{{ dump(panier) }}#}
 
-<div>
 <a href="{{path ('final_subscription')}}" class="btn btn-danger pull-right" type="submit">Envoyer mail</a>
 
-<a class="btn btn-primary" href="{{ path('valid_cart' ) }}">Back </a>
-</div>
-
-{% endblock %}
+<a class="btn btn-primary" href="{{ path('valid_cart' ) }}">Back </a>{% endblock %}

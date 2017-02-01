@@ -10,11 +10,12 @@
     <div class="row">
 
             {{ form_start(edit_form) }}
-                {{ form_row(edit_form.status) }}
-                {{ form_row(edit_form.numeroReservation) }}
-                {{ form_row(edit_form.convocation) }}
-                {{ form_row(edit_form.certificate) }}
-                {{ form_row(edit_form.delaiExpiration) }}
+                {{ form_widget(edit_form) }}
+                {#{{ form_row(edit_form.nom) }}#}
+                {#{{ form_row(edit_form.prenom) }}#}
+                {#{{ form_row(edit_form.convocation) }}#}
+                {#{{ form_row(edit_form.certificate) }}#}
+                {#{{ form_row(edit_form.delaiExpiration) }}#}
                 {#{{ form_row(edit_form.image) }}#}
                 {#<td><img class="imgInscription" src="{{ asset(webPath) }}" alt="{{ alt }}"/></td><br/>#}
 
