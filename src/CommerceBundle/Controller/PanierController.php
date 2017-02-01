@@ -520,7 +520,6 @@ class PanierController extends Controller
     /**
      * @Route("/payment/verification", name="payment_verification")
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function paymentVerificationAction(Request $request)
     {
