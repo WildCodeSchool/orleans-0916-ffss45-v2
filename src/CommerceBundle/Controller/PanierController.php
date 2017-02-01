@@ -194,7 +194,7 @@ class PanierController extends Controller
         $n = 1;
 
         // connexion à la table systempay, avec parameter=identifiant de la transaction
-        $transaction = $this->entityManager->getRepository('TlconseilSystempayBundle:Transaction')->find($id_systempay);
+        $transaction = $em->getRepository('TlconseilSystempayBundle:Transaction')->find($id_systempay);
         if ($transaction) {
             $log = json_decode($transaction->getLogResponse());
             $paid = $transaction->getPaid();
