@@ -198,7 +198,7 @@ class PanierController extends Controller
         if ($transaction) {
             $log = json_decode($transaction->getLogResponse());
             $paid = $transaction->isPaid();
-            $systempayOrderId = $log['vads_order_id'];
+            $systempayOrderId = $log[0]['vads_order_id'];
 
             $orderId = null;
             if ($session->has('orderId')) {
