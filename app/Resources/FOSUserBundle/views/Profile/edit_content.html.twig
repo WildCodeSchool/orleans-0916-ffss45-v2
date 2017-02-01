@@ -12,9 +12,9 @@
                 {{ form_widget(form) }}
 
 
-                {#{{form_label(form.imageFile, 'Carte identité')}}#}
-                {#{{form_widget(form.imageFile, {'attr':{'class':'form-control'}}) }}#}
-                {#{{form_errors(form.imageFile)}}#}
+                {{form_label(form.imageFile, 'Carte identité')}}
+                {{form_widget(form.imageFile, {'attr':{'class':'form-control'}}) }}
+                {{form_errors(form.imageFile)}}
 
                 <div>
                     <input class="btn btn-primary" type="submit" value="{{ 'profile.edit.submit'|trans }}" />
