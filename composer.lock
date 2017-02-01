@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3b3c0f3453344e937d1b8f2677b62bf7",
+    "hash": "337551ac2474c8609b76e25480f49deb",
     "content-hash": "97ec60aae5e93983a2741b21b0f3d436",
     "packages": [
         {
@@ -949,12 +949,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "d01739f70df32e6ab441b23b88395ae26715c5f3"
+                "reference": "f230319d0ed822145bf73711082f31d983234c55"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/d01739f70df32e6ab441b23b88395ae26715c5f3",
-                "reference": "d01739f70df32e6ab441b23b88395ae26715c5f3",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/f230319d0ed822145bf73711082f31d983234c55",
+                "reference": "f230319d0ed822145bf73711082f31d983234c55",
                 "shasum": ""
             },
             "require": {
@@ -964,7 +964,8 @@
                 "symfony/framework-bundle": "^2.7 || ^3.0",
                 "symfony/security-bundle": "^2.7 || ^3.0",
                 "symfony/templating": "^2.7 || ^3.0",
-                "symfony/twig-bundle": "^2.7 || ^3.0"
+                "symfony/twig-bundle": "^2.7 || ^3.0",
+                "twig/twig": "^1.28 || ^2.0"
             },
             "conflict": {
                 "doctrine/doctrine-bundle": "<1.3",
@@ -1017,7 +1018,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2017-01-30 16:02:42"
+            "time": "2017-02-01 09:04:51"
         },
         {
             "name": "gregwar/captcha",
