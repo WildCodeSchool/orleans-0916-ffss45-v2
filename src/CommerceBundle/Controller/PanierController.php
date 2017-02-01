@@ -186,7 +186,7 @@ class PanierController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        var_dump($id_systempay);
+//        var_dump($id_systempay);
         $session = $request->getSession();
 
         $panier = $session->get('panier');
@@ -194,11 +194,11 @@ class PanierController extends Controller
         $n = 1;
 
         // connexion à la table systempay, avec parameter=identifiant de la transaction
-        $transaction = $this->entityManager->getRepository('TlconseilSystempayBundle:Transaction')->find($id_systempay);
+        $transaction = $em->getRepository('TlconseilSystempayBundle:Transaction')->find($id_systempay);
         if ($transaction) {
             $log = json_decode($transaction->getLogResponse());
-            $paid = $transaction->getPaid();
-            $systempayOrderId = $log['vads_order_id'];
+            $paid = $transaction->isPaid();
+            $systempayOrderId = $log[0]['vads_order_id'];
 
             $orderId = null;
             if ($session->has('orderId')) {
@@ -528,7 +528,7 @@ class PanierController extends Controller
         $this->get('tlconseil.systempay')
             ->responseHandler($request);
         $query = $request->request->all();
-        $id_systempay = $query['vads_trans_id'];
+        $id_systempay = (int)$query['vads_trans_id'];
         return $this->redirectToRoute('final_subscription', [
             'id_systempay' => $id_systempay
         ]);
