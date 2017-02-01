@@ -500,12 +500,13 @@ class PanierController extends Controller
     }
 
     /**
-     * @Route("/payment/verification")
+     * @Route("/payment/verification", name="payment_verification")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function paymentVerificationAction(Request $request)
     {
+        var_dump($request);
         // ...
         $this->get('tlconseil.systempay')
             ->responseHandler($request);
