@@ -197,7 +197,7 @@ class PanierController extends Controller
         $transaction = $em->getRepository('TlconseilSystempayBundle:Transaction')->find($id_systempay);
         if ($transaction) {
             $log = json_decode($transaction->getLogResponse());
-            $paid = $transaction->getPaid();
+            $paid = $transaction->isPaid();
             $systempayOrderId = $log['vads_order_id'];
 
             $orderId = null;
