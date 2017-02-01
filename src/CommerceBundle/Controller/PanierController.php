@@ -205,7 +205,7 @@ class PanierController extends Controller
             if ($session->has('orderId')) {
                 $orderId = $session->get('orderId');
             }
-            if ($orderId && $orderId == $systempayOrderId && $paid === 1) {
+            if ($orderId && $orderId == $systempayOrderId && $paid) {
                 // ensuite on execute le reste du code
                 foreach ($panier as $formation) {
 
