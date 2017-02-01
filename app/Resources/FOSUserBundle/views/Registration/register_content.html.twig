@@ -66,8 +66,9 @@
 					{{ form_widget (form.plainPassword.children['second'], { 'attr': {'class': "span12",
         			'placeholder': "Confimation mot de passe"} }) }}
     <br />
+    <br />
 
-                    {{form_label(form.imageFile, 'image')}}
+                    {{form_label(form.imageFile, 'télécharger vos documents ')}}
                     {{form_widget(form.imageFile, {'attr':{'class':'form-control'}}) }}
                     {{form_errors(form.imageFile)}}
 
