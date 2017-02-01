@@ -204,7 +204,7 @@ class PanierController extends Controller
             if ($session->has('orderId')) {
                 $orderId = $session->get('orderId');
             }
-            if ($orderId && $orderId == $systempayOrderId && $paid === 1) {
+//            if ($orderId && $orderId == $systempayOrderId && $paid === 1) {
                 // ensuite on execute le reste du code
                 foreach ($panier as $formation) {
 
@@ -306,9 +306,9 @@ class PanierController extends Controller
                 $em->flush();
                 $session->remove('panier');
                 $session->remove('orderId');
-            } else {
-                // $flashBag error
-            }
+//            } else {
+//                // $flashBag error
+//            }
         }
         return $this->redirect($this->generateUrl('page_accueil_principale'));
         // }
