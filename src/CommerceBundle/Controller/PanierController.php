@@ -525,7 +525,7 @@ class PanierController extends Controller
      */
     public function paymentVerificationAction(Request $request)
     {
-        // ...
+
         $this->get('tlconseil.systempay')
             ->responseHandler($request);
         $query = $request->request->all();
