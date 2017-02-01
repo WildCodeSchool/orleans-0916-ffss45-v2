@@ -38,6 +38,8 @@ class RejoindreController extends Controller
             ))
             ->add('prenom', TextType::class, array('label'=>false,'attr'=>array('placeholder'=>'Votre prénom')
             ))
+	        ->add('dateNaissance', BirthdayType::class, array('label'=>'Date de Naissance')
+	        )
             ->add('adresse', TextType::class, array('label'=>false,'attr'=>array('placeholder'=>'Votre adresse')
             ))
             ->add('ville', TextType::class, array('label'=>false,'attr'=>array('placeholder'=>'Votre ville')
@@ -52,8 +54,7 @@ class RejoindreController extends Controller
             ))
             ->add('message', TextareaType::class, array('label'=>false,'attr'=>array('placeholder'=>'Votre demande')
             ))
-            ->add('dateNaissance', BirthdayType::class, array('label'=>'Date de Naissance')
-            )
+
             ->add('ffss', TextareaType::class, array('label'=>false,'attr'=>array('placeholder'=>'Comment avez-vous connu la FFSS ?')
             ))
             ->add('save', SubmitType::class, array('label' => 'Envoyer'))
