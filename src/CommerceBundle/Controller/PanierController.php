@@ -186,7 +186,7 @@ class PanierController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        var_dump($id_systempay);
+//        var_dump($id_systempay);
         $session = $request->getSession();
 
         $panier = $session->get('panier');
@@ -528,7 +528,7 @@ class PanierController extends Controller
         $this->get('tlconseil.systempay')
             ->responseHandler($request);
         $query = $request->request->all();
-        $id_systempay = $query['vads_trans_id'];
+        $id_systempay = (int)$query['vads_trans_id'];
         return $this->redirectToRoute('final_subscription', [
             'id_systempay' => $id_systempay
         ]);
