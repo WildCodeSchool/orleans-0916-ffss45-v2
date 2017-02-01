@@ -2,8 +2,11 @@
 
 namespace CommerceBundle\Controller;
 
+use CommerceBundle\CommerceBundle;
 use CommerceBundle\Entity\Reservation;
+use AdminBundle\Entity\User;
 use AdminBundle\Entity\Agenda;
+use CommerceBundle\Repository\ReservationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -32,6 +35,101 @@ class ReservationController extends Controller
             'reservation' => $reservation,
         ));
     }
+
+	/**
+	 * @Route("/presence_pdf/{id}/pdf", name="presence_pdf")
+	 *
+	 */
+	public function presence_pdfAction(Agenda $agenda )
+	{
+		$html = $this->renderView('CommerceBundle:Default:presence_pdf.html.twig', array(
+			'agenda'  => $agenda
+		));
+
+
+		return new Response(
+			$this->get('knp_snappy.pdf')->getOutputFromHtml($html, array('orientation'=>'Landscape')),
+			200,
+			array(
+				'Content-Type'          => 'application/pdf',
+				'Content-Disposition'   => 'attachment; filename="file.pdf"'
+			)
+		);
+	}
+
+
+
+	/**
+	 * @Route("/convocation_pdf/{id}/pdf", name="convocation_pdf")
+	 *
+	 */
+	public function convocation_pdfAction(Agenda $agenda )
+	{
+		$html = $this->renderView('AdminBundle:Default:convocation.html.twig', array(
+			'agenda'  => $agenda
+		));
+
+
+		return new Response(
+			$this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+			200,
+			array(
+				'Content-Type'          => 'application/pdf',
+				'Content-Disposition'   => 'attachment; filename="file.pdf"'
+			)
+		);
+	}
+
+	/**
+	 * @Route("/attestation_presence_pdf/{id}/pdf", name="attestation_presence_pdf")
+	 *
+	 */
+	public function attestation_presence_pdfAction(Reservation $reservation)
+	{
+		$html = $this->renderView('AdminBundle:Default:attestation_presence_pdf.html.twig', array(
+			'reservation'  => $reservation,
+		));
+
+		return new Response(
+			$this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+			200,
+			array(
+				'Content-Type'          => 'application/pdf',
+				'Content-Disposition'   => 'attachment; filename="file.pdf"'
+			)
+		);
+	}
+
+	/**
+	 *
+	 * @Route("/resa_profil", name="reservation_profil")
+	 * @Method("GET")
+	 */
+	public function reservationProfilAction()
+	{
+		$em = $this->getDoctrine()->getManager();
+		$user = $this->getUser();
+		$reservations = $em->getRepository('CommerceBundle:Reservation')->findByUser($user);
+		return $this->render('CommerceBundle:Default:index.html.twig', array(
+			'reservations' => $reservations,
+		));
+	}
+
+	/**
+	 *
+	 * @Route("/resa_poste", name="reservation_poste")
+	 * @Method("GET")
+	 */
+	public function reservationPosteAction()
+	{
+		$em = $this->getDoctrine()->getManager();
+		$user = $this->getUser();
+		$formulaireSecours = $em->getRepository('FrontBundle:FormulaireSecours')->findByUser($user);
+		return $this->render('CommerceBundle:Default:poste.html.twig', array(
+			'formulaireSecours' => $formulaireSecours,
+		));
+	}
+
 
 	/**
 	 * Lists all reservation entities.
@@ -164,99 +262,8 @@ class ReservationController extends Controller
         ;
     }
 
-	/**
-	 * @Route("/presence_pdf/{id}/pdf", name="presence_pdf")
-	 *
-	 */
-	public function presence_pdfAction(Agenda $agenda )
-	{
-		$html = $this->renderView('CommerceBundle:Default:presence_pdf.html.twig', array(
-			'agenda'  => $agenda
-		));
 
 
-		return new Response(
-			$this->get('knp_snappy.pdf')->getOutputFromHtml($html, array('orientation'=>'Landscape')),
-			200,
-			array(
-				'Content-Type'          => 'application/pdf',
-				'Content-Disposition'   => 'attachment; filename="file.pdf"'
-			)
-		);
-	}
-
-	/**
-	 * @Route("/attestation_presence_pdf/{id}/pdf", name="attestation_presence_pdf")
-	 *
-	 */
-	public function attestation_presence_pdfAction(Agenda $agenda, Reservation $reservation)
-	{
-		$html = $this->renderView('AdminBundle:Default:attestation_presence_pdf.html.twig', array(
-			'agenda'  => $agenda,
-			'reservation'  => $reservation
-		));
-
-
-		return new Response(
-			$this->get('knp_snappy.pdf')->getOutputFromHtml($html),
-			200,
-			array(
-				'Content-Type'          => 'application/pdf',
-				'Content-Disposition'   => 'attachment; filename="file.pdf"'
-			)
-		);
-	}
-
-	/**
-	 * @Route("/convocation_pdf/{id}/pdf", name="convocation_pdf")
-	 *
-	 */
-	public function convocation_pdfAction(Agenda $agenda )
-	{
-		$html = $this->renderView('AdminBundle:Default:convocation.html.twig', array(
-			'agenda'  => $agenda
-		));
-
-
-		return new Response(
-			$this->get('knp_snappy.pdf')->getOutputFromHtml($html),
-			200,
-			array(
-				'Content-Type'          => 'application/pdf',
-				'Content-Disposition'   => 'attachment; filename="file.pdf"'
-			)
-		);
-	}
-
-	/**
-	 *
-	 * @Route("/", name="reservation_profil")
-	 * @Method("GET")
-	 */
-	public function reservationProfilAction()
-	{
-		$em = $this->getDoctrine()->getManager();
-		$user = $this->getUser();
-		$reservations = $em->getRepository('CommerceBundle:Reservation')->findByUser($user);
-		return $this->render('CommerceBundle:Default:index.html.twig', array(
-			'reservations' => $reservations,
-		));
-	}
-
-	/**
-	 *
-	 * @Route("/", name="reservation_poste")
-	 * @Method("GET")
-	 */
-	public function reservationPosteAction()
-	{
-		$em = $this->getDoctrine()->getManager();
-		$user = $this->getUser();
-		$formulaireSecours = $em->getRepository('FrontBundle:FormulaireSecours')->findByUser($user);
-		return $this->render('CommerceBundle:Default:poste.html.twig', array(
-			'formulaireSecours' => $formulaireSecours,
-		));
-	}
 
 
 }
