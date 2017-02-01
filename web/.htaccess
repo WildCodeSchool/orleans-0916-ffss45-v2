@@ -73,4 +73,8 @@ DirectoryIndex app.php
     # Change below before deploying to production
     #RewriteRule ^(.*)$ /web/app.php [QSA,L]
     RewriteRule ^(.*)$ /web/app_dev.php [QSA,L]
+<<<<<<< HEAD
 </IfModule>
+=======
+</IfModule>
+>>>>>>> 621b93f74e8d004de3505e18308a6e9f7ec56118
