@@ -195,6 +195,10 @@ class PanierController extends Controller
         $panier = $session->get('panier');
 
         $n = 1;
+
+        // connexion à la table systempay, avec parameter=identifiant de la transaction
+        // verif si status paid ok
+        // ensuite on execute le reste du code
         foreach ($panier as $formation) {
 
             $users = $em->getRepository('AdminBundle:User')->findAll();
@@ -294,6 +298,8 @@ class PanierController extends Controller
 
         }
         $em->flush();
+        $session->remove('panier');
+
         return $this->redirect($this->generateUrl('page_accueil_principale'));
         // }
         // return $this->render('@Front/Default/acceuil.html.twig', array(
@@ -487,7 +493,7 @@ class PanierController extends Controller
         $systempay = $this->get('tlconseil.systempay')
             ->init($currency = 978, $amount = ($totalfinal*100))
             ->setOptionnalFields(array(
-                'shop_url' => 'http://193.70.38.206/ffss45/app.php',
+                'shop_url' => 'http://193.70.38.206/ffss45',
                 'order_id' => $orderId
             ));
 
@@ -506,12 +512,12 @@ class PanierController extends Controller
      */
     public function paymentVerificationAction(Request $request)
     {
-        var_dump($request);
         // ...
         $this->get('tlconseil.systempay')
             ->responseHandler($request);
 
-        return new Response();
+        return $this->redirectToRoute('final_subscription');
     }
+
 
 }
