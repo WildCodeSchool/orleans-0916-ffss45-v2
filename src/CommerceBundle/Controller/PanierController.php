@@ -182,7 +182,7 @@ class PanierController extends Controller
      * @Route("/finalSubscription/{id_systempay}", name="final_subscription")
      *
      */
-    public function finalSubscriptionAction(Request $request, $id_systempay)
+    public function finalSubscriptionAction($id_systempay, Request $request)
     {
 
         $em = $this->getDoctrine()->getManager();
@@ -281,7 +281,7 @@ class PanierController extends Controller
                             $agenda_panier = $formation['agenda'];
                             $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_panier->getId());
                             $reservation->setAgenda($agenda);
-                            $reservation->setnumeroReservation(100);
+                            $reservation->setnumeroReservation($systempayOrderId);
 
                             // dump($reservation);
                             $em->persist($reservation);
@@ -514,8 +514,6 @@ class PanierController extends Controller
         return array(
             'paymentUrl' => $systempay->getPaymentUrl(),
             'fields' => $systempay->getResponse(),
-
-
         );
     }
 
