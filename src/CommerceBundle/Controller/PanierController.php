@@ -199,12 +199,13 @@ class PanierController extends Controller
             $log = json_decode($transaction->getLogResponse());
             $paid = $transaction->isPaid();
             $systempayOrderId = $log->vads_order_id;
-         //   $systempayOrderId = '15891f59d71635';
 
             $orderId = null;
+         //   $orderId=$systempayOrderId;
             if ($session->has('orderId')) {
                 $orderId = $session->get('orderId');
             }
+            //dump($orderId);
             if ($orderId && $orderId == $systempayOrderId && $paid) {
                 // ensuite on execute le reste du code
                 foreach ($panier as $formation) {
