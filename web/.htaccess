@@ -11,7 +11,7 @@ DirectoryIndex app.php
 # when compiling LESS/Sass/CoffeScript assets.
 # Options FollowSymlinks
 
-# Disabling MultiViews prevents unwanted negotiation, e.g. "/app" should not resolve
+# Disabling MultiViews prevents unwanted negotiation, e.g. "/app" hould not resolve
 # to the front controller "/app.php" but be rewritten to "/app.php/app".
 <IfModule mod_negotiation.c>
     Options -MultiViews
@@ -57,12 +57,24 @@ DirectoryIndex app.php
     RewriteRule .? %{ENV:BASE}/app.php [L]
 </IfModule>
 
-<IfModule !mod_rewrite.c>
-    <IfModule mod_alias.c>
-        # When mod_rewrite is not available, we instruct a temporary redirect of
-        # the start page to the front controller explicitly so that the website
-        # and the generated links can still be used.
-        RedirectMatch 302 ^/$ /app.php/
-        # RedirectTemp cannot be used instead
-    </IfModule>
+
+<IfModule mod_rewrite.c>
+    Options +FollowSymlinks
+    RewriteEngine On
+
+    # Explicitly disable rewriting for front controllers
+    RewriteRule ^/web/app_dev.php - [L]
+    RewriteRule ^/web/app.php - [L]
+
+    # Fix the bundles folder
+    RewriteRule ^bundles/(.*)$ /web/bundles/$1  [QSA,L]
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    # Change below before deploying to production
+    #RewriteRule ^(.*)$ /web/app.php [QSA,L]
+    RewriteRule ^(.*)$ /web/app_dev.php [QSA,L]
+<<<<<<< HEAD
 </IfModule>
+=======
+</IfModule>
+>>>>>>> 621b93f74e8d004de3505e18308a6e9f7ec56118
