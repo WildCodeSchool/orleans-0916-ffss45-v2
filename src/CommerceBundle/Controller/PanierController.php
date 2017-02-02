@@ -26,6 +26,7 @@ use CommerceBundle\Entity\Reservation;
 use Tlconseil\SystempayBundle\Service\SystemPay;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Session\SessionBagInterface;
+use CommerceBundle\Entity\Panier;
 
 class PanierController extends Controller
 {
@@ -200,9 +201,9 @@ class PanierController extends Controller
             $paid = $transaction->isPaid();
             $systempayOrderId = $log->vads_order_id;
 
-            $res = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($id_systempay);
-            $panier = json_decode($res->getJson());
-
+            $res = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($systempayOrderId);
+            $panier = json_decode($res->getJson(), true);
+            $orderId = $res->getNumeroReservation();
 
             //dump($orderId);
             if ($panier && $paid) {
@@ -506,11 +507,11 @@ class PanierController extends Controller
         }
         $orderId = uniqid(1, false);
 
-        $panier = new Panier();
-        $panier -> setNumeroReservation($orderId);
-        $panier -> setJson(json_encode($panier));
+        $panier1 = new Panier();
+        $panier1 -> setNumeroReservation($orderId);
+        $panier1 -> setJson(json_encode($session->get('panier')));
 
-        $em->persist($panier);
+        $em->persist($panier1);
         $em->flush();
 
         $systempay = $this->get('tlconseil.systempay')
