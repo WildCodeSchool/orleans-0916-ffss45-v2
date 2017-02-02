@@ -551,7 +551,7 @@ class PanierController extends Controller
     {
         $session = $request->getSession();
 
-        $session->remove('panier');die;
+        $session->remove('panier');
 
         return $this->redirectToRoute('page_accueil_principale');
     }
