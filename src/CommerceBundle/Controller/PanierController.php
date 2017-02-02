@@ -468,7 +468,7 @@ class PanierController extends Controller
 
             }
 
-            return $this->render('@Commerce/Default/payOnline.html.twig', array(
+            return $this->render('@Commerce/Panier/payOnline.html.twig', array(
                 'panier' => $panier,
             ));
         } else {
@@ -527,8 +527,7 @@ class PanierController extends Controller
     }
 
     /**
-     * @Route("/initiate-paymentPS", name="pay_onlinePS")
-     * @Template()
+     * @Route("/initiate-paymentPS/{id_systempay}", name="pay_onlinePS")
      */
     public function payOnlinePSAction($id_systempay)
     {
@@ -553,7 +552,7 @@ class PanierController extends Controller
                 'order_id' => $numDevis
             ));
 
-        return array(
+        return $this->render('@Commerce/Panier/payOnline.html.twig', array(
             'paymentUrl' => $systempay->getPaymentUrl(),
             'fields' => $systempay->getResponse(),
         );
