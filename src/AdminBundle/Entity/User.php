@@ -149,8 +149,7 @@ class User extends BaseUser
      *
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
      *
-     * @return identite
-     */
+     * @return Identite
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;
@@ -175,8 +174,7 @@ class User extends BaseUser
     /**
      * @param string $imageName
      *
-     * @return identite
-     */
+     * @return Identite
     public function setImageName($imageName)
     {
         $this->imageName = $imageName;
@@ -417,8 +415,7 @@ class User extends BaseUser
      *
      * @param \CommerceBundle\Entity\Reservation $reservation
      *
-     * @return identite
-     */
+     * @return Identite
     public function addReservation(\CommerceBundle\Entity\Reservation $reservation)
     {
         $this->reservations[] = $reservation;
@@ -441,8 +438,7 @@ class User extends BaseUser
      *
      * @param \CommerceBundle\Entity\Upload $upload
      *
-     * @return identite
-     */
+     * @return Identite
     public function addUpload(\CommerceBundle\Entity\Upload $upload)
     {
         $this->uploads[] = $upload;
@@ -465,7 +461,7 @@ class User extends BaseUser
      *
      * @param \DateTime $updatedAt
      *
-     * @return identite
+     * @return Identite
      */
     public function setUpdatedAt($updatedAt)
     {
