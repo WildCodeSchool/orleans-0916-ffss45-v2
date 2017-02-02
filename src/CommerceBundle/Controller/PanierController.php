@@ -280,8 +280,8 @@ class PanierController extends Controller
                             $reservation->setUser($user);
                             $reservation->setStatus(1);
 
-                            $agenda_panier = $formation['agenda'];
-                            $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_panier->getId());
+                            //$agenda_panier = $formation['agenda'];
+                            $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_id);
                             $reservation->setAgenda($agenda);
                             $reservation->setnumeroReservation($systempayOrderId);
 
