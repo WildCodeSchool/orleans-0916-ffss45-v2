@@ -208,7 +208,7 @@ class PanierController extends Controller
             //dump($orderId);
             if ($panier && $paid) {
                 // ensuite on execute le reste du code
-                foreach ($panier as $agenda_id=>$formation) {
+                foreach ($panier as $agenda_id => $formation) {
 
                     $users = $em->getRepository('AdminBundle:User')->findAll();
                     foreach ($users as $value) {
@@ -280,8 +280,8 @@ class PanierController extends Controller
                             $reservation->setUser($user);
                             $reservation->setStatus(1);
 
-                            $agenda_panier = $formation['agenda'];
-                            $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_panier->getId());
+                            //$agenda_panier = $formation['agenda'];
+                            $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_id);
                             $reservation->setAgenda($agenda);
                             $reservation->setnumeroReservation($systempayOrderId);
 
@@ -306,8 +306,7 @@ class PanierController extends Controller
 
                 }
                 $em->flush();
-                $session->remove('panier');
-                $session->remove('orderId');
+
             } else {
                 $session->getFlashBag()->add('danger', "Problème dans le traitement du panier");
             }
@@ -415,7 +414,6 @@ class PanierController extends Controller
         $panier = $session->get('panier');
 
 
-
         $id = $agenda->getId();
         $user = $this->getUser();
         $panier[$id]['inscrits'][1] = ['nom' => $user->getNom(), 'prenom' => $user->getPrenom(), 'email' => $user->getEmail()];
@@ -508,13 +506,13 @@ class PanierController extends Controller
         $orderId = uniqid(1, false);
 
         $panier1 = new Panier();
-        $panier1 -> setNumeroReservation($orderId);
-        $panier1 -> setJson(json_encode($session->get('panier')));
+        $panier1->setNumeroReservation($orderId);
+        $panier1->setJson(json_encode($session->get('panier')));
         $em->persist($panier1);
         $em->flush();
 
         $systempay = $this->get('tlconseil.systempay')
-            ->init($currency = 978, $amount = ($totalfinal*100))
+            ->init($currency = 978, $amount = ($totalfinal * 100))
             ->setOptionnalFields(array(
                 'shop_url' => 'http://193.70.38.206/ffss45',
                 'order_id' => $orderId
@@ -541,5 +539,20 @@ class PanierController extends Controller
         return $this->redirectToRoute('final_subscription', [
             'id_systempay' => $id_systempay
         ]);
+    }
+
+
+    /**
+     * @Route("/paiementRetour", name="paiement_retour")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function stopSessionAction(Request $request)
+    {
+        $session = $request->getSession();
+
+        $session->remove('panier');die;
+
+        return $this->redirectToRoute('page_accueil_principale');
     }
 }
