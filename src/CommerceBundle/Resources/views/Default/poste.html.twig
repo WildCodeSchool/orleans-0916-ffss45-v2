@@ -16,7 +16,9 @@
                     <td>{% if formulaireSecour.dateDebutManif %}{{ formulaireSecour.dateDebutManif|date('d-m-Y') }}{% endif %}</td>
                     <td>{% if formulaireSecour.dateFinManif %}{{ formulaireSecour.dateFinManif|date('d-m-Y') }}{% endif %}</td>
                     <td>{{ formulaireSecour.devis }}€</td>
-                    <td><a class="btn btn-primary" href="#">Payer la prestation</a></td>
+                    {%  if formulaireSecour.devis %}
+                    <td><a class="btn btn-primary" href="{{ path('pay_onlinePS') }}">Payer la prestation</a></td>
+                    {% endif %}
                 </tr>
 
                 </tbody>
