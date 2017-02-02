@@ -527,7 +527,7 @@ class PanierController extends Controller
     }
 
     /**
-     * @Route("/initiate-payment", name="pay_onlinePS")
+     * @Route("/initiate-paymentPS", name="pay_onlinePS")
      * @Template()
      */
     public function payOnlinePSAction($id_systempay)
