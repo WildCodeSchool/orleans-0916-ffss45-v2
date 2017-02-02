@@ -43,7 +43,7 @@ class MailCommand extends ContainerAwareCommand
             
             /////////////////////////////////////////////////////
 
-            if ($diff=='+20') {
+            if ($diff=='+6') {
                 $utilisateur = $reservation -> getUser();
                 $output->writeln($utilisateur->getEmail());
                 $output->writeln(['============',]);
@@ -51,8 +51,8 @@ class MailCommand extends ContainerAwareCommand
                 // envoi du mail
                 // swiftmailer ...
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('La formation débute bientôt !')
-                    ->setFrom('contact@ffss.fr')
+                    ->setSubject('Votre formation débute bientôt !')
+                    ->setFrom('site@secourisme45.com')
                     ->setTo($utilisateur->getEmail())
                     ->setBody(
                         $this->getContainer()->get('templating')->render(

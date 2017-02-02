@@ -36,9 +36,17 @@ class Reservation
 
     /**
      * @var int
-     * @ORM\Column(name="numero_reservation", type="integer", nullable=true)
+     * @ORM\Column(name="numero_reservation", type="string", nullable=true)
      */
     private $numeroReservation;
+
+    /**
+     * @var int
+     * @ORM\Column(name="panier", type="text", nullable=true)
+     */
+    private $panier;
+
+
 
 	/**
      *

@@ -25,7 +25,7 @@ use AdminBundle\Entity\User;
 use CommerceBundle\Entity\Reservation;
 use Tlconseil\SystempayBundle\Service\SystemPay;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
+use Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 
 class PanierController extends Controller
 {
@@ -198,13 +198,14 @@ class PanierController extends Controller
         if ($transaction) {
             $log = json_decode($transaction->getLogResponse());
             $paid = $transaction->isPaid();
-            $systempayOrderId = $log[0]['vads_order_id'];
+            $systempayOrderId = $log->vads_order_id;
 
-            $orderId = null;
-            if ($session->has('orderId')) {
-                $orderId = $session->get('orderId');
-            }
-            if ($orderId && $orderId == $systempayOrderId && $paid === 1) {
+            $res = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($id_systempay);
+            $panier = json_decode($res->getJson());
+
+
+            //dump($orderId);
+            if ($panier && $paid) {
                 // ensuite on execute le reste du code
                 foreach ($panier as $formation) {
 
@@ -233,7 +234,7 @@ class PanierController extends Controller
                             $agenda_panier = $formation['agenda'];
                             $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_panier->getId());
                             $reservation->setAgenda($agenda);
-                            $reservation->setnumeroReservation(100);//à changer avec validation systempay
+                            $reservation->setnumeroReservation($orderId);//à changer avec validation systempay
 
 
                             $em->persist($reservation);
@@ -307,9 +308,10 @@ class PanierController extends Controller
                 $session->remove('panier');
                 $session->remove('orderId');
             } else {
-                // $flashBag error
+                $session->getFlashBag()->add('danger', "Problème dans le traitement du panier");
             }
         }
+        $em->flush();
         return $this->redirect($this->generateUrl('page_accueil_principale'));
         // }
         // return $this->render('@Front/Default/acceuil.html.twig', array(
@@ -503,7 +505,14 @@ class PanierController extends Controller
 
         }
         $orderId = uniqid(1, false);
-        $session->set('orderId', $orderId);
+
+        $panier = new Panier();
+        $panier -> setNumeroReservation($orderId);
+        $panier -> setJson(json_encode($panier));
+
+        $em->persist($panier);
+        $em->flush();
+
         $systempay = $this->get('tlconseil.systempay')
             ->init($currency = 978, $amount = ($totalfinal*100))
             ->setOptionnalFields(array(
@@ -524,7 +533,7 @@ class PanierController extends Controller
      */
     public function paymentVerificationAction(Request $request)
     {
-        // ...
+
         $this->get('tlconseil.systempay')
             ->responseHandler($request);
         $query = $request->request->all();
