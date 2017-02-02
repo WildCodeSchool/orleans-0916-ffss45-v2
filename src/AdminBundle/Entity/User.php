@@ -150,6 +150,8 @@ class User extends BaseUser
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
      *
      * @return Identite
+     * */
+
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;
@@ -175,6 +177,8 @@ class User extends BaseUser
      * @param string $imageName
      *
      * @return Identite
+     *
+     * */
     public function setImageName($imageName)
     {
         $this->imageName = $imageName;

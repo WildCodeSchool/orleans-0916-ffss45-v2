@@ -6,7 +6,7 @@ namespace AdminBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 use Symfony\Component\Form\FormBuilderInterface;
-
+use Vich\UploaderBundle\Form\Type\VichImageType;
 class ProfileFormType extends AbstractType
 {
 	public function buildForm(FormBuilderInterface $builder, array $options)
@@ -24,6 +24,12 @@ class ProfileFormType extends AbstractType
 			->add('ville')
 			->add('tel')
 			->add('relation')
+			->add('imageFile', VichImageType::class, [
+				'required' => false,
+				'allow_delete' => true, // not mandatory, default is true
+				'download_link' => true, // not mandatory, default is true
+				'label' => 'Carte d\'identité'
+			]);
 		;
 	}
 

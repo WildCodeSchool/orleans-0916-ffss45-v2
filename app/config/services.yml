@@ -17,11 +17,15 @@ services:
               - { name: form.type, alias: app_user_registration }
 
 
+      app.form.registration:
+          class: FrontBundle\Form\RegistrationFormType
+          tags:
+              - { name: form.type, alias: app_user_registration }
 
       app.form.profile:
-                class: FrontBundle\Form\ProfileFormType
-                tags:
-                    - { name: form.type, alias: app_user_profile }
+          class: FrontBundle\Form\ProfileFormType
+          tags:
+              - { name: form.type, alias: app_user_profile }
 
 
 #      app.doctrine_image_uploader:
