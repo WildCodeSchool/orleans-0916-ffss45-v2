@@ -205,7 +205,9 @@ class PanierController extends Controller
             if ($session->has('orderId')) {
                 $orderId = $session->get('orderId');
             }
-            $session->getFlashBag()->add('info', "sys $systempayOrderId ord $orderId");
+            $logger = $this->get('logger');
+            $logger->info("sys $systempayOrderId ord $orderId");
+
             //dump($orderId);
             if ($orderId && $orderId == $systempayOrderId && $paid) {
                 // ensuite on execute le reste du code
