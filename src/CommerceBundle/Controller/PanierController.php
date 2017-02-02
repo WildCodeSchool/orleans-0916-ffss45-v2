@@ -202,7 +202,7 @@ class PanierController extends Controller
             $systempayOrderId = $log->vads_order_id;
 
             $res = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($systempayOrderId);
-            $panier = json_decode($res->getJson());
+            $panier = json_decode($res->getJson(), true);
             $orderId = $res->getNumeroReservation();
 
             //dump($orderId);
