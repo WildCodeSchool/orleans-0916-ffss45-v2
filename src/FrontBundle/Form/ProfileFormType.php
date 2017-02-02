@@ -16,6 +16,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Validator\Constraints\UserPassword;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class ProfileFormType extends AbstractType
 {
@@ -52,7 +53,9 @@ class ProfileFormType extends AbstractType
 			'translation_domain' => 'FOSUserBundle',
 			'mapped' => false,
 			'constraints' => new UserPassword($constraintsOptions),
-		));
+		))
+
+		;
 	}
 
 	/**
