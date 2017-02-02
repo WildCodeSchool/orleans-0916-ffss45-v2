@@ -1,6 +1,8 @@
 <?php
 namespace CommerceBundle\Controller;
 
+use CommerceBundle\CommerceBundle;
+use FrontBundle\FrontBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\DependencyInjection\Container;
@@ -525,6 +527,39 @@ class PanierController extends Controller
     }
 
     /**
+     * @Route("/initiate-paymentPS", name="pay_onlinePS")
+     * @Template()
+     */
+    public function payOnlinePSAction($id_systempay)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $ps = $em->getRepository('FrontBundle:FormulaireSecours')->find($id_systempay);
+        $montantPS = $ps->getDevis();
+        $numDevis = uniqid(1, false);
+
+        $panier2 = new Panier();
+        $panier2->setNumeroReservation($numDevis);
+        $panier2->setJson($id_systempay);
+        $panier2->setPosteDeSecours(1);
+
+        $em->persist($panier2);
+        $em->flush();
+
+        $systempay = $this->get('tlconseil.systempay')
+            ->init($currency = 978, $amount = ($montantPS * 100))
+            ->setOptionnalFields(array(
+                'shop_url' => 'http://193.70.38.206/ffss45',
+                'order_id' => $numDevis
+            ));
+
+        return array(
+            'paymentUrl' => $systempay->getPaymentUrl(),
+            'fields' => $systempay->getResponse(),
+        );
+    }
+
+    /**
      * @Route("/payment/verification", name="payment_verification")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
@@ -536,9 +571,21 @@ class PanierController extends Controller
             ->responseHandler($request);
         $query = $request->request->all();
         $id_systempay = (int)$query['vads_trans_id'];
-        return $this->redirectToRoute('final_subscription', [
-            'id_systempay' => $id_systempay
-        ]);
+
+        $em = $this->getDoctrine()->getManager();
+        $commandePS = $em->getRepository('CommerceBundle:Panier')->findByNumeroReservation($id_systempay);
+
+        if ($commandePS->getPosteDeSecours() == 1) {
+
+            return $this->redirectToRoute('pay_onlinePS', [
+                'id_systempay' => $id_systempay
+            ]);
+        } else {
+
+            return $this->redirectToRoute('final_subscription', [
+                'id_systempay' => $id_systempay
+            ]);
+        }
     }
 
 
@@ -555,4 +602,8 @@ class PanierController extends Controller
 
         return $this->redirectToRoute('page_accueil_principale');
     }
+
+
+
+
 }

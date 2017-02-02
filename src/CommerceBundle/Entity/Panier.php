@@ -29,11 +29,34 @@ class Panier
     private $numeroReservation;
 
     /**
+     * @return string
+     */
+    public function getPosteDeSecours()
+    {
+        return $this->posteDeSecours;
+    }
+
+    /**
+     * @param string $posteDeSecours
+     */
+    public function setPosteDeSecours($posteDeSecours)
+    {
+        $this->posteDeSecours = $posteDeSecours;
+    }
+
+    /**
      * @var string
      *
      * @ORM\Column(name="json", type="text")
      */
     private $json;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="poste_secours", type="string")
+     */
+    private $posteDeSecours;
 
 
     /**
@@ -70,6 +93,8 @@ class Panier
         return $this->numeroReservation;
     }
 
+
+
     /**
      * Set json
      *
@@ -93,5 +118,8 @@ class Panier
     {
         return $this->json;
     }
+
+
+
 }
 
