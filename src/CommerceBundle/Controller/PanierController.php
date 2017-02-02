@@ -25,7 +25,7 @@ use AdminBundle\Entity\User;
 use CommerceBundle\Entity\Reservation;
 use Tlconseil\SystempayBundle\Service\SystemPay;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-
+use Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 
 class PanierController extends Controller
 {
@@ -199,15 +199,13 @@ class PanierController extends Controller
             $log = json_decode($transaction->getLogResponse());
             $paid = $transaction->isPaid();
             $systempayOrderId = $log->vads_order_id;
-           // echo 's'.$systempayOrderId;
+
             $orderId = null;
          //   $orderId=$systempayOrderId;
             if ($session->has('orderId')) {
                 $orderId = $session->get('orderId');
             }
-            $session->setFlash('info', 'sysId:'.$systempayOrderId.' orderId:'.$orderId);
-
-         //   echo 'o'.$orderId;die;
+            $session->getFlashBag()->add('info', "sys $systempayOrderId ord $orderId");
             //dump($orderId);
             if ($orderId && $orderId == $systempayOrderId && $paid) {
                 // ensuite on execute le reste du code
@@ -312,9 +310,10 @@ class PanierController extends Controller
                 $session->remove('panier');
                 $session->remove('orderId');
             } else {
-                $session->setFlash('danger', 'Traitement du panier impossible');
+                $session->getFlashBag()->add('danger', "Problème dans le traitement du panier");
             }
         }
+        $em->flush();
         return $this->redirect($this->generateUrl('page_accueil_principale'));
         // }
         // return $this->render('@Front/Default/acceuil.html.twig', array(
