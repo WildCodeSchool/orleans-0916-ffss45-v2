@@ -574,7 +574,7 @@ class PanierController extends Controller
         $em = $this->getDoctrine()->getManager();
         $commandePS = $em->getRepository('CommerceBundle:Panier')->findByNumeroReservation($id_systempay);
 
-        if ($commandePS->getPosteDeSecours() == 1) {
+        if ($commandePS[0]->getPosteDeSecours() == 1) {
 
             return $this->redirectToRoute('pay_onlinePS', [
                 'id_systempay' => $id_systempay
