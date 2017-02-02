@@ -208,7 +208,7 @@ class PanierController extends Controller
             //dump($orderId);
             if ($panier && $paid) {
                 // ensuite on execute le reste du code
-                foreach ($panier as $formation) {
+                foreach ($panier as $agenda_id=>$formation) {
 
                     $users = $em->getRepository('AdminBundle:User')->findAll();
                     foreach ($users as $value) {
@@ -233,7 +233,7 @@ class PanierController extends Controller
                             $reservation->setStatus(1);
 
                             $agenda_panier = $formation['agenda'];
-                            $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_panier->getId());
+                            $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_id);
                             $reservation->setAgenda($agenda);
                             $reservation->setnumeroReservation($orderId);//à changer avec validation systempay
 
@@ -509,8 +509,7 @@ class PanierController extends Controller
 
         $panier1 = new Panier();
         $panier1 -> setNumeroReservation($orderId);
-        $panier1 -> setJson(json_encode($session->get('panier')));
-
+        $panier1 -> setJson(json_encode($panier));
         $em->persist($panier1);
         $em->flush();
 
