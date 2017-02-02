@@ -1,7 +1,7 @@
 # Notice d'utilisation du site à destination du client
 
 #### Accès à la partie "Administration"
-* par l'adresse www.secourisme45.com/admin
+* par l'adresse www.secourisme45.com/ffss/admin
 * rentrer ensuite vos **login** et **mot de passe**
 
 #### Partie "Administration"
@@ -32,3 +32,14 @@ La liste des inscription a une formation se trouve dans la partie admin, onglet 
 Il est possible de télécharger la feuille d'émargement en clickant sur le bouton feuille d'émargement.
 Pour ajouter un diplôme à une personne il suffit de clicker sur éditer dans le champ correspondant à la personne voulue et 
 de choisir un fichier avec le bouton choisissez un fichier.
+
+#### Partie "Profil"
+Vous pouvez accéder à cette page en cliquant sur votre "pseudo" ou en tapant : http://www.secourisme45.com/ffss45/profile/
+La navigation se fait par les onglets **Profil, Formations et Postes de Secours**
+
+Une fois un onglet cliqué, la page concernée s'affiche.
+
+Plusieurs actions sont alors possibles :
+* Modifier les informations (Onglet Profil)
+* Télécharger la convocation (Onglet Formation)
+* Payer la prestation (Onglet Poste de Secours)
