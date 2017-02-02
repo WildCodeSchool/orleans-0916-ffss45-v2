@@ -25,3 +25,10 @@ Pour les actualités veuillez à toujours choisir une photo lorsque vous éditez
 Cette action  permet de créer une actualité, une formation ou un agenda.
 Attention au choix de la photo pour les actualités. Celle-ci doit être en format 3000*2000 pixels et ne pas dépasser 2 Mo. Ceci afin d'assurer un bon affichage en page d'accueil.
 Une fois l'actualité créée, elle se retrouvera directement dans le carousel en page d'accueil et en tête de liste dans la page d'actualités.
+
+##### Liste des inscriptions 
+La liste des inscription a une formation se trouve dans la partie admin, onglet formations,puis clicker sur l'icone agenda correspondant à la formation voulue, ensuite clicker sur le bouton inscriptions correspondant à l'agenda voulu.
+
+Il est possible de télécharger la feuille d'émargement en clickant sur le bouton feuille d'émargement.
+Pour ajouter un diplôme à une personne il suffit de clicker sur éditer dans le champ correspondant à la personne voulue et 
+de choisir un fichier avec le bouton choisissez un fichier.
