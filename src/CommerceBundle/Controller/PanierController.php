@@ -511,7 +511,7 @@ class PanierController extends Controller
         $panier1 -> setNumeroReservation($orderId);
         $panier1 -> setJson(json_encode($panier));
 
-        $em->persist($panier);
+        $em->persist($panier1);
         $em->flush();
 
         $systempay = $this->get('tlconseil.systempay')
