@@ -40,6 +40,14 @@ class Reservation
      */
     private $numeroReservation;
 
+    /**
+     * @var int
+     * @ORM\Column(name="panier", type="text", nullable=true)
+     */
+    private $panier;
+
+
+
 	/**
      *
 	 * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\Agenda", inversedBy="reservations",cascade={"persist"} )

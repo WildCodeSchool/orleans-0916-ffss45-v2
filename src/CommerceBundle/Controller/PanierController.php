@@ -200,16 +200,12 @@ class PanierController extends Controller
             $paid = $transaction->isPaid();
             $systempayOrderId = $log->vads_order_id;
 
-            $orderId = null;
-         //   $orderId=$systempayOrderId;
-            if ($session->has('orderId')) {
-                $orderId = $session->get('orderId');
-            }
-            $logger = $this->get('logger');
-            $logger->info("sys $systempayOrderId ord $orderId");
+            $res = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($id_systempay);
+            $panier = json_decode($res->getJson());
+
 
             //dump($orderId);
-            if ($orderId && $orderId == $systempayOrderId && $paid) {
+            if ($panier && $paid) {
                 // ensuite on execute le reste du code
                 foreach ($panier as $formation) {
 
@@ -316,7 +312,6 @@ class PanierController extends Controller
             }
         }
         $em->flush();
-        return $this->redirect($this->generateUrl('panier'));
         return $this->redirect($this->generateUrl('page_accueil_principale'));
         // }
         // return $this->render('@Front/Default/acceuil.html.twig', array(
@@ -510,7 +505,14 @@ class PanierController extends Controller
 
         }
         $orderId = uniqid(1, false);
-        $session->set('orderId', $orderId);
+
+        $panier = new Panier();
+        $panier -> setNumeroReservation($orderId);
+        $panier -> setJson(json_encode($panier));
+
+        $em->persist($panier);
+        $em->flush();
+
         $systempay = $this->get('tlconseil.systempay')
             ->init($currency = 978, $amount = ($totalfinal*100))
             ->setOptionnalFields(array(
