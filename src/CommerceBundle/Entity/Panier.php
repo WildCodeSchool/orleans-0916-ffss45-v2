@@ -54,7 +54,7 @@ class Panier
     /**
      * @var string
      *
-     * @ORM\Column(name="poste_secours", type="string")
+     * @ORM\Column(name="poste_secours", type="string", nullable = true)
      */
     private $posteDeSecours;
 
