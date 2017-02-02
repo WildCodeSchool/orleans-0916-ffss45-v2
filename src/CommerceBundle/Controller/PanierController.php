@@ -230,7 +230,7 @@ class PanierController extends Controller
 
                             $reservation = new Reservation();
                             $reservation->setUser($user);
-                            $reservation->setStatus(1);
+                            $reservation->setStatus(2);
 
                             $agenda_panier = $formation['agenda'];
                             $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_id);
@@ -278,7 +278,7 @@ class PanierController extends Controller
 
                             $reservation = new Reservation();
                             $reservation->setUser($user);
-                            $reservation->setStatus(1);
+                            $reservation->setStatus(2);
 
                             //$agenda_panier = $formation['agenda'];
                             $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_id);
@@ -551,7 +551,7 @@ class PanierController extends Controller
     {
         $session = $request->getSession();
 
-        $session->remove('panier');die;
+        $session->remove('panier');
 
         return $this->redirectToRoute('page_accueil_principale');
     }
