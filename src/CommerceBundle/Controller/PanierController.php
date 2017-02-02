@@ -238,7 +238,7 @@ class PanierController extends Controller
                             $agenda_panier = $formation['agenda'];
                             $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_panier->getId());
                             $reservation->setAgenda($agenda);
-                            $reservation->setnumeroReservation(100);//à changer avec validation systempay
+                            $reservation->setnumeroReservation($orderId);//à changer avec validation systempay
 
 
                             $em->persist($reservation);
