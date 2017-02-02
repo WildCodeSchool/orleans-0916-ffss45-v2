@@ -507,9 +507,9 @@ class PanierController extends Controller
         }
         $orderId = uniqid(1, false);
 
-        $panier = new Panier();
-        $panier -> setNumeroReservation($orderId);
-        $panier -> setJson(json_encode($panier));
+        $panier1 = new Panier();
+        $panier1 -> setNumeroReservation($orderId);
+        $panier1 -> setJson(json_encode($panier));
 
         $em->persist($panier);
         $em->flush();
