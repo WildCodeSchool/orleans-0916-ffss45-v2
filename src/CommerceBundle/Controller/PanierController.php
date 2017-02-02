@@ -555,7 +555,7 @@ class PanierController extends Controller
         return $this->render('@Commerce/Panier/payOnline.html.twig', array(
             'paymentUrl' => $systempay->getPaymentUrl(),
             'fields' => $systempay->getResponse(),
-        );
+        ));
     }
 
     /**
