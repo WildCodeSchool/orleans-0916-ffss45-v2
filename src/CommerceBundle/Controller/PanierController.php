@@ -201,10 +201,11 @@ class PanierController extends Controller
             $systempayOrderId = $log->vads_order_id;
 
             $orderId = null;
-         //   $orderId=$systempayOrderId;
             if ($session->has('orderId')) {
                 $orderId = $session->get('orderId');
             }
+            $session->setFlash('info', 'sysId:'.$systempayOrderId.' orderId:'.$orderId);
+
             //dump($orderId);
             if ($orderId && $orderId == $systempayOrderId && $paid) {
                 // ensuite on execute le reste du code
@@ -309,10 +310,9 @@ class PanierController extends Controller
                 $session->remove('panier');
                 $session->remove('orderId');
             } else {
-                // $flashBag error
+                $session->setFlash('danger', 'Traitement du panier impossible');
             }
         }
-        $em->flush();
         return $this->redirect($this->generateUrl('page_accueil_principale'));
         // }
         // return $this->render('@Front/Default/acceuil.html.twig', array(
