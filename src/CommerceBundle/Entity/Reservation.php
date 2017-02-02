@@ -291,7 +291,7 @@ class Reservation
 	/**
 	 * NOTE: This is not a mapped field of entity metadata, just a simple property.
 	 *
-	 * @Vich\UploadableField(mapping="img_image", fileNameProperty="imageName")
+	 * @Vich\UploadableField(mapping="diplome_image", fileNameProperty="imageName")
 	 *
 	 * @var File
 	 */
@@ -325,7 +325,7 @@ class Reservation
 	 *
 	 * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
 	 *
-	 * @return img
+	 * @return diplome
 	 */
 	public function setImageFile(File $image = null)
 	{
@@ -351,7 +351,7 @@ class Reservation
 	/**
 	 * @param string $imageName
 	 *
-	 * @return img
+	 * @return diplome
 	 */
 	public function setImageName($imageName)
 	{
@@ -375,7 +375,7 @@ class Reservation
      *
      * @param \DateTime $updatedAt
      *
-     * @return img
+     * @return diplome
      */
     public function setUpdatedAt($updatedAt)
     {

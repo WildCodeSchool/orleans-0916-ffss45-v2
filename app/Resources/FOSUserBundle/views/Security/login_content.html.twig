@@ -3,9 +3,9 @@
 <head>
 
     <style>
-       label {
-           padding-bottom: 28px;
-       }
+        label {
+            padding-bottom: 28px;
+        }
     </style>
 
 </head>
@@ -44,18 +44,18 @@
                     <div class="bar"></div>
                 </div>
                 <div class="row">
-                    <div class="col-xs-4">
-                        <div class="button-container">
+                    <div class="col-xs-offset-1 col-xs-4">
+                        {#<div class="button-container">#}
                             <input href="{{ path('user_info') }}" class="btn-primary btn
                                 btn-lg" type="submit" id="_submit" name="_submit"
                                    value="{{ 'security.login.submit'|trans }}"/>
-                        </div>
+                        {#</div>#}
                     </div>
                     <div class="col-xs-4">
-                        <div class="button-container">
+                        {#<div class="button-container">#}
                             <a class="btn-primary btn btn-lg" type="submit" href="{{ path
                             ('fos_user_registration_register') }}">Créer un compte</a>
-                        </div>
+                        {#</div>#}
                         <br/>
                     </div>
                 </div>
@@ -73,12 +73,12 @@
 
 </div>
 {% block javascript %}
-<script>
-    $('.toggle').on('click', function() {
-        $('.container').stop().addClass('active');
-    });
-$('.close').on('click', function() {
-    $('.container').stop().removeClass('active');
-});
-</script>
+    <script>
+        $('.toggle').on('click', function () {
+            $('.container').stop().addClass('active');
+        });
+        $('.close').on('click', function () {
+            $('.container').stop().removeClass('active');
+        });
+    </script>
 {% endblock %}
