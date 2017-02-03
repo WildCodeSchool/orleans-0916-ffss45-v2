@@ -115,10 +115,12 @@ class User extends BaseUser
 	 */
 	private $relation;
 
+	///////////////////////// UploadImage CarteIdentité
+
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      *
-     * @Vich\UploadableField(mapping="user_image", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="identite_image", fileNameProperty="imageName")
      *
      * @var File
      */
@@ -147,8 +149,9 @@ class User extends BaseUser
      *
      * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
      *
-     * @return User
-     */
+     * @return Identite
+     * */
+
     public function setImageFile(File $image = null)
     {
         $this->imageFile = $image;
@@ -173,8 +176,9 @@ class User extends BaseUser
     /**
      * @param string $imageName
      *
-     * @return User
-     */
+     * @return Identite
+     *
+     * */
     public function setImageName($imageName)
     {
         $this->imageName = $imageName;
@@ -415,8 +419,7 @@ class User extends BaseUser
      *
      * @param \CommerceBundle\Entity\Reservation $reservation
      *
-     * @return User
-     */
+     * @return Identite
     public function addReservation(\CommerceBundle\Entity\Reservation $reservation)
     {
         $this->reservations[] = $reservation;
@@ -439,8 +442,7 @@ class User extends BaseUser
      *
      * @param \CommerceBundle\Entity\Upload $upload
      *
-     * @return User
-     */
+     * @return Identite
     public function addUpload(\CommerceBundle\Entity\Upload $upload)
     {
         $this->uploads[] = $upload;
@@ -463,7 +465,7 @@ class User extends BaseUser
      *
      * @param \DateTime $updatedAt
      *
-     * @return User
+     * @return Identite
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -481,4 +483,5 @@ class User extends BaseUser
     {
         return $this->updatedAt;
     }
+
 }

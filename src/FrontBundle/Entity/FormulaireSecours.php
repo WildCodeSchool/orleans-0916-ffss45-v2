@@ -2379,6 +2379,8 @@ class FormulaireSecours
     public function __construct()
     {
         $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->dateDebutManif = new \DateTime();
+        $this->dateFinManif = new \DateTime();
     }
 
     /**

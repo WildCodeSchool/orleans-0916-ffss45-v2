@@ -1,6 +1,8 @@
 <?php
 namespace CommerceBundle\Controller;
 
+use CommerceBundle\CommerceBundle;
+use FrontBundle\FrontBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\DependencyInjection\Container;
@@ -23,7 +25,10 @@ use AdminBundle\Form\AgendaType;
 use Symfony\Component\HttpFoundation\File\File;
 use AdminBundle\Entity\User;
 use CommerceBundle\Entity\Reservation;
-
+use Tlconseil\SystempayBundle\Service\SystemPay;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Session\SessionBagInterface;
+use CommerceBundle\Entity\Panier;
 
 class PanierController extends Controller
 {
@@ -74,9 +79,9 @@ class PanierController extends Controller
             foreach ($session->get('panier') as $id => $article) {
                 $agenda = $em->getRepository('AdminBundle:Agenda')->find($id);
                 $panier[$agenda->getId()]['totalitem'] = $agenda->getFormation()->getPrix() * $article['quantity'];
-                if ($session->get('totalLivraison')){
+                if ($session->get('totalLivraison')) {
                     $totalLivraison = $prixLivraison * $article['quantity'];
-                 }
+                }
                 $totalfinal += $panier[$agenda->getId()]['totalitem'] + $totalLivraison;
 
             }
@@ -87,6 +92,7 @@ class PanierController extends Controller
                 'Le panier est vide, veuillez ajouter des formations'
             );
         }
+
         return $this->render('@Commerce/Default/panier.html.twig', array(
             'panier' => $panier, 'totalfinal' => $totalfinal,
         ));
@@ -147,6 +153,7 @@ class PanierController extends Controller
 
         $form = $this->createFormBuilder($order)
             ->add('livraison', CheckboxType::class, [
+                'label' => '5€ / inscrit'
 
             ])
             ->getForm();
@@ -175,95 +182,144 @@ class PanierController extends Controller
     }
 
     /**
-     * @Route("/finalSubscription", name="final_subscription")
+     * @Route("/finalSubscription/{id_systempay}", name="final_subscription")
+     *
      */
-    public function finalSubscriptionAction(Request $request)
+    public function finalSubscriptionAction($id_systempay, Request $request)
     {
+
         $em = $this->getDoctrine()->getManager();
+//        var_dump($id_systempay);
         $session = $request->getSession();
 
         $panier = $session->get('panier');
 
         $n = 1;
-        foreach ($panier as $formation) {
 
-            $users = $em->getRepository('AdminBundle:User')->findAll();
-            foreach ($users as $value) {
-                $emails[] = $value->getEmail();
-                $usernames[] = $value->getUserName();
+        // connexion à la table systempay, avec parameter=identifiant de la transaction
+        $transaction = $em->getRepository('TlconseilSystempayBundle:Transaction')->find($id_systempay);
+        if ($transaction) {
+            $log = json_decode($transaction->getLogResponse());
+            $paid = $transaction->isPaid();
+            $systempayOrderId = $log->vads_order_id;
 
-            }
-            $inscrits = ($formation['inscrits']);
+            $res = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($systempayOrderId);
+            $panier = json_decode($res->getJson(), true);
+            $orderId = $res->getNumeroReservation();
 
-            foreach ($formation['inscrits'] as $newUser) {
-                $nom = $newUser['nom'];
-                $prenom = $newUser['prenom'];
-                $email = $newUser['email'];
-                $password = $inscrits[$n]['password'] = uniqid(1, false);
-                $n++;
+            //dump($orderId);
+            if ($panier && $paid) {
+                // ensuite on execute le reste du code
+                foreach ($panier as $agenda_id => $formation) {
+
+                    $users = $em->getRepository('AdminBundle:User')->findAll();
+                    foreach ($users as $value) {
+                        $emails[] = $value->getEmail();
+                        $usernames[] = $value->getUserName();
+
+                    }
+                    $inscrits = ($formation['inscrits']);
+
+                    foreach ($formation['inscrits'] as $newUser) {
+                        $nom = $newUser['nom'];
+                        $prenom = $newUser['prenom'];
+                        $email = $newUser['email'];
+                        $password = uniqid(1, false);
+                        $n++;
+
+                        if (in_array($email, $emails)) {
+                            $user = $em->getRepository('AdminBundle:User')->findOneByEmail($email);
+
+                            $reservation = new Reservation();
+                            $reservation->setUser($user);
+                            $reservation->setStatus(2);
+
+                            $agenda_panier = $formation['agenda'];
+                            $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_id);
+                            $reservation->setAgenda($agenda);
+                            $reservation->setnumeroReservation($orderId);//à changer avec validation systempay
 
 
-                if (in_array($email, $emails)) {
-                    $user = $em->getRepository('AdminBundle:User')->findOneByEmail($email);
-                    //Enregistrer la formation dans le compte user
+                            $em->persist($reservation);
 
-                } else {
-                    $username = $prenom . $nom; //toto //toto2
-                    $nb = 2;
-                    while (in_array($username, $usernames)) {
-                        $username = $prenom . $nom . $nb;
-                        $nb++;
+
+                            $message = \Swift_Message::newInstance()
+                                ->setSubject('FFSS45 : Finaliser votre inscription')
+                                ->setFrom('tuko45@hotmail.fr')
+                                ->setTo($email)
+                                ->setBody(
+                                    $this->renderView('emailMember.html.twig', array('nom' => $nom,
+                                        'prenom' => $prenom
+                                    ),
+                                        'text/html'
+                                    ));
+                            $this->get('mailer')->send($message);
+
+
+                        } else {
+                            $username = $prenom . $nom;
+                            $nb = 2;
+                            while (in_array($username, $usernames)) {
+                                $username = $prenom . $nom . $nb;
+                                $nb++;
+                            }
+                            $passwordcrypt = md5($password);
+                            $firstPassword[] = $password;
+
+                            $userManager = $this->container->get('fos_user.user_manager');
+                            $user = $userManager->createUser();
+
+                            $user->setUsername($username);
+                            $user->setEmail($email);
+                            $user->setNom($nom);
+                            $user->setPrenom($prenom);
+                            $user->setPassword($passwordcrypt);
+
+                            $userManager->updateUser($user);
+
+
+                            $reservation = new Reservation();
+                            $reservation->setUser($user);
+                            $reservation->setStatus(2);
+
+                            //$agenda_panier = $formation['agenda'];
+                            $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_id);
+                            $reservation->setAgenda($agenda);
+                            $reservation->setnumeroReservation($systempayOrderId);
+
+                            // dump($reservation);
+                            $em->persist($reservation);
+
+
+                            $message = \Swift_Message::newInstance()
+                                ->setSubject('FFSS45 : Finaliser votre inscription')
+                                ->setFrom('tuko45@hotmail.fr')
+                                ->setTo($email)
+                                ->setBody(
+                                    $this->renderView('emailSubscription.html.twig', array('nom' => $nom,
+                                        'prenom' => $prenom, 'password' => $password
+
+                                    ),
+                                        'text/html'
+                                    ));
+                            $this->get('mailer')->send($message);
+                        }
                     }
 
-                    $passwordcrypt = md5($password);
-                    $firstPassword[] = $password;
-
-                    $userManager = $this->container->get('fos_user.user_manager');
-                    $user = $userManager->createUser();
-                    $user->setUsername($username);
-                    $user->setEmail($email);
-                    $user->setNom($nom);
-                    $user->setPrenom($prenom);
-                    $user->setPassword($passwordcrypt);
-
-                    $userManager->updateUser($user);
-
-                    //$user = $em->getRepository('AdminBundle:User')->findOneByEmail($email);
-                   //$iduser = $user->getId();
                 }
-                $reservation = new Reservation();
-                $reservation->setUser($user);
+                $em->flush();
 
-                $agenda = $formation['agenda'];
-                $reservation->setAgenda($agenda);
-                dump($reservation);
-                $em->persist($reservation);
+            } else {
+                $session->getFlashBag()->add('danger', "Problème dans le traitement du panier");
             }
-            $em->flush();
-
-            foreach ($inscrits as $inscrit) {
-
-                $message = \Swift_Message::newInstance()
-                    ->setSubject('FFSS45 : Finaliser votre inscription')
-                    ->setFrom('tuko45@hotmail.fr')
-                    ->setTo($inscrit['email'])
-                    ->setBody(
-                        $this->renderView('emailSubscription.html.twig', array('nom' => $inscrit['nom'],
-                            'prenom' => $inscrit['prenom'], 'password' => $inscrit['password']
-
-                        ),
-                            'text/html'
-                        ));
-                $this->get('mailer')->send($message);
-            }
-            return $this->redirect($this->generateUrl('succes'));
-            // }
-            // return $this->render('@Front/Default/acceuil.html.twig', array(
-            //   'form' => $form->createView(),
-            //));
-
-
         }
+        $em->flush();
+        return $this->redirect($this->generateUrl('page_accueil_principale'));
+        // }
+        // return $this->render('@Front/Default/acceuil.html.twig', array(
+        //   'form' => $form->createView(),
+        //));
+
     }
 
     /**
@@ -286,6 +342,9 @@ class PanierController extends Controller
     {
         $session = $request->getSession();
         $session->set('panier', null);
+        if ($session->has('orderId')) {
+            $session->remove('orderId');
+        }
 
         return $this->redirectToRoute('panier');
     }
@@ -335,7 +394,7 @@ class PanierController extends Controller
     {
         $session = $request->getSession();
         $panier = $session->get('panier');
-        dump($panier);
+        //dump($panier);
         $id = $agenda->getId();
         if (isset($panier[$id]['inscrits'][$key])) {
             unset($panier[$id]['inscrits'][$key]);
@@ -355,6 +414,8 @@ class PanierController extends Controller
     {
         $session = $request->getSession();
         $panier = $session->get('panier');
+
+
         $id = $agenda->getId();
         $user = $this->getUser();
         $panier[$id]['inscrits'][1] = ['nom' => $user->getNom(), 'prenom' => $user->getPrenom(), 'email' => $user->getEmail()];
@@ -369,7 +430,7 @@ class PanierController extends Controller
     {
         $session = $request->getSession();
         $panier = $session->get('panier');
-        dump($panier);
+
 
         return $this->render('@Commerce/Default/validCart.html.twig', array(
             'panier' => $panier,
@@ -388,11 +449,12 @@ class PanierController extends Controller
         $errorBack = 0;
         if ($panier) {
             foreach ($panier as $article) {
-                for ($i = 0; $i < $article['quantity']; $i++) {
+                for ($i = 1; $i <= $article['quantity']; $i++) {
                     if (!isset($article['inscrits'])) {
                         $errorBack = 1;
                     } elseif (!array_key_exists($i, $article['inscrits'])) {
-                        $errorBack = 0;
+                        //echo $i;die;
+                        $errorBack = 1;
                     }
                 }
             }
@@ -406,7 +468,7 @@ class PanierController extends Controller
 
             }
 
-            return $this->render('@Commerce/Default/payment.html.twig', array(
+            return $this->render('@Commerce/Panier/payOnline.html.twig', array(
                 'panier' => $panier,
             ));
         } else {
@@ -420,36 +482,127 @@ class PanierController extends Controller
     }
 
     /**
-     * @Route("/initiate-payment/id-{id}", name="pay_online")
-     *
+     * @Route("/initiate-payment", name="pay_online")
+     * @Template()
      */
-    public function payOnlineAction($id)
+    public function payOnlineAction(Request $request)
     {
-        // ...
+        $session = $request->getSession();
+        $montantTotal = $session->get('panier');
+        $em = $this->getDoctrine()->getManager();
+
+        $totalLivraison = 0;
+        $prixLivraison = 5;
+        $totalfinal = 0;
+
+        foreach ($session->get('panier') as $id => $article) {
+
+            $agenda = $em->getRepository('AdminBundle:Agenda')->find($id);
+            $panier[$agenda->getId()]['totalitem'] = $agenda->getFormation()->getPrix() * $article['quantity'];
+            if ($session->get('totalLivraison')) {
+                $totalLivraison = $prixLivraison * $article['quantity'];
+            }
+            $totalfinal += $panier[$agenda->getId()]['totalitem'] + $totalLivraison;
+
+        }
+        $orderId = uniqid(1, false);
+
+        $panier1 = new Panier();
+        $panier1->setNumeroReservation($orderId);
+        $panier1->setJson(json_encode($session->get('panier')));
+        $em->persist($panier1);
+        $em->flush();
+
         $systempay = $this->get('tlconseil.systempay')
-            ->init()
+            ->init($currency = 978, $amount = ($totalfinal * 100))
             ->setOptionnalFields(array(
-                'shop_url' => 'http://www.example.com'
+                'shop_url' => 'http://193.70.38.206/ffss45',
+                'order_id' => $orderId
             ));
 
-        return $this->render('@Commerce/Default/payment.html.twig', array(
+        return array(
+            'paymentUrl' => $systempay->getPaymentUrl(),
+            'fields' => $systempay->getResponse(),
+        );
+    }
+
+    /**
+     * @Route("/initiate-paymentPS/{id_systempay}", name="pay_onlinePS")
+     */
+    public function payOnlinePSAction($id_systempay)
+    {
+
+        $em = $this->getDoctrine()->getManager();
+        $ps = $em->getRepository('FrontBundle:FormulaireSecours')->find($id_systempay);
+        $montantPS = $ps->getDevis();
+        $numDevis = uniqid(1, false);
+
+        $panier2 = new Panier();
+        $panier2->setNumeroReservation($numDevis);
+        $panier2->setJson($id_systempay);
+        $panier2->setPosteDeSecours(1);
+
+        $em->persist($panier2);
+        $em->flush();
+
+        $systempay = $this->get('tlconseil.systempay')
+            ->init($currency = 978, $amount = ($montantPS * 100))
+            ->setOptionnalFields(array(
+                'shop_url' => 'http://193.70.38.206/ffss45',
+                'order_id' => $numDevis
+            ));
+
+        return $this->render('@Commerce/Panier/payOnline.html.twig', array(
             'paymentUrl' => $systempay->getPaymentUrl(),
             'fields' => $systempay->getResponse(),
         ));
     }
 
     /**
-     * @Route("/payment/verification")
+     * @Route("/payment/verification", name="payment_verification")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function paymentVerificationAction(Request $request)
     {
-        // ...
+
         $this->get('tlconseil.systempay')
             ->responseHandler($request);
+        $query = $request->request->all();
+        $id_systempay = (int)$query['vads_trans_id'];
 
-        return new Response();
+        $em = $this->getDoctrine()->getManager();
+        $commandePS = $em->getRepository('CommerceBundle:Panier')->findByNumeroReservation($id_systempay);
+
+//        if ($commandePS[0]->getPosteDeSecours() == 1) {
+//
+//            return $this->redirectToRoute('pay_onlinePS', [
+//                'id_systempay' => $id_systempay
+//            ]);
+//        } else {
+
+            return $this->redirectToRoute('final_subscription', [
+                'id_systempay' => $id_systempay
+            ]);
+//        }
     }
+
+
+    /**
+     * @Route("/paiementRetour", name="paiement_retour")
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function stopSessionAction(Request $request)
+    {
+        $session = $request->getSession();
+
+        $session->remove('panier');
+
+        return $this->redirectToRoute('page_accueil_principale');
+    }
+
+
+
 
 }

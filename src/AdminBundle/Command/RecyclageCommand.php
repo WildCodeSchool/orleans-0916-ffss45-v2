@@ -14,36 +14,36 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 
-class MailCommand extends ContainerAwareCommand
+class RecyclageCommand extends ContainerAwareCommand
 {
     protected function configure()
     {
         $this
-            ->setName('ffss:mail-inscription')
+            ->setName('ffss:mail-recyclage')
             ->setDescription('Envoie de mails automatique.')
-            ->setHelp("Cette commande envoie un mail ~ 6 jours avant le début de formation")
+            ->setHelp("Cette commande envoie un mail ~ 1 mois avant l'expiration de la formation")
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $output->writeln(['Mail Inscription','============',]);
+        $output->writeln(['Mail recyclage','============',]);
 
         $em = $this->getContainer()->get('doctrine')->getManager();
-        $reservations = $em->getRepository('CommerceBundle:Reservation')->findAll();
-        foreach ($reservations as $reservation){
-            $dateDeb = $reservation -> getAgenda() -> getDateDeDebut();
+        $formations = $em->getRepository('AdminBundle:Formation')->findAll();
+        foreach ($formations as $formation){
+            $dateExp = $formation -> getFormation() -> getRecyclage();
 
 
             /////////////////////////////////////////CALCUL DATE
             $today = new \DateTime('now');
             // $dateDebut = new DateTime();
-            $interval = $today->diff($dateDeb);
+            $interval = $today->diff($dateExp);
             $diff = $interval->format('%R%a');
-            
+            $output->write($diff.'---');
             /////////////////////////////////////////////////////
 
-            if ($diff=='+6') {
+            if ($diff=='+1') {
                 $utilisateur = $reservation -> getUser();
                 $output->writeln($utilisateur->getEmail());
                 $output->writeln(['============',]);
@@ -51,12 +51,12 @@ class MailCommand extends ContainerAwareCommand
                 // envoi du mail
                 // swiftmailer ...
                 $message = \Swift_Message::newInstance()
-                    ->setSubject('Votre formation débute bientôt !')
-                    ->setFrom('site@secourisme45.com')
+                    ->setSubject('La formation expire bientôt !')
+                    ->setFrom('contact@ffss.fr')
                     ->setTo($utilisateur->getEmail())
                     ->setBody(
                         $this->getContainer()->get('templating')->render(
-                            'CommerceBundle:Default:reponse.html.twig',
+                            'CommerceBundle:Default:reponseRecyclage.html.twig',
                             array('reservation'=>$reservation)
 
                         ),

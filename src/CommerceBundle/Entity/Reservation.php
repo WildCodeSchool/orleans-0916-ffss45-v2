@@ -36,9 +36,17 @@ class Reservation
 
     /**
      * @var int
-     * @ORM\Column(name="numero_reservation", type="integer", nullable=true)
+     * @ORM\Column(name="numero_reservation", type="string", nullable=true)
      */
     private $numeroReservation;
+
+    /**
+     * @var int
+     * @ORM\Column(name="panier", type="text", nullable=true)
+     */
+    private $panier;
+
+
 
 	/**
      *
@@ -59,26 +67,26 @@ class Reservation
 	 */
 	protected $formulaireSecours;
 
-	/**
-     * @var string
-     *
-     * @ORM\Column(name="convocation", type="string", length=45, nullable=true)
-     */
-    private $convocation;
+//	/**
+//     * @var string
+//     *
+//     * @ORM\Column(name="convocation", type="string", length=45, nullable=true)
+//     */
+//    private $convocation;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="certificate", type="string", length=45, nullable=true)
-     */
-    private $certificate;
+//    /**
+//     * @var string
+//     *
+//     * @ORM\Column(name="certificate", type="string", length=45, nullable=true)
+//     */
+//    private $certificate;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(name="delai_expiration", type="datetime", nullable=true)
-     */
-    private $delaiExpiration;
+//    /**
+//     * @var \DateTime
+//     *
+//     * @ORM\Column(name="delai_expiration", type="datetime", nullable=true)
+//     */
+//    private $delaiExpiration;
 
 
     /**
@@ -150,77 +158,77 @@ class Reservation
         return $this->numeroReservation;
     }
 
-    /**
-     * Set convocation
-     *
-     * @param string $convocation
-     *
-     * @return Reservation
-     */
-    public function setConvocation($convocation)
-    {
-        $this->convocation = $convocation;
-
-        return $this;
-    }
-
-    /**
-     * Get convocation
-     *
-     * @return string
-     */
-    public function getConvocation()
-    {
-        return $this->convocation;
-    }
-
-    /**
-     * Set certificate
-     *
-     * @param string $certificate
-     *
-     * @return Reservation
-     */
-    public function setCertificate($certificate)
-    {
-        $this->certificate = $certificate;
-
-        return $this;
-    }
-
-    /**
-     * Get certificate
-     *
-     * @return string
-     */
-    public function getCertificate()
-    {
-        return $this->certificate;
-    }
-
-    /**
-     * Set delaiExpiration
-     *
-     * @param \DateTime $delaiExpiration
-     *
-     * @return Reservation
-     */
-    public function setDelaiExpiration($delaiExpiration)
-    {
-        $this->delaiExpiration = $delaiExpiration;
-
-        return $this;
-    }
-
-    /**
-     * Get delaiExpiration
-     *
-     * @return \DateTime
-     */
-    public function getDelaiExpiration()
-    {
-        return $this->delaiExpiration;
-    }
+//    /**
+//     * Set convocation
+//     *
+//     * @param string $convocation
+//     *
+//     * @return Reservation
+//     */
+//    public function setConvocation($convocation)
+//    {
+//        $this->convocation = $convocation;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Get convocation
+//     *
+//     * @return string
+//     */
+//    public function getConvocation()
+//    {
+//        return $this->convocation;
+//    }
+//
+//    /**
+//     * Set certificate
+//     *
+//     * @param string $certificate
+//     *
+//     * @return Reservation
+//     */
+//    public function setCertificate($certificate)
+//    {
+//        $this->certificate = $certificate;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Get certificate
+//     *
+//     * @return string
+//     */
+//    public function getCertificate()
+//    {
+//        return $this->certificate;
+//    }
+//
+//    /**
+//     * Set delaiExpiration
+//     *
+//     * @param \DateTime $delaiExpiration
+//     *
+//     * @return Reservation
+//     */
+//    public function setDelaiExpiration($delaiExpiration)
+//    {
+//        $this->delaiExpiration = $delaiExpiration;
+//
+//        return $this;
+//    }
+//
+//    /**
+//     * Get delaiExpiration
+//     *
+//     * @return \DateTime
+//     */
+//    public function getDelaiExpiration()
+//    {
+//        return $this->delaiExpiration;
+//    }
 
     /**
      * @param mixed $agenda
@@ -286,10 +294,12 @@ class Reservation
         return $this->formulaireSecours;
     }
 
+    /////////////////UploadImage Diplôme
+
 	/**
 	 * NOTE: This is not a mapped field of entity metadata, just a simple property.
 	 *
-	 * @Vich\UploadableField(mapping="img_image", fileNameProperty="imageName")
+	 * @Vich\UploadableField(mapping="diplome_image", fileNameProperty="imageName")
 	 *
 	 * @var File
 	 */
@@ -303,13 +313,18 @@ class Reservation
 	private $imageName;
 
 	/**
-	 * @ORM\Column(type="datetime")
+	 * @ORM\Column(type="datetime", nullable=true)
 	 *
 	 * @var \DateTime
 	 */
 	private $updatedAt;
 
-	/**
+    public function __construct()
+    {
+        $this->updatedAt = new \DateTime();
+    }
+
+    /**
 	 * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
 	 * of 'UploadedFile' is injected into this setter to trigger the  update. If this
 	 * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
@@ -318,7 +333,7 @@ class Reservation
 	 *
 	 * @param File|\Symfony\Component\HttpFoundation\File\UploadedFile $image
 	 *
-	 * @return img
+	 * @return diplome
 	 */
 	public function setImageFile(File $image = null)
 	{
@@ -344,7 +359,7 @@ class Reservation
 	/**
 	 * @param string $imageName
 	 *
-	 * @return img
+	 * @return diplome
 	 */
 	public function setImageName($imageName)
 	{
@@ -368,7 +383,7 @@ class Reservation
      *
      * @param \DateTime $updatedAt
      *
-     * @return img
+     * @return diplome
      */
     public function setUpdatedAt($updatedAt)
     {

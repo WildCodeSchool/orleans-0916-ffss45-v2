@@ -78,6 +78,7 @@ swiftmailer:
     auth_mode: "%mailer_auth_mode%"
     spool:     { type: memory }
 
+
 # app/config/config.yml
 fos_user:
     db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
@@ -86,13 +87,14 @@ fos_user:
 
     registration:
             form:
-                type: FrontBundle\FOSUserBundle\Form\RegistrationFormType
+                type: FrontBundle\Form\RegistrationFormType
                 # if you are using Symfony < 2.8 you should use the type name instead
                 # type: app_user_registration
 
     profile:
        form:
-            type: FrontBundle\Form\ProfileFormType
+            type: AdminBundle\Form\ProfileFormType
+
 
 
 knp_snappy:  
@@ -103,13 +105,12 @@ knp_snappy:
 
 tlconseil_systempay:
     # Credentials
-    site_id: XXXXX
+    site_id: "%site_id%"
     # Keys
-    key_dev: XXXXX
-    key_prod: XXXXX
+    key_dev: "%key_dev%"
+    key_prod:
     # Return
-    url_return: http://www.example.com/payment_return
-
+    url_return: http://193.70.38.206/ffss45/commerce/paiementRetour
     # Optionnal fields (here the fields have their default values) :
 
     # Debug values : ON / OFF
@@ -122,10 +123,10 @@ tlconseil_systempay:
     language: fr
     # Success
     redirect_success_timeout: 1
-    redirect_success_message: Redirection vers Les Annonces de la Seine dans quelques instants
+    redirect_success_message: Redirection vers FFSS45 dans quelques instants
     # Error
     redirect_error_timeout: 1
-    redirect_error_message: Redirection vers Les Annonces de la Seine dans quelques instants
+    redirect_error_message: Redirection vers FFSS45 dans quelques instants
 
 
 
@@ -134,9 +135,9 @@ vich_uploader:
     db_driver: orm # or mongodb or propel or phpcr
 
     mappings:
-        img_image:
-            uri_prefix:         /upload/img
-            upload_destination: %kernel.root_dir%/../web/upload/img
+        diplome_image:
+            uri_prefix:         /upload/diplome
+            upload_destination: %kernel.root_dir%/../web/upload/diplome
             inject_on_load:     false
             delete_on_update:   true
             delete_on_remove:   true
@@ -144,12 +145,23 @@ vich_uploader:
             namer:              vich_uploader.namer_uniqid
 
 
-        user_image:
-            uri_prefix:         /upload/img
-            upload_destination: %kernel.root_dir%/../web/upload/img
+        identite_image:
+            uri_prefix:         /upload/identite
+            upload_destination: %kernel.root_dir%/../web/upload/identite
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            upload_destination: product_image_fs
+            namer:              vich_uploader.namer_uniqid
+
 
         poste_image:
-            uri_prefix:         /upload/img
-            upload_destination: %kernel.root_dir%/../web/upload/img
+            uri_prefix:         /upload/poste
+            upload_destination: %kernel.root_dir%/../web/upload/poste
+            inject_on_load:     false
+            delete_on_update:   true
+            delete_on_remove:   true
+            upload_destination: product_image_fs
+            namer:              vich_uploader.namer_uniqid
 
 gregwar_captcha: ~

@@ -8,6 +8,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
+use CommerceBundle\Entity\Reservation;
+use AdminBundle\Entity\User;
 
 class ReservationType extends AbstractType
 {
@@ -22,15 +24,25 @@ class ReservationType extends AbstractType
 			        2 => 'Inscrit',
 			        3 => 'Inscription annulée',
 			        4 => 'Inscription reportée')))
-                ->add('numeroReservation')
-                ->add('convocation')
-                ->add('certificate')
-                ->add('delaiExpiration')
                ->add('user', EntityType::class, [
                	'class'=>'AdminBundle\Entity\User',
 	               'choice_label'=>'username'
                ])
-               ->add('delaiExpiration')
+//	          ->add('nom', [
+//	          	'class'=>'AdminBundle\Entity\User',
+////		          'choice_label'=>'nom',
+//		          'mapped'=>false
+//	          ])
+//	          ->add('prenom', EntityType::class, [
+//	          	'class'=>'AdminBundle\Entity\User',
+////		          'choice_label'=>'prenom',
+//		          'mapped'=>false
+//	          ])
+//	        ->add('adresse', EntityType::class, [
+//		        'class'=>'AdminBundle\Entity\User',
+////		          'choice_label'=>'prenom',
+//		        'mapped'=>false
+//	        ])
                ->add('imageFile', VichImageType::class, [
 		               'required' => false,
 		               'allow_delete' => true, // not mandatory, default is true
@@ -55,6 +67,6 @@ class ReservationType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'commercebundle_reservation';
+        return 'commerceBundle_reservation';
     }
 }

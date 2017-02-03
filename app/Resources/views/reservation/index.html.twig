@@ -5,26 +5,24 @@
         <div class="row center-block">
             <div class="col-xs-12">
 
-                <table class="table-fill table-striped table-hover" style="width: 100%;">
+                <table class="table-fill table-striped table-hover table-condensed table"
+                       style="width: 100%; text-align: center;">
                     <thead>
                     <tr>
                         <th>N°</th>
                         <th>Nom</th>
                         <th>Prénom</th>
-                        {#<th>Date de naissance</th>#}
+                        <th>Date de naissance</th>
                         <th>Adresse</th>
                         <th>Lieu de naissance</th>
                         <th>Departement de naissance</th>
                         <th>Code Postal</th>
                         <th>Ville</th>
                         <th>Téléphone</th>
-                        {#<th>Status</th>#}
-                        <th>Numéro de réservation</th>
-                        <th>Diplôme</th>
-                        <th>Convocation</th>
-                        <th>Certificat</th>
-                        <th>Delai d' expiration</th>
+                        <th>Status</th>
                         <th>Carte d'identité</th>
+                        <th>Delai d' expiration</th>
+                        <th>Diplôme</th>
                         <th>Actions</th>
                     </tr>
                     </thead>
@@ -37,21 +35,17 @@
                                 </td>
                                 <td> {{ reservation.user.nom }}</td>
                                 <td> {{ reservation.user.prenom }}</td>
-                                {#<td> {{app.user.dateNaissance}}</td>#}
+                                <td> {{ user.dateNaissance|date('d-m-Y') }}</td>
                                 <td> {{ reservation.user.adresse }}</td>
                                 <td> {{ reservation.user.lieuNaissance }}</td>
                                 <td> {{ reservation.user.departementNaissance }}</td>
                                 <td> {{ reservation.user.CodePostal }}</td>
                                 <td> {{ reservation.user.ville }}</td>
                                 <td> {{ reservation.user.tel }}</td>
-                                {#<td>{{ reservation.statusLabel }}</td>#}
-                                <td>{{ reservation.numeroReservation }}</td>
-                                <td>{{ reservation.imagename }}</td>
-                                <td>{{ reservation.convocation }}</td>
-                                <td>{{ reservation.certificate }}</td>
+                                <td>{{ reservation.statusLabel }}</td>
+                                <td>{% if reservation.user.imageName %}<img style="width: 75px;" class="smallPic" src="{{ asset('upload/identite/'~reservation.user.imageName) }}" alt="{{ user.titre }}"/>{% endif %}</td>
                                 <td>{% if reservation.delaiExpiration %}{{ reservation.delaiExpiration|date('Y-m-d H:i:s') }}{% endif %}</td>
-                                <td><img class="smallPic" src="{{ asset('upload/img/'~img.imageName) }}"
-                                         alt="{{ img.titre }}"/></td>
+                                <td>{% if reservation.imageName %}<img style="width: 75px;" class="smallPic" src="{{ asset('upload/diplome/'~reservation.imageName) }}" alt="{{ img.titre }}"/>{% endif %}</td>
                                 <td>
                                     <ul>
                                         <li>
@@ -62,13 +56,12 @@
                                         </li>
                                         <li>
                                             <a class="button"
-                                               href="{{ path('attestation_presence_pdf', {'id':agenda.id}) }}">Attestation
+                                               href="{{ path('attestation_presence_pdf', {'id':reservation.id}) }}">Attestation
                                                 de présence</a>
                                         </li>
                                         <li>
                                             <a class="button"
-                                               href="{{ path('convocation_pdf', {'id':agenda.id})
-                                               }}">Convocation</a>
+                                               href="{{ path('convocation_pdf', {'id':agenda.id}) }}">Convocation</a>
                                         </li>
                                     </ul>
                                 </td>
@@ -85,16 +78,15 @@
                 <div class="row">
                     <div class="col-xs-6">
 
-                                <a class="btn btn-primary" href="{{ path('reservation_new', { 'id': agenda.id }) }}">Créer
-                                    une nouvelle
-                                    Inscription</a>
-                           
+                        <a class="btn btn-primary" href="{{ path('reservation_new', { 'id': agenda.id }) }}">Créer
+                            une nouvelle
+                            Inscription</a>
+
                     </div>
                     <div class="col-xs-2 col-xs-offset-4">
 
-                                <a class="btn btn-primary" href="{{ path('presence_pdf', {'id':agenda.id})
-                                }}">Feuille
-                                    d'émargement</a>
+                        <a class="btn btn-primary" href="{{ path('presence_pdf', {'id':agenda.id}) }}">Feuille
+                            d'émargement</a>
 
                     </div>
                 </div>
