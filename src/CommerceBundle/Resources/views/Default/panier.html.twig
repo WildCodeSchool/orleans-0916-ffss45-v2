@@ -52,9 +52,13 @@
 
                         </tbody>
                     </table>
-                    {{ render(controller('CommerceBundle:Panier:livraisonForm')) }}
+                    <div class="row">
 
 
+                    <div class="text-right">
+                        {{ render(controller('CommerceBundle:Panier:livraisonForm')) }}
+                    </div>
+                    </div>
             <dl class="dl-horizontal pull-right">
                 <dt>Total: {{ totalfinal }} € TTC</dt>
                 <dd></dd>

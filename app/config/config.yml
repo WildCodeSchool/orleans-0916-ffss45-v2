@@ -110,7 +110,7 @@ tlconseil_systempay:
     key_dev: "%key_dev%"
     key_prod:
     # Return
-    url_return: http://193.70.38.206/ffss45/commerce/paiementRetour
+    url_return: "%url_return%"
     # Optionnal fields (here the fields have their default values) :
 
     # Debug values : ON / OFF
@@ -118,7 +118,7 @@ tlconseil_systempay:
     # Return mode
     return_mode: GET
     # Possible values for ctx_mode : TEST / PRODUCTION
-    ctx_mode: TEST
+    ctx_mode: "%ctx_mode%"
     # Language
     language: fr
     # Success

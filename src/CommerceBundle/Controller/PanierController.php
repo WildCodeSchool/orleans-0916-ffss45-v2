@@ -2,6 +2,7 @@
 namespace CommerceBundle\Controller;
 
 use CommerceBundle\CommerceBundle;
+use CommerceBundle\Form\ChoixPaymentType;
 use FrontBundle\FrontBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -126,7 +127,7 @@ class PanierController extends Controller
 
         return $this->render('@Commerce/Default/quantityForm.html.twig', array(
             'form' => $form->createView(),
-            'id' => $agenda->getId(),
+            'id'   => $agenda->getId(),
         ));
     }
 
@@ -153,7 +154,7 @@ class PanierController extends Controller
 
         $form = $this->createFormBuilder($order)
             ->add('livraison', CheckboxType::class, [
-                'label' => '5€ / inscrit'
+                'label' => '5€ / inscrit',
 
             ])
             ->getForm();
@@ -248,8 +249,8 @@ class PanierController extends Controller
                                 ->setFrom('tuko45@hotmail.fr')
                                 ->setTo($email)
                                 ->setBody(
-                                    $this->renderView('emailMember.html.twig', array('nom' => $nom,
-                                        'prenom' => $prenom
+                                    $this->renderView('emailMember.html.twig', array('nom'    => $nom,
+                                                                                     'prenom' => $prenom,
                                     ),
                                         'text/html'
                                     ));
@@ -296,8 +297,8 @@ class PanierController extends Controller
                                 ->setFrom('tuko45@hotmail.fr')
                                 ->setTo($email)
                                 ->setBody(
-                                    $this->renderView('emailSubscription.html.twig', array('nom' => $nom,
-                                        'prenom' => $prenom, 'password' => $password
+                                    $this->renderView('emailSubscription.html.twig', array('nom'    => $nom,
+                                                                                           'prenom' => $prenom, 'password' => $password,
 
                                     ),
                                         'text/html'
@@ -314,6 +315,7 @@ class PanierController extends Controller
             }
         }
         $em->flush();
+
         return $this->redirect($this->generateUrl('page_accueil_principale'));
         // }
         // return $this->render('@Front/Default/acceuil.html.twig', array(
@@ -363,15 +365,14 @@ class PanierController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-            //$data->setPassword(uniqid(1, false));
 
             if (array_key_exists($id, $panier)) {
                 if ($data['nom'] && $data['prenom'] && $data['email']) {
 
                     $panier[$id]['inscrits'][$key] = [
-                        'nom' => $data['nom'],
+                        'nom'    => $data['nom'],
                         'prenom' => $data['prenom'],
-                        'email' => $data['email'],
+                        'email'  => $data['email'],
                     ];
                 }
             }
@@ -381,8 +382,8 @@ class PanierController extends Controller
         }
 
         return $this->render('@Commerce/Default/addInscrit.html.twig', array(
-            'id' => $id,
-            'key' => $key,
+            'id'   => $id,
+            'key'  => $key,
             'form' => $form->createView(),
         ));
     }
@@ -401,9 +402,7 @@ class PanierController extends Controller
         }
         $session->set('panier', $panier);
 
-        return $this->render('@Commerce/Default/validCart.html.twig', array(
-            'panier' => $panier,
-        ));
+        return $this->redirectToRoute('valid_cart');
 
     }
 
@@ -420,6 +419,7 @@ class PanierController extends Controller
         $user = $this->getUser();
         $panier[$id]['inscrits'][1] = ['nom' => $user->getNom(), 'prenom' => $user->getPrenom(), 'email' => $user->getEmail()];
         $session->set('panier', $panier);
+
         return $this->redirectToRoute('valid_cart');
     }
 
@@ -431,18 +431,27 @@ class PanierController extends Controller
         $session = $request->getSession();
         $panier = $session->get('panier');
 
+        $form = $this->createForm(ChoixPaymentType::class);
+        $form->handleRequest($request);
 
-        return $this->render('@Commerce/Default/validCart.html.twig', array(
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+            return $this->redirectToRoute('payment');
+        }
+
+        return $this->render('@Commerce/Default/validCart.html.twig', [
             'panier' => $panier,
-        ));
+            'form'   => $form->createView(),
+        ]
+    );
 
     }
 
     /**
      * @Route("/payment", name="payment")
      */
-    public
-    function paymentAction(Request $request)
+    public function paymentAction(Request $request)
     {
         $session = $request->getSession();
         $panier = $session->get('panier');
@@ -453,7 +462,6 @@ class PanierController extends Controller
                     if (!isset($article['inscrits'])) {
                         $errorBack = 1;
                     } elseif (!array_key_exists($i, $article['inscrits'])) {
-                        //echo $i;die;
                         $errorBack = 1;
                     }
                 }
@@ -468,9 +476,7 @@ class PanierController extends Controller
 
             }
 
-            return $this->render('@Commerce/Panier/payOnline.html.twig', array(
-                'panier' => $panier,
-            ));
+            return $this->redirectToRoute('pay_online');
         } else {
             $this->addFlash(
                 'danger',
@@ -488,14 +494,14 @@ class PanierController extends Controller
     public function payOnlineAction(Request $request)
     {
         $session = $request->getSession();
-        $montantTotal = $session->get('panier');
+        $panier = $session->get('panier');
         $em = $this->getDoctrine()->getManager();
 
         $totalLivraison = 0;
         $prixLivraison = 5;
         $totalfinal = 0;
 
-        foreach ($session->get('panier') as $id => $article) {
+        foreach ($panier as $id => $article) {
 
             $agenda = $em->getRepository('AdminBundle:Agenda')->find($id);
             $panier[$agenda->getId()]['totalitem'] = $agenda->getFormation()->getPrix() * $article['quantity'];
@@ -517,12 +523,12 @@ class PanierController extends Controller
             ->init($currency = 978, $amount = ($totalfinal * 100))
             ->setOptionnalFields(array(
                 'shop_url' => 'http://193.70.38.206/ffss45',
-                'order_id' => $orderId
+                'order_id' => $orderId,
             ));
 
         return array(
             'paymentUrl' => $systempay->getPaymentUrl(),
-            'fields' => $systempay->getResponse(),
+            'fields'     => $systempay->getResponse(),
         );
     }
 
@@ -549,12 +555,12 @@ class PanierController extends Controller
             ->init($currency = 978, $amount = ($montantPS * 100))
             ->setOptionnalFields(array(
                 'shop_url' => 'http://193.70.38.206/ffss45',
-                'order_id' => $numDevis
+                'order_id' => $numDevis,
             ));
 
         return $this->render('@Commerce/Panier/payOnline.html.twig', array(
             'paymentUrl' => $systempay->getPaymentUrl(),
-            'fields' => $systempay->getResponse(),
+            'fields'     => $systempay->getResponse(),
         ));
     }
 
@@ -572,19 +578,19 @@ class PanierController extends Controller
         $id_systempay = (int)$query['vads_trans_id'];
 
         $em = $this->getDoctrine()->getManager();
-        $commandePS = $em->getRepository('CommerceBundle:Panier')->findByNumeroReservation($id_systempay);
+        $commandePS = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($id_systempay);
 
-//        if ($commandePS[0]->getPosteDeSecours() == 1) {
-//
-//            return $this->redirectToRoute('pay_onlinePS', [
-//                'id_systempay' => $id_systempay
-//            ]);
-//        } else {
+        if ($commandePS->getPosteDeSecours() == 1) {
+
+            return $this->redirectToRoute('pay_onlinePS', [
+                'id_systempay' => $id_systempay,
+            ]);
+        } else {
 
             return $this->redirectToRoute('final_subscription', [
-                'id_systempay' => $id_systempay
+                'id_systempay' => $id_systempay,
             ]);
-//        }
+        }
     }
 
 
@@ -601,8 +607,6 @@ class PanierController extends Controller
 
         return $this->redirectToRoute('page_accueil_principale');
     }
-
-
 
 
 }
