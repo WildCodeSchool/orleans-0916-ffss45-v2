@@ -13,13 +13,13 @@ class DefaultController extends Controller
     public function indexAction()
     {
 	    $em = $this->getDoctrine()->getManager();
-	    $enAttentes = $em->getRepository('FrontBundle:FormulaireSecours')->findByStatut('en attente');
-	    $enAttentePaiements = $em->getRepository('FrontBundle:FormulaireSecours')->findByStatut('en attente paiement');
+//	    $enAttentes = $em->getRepository('FrontBundle:FormulaireSecours')->findByStatut('en attente');
+//	    $enAttentePaiements = $em->getRepository('FrontBundle:FormulaireSecours')->findByStatut('en attente paiement');
 
 
         return $this->render('AdminBundle:Default:index.html.twig', array(
-        	'enAttentes' => $enAttentes,
-        	'enAttentesPaiements' => $enAttentePaiements,
+//        	'enAttentes' => $enAttentes,
+//        	'enAttentesPaiements' => $enAttentePaiements,
 
 
         ));

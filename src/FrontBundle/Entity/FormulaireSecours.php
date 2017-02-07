@@ -663,6 +663,20 @@ class FormulaireSecours
     private $imageName5;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="typePayment", type="string", nullable=true)
+     */
+    private $typePayment;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numeroReservation", type="string", nullable=true)
+     */
+    private $numeroReservation;
+
+    /**
      * Constructor
      */
     public function __construct()
@@ -670,6 +684,38 @@ class FormulaireSecours
         $this->reservations = new \Doctrine\Common\Collections\ArrayCollection();
         $this->dateDebutManif = new \DateTime();
         $this->dateFinManif = new \DateTime();
+    }
+
+    /**
+     * @return string
+     */
+    public function getTypePayment()
+    {
+        return $this->typePayment;
+    }
+
+    /**
+     * @param string $typePayment
+     */
+    public function setTypePayment($typePayment)
+    {
+        $this->typePayment = $typePayment;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNumeroReservation()
+    {
+        return $this->numeroReservation;
+    }
+
+    /**
+     * @param string $numeroReservation
+     */
+    public function setNumeroReservation($numeroReservation)
+    {
+        $this->numeroReservation = $numeroReservation;
     }
 
     /**
@@ -2546,9 +2592,9 @@ class FormulaireSecours
     public function getStatutLabel()
     {
         $statuses = [
-            1 => 'En attente',
-            2 => 'En cours de validation',
-            3 => 'Validé',
+            1 => 'En attente de paiement',
+            2 => 'Paiement en cours de validation',
+            3 => 'Paiement validé',
         ];
 
         return $statuses[$this->statut];

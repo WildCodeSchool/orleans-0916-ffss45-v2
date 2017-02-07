@@ -3,7 +3,7 @@
 
     <li class="col-sm-2">
         <ul>
-            <li class="dropdown-header" style="color: {{ tab.0.categorie.couleur }}">{{ category }}</li>
+            <li class="dropdown-header" style="color: {{ tab.0.categorie.couleur }}">{{ category|capitalize }}</li>
     {%  for key,formation in tab %}
             <li><a href="{{ path('formation', {'nomCourt':formation.nomCourt}) }}" title="accédez à la formation"> {{ formation.nomCourt }}</a></li>
     {% endfor %}

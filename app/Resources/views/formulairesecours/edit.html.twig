@@ -3,30 +3,32 @@
 
 {% block body %}
     <h1>Mise à jour demande de Poste de Secours</h1>
-    <h2>{{ formulaireSecours.nomManif }} du {{ formulaireSecours.dateDebutManif | date('d m Y') }} </h2>
-
-    {{ form_start(edit_form) }}
+    <h2>{{ formulaireSecours.nomManif }} du {{ formulaireSecours.dateDebutManif | date('d m Y') }}
+        par {{ formulaireSecours.user.prenom }} {{ formulaireSecours.user.nom }} <a class="btn btn-info"
+                                                                                    href="{{ path('formulairesecours_show', { 'id': formulaireSecour.id }) }}">Detail
+            de la demande</a>
+    </h2>
+    <div class="container-fluid">
+        {{ form_start(edit_form) }}
         {{ form_row(edit_form.devis) }}
         {{ form_row(edit_form.statut) }}
         {{ form_row(edit_form.message) }}
-    <div class="hidden">
-        {{ form_widget(edit_form) }}
-    </div>
-        <input type="submit" value="Enregistrer le devis" />
-    {{ form_end(edit_form) }}
+        <div class="hidden">
+            {{ form_widget(edit_form) }}
+        </div>
+        <div class="row">
+            <div class="col-sm-offset-4 col-sm-4">
+                <input class="btn btn-success btn-lg btn-block" type="submit" value="Enregistrer le devis"/>
+            </div>
+        </div>
+        {{ form_end(edit_form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('formulairesecours_show', { 'id': formulaireSecour.id }) }}">Detail de la demande</a>
-        </li>
-        <li>
-            <a href="{{ path('admin') }}">Retour</a>
-        </li>
-
-        <li>
+        <hr/>
+        <a class="btn btn-lg btn-default" href="{{ path('admin') }}">Retour</a>
+        <div class="pull-right">
             {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
+            <input class="btn btn-danger" type="submit" value="Supprimer">
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+        </div>
+    </div>
 {% endblock %}

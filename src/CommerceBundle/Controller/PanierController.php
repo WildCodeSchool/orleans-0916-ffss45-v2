@@ -215,7 +215,39 @@ class PanierController extends Controller
     }
 
 
+    /**
+     * @Route("/finalSubscriptionPS/{id_systempay}", name="final_subscriptionPS")
+     *
+     */
+    public function finalSubscriptionPSAction($id_systempay, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $session = $request->getSession();
 
+        // connexion à la table systempay, avec parameter=identifiant de la transaction
+        $transaction = $em->getRepository('TlconseilSystempayBundle:Transaction')->find($id_systempay);
+        if ($transaction) {
+            $log = json_decode($transaction->getLogResponse());
+            $paid = $transaction->isPaid();
+            $systempayOrderId = $log->vads_order_id;
+
+            $res = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($systempayOrderId);
+            $id_ps = json_decode($res->getJson(), true);
+            $orderId = $res->getNumeroReservation();
+
+            if ($id_ps && $paid) {
+                $formSecours = $em->getRepository('FrontBundle:FormulaireSecours')>find($id_ps);
+                $formSecours->setTypePayment('cb');
+                $formSecours->setNumReservation($orderId);
+                $em->persist($formSecours);
+                $em->flush();
+
+            } else {
+                $session->getFlashBag()->add('danger', "Problème dans le traitement du panier");
+            }
+        }
+        return $this->redirect($this->generateUrl('page_accueil_principale'));
+    }
 
     /**
      * @Route("/remove/{id}", name="remove")
@@ -398,7 +430,7 @@ class PanierController extends Controller
 
         $form = $this->createForm(ChoixPaymentType::class);
         $form->handleRequest($request);
-
+        $numCheque = uniqid();
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
             if ($data['payment']=='cb') {
@@ -407,6 +439,9 @@ class PanierController extends Controller
                 ]);
             } else {
                 $formulaireSecours->setStatut(2);
+                $formulaireSecours->setTypePayment($data['payment']);
+                $formulaireSecours->setNumeroReservation($numCheque);
+
                 $em->persist($formulaireSecours);
                 $em->flush();
                 $this->addFlash(
@@ -419,6 +454,7 @@ class PanierController extends Controller
 
         return $this->render('@Commerce/Default/validPS.html.twig', [
                 'form' => $form->createView(),
+                'numCheque'=>$numCheque,
             ]
         );
 
@@ -523,7 +559,7 @@ class PanierController extends Controller
 
         if ($commandePS->getPosteDeSecours() == 1) {
 
-            return $this->redirectToRoute('pay_onlinePS', [
+            return $this->redirectToRoute('final_subscriptionPS', [
                 'id_systempay' => $id_systempay,
             ]);
         } else {

@@ -6,24 +6,38 @@
 
         <table class="table table-hover table-condensed table-striped">
             <thead>
-                <tr>
-                    <th>Id</th>
-                    <th>Nom de la manifestation</th>
-                    <th>Status</th>
-                    <th>Actions</th>
-                </tr>
+            <tr>
+                <th>Id</th>
+                <th>Nom de la manifestation</th>
+                <th>Client</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
             </thead>
             <tbody>
             {% for formulaireSecour in formulaireSecours %}
                 <tr>
-                    <td><a href="{{ path('formulairesecours_show', { 'id': formulaireSecour.id }) }}">{{ formulaireSecour.id }}</a></td>
-                    <td>{{ formulaireSecour.nomManif }}</td>
                     <td>
-                        {% if formulaireSecour.statut is not null %}
-                        {{ formulaireSecour.statutLabel }}
-                            {% else %}
-                            <span class="label label-danger">Devis à préparer</span>
+                        <a href="{{ path('formulairesecours_show', { 'id': formulaireSecour.id }) }}">{{ formulaireSecour.id }}</a>
+                    </td>
+                    <td>{{ formulaireSecour.nomManif }}</td>
+                    <td>{{ formulaireSecour.user.prenom }} {{ formulaireSecour.user.nom }}</td>
+                    <td>
+                        {% if formulaireSecour.statut %}
+                        {% set label= formulaireSecour.statutLabel %}
                         {% endif %}
+                        {% set class='danger' %}
+
+                        {% if formulaireSecour.statut==1 %}
+                            {% set class='warning' %}
+                        {% elseif formulaireSecour.statut==2 %}
+                            {% set class='info' %}
+                        {% elseif formulaireSecour.statut==3 %}
+                            {% set class='success' %}
+                        {% else %}
+                            {% set label= 'Devis à préparer' %}
+                        {% endif %}
+                        <span class="label  label-{{ class }}">{{ label }}</span>
                     </td>
                     <td>
                         <ul>

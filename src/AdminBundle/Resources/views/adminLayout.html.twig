@@ -41,10 +41,21 @@
                     <a href="{{ path('actualite_index') }}">Actualités</a>
                 </li>
                 <li class="dropdown dropdown-large">
-                    <a href="{{ path('formulairesecours_index') }}">Poste de secours</a>
+                    <a href="{{ path('formulairesecours_index') }}">
+                        Poste de secours
+                        <span class="badge">
+                            {% render(controller('FrontBundle:FormulaireSecours:nbPSAttente' )) %}
+                        </span>
+
+                    </a>
                 </li>
                 <li class="dropdown dropdown-large">
-                    <a href="{{ path('payment_attente') }}">Paiements</a>
+                    <a href="{{ path('payment_attente') }}">
+                        Paiements
+                        <span class="badge">
+                            {% render(controller('AdminBundle:Payment:nbPaymentAttente' )) %}
+                        </span>
+                    </a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">

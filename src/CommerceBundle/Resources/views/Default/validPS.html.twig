@@ -8,11 +8,23 @@
 
         <div class="text-center" style="margin-top: 20px; margin-bottom: 45px">
             {{ form_start(form) }}
-            {{ form_row(form.payment) }}
-            <div class="hide numPO">
-                {{ form_row(form.numPO) }}
-            </div>
-            <button type="submit" id="validAll" class="btn btn-success">Payer</button>
+            <div class="row">
+                <div class="col-sm-4">{{ form_row(form.payment) }}</div>
+                <div class="col-sm-8">
+                    <div class="numCB well">
+                        Si vous choisissez le paiement par Carte Bleue, vous serez redirigé vers un espace de paiement
+                        sécurisé.
+                    </div>
+                    <div class="numCheque well">
+                        Si vous choisissez le paiement par chèque, merci de noter le numéro suivant au dos de votre chèque :
+                        <strong>{{ numCheque }}</strong>
+                    </div>
+                    <div class="numVirement well">
+                        Si vous choisissez le paiement par virement bancaire, merci de l'adresser au compte suivant :
+                        FFSS, IBAN:123456789
+                    </div>
+                </div>
+            </div>            <button type="submit" id="validAll" class="btn btn-success">Payer</button>
             <a class="btn btn-primary" href="{{ path('panier' ) }}">Retour</a>
             {{ form_end(form) }}
         </div>
@@ -25,17 +37,24 @@
  {% block javascripts %}
      <script>
 
-         $('#front_bundlechoix_payment_type_payment_0').click(function() {
-             $('.numPO').removeClass('show');
-             $('.numPO').addClass('hide');
+         $('#front_bundlechoix_payment_type_payment_0').attr('checked', 'checked');
+         $('.numCB').show();
+         $('.numCheque').hide();
+         $('.numVirement').hide();
+
+         $('#front_bundlechoix_payment_type_payment_0').click(function () {
+             $('.numCheque').hide();
+             $('.numVirement').hide();
          });
-         $('#front_bundlechoix_payment_type_payment_1').click(function() {
-             $('.numPO').removeClass('hide');
-             $('.numPO').addClass('show');
+         $('#front_bundlechoix_payment_type_payment_1').click(function () {
+             $('.numCB').hide();
+             $('.numVirement').hide();
+             $('.numCheque').show();
          });
-         $('#front_bundlechoix_payment_type_payment_2').click(function() {
-             $('.numPO').removeClass('hide');
-             $('.numPO').addClass('show');
+         $('#front_bundlechoix_payment_type_payment_2').click(function () {
+             $('.numCB').hide();
+             $('.numVirement').show();
+             $('.numCheque').hide();
          });
      </script>
 

@@ -6,13 +6,16 @@
 
         <div class="col-sm-12">
 
-            <span class="inscritcolor">Inscrit {{ key }}</span>
 
-            {% if key==1 %}
-            <a class="btn btn-sm btn-warning" href="{{ path('user_inscrit', {'id':id} ) }}">Si cette formation est pour
-                vous, cliquez ici</a><br />
-            <i>Si cette formation n'est pas pour vous, veuillez remplir les champs ci-dessous</i>
+            {% if key==1 and panier[id]['inscrits'][1]['nom'] is not defined %}
+
+
+                <p class="alert alert-info">Si cette formation est pour vous,  <a class="btn btn btn-info" href="{{ path('user_inscrit', {'id':id} ) }}">cliquez ici</a>
+                    pour préremplir l'inscrit n°1</p>
+            {#{% elseif key==2 %}#}
+                {#<p  class="alert alert-warning" >Ces formations sont pour d'autres personnes, merci de remplir les champs ci-dessous, les inscrits recevront un email de confirmation</p>#}
             {% endif %}
+            <span class="inscritcolor">Inscrit {{ key }}</span>
 
         </div>
 

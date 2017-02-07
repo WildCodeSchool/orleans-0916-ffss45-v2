@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use FrontBundle\Entity\FormulaireSecours;
 use FrontBundle\Form\FormulaireSecoursType;
 use FrontBundle\Form\PrixType;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * FormulaireSecours controller.
@@ -31,6 +32,20 @@ class FormulaireSecoursController extends Controller
         return $this->render('formulairesecours/index.html.twig', array(
             'formulaireSecours' => $formulaireSecours,
         ));
+    }
+
+    /**
+     * Lists all FormulaireSecours entities.
+     *
+     * @Route("/nb-PS-attente", name="formulairesecours_nb_attente")
+     * @Method("GET")
+     */
+    public function nbPSAttenteAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $formulaireSecours = $em->getRepository('FrontBundle:FormulaireSecours')->findByStatut([null,1,2]);
+
+        return new Response(count($formulaireSecours));
     }
 
     /**

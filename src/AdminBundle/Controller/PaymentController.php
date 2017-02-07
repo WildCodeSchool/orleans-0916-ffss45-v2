@@ -5,6 +5,7 @@ namespace AdminBundle\Controller;
 use CommerceBundle\Entity\Panier;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Formation controller.
@@ -35,6 +36,17 @@ class PaymentController extends Controller
         $payments = $em->getRepository('CommerceBundle:Panier')->findByPaid(null);
 
         return $this->render('payment/index.html.twig', array('payments' => $payments));
+    }
+    /**
+     * @Route("/nb-payment-attente", name="nb_payment_attente")
+     *
+     */
+    public function nbPaymentAttenteAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $payments = $em->getRepository('CommerceBundle:Panier')->findByPaid(null);
+
+        return new Response(count($payments));
     }
 
 

@@ -33,17 +33,19 @@
             <div class="col-sm-4">{{ form_row(form.payment) }}</div>
             <div class="col-sm-8">
                 <div class="numCB well">
-                    Si vous choisissez le paiement par Carte Bleue, vous serez redirigé vers un espace de paiement sécurisé.
+                    Si vous choisissez le paiement par Carte Bleue, vous serez redirigé vers un espace de paiement
+                    sécurisé.
                 </div>
                 <div class="numCheque well">
-                    Si vous choisissez le paiement par chèque, merci de noter le numéro suivant au dos de votre chèque : <strong>{{ numCheque }}</strong>
+                    Si vous choisissez le paiement par chèque, merci de noter le numéro suivant au dos de votre chèque :
+                    <strong>{{ numCheque }}</strong>
                 </div>
                 <div class="numVirement well">
                     Si vous choisissez le paiement par virement bancaire, merci de l'adresser au compte suivant :
                     FFSS, IBAN:123456789
                 </div>
             </div>
-            </div>
+        </div>
         <div class="row">
             <button type="submit" id="validAll" class="btn btn-success">S'inscrire</button>
             <a class="btn btn-primary" href="{{ path('panier' ) }}">Retour</a>
