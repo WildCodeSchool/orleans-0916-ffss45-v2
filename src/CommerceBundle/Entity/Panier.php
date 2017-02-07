@@ -58,6 +58,21 @@ class Panier
      */
     private $posteDeSecours;
 
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="paid", type="boolean", nullable = true)
+     */
+    private $paid;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="type", type="string", nullable = true)
+     */
+    private $type;
+
+
 
     /**
      * Get id
@@ -117,6 +132,38 @@ class Panier
     public function getJson()
     {
         return $this->json;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPaid()
+    {
+        return $this->paid;
+    }
+
+    /**
+     * @param int $paid
+     */
+    public function setPaid($paid)
+    {
+        $this->paid = $paid;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
     }
 
 

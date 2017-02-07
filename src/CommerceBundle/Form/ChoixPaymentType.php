@@ -20,11 +20,14 @@ class ChoixPaymentType extends AbstractType
             ],
             'multiple' => false,
             'expanded' => true,
+            'required' => true,
+
         ])
-            ->add('numPO', TextType::class, [
-                'required' => false,
-                'label'=>'N° PO'
-            ]);
+//            ->add('numPO', TextType::class, [
+//                'required' => false,
+//                'label'=>'N° commande'
+//            ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

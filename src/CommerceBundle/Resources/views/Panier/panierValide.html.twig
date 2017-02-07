@@ -1,0 +1,11 @@
+{% extends 'FrontBundle:Default:frontLayout.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+
+        <div class="alert alert-success">
+            Votre inscription a bien été validée. Elle sera effective à réception de votre réglement.
+        </div>
+        <a href="{{ path('page_accueil_principale') }}">Retour</a>
+    </div>
+{% endblock %}

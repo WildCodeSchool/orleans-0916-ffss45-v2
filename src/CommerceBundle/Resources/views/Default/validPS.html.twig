@@ -1,0 +1,44 @@
+{% extends 'FrontBundle:Default:frontLayout.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
+{% block body %}
+
+    <div class="container">
+
+        <h1>Choix du mode de paiement</h1>
+
+        <div class="text-center" style="margin-top: 20px; margin-bottom: 45px">
+            {{ form_start(form) }}
+            {{ form_row(form.payment) }}
+            <div class="hide numPO">
+                {{ form_row(form.numPO) }}
+            </div>
+            <button type="submit" id="validAll" class="btn btn-success">Payer</button>
+            <a class="btn btn-primary" href="{{ path('panier' ) }}">Retour</a>
+            {{ form_end(form) }}
+        </div>
+
+
+
+    </div>
+{% endblock %}
+
+ {% block javascripts %}
+     <script>
+
+         $('#front_bundlechoix_payment_type_payment_0').click(function() {
+             $('.numPO').removeClass('show');
+             $('.numPO').addClass('hide');
+         });
+         $('#front_bundlechoix_payment_type_payment_1').click(function() {
+             $('.numPO').removeClass('hide');
+             $('.numPO').addClass('show');
+         });
+         $('#front_bundlechoix_payment_type_payment_2').click(function() {
+             $('.numPO').removeClass('hide');
+             $('.numPO').addClass('show');
+         });
+     </script>
+
+
+ {% endblock %}
+

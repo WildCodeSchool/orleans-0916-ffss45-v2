@@ -18,7 +18,13 @@
                 <tr>
                     <td><a href="{{ path('formulairesecours_show', { 'id': formulaireSecour.id }) }}">{{ formulaireSecour.id }}</a></td>
                     <td>{{ formulaireSecour.nomManif }}</td>
-                    <td>{{ formulaireSecour.statut }}</td>
+                    <td>
+                        {% if formulaireSecour.statut is not null %}
+                        {{ formulaireSecour.statutLabel }}
+                            {% else %}
+                            <span class="label label-danger">Devis à préparer</span>
+                        {% endif %}
+                    </td>
                     <td>
                         <ul>
                             <li>

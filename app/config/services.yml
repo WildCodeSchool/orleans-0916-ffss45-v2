@@ -27,8 +27,12 @@ services:
           tags:
               - { name: form.type, alias: app_user_profile }
 
+      commerce.payment.validation:
+          class: CommerceBundle\Services\PaymentValidation
+          arguments: [ @doctrine.orm.entity_manager, @templating, @mailer, @fos_user.user_manager, %mail_from% ]
 
-#      app.doctrine_image_uploader:
+
+        #      app.doctrine_image_uploader:
 #              class: CommerceBundle\Entity\Upload
 #              arguments: ['@commerce.image_uploader']
 #              tags:

@@ -3,6 +3,7 @@ namespace CommerceBundle\Controller;
 
 use CommerceBundle\CommerceBundle;
 use CommerceBundle\Form\ChoixPaymentType;
+use FrontBundle\Entity\FormulaireSecours;
 use FrontBundle\FrontBundle;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -188,14 +189,8 @@ class PanierController extends Controller
      */
     public function finalSubscriptionAction($id_systempay, Request $request)
     {
-
         $em = $this->getDoctrine()->getManager();
-//        var_dump($id_systempay);
         $session = $request->getSession();
-
-        $panier = $session->get('panier');
-
-        $n = 1;
 
         // connexion à la table systempay, avec parameter=identifiant de la transaction
         $transaction = $em->getRepository('TlconseilSystempayBundle:Transaction')->find($id_systempay);
@@ -208,121 +203,19 @@ class PanierController extends Controller
             $panier = json_decode($res->getJson(), true);
             $orderId = $res->getNumeroReservation();
 
-            //dump($orderId);
             if ($panier && $paid) {
-                // ensuite on execute le reste du code
-                foreach ($panier as $agenda_id => $formation) {
-
-                    $users = $em->getRepository('AdminBundle:User')->findAll();
-                    foreach ($users as $value) {
-                        $emails[] = $value->getEmail();
-                        $usernames[] = $value->getUserName();
-
-                    }
-                    $inscrits = ($formation['inscrits']);
-
-                    foreach ($formation['inscrits'] as $newUser) {
-                        $nom = $newUser['nom'];
-                        $prenom = $newUser['prenom'];
-                        $email = $newUser['email'];
-                        $password = uniqid(1, false);
-                        $n++;
-
-                        if (in_array($email, $emails)) {
-                            $user = $em->getRepository('AdminBundle:User')->findOneByEmail($email);
-
-                            $reservation = new Reservation();
-                            $reservation->setUser($user);
-                            $reservation->setStatus(2);
-
-                            $agenda_panier = $formation['agenda'];
-                            $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_id);
-                            $reservation->setAgenda($agenda);
-                            $reservation->setnumeroReservation($orderId);//à changer avec validation systempay
-
-
-                            $em->persist($reservation);
-
-
-                            $message = \Swift_Message::newInstance()
-                                ->setSubject('FFSS45 : Finaliser votre inscription')
-                                ->setFrom('tuko45@hotmail.fr')
-                                ->setTo($email)
-                                ->setBody(
-                                    $this->renderView('emailMember.html.twig', array('nom'    => $nom,
-                                                                                     'prenom' => $prenom,
-                                    ),
-                                        'text/html'
-                                    ));
-                            $this->get('mailer')->send($message);
-
-
-                        } else {
-                            $username = $prenom . $nom;
-                            $nb = 2;
-                            while (in_array($username, $usernames)) {
-                                $username = $prenom . $nom . $nb;
-                                $nb++;
-                            }
-                            $passwordcrypt = md5($password);
-                            $firstPassword[] = $password;
-
-                            $userManager = $this->container->get('fos_user.user_manager');
-                            $user = $userManager->createUser();
-
-                            $user->setUsername($username);
-                            $user->setEmail($email);
-                            $user->setNom($nom);
-                            $user->setPrenom($prenom);
-                            $user->setPassword($passwordcrypt);
-
-                            $userManager->updateUser($user);
-
-
-                            $reservation = new Reservation();
-                            $reservation->setUser($user);
-                            $reservation->setStatus(2);
-
-                            //$agenda_panier = $formation['agenda'];
-                            $agenda = $em->getRepository('AdminBundle:Agenda')->find($agenda_id);
-                            $reservation->setAgenda($agenda);
-                            $reservation->setnumeroReservation($systempayOrderId);
-
-                            // dump($reservation);
-                            $em->persist($reservation);
-
-
-                            $message = \Swift_Message::newInstance()
-                                ->setSubject('FFSS45 : Finaliser votre inscription')
-                                ->setFrom('tuko45@hotmail.fr')
-                                ->setTo($email)
-                                ->setBody(
-                                    $this->renderView('emailSubscription.html.twig', array('nom'    => $nom,
-                                                                                           'prenom' => $prenom, 'password' => $password,
-
-                                    ),
-                                        'text/html'
-                                    ));
-                            $this->get('mailer')->send($message);
-                        }
-                    }
-
-                }
-                $em->flush();
+                $validRes = $this->get('commerce.payment.validation');
+                $validRes->saveReservation($panier, $orderId);
 
             } else {
                 $session->getFlashBag()->add('danger', "Problème dans le traitement du panier");
             }
         }
-        $em->flush();
-
         return $this->redirect($this->generateUrl('page_accueil_principale'));
-        // }
-        // return $this->render('@Front/Default/acceuil.html.twig', array(
-        //   'form' => $form->createView(),
-        //));
-
     }
+
+
+
 
     /**
      * @Route("/remove/{id}", name="remove")
@@ -344,9 +237,6 @@ class PanierController extends Controller
     {
         $session = $request->getSession();
         $session->set('panier', null);
-        if ($session->has('orderId')) {
-            $session->remove('orderId');
-        }
 
         return $this->redirectToRoute('panier');
     }
@@ -423,6 +313,7 @@ class PanierController extends Controller
         return $this->redirectToRoute('valid_cart');
     }
 
+
     /**
      * @Route("/valid-cart", name="valid_cart")
      */
@@ -430,62 +321,110 @@ class PanierController extends Controller
     {
         $session = $request->getSession();
         $panier = $session->get('panier');
+        $numCheque = uniqid(1, false);
+
+        $form = $this->createForm(ChoixPaymentType::class);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $data = $form->getData();
+
+            $errorBack = 0;
+
+            if ($panier) {
+                foreach ($panier as $article) {
+                    for ($i = 1; $i <= $article['quantity']; $i++) {
+                        if (!isset($article['inscrits'])) {
+                            $errorBack = 1;
+                        } elseif (!array_key_exists($i, $article['inscrits'])) {
+                            $errorBack = 1;
+                        }
+                    }
+                }
+                if ($errorBack) {
+                    $this->addFlash(
+                        'danger',
+                        'Veuillez saisir les informations pour tous les inscrits'
+                    );
+
+                    return $this->redirectToRoute('valid_cart');
+
+                }
+
+                if ($data['payment']=='cb') {
+                    return $this->redirectToRoute('pay_online');
+                }
+                else {
+                    $em = $this->getDoctrine()->getManager();
+                    $payment = new Panier();
+                    $payment->setNumeroReservation($numCheque);
+                    $payment->setJson(json_encode($panier));
+                    $payment->setType($data['payment']);
+
+                    $em->persist($payment);
+                    $em->flush();
+
+                    return $this->redirectToRoute('paiementValidation');
+                }
+            } else {
+                $this->addFlash(
+                    'danger',
+                    'Le panier est vide, veuillez ajouter des formations'
+                );
+
+                return $this->redirectToRoute('panier');
+            }
+
+
+        }
+
+        return $this->render('@Commerce/Default/validCart.html.twig', [
+                'panier' => $panier,
+                'numCheque'=>$numCheque,
+                'form'   => $form->createView(),
+            ]
+        );
+
+    }
+
+
+    /**
+     * @Route("/choix-paymentPS/{id}", name="choix_paymentPS")
+     */
+    public function choixPaymentAction(FormulaireSecours $formulaireSecours, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
 
         $form = $this->createForm(ChoixPaymentType::class);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
-
-            return $this->redirectToRoute('payment');
-        }
-
-        return $this->render('@Commerce/Default/validCart.html.twig', [
-            'panier' => $panier,
-            'form'   => $form->createView(),
-        ]
-    );
-
-    }
-
-    /**
-     * @Route("/payment", name="payment")
-     */
-    public function paymentAction(Request $request)
-    {
-        $session = $request->getSession();
-        $panier = $session->get('panier');
-        $errorBack = 0;
-        if ($panier) {
-            foreach ($panier as $article) {
-                for ($i = 1; $i <= $article['quantity']; $i++) {
-                    if (!isset($article['inscrits'])) {
-                        $errorBack = 1;
-                    } elseif (!array_key_exists($i, $article['inscrits'])) {
-                        $errorBack = 1;
-                    }
-                }
-            }
-            if ($errorBack) {
+            if ($data['payment']=='cb') {
+                return $this->redirectToRoute('pay_onlinePS', [
+                    'id_ps' => $formulaireSecours->getId(),
+                ]);
+            } else {
+                $formulaireSecours->setStatut(2);
+                $em->persist($formulaireSecours);
+                $em->flush();
                 $this->addFlash(
-                    'danger',
-                    'Veuillez saisir les informations pour tous les inscrits'
+                    'success',
+                    'Votre demande de payment a bien été pris en compte'
                 );
-
-                return $this->redirectToRoute('valid_cart');
-
+                return $this->redirectToRoute('fos_user_profile_show');
             }
-
-            return $this->redirectToRoute('pay_online');
-        } else {
-            $this->addFlash(
-                'danger',
-                'Le panier est vide, veuillez ajouter des formations'
-            );
-
-            return $this->redirectToRoute('panier');
         }
+
+        return $this->render('@Commerce/Default/validPS.html.twig', [
+                'form' => $form->createView(),
+            ]
+        );
+
     }
+
+
 
     /**
      * @Route("/initiate-payment", name="pay_online")
@@ -515,14 +454,16 @@ class PanierController extends Controller
 
         $panier1 = new Panier();
         $panier1->setNumeroReservation($orderId);
-        $panier1->setJson(json_encode($session->get('panier')));
+
+        $panier1->setJson(json_encode($panier));
+
         $em->persist($panier1);
         $em->flush();
 
         $systempay = $this->get('tlconseil.systempay')
             ->init($currency = 978, $amount = ($totalfinal * 100))
             ->setOptionnalFields(array(
-                'shop_url' => 'http://193.70.38.206/ffss45',
+                'shop_url' => $this->getParameter('shop_url'),
                 'order_id' => $orderId,
             ));
 
@@ -533,28 +474,28 @@ class PanierController extends Controller
     }
 
     /**
-     * @Route("/initiate-paymentPS/{id_systempay}", name="pay_onlinePS")
+     * @Route("/initiate-paymentPS/{id_ps}", name="pay_onlinePS")
      */
-    public function payOnlinePSAction($id_systempay)
+    public function payOnlinePSAction($id_ps)
     {
 
         $em = $this->getDoctrine()->getManager();
-        $ps = $em->getRepository('FrontBundle:FormulaireSecours')->find($id_systempay);
+        $ps = $em->getRepository('FrontBundle:FormulaireSecours')->find($id_ps);
         $montantPS = $ps->getDevis();
         $numDevis = uniqid(1, false);
 
-        $panier2 = new Panier();
-        $panier2->setNumeroReservation($numDevis);
-        $panier2->setJson($id_systempay);
-        $panier2->setPosteDeSecours(1);
+        $panier = new Panier();
+        $panier->setNumeroReservation($numDevis);
+        $panier->setJson($id_ps);
+        $panier->setPosteDeSecours(1);
 
-        $em->persist($panier2);
+        $em->persist($panier);
         $em->flush();
 
         $systempay = $this->get('tlconseil.systempay')
             ->init($currency = 978, $amount = ($montantPS * 100))
             ->setOptionnalFields(array(
-                'shop_url' => 'http://193.70.38.206/ffss45',
+                'shop_url' => $this->getParameter('shop_url'),
                 'order_id' => $numDevis,
             ));
 
@@ -593,6 +534,18 @@ class PanierController extends Controller
         }
     }
 
+
+    /**
+     * @Route("/paiementValidation", name="paiement_validation")
+     */
+    public function paymentValidationAction(Request $request)
+    {
+        $session = $request->getSession();
+
+        $session->remove('panier');
+
+        return $this->render('CommerceBundle:Panier:panierValide.html.twig');
+    }
 
     /**
      * @Route("/paiementRetour", name="paiement_retour")

@@ -7,7 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\MoneyType ;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 
 class PrixType extends AbstractType
 {
@@ -21,21 +21,21 @@ class PrixType extends AbstractType
             ->add('devis', MoneyType :: class)
             ->add('statut', ChoiceType:: class, [
                 'choices' => [
-                'en attente'=> 'devis en cours',
-                'en attente paiement'=> 'en attente de paiement',
-                'paiement reçu'=> 'paiement reçu',
-                ]])
-            ->add('message')
-        ;
+                    1 => 'Devis envoyé',
+                    2 => 'Paiement effectué, attente validation',
+                    3 => 'Paiement validé',
+                ],
+            ])
+            ->add('message');
     }
-    
+
     /**
      * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'FrontBundle\Entity\FormulaireSecours'
+            'data_class' => 'FrontBundle\Entity\FormulaireSecours',
         ));
     }
 }

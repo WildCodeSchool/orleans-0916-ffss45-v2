@@ -10,14 +10,16 @@
                     <th>Date début manif</th>
                     <th>Date fin manif</th>
                     <th>Prix de la prestation</th>
+                    <th>Statut Paiement</th>
                 </tr>
                 <tr>
                     <td>{{ formulaireSecour.nomManif }}</td>
                     <td>{% if formulaireSecour.dateDebutManif %}{{ formulaireSecour.dateDebutManif|date('d-m-Y') }}{% endif %}</td>
                     <td>{% if formulaireSecour.dateFinManif %}{{ formulaireSecour.dateFinManif|date('d-m-Y') }}{% endif %}</td>
                     <td>{{ formulaireSecour.devis }}€</td>
-                    {%  if formulaireSecour.devis %}
-                    <td><a class="btn btn-primary" href="{{ path('pay_onlinePS', {'id_systempay':formulaireSecour.id}) }}">Payer la prestation</a></td>
+                    <td>{{ formulaireSecour.statutLabel }}</td>
+                    {%  if formulaireSecour.devis and formulaireSecour.statut==1 %}
+                    <td><a class="btn btn-primary" href="{{ path('choix_paymentPS', {'id':formulaireSecour.id}) }}">Payer la prestation</a></td>
                     {% endif %}
                 </tr>
 

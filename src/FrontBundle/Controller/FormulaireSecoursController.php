@@ -104,7 +104,7 @@ class FormulaireSecoursController extends Controller
 
             $message = \Swift_Message::newInstance()
                 ->setSubject('FFSS45 : Votre devis Poste de Secours')
-                ->setFrom('tuko45@hotmail.fr')
+                ->setFrom($this->getParameter('mail_from'))
                 ->setTo($userEmail)
                 ->setBody(
                     $this->renderView('emailDevis.html.twig', ['prenom' => $userFirstName,

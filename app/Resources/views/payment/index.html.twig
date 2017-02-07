@@ -1,0 +1,42 @@
+{% extends 'AdminBundle::adminLayout.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+        <h1>Liste des payments en attente
+        </h1>
+        <a class="btn btn-primary btn-lg" href="{{ path('payment_index') }}">Voir tous les paiements</a>
+        <table class="table table-hover table-condensed table-striped">
+            <thead>
+            <tr>
+                <th>Numero Commande</th>
+                <th>Statut</th>
+                <th>Type paiement</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for payment in payments %}
+                <tr>
+                    <td>{{ payment.numeroReservation }}</a></td>
+                    <td>
+                        {% if payment.paid %}
+                            Payé
+                        {% else %}
+                            En attente de payment
+                        {% endif %}
+                    </td>
+                    <td>{{ payment.type }}</td>
+                    <td>
+                        {% if payment.paid  is null %}
+
+                        <a class="btn btn-success" href="{{ path('payment_validation', { 'id': payment.id }) }}">Valider le paiement</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+
+{% endblock %}
