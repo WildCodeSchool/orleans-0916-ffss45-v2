@@ -14,8 +14,6 @@ class ProfileFormType extends AbstractType
 		$builder->add('nom')
 			->add('prenom')
 			->add('date_naissance', BirthdayType::class, array(
-				'widget' => 'single_text',
-				'format' => 'yyyy-MM-dd',
 			))
 			->add('lieu_naissance')
 			->add('departement_naissance')

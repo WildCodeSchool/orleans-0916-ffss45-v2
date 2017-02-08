@@ -14,6 +14,7 @@ namespace FrontBundle\Form;
 use FOS\UserBundle\Util\LegacyFormHelper;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -34,7 +35,7 @@ class RegistrationFormType extends AbstractType
 	{
 		$builder
 			->add('email', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\EmailType'), array('label' => 'form.email', 'translation_domain' => 'FOSUserBundle'))
-//			->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
+			->add('username', null, array('label' => 'form.username', 'translation_domain' => 'FOSUserBundle'))
 			->add('plainPassword', LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\RepeatedType'), array(
 				'type' => LegacyFormHelper::getType('Symfony\Component\Form\Extension\Core\Type\PasswordType'),
 				'options' => array('translation_domain' => 'FOSUserBundle'),
@@ -44,8 +45,6 @@ class RegistrationFormType extends AbstractType
 			->add('nom')
 			->add('prenom')
 			->add('date_naissance', BirthdayType::class, array(
-                'widget' => 'single_text',
-                'format' => 'yyyy-MM-dd',
             ))
 			->add('lieu_naissance')
 			->add('departement_naissance')
@@ -53,7 +52,9 @@ class RegistrationFormType extends AbstractType
 			->add('code_postal')
 			->add('ville')
 			->add('tel')
-			->add('relation')
+			->add('relation', TextareaType::class, [
+			    'required'=>false,
+            ])
 			->add('imageFile', VichImageType::class, [
 				'required' => false,
 				'allow_delete' => true, // not mandatory, default is true
