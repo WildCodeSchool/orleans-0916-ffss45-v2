@@ -44,6 +44,11 @@ twig:
     form_themes:
         # other form themes
         - 'VichUploaderBundle:Form:fields.html.twig'
+    globals:
+         iban: "%iban%"
+         bic: "%bic%"
+         intitule_compte: "%intitule_compte%"
+
 
 
 # Doctrine Configuration
