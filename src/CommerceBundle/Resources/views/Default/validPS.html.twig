@@ -21,7 +21,11 @@
                     </div>
                     <div class="numVirement well">
                         Si vous choisissez le paiement par virement bancaire, merci de l'adresser au compte suivant :
-                        FFSS, IBAN:123456789
+                        <ul class="text-left">
+                            <li><strong>IBAN:</strong> {{ iban}}
+                            <li><strong>BIC:</strong> {{ bic}}</li>
+                            <li><strong>Intitulé compte:</strong> {{ intitule_compte }}</li>
+                        </ul>
                     </div>
                 </div>
             </div>            <button type="submit" id="validAll" class="btn btn-success">Payer</button>
