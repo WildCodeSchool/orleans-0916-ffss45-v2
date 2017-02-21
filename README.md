@@ -4,6 +4,11 @@
 ## Site de la fédération française de secourisme du Loiret
 
 #### Réalisé par les élèves de la Wild Code School
+
+* Guillaume Landreau
+* Patrick Sanchez
+* Joel Pilosel
+* Jeremy Leclerc
 * Maryse Messant
 * Guillaume Curiel
 * Julien Houssemaine
