@@ -1,0 +1,71 @@
+<div class="text-center" style="margin-top: 20px; margin-bottom: 45px">
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-sm-4">
+            {{ form_label(form.payment, 'Type de paiement') }}
+            {{ form_widget(form.payment) }}
+        </div>
+        <div class="col-sm-8">
+            <div class="numCB well">
+                Si vous choisissez le paiement par Carte Bleue, vous serez redirigé vers un espace de paiement
+                sécurisé.
+            </div>
+            <div class="numCheque well">
+                Si vous choisissez le paiement par chèque, merci de noter le numéro suivant au dos de votre chèque :
+                <strong>{{ numCheque }}</strong> et de libeller votre chèque à <strong>Secouristes du Loiret</strong>
+            </div>
+            <div class="numVirement well">
+                Si vous choisissez le paiement par virement bancaire, merci de l'adresser au compte suivant :
+                <ul class="text-left">
+                    <li><strong>IBAN:</strong> {{ iban }}
+                    <li><strong>BIC:</strong> {{ bic }}</li>
+                    <li><strong>Intitulé compte:</strong> {{ intitule_compte }}</li>
+                </ul>
+            </div>
+            <div class="numSurPlace well">
+                Paiement sur place
+            </div>
+            <div class="numOrganisme well">
+                Paiement par un organisme
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <button type="submit" id="validAll" class="btn btn-success">Payer</button>
+        <a class="btn btn-primary" href="{{ path('panier' ) }}">Retour</a>
+        {{ form_end(form) }}
+    </div>
+
+</div>
+
+<script>
+    $('#validAll').click(function () {
+        $('[id^=valid_inscrit]').each(function () {
+            $(this).submit();
+        })
+    });
+    $('#front_bundlechoix_payment_type_payment_0').attr('checked', 'checked');
+    $('div[class^="num"]').hide();
+    $('.numCB').show();
+
+    $('#front_bundlechoix_payment_type_payment_0').click(function () {
+        $('div[class^="num"]').hide();
+        $('.numCB').show();
+    });
+    $('#front_bundlechoix_payment_type_payment_1').click(function () {
+        $('div[class^="num"]').hide();
+        $('.numCheque').show();
+    });
+    $('#front_bundlechoix_payment_type_payment_2').click(function () {
+        $('div[class^="num"]').hide();
+        $('.numVirement').show();
+    });
+    $('#front_bundlechoix_payment_type_payment_3').click(function () {
+        $('div[class^="num"]').hide();
+        $('.numSurPlace').show();
+    });
+    $('#front_bundlechoix_payment_type_payment_4').click(function () {
+        $('div[class^="num"]').hide();
+        $('.numOrganisme').show();
+    });
+</script>

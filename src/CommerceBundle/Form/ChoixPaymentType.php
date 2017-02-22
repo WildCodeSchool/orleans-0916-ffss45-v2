@@ -17,6 +17,8 @@ class ChoixPaymentType extends AbstractType
                 'cb'       => 'CB',
                 'cheque'   => 'Chèque',
                 'virement' => 'Virement',
+                'surPlace' => 'Sur Place',
+                'organism' => 'Par un organisme',
             ],
             'multiple' => false,
             'expanded' => true,

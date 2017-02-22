@@ -27,18 +27,18 @@
 }
 
 
-input[type="text"] {
-    width: 300px;
-}
+/*input[type="text"] {*/
+    /*width: 300px;*/
+/*}*/
 
 input{
     margin-bottom: 10px;
 }
 
-textarea {
-    width: 450px;
-    height: 100px;
-}
+/*textarea {*/
+    /*width: 450px;*/
+    /*height: 100px;*/
+/*}*/
 
 .flow-form dl dt {
     float: left;
@@ -72,9 +72,9 @@ p {
 }
 
 
-.form-control{
-    width: 200px;
-}
+/*.form-control{*/
+    /*width: 200px;*/
+/*}*/
 
 
  label input[type="radio"]:checked   {
