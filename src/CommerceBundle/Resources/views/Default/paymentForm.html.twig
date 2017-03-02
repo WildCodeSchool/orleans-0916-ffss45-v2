@@ -7,15 +7,18 @@
         </div>
         <div class="col-sm-8">
             <div class="numCB well">
-                Si vous choisissez le paiement par Carte Bleue, vous serez redirigé vers un espace de paiement
-                sécurisé.
+                <h2>Paiement par carte bancaire.</h2>
+                Vous serez redirigé vers un espace de paiement sécurisé.
             </div>
             <div class="numCheque well">
-                Si vous choisissez le paiement par chèque, merci de noter le numéro suivant au dos de votre chèque :
+                <h2>Paiement par chèque.</h2>
+                Merci de noter le numéro suivant au dos de votre chèque :
                 <strong>{{ numCheque }}</strong> et de libeller votre chèque à <strong>Secouristes du Loiret</strong>
             </div>
             <div class="numVirement well">
-                Si vous choisissez le paiement par virement bancaire, merci de l'adresser au compte suivant :
+                <h2>Paiement par virement bancaire.</h2>
+
+                Merci d'effectuer le virement sur le compte suivant :
                 <ul class="text-left">
                     <li><strong>IBAN:</strong> {{ iban }}
                     <li><strong>BIC:</strong> {{ bic }}</li>
@@ -23,18 +26,24 @@
                 </ul>
             </div>
             <div class="numSurPlace well">
-                Paiement sur place
+                <h2>Paiement sur place.</h2>
+                Merci de vous rendre à l'emplacement:
+                <p>FFSS45, 15 quai du roi 45000 ORLÉANS</p>
+                <p>Votre inscription sera prise en compte lors du paiement</p>
             </div>
             <div class="numOrganisme well">
-                Paiement par un organisme
+                <h2>Paiement par un organisme</h2>
+                Indiquez ci-dessous le nom, adresse, téléphone et email de l'organisme.
+                {{ form_row(form.organism_info) }}
+                <p>Votre inscription sera prise en compte lors de la confirmation de l'organisme</p>
             </div>
         </div>
     </div>
     <div class="row">
         <button type="submit" id="validAll" class="btn btn-success">Payer</button>
         <a class="btn btn-primary" href="{{ path('panier' ) }}">Retour</a>
-        {{ form_end(form) }}
     </div>
+    {{ form_end(form) }}
 
 </div>
 

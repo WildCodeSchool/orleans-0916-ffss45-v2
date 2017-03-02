@@ -1,5 +1,5 @@
 {% extends '@Front/Default/frontLayout.html.twig' %}
-{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -18,7 +18,7 @@
 					{{ form_row(form.nomManif) }}
 					{{ form_row(form.PresentationManif) }}
 					</fieldset>
-					<fieldset>
+					<fieldset class="dateDeb">
 						{{ form_label(form.dateDebutManif) }}
 						{{ form_widget(form.dateDebutManif) }}
 						{{ form_widget(form.heureDebutManif) }}

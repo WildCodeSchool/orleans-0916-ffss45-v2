@@ -4,6 +4,7 @@ namespace CommerceBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -25,10 +26,10 @@ class ChoixPaymentType extends AbstractType
             'required' => true,
 
         ])
-//            ->add('numPO', TextType::class, [
-//                'required' => false,
-//                'label'=>'N° commande'
-//            ])
+            ->add('organism_info', TextareaType::class, [
+                'required' => false,
+                'label'=>'Inforrmations organisme'
+            ])
         ;
     }
 

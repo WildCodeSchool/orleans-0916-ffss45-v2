@@ -397,7 +397,7 @@ class PanierController extends Controller
                     $em->persist($payment);
                     $em->flush();
 
-                    return $this->redirectToRoute('paiementValidation');
+                    return $this->redirectToRoute('paiement_validation');
                 }
             } else {
                 $this->addFlash(
