@@ -401,4 +401,28 @@ class Reservation
     {
         return $this->updatedAt;
     }
+
+    /**
+     * Set panier
+     *
+     * @param string $panier
+     *
+     * @return Reservation
+     */
+    public function setPanier($panier)
+    {
+        $this->panier = $panier;
+
+        return $this;
+    }
+
+    /**
+     * Get panier
+     *
+     * @return string
+     */
+    public function getPanier()
+    {
+        return $this->panier;
+    }
 }

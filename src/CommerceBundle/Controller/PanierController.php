@@ -374,6 +374,8 @@ class PanierController extends Controller
                         }
                     }
                 }
+
+
                 if ($errorBack) {
                     $this->addFlash(
                         'danger',
@@ -393,6 +395,27 @@ class PanierController extends Controller
                     $payment->setNumeroReservation($numCheque);
                     $payment->setJson(json_encode($panier));
                     $payment->setType($data['payment']);
+                    $payment->setUser($this->getUser());
+                    $infos = [];
+                    $totalfinal=0;
+                    $prixLivraison = 5;
+
+                    foreach ($panier as $id => $article) {
+
+                        $agenda = $em->getRepository('AdminBundle:Agenda')->find($id);
+                        $panier[$agenda->getId()]['totalitem'] = $agenda->getFormation()->getPrix() * $article['quantity'];
+                        $totalLivraison=0;
+                        if ($session->get('totalLivraison')) {
+                            $totalLivraison = $prixLivraison * $article['quantity'];
+                        }
+                        $totalfinal += $panier[$agenda->getId()]['totalitem'] + $totalLivraison;
+                        $infos[]=$agenda->getFormation()->getNomCourt();
+                    }
+                    $payment->setPrice($totalfinal);
+                    if ($data['organism_info']) {
+                        $infos[] = 'Organisme:'.$data['organism_info'];
+                    }
+                    $payment->setInformation(implode('; ', $infos));
 
                     $em->persist($payment);
                     $em->flush();
