@@ -1,0 +1,80 @@
+<div class="text-center" style="margin-top: 20px; margin-bottom: 45px">
+    {{ form_start(form) }}
+    <div class="row">
+        <div class="col-sm-4">
+            {{ form_label(form.payment, 'Type de paiement') }}
+            {{ form_widget(form.payment) }}
+        </div>
+        <div class="col-sm-8">
+            <div class="numCB well">
+                <h2>Paiement par carte bancaire.</h2>
+                Vous serez redirigé vers un espace de paiement sécurisé.
+            </div>
+            <div class="numCheque well">
+                <h2>Paiement par chèque.</h2>
+                Merci de noter le numéro suivant au dos de votre chèque :
+                <strong>{{ numCheque }}</strong> et de libeller votre chèque à <strong>Secouristes du Loiret</strong>
+            </div>
+            <div class="numVirement well">
+                <h2>Paiement par virement bancaire.</h2>
+
+                Merci d'effectuer le virement sur le compte suivant :
+                <ul class="text-left">
+                    <li><strong>IBAN:</strong> {{ iban }}
+                    <li><strong>BIC:</strong> {{ bic }}</li>
+                    <li><strong>Intitulé compte:</strong> {{ intitule_compte }}</li>
+                </ul>
+            </div>
+            <div class="numSurPlace well">
+                <h2>Paiement sur place.</h2>
+                Merci de vous rendre à l'emplacement:
+                <p>FFSS45, 15 quai du roi 45000 ORLÉANS</p>
+                <p>Votre inscription sera prise en compte lors du paiement</p>
+            </div>
+            <div class="numOrganisme well">
+                <h2>Paiement par un organisme</h2>
+                Indiquez ci-dessous le nom, adresse, téléphone et email de l'organisme.
+                {{ form_row(form.organism_info) }}
+                <p>Votre inscription sera prise en compte lors de la confirmation de l'organisme</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <button type="submit" id="validAll" class="btn btn-success">Payer</button>
+        <a class="btn btn-primary" href="{{ path('panier' ) }}">Retour</a>
+    </div>
+    {{ form_end(form) }}
+
+</div>
+
+<script>
+    $('#validAll').click(function () {
+        $('[id^=valid_inscrit]').each(function () {
+            $(this).submit();
+        })
+    });
+    $('#front_bundlechoix_payment_type_payment_0').attr('checked', 'checked');
+    $('div[class^="num"]').hide();
+    $('.numCB').show();
+
+    $('#front_bundlechoix_payment_type_payment_0').click(function () {
+        $('div[class^="num"]').hide();
+        $('.numCB').show();
+    });
+    $('#front_bundlechoix_payment_type_payment_1').click(function () {
+        $('div[class^="num"]').hide();
+        $('.numCheque').show();
+    });
+    $('#front_bundlechoix_payment_type_payment_2').click(function () {
+        $('div[class^="num"]').hide();
+        $('.numVirement').show();
+    });
+    $('#front_bundlechoix_payment_type_payment_3').click(function () {
+        $('div[class^="num"]').hide();
+        $('.numSurPlace').show();
+    });
+    $('#front_bundlechoix_payment_type_payment_4').click(function () {
+        $('div[class^="num"]').hide();
+        $('.numOrganisme').show();
+    });
+</script>

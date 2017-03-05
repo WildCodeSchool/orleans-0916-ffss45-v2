@@ -553,11 +553,70 @@ class FormulaireSecours
     private $communicationSecours;
 
     /**
-     * @var string
+     * @var boolean
      *
-     * @ORM\Column(name="autresSecours", type="string", length=255, nullable=true)
+     * @ORM\Column(name="autresSecoursSamu", type="boolean", nullable=true)
      */
-    private $autresSecours;
+    private $autresSecoursSamu;
+
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="autresSecoursAmbulance", type="boolean", nullable=true)
+     */
+    private $autresSecoursAmbulance;
+
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="autresSecoursPompiers", type="boolean", nullable=true)
+     */
+    private $autresSecoursPompiers;
+
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="autresSecoursGendarmerie", type="boolean", nullable=true)
+     */
+    private $autresSecoursGendarmerie;
+
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="autresSecoursPolice", type="boolean", nullable=true)
+     */
+    private $autresSecoursPolice;
+
+
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="autresSecoursSociete", type="boolean", nullable=true)
+     */
+    private $autresSecoursSociete;
+
+        /**
+     * @var boolean
+     *
+     * @ORM\Column(name="autresSecoursAutre", type="boolean", nullable=true)
+     */
+    private $autresSecoursAutre;
+
+
+
+
+
+//->add('autresSecoursSamu', CheckboxType::class, ['required'=>false, 'label'=>'SAMU/SMUR'])
+//->add('autresSecoursAmbulance', CheckboxType::class, ['required'=>false, 'label'=>'Ambulance privée'])
+//->add('autresSecoursPompiers', CheckboxType::class, ['required'=>false, 'label'=>'Sapeurs pompiers'])
+//->add('autresSecoursGendarmerie', CheckboxType::class, ['required'=>false, 'label'=>'Police/gendarmerie'])
+//->add('autresSecoursPolice', CheckboxType::class, ['required'=>false, 'label'=>'Police municipale'])
+//->add('autresSecoursSociete', CheckboxType::class, ['required'=>false, 'label'=>'Société privée de sécurité'])
+//->add('autresSecoursAutre', CheckboxType::class, ['required'=>false, 'label'=>''])
 
     /**
      * @var string
@@ -2453,28 +2512,7 @@ class FormulaireSecours
         return $this;
     }
 
-    /**
-     * Get autresSecours
-     *
-     * @return string
-     */
-    public function getAutresSecours()
-    {
-        return $this->autresSecours;
-    }
 
-    /**
-     * Set autresSecours
-     *
-     * @param string $autresSecours
-     * @return FormulaireSecours
-     */
-    public function setAutresSecours($autresSecours)
-    {
-        $this->autresSecours = $autresSecours;
-
-        return $this;
-    }
 
     /**
      * Get infosCompl
@@ -2867,4 +2905,196 @@ class FormulaireSecours
     }
 
 
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return FormulaireSecours
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set autresSecoursSamu
+     *
+     * @param boolean $autresSecoursSamu
+     *
+     * @return FormulaireSecours
+     */
+    public function setAutresSecoursSamu($autresSecoursSamu)
+    {
+        $this->autresSecoursSamu = $autresSecoursSamu;
+
+        return $this;
+    }
+
+    /**
+     * Get autresSecoursSamu
+     *
+     * @return boolean
+     */
+    public function getAutresSecoursSamu()
+    {
+        return $this->autresSecoursSamu;
+    }
+
+    /**
+     * Set autresSecoursAmbulance
+     *
+     * @param boolean $autresSecoursAmbulance
+     *
+     * @return FormulaireSecours
+     */
+    public function setAutresSecoursAmbulance($autresSecoursAmbulance)
+    {
+        $this->autresSecoursAmbulance = $autresSecoursAmbulance;
+
+        return $this;
+    }
+
+    /**
+     * Get autresSecoursAmbulance
+     *
+     * @return boolean
+     */
+    public function getAutresSecoursAmbulance()
+    {
+        return $this->autresSecoursAmbulance;
+    }
+
+    /**
+     * Set autresSecoursPompiers
+     *
+     * @param boolean $autresSecoursPompiers
+     *
+     * @return FormulaireSecours
+     */
+    public function setAutresSecoursPompiers($autresSecoursPompiers)
+    {
+        $this->autresSecoursPompiers = $autresSecoursPompiers;
+
+        return $this;
+    }
+
+    /**
+     * Get autresSecoursPompiers
+     *
+     * @return boolean
+     */
+    public function getAutresSecoursPompiers()
+    {
+        return $this->autresSecoursPompiers;
+    }
+
+    /**
+     * Set autresSecoursGendarmerie
+     *
+     * @param boolean $autresSecoursGendarmerie
+     *
+     * @return FormulaireSecours
+     */
+    public function setAutresSecoursGendarmerie($autresSecoursGendarmerie)
+    {
+        $this->autresSecoursGendarmerie = $autresSecoursGendarmerie;
+
+        return $this;
+    }
+
+    /**
+     * Get autresSecoursGendarmerie
+     *
+     * @return boolean
+     */
+    public function getAutresSecoursGendarmerie()
+    {
+        return $this->autresSecoursGendarmerie;
+    }
+
+    /**
+     * Set autresSecoursPolice
+     *
+     * @param boolean $autresSecoursPolice
+     *
+     * @return FormulaireSecours
+     */
+    public function setAutresSecoursPolice($autresSecoursPolice)
+    {
+        $this->autresSecoursPolice = $autresSecoursPolice;
+
+        return $this;
+    }
+
+    /**
+     * Get autresSecoursPolice
+     *
+     * @return boolean
+     */
+    public function getAutresSecoursPolice()
+    {
+        return $this->autresSecoursPolice;
+    }
+
+    /**
+     * Set autresSecoursSociete
+     *
+     * @param boolean $autresSecoursSociete
+     *
+     * @return FormulaireSecours
+     */
+    public function setAutresSecoursSociete($autresSecoursSociete)
+    {
+        $this->autresSecoursSociete = $autresSecoursSociete;
+
+        return $this;
+    }
+
+    /**
+     * Get autresSecoursSociete
+     *
+     * @return boolean
+     */
+    public function getAutresSecoursSociete()
+    {
+        return $this->autresSecoursSociete;
+    }
+
+    /**
+     * Set autresSecoursAutre
+     *
+     * @param boolean $autresSecoursAutre
+     *
+     * @return FormulaireSecours
+     */
+    public function setAutresSecoursAutre($autresSecoursAutre)
+    {
+        $this->autresSecoursAutre = $autresSecoursAutre;
+
+        return $this;
+    }
+
+    /**
+     * Get autresSecoursAutre
+     *
+     * @return boolean
+     */
+    public function getAutresSecoursAutre()
+    {
+        return $this->autresSecoursAutre;
+    }
 }

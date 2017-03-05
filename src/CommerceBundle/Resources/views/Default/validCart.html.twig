@@ -3,91 +3,32 @@
 {% set panier = app.session.get('panier') %}
 {% block body %}
 
-<div class="container">
+    <div class="container">
 
-    {% for article_id, article in panier %}
+        {% for article_id, article in panier %}
 
-        {% if article.quantity is defined %}
-            <h2>Formation {{ article.agenda.formation.nomLong }}</h2>
+            {% if article.quantity is defined %}
+                <h2>Formation {{ article.agenda.formation.nomLong }}</h2>
 
-            {% for i in 1 .. article.quantity %}
-                <div class="row" id="load_form_valid_inscrit{{ i }}">
-                    <div>
-                        {% render(controller('CommerceBundle:Panier:addInscrit', {'id':article_id, 'key':i} )) %}
+                {% for i in 1 .. article.quantity %}
+                    <div class="row" id="load_form_valid_inscrit{{ i }}">
+                        <div>
+                            {% render(controller('CommerceBundle:Panier:addInscrit', {'id':article_id, 'key':i} )) %}
 
+                        </div>
                     </div>
+                {% endfor %}
+
+            {% else %}
+                <div class="alert alert-danger">Erreur dans le panier, veuillez recommencer votre sélection
+                    <a href="{{ path('panier') }}">Retour au panier</a>
                 </div>
-            {% endfor %}
-
-        {% else %}
-            <div class="alert alert-danger">Erreur dans le panier, veuillez recommencer votre sélection
-                <a href="{{ path('panier') }}">Retour au panier</a>
-            </div>
-        {% endif %}
-    {% endfor %}
+            {% endif %}
+        {% endfor %}
 
 
-    <div class="text-center" style="margin-top: 20px; margin-bottom: 45px">
-        {{ form_start(form) }}
-        <div class="row">
-            <div class="col-sm-4">{{ form_row(form.payment) }}</div>
-            <div class="col-sm-8">
-                <div class="numCB well">
-                    Si vous choisissez le paiement par Carte Bleue, vous serez redirigé vers un espace de paiement
-                    sécurisé.
-                </div>
-                <div class="numCheque well">
-                    Si vous choisissez le paiement par chèque, merci de noter le numéro suivant au dos de votre chèque :
-                    <strong>{{ numCheque }}</strong> et de libeller votre chèque à <strong>Secouristes du Loiret</strong>
-                </div>
-                <div class="numVirement well">
-                    Si vous choisissez le paiement par virement bancaire, merci de l'adresser au compte suivant :
-                    <ul class="text-left">
-                        <li><strong>IBAN:</strong> {{ iban}}
-                        <li><strong>BIC:</strong> {{ bic}}</li>
-                        <li><strong>Intitulé compte:</strong> {{ intitule_compte }}</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <button type="submit" id="validAll" class="btn btn-success">S'inscrire</button>
-            <a class="btn btn-primary" href="{{ path('panier' ) }}">Retour</a>
-            {{ form_end(form) }}
-        </div>
+    {% include('CommerceBundle:Default:paymentForm.html.twig') %}
 
-
-    </div>
     {% endblock %}
 
-    {% block javascripts %}
-        <script>
-            $('#validAll').click(function () {
-                $('[id^=valid_inscrit]').each(function () {
-                    $(this).submit();
-                })
-            });
-            $('#front_bundlechoix_payment_type_payment_0').attr('checked', 'checked');
-            $('.numCB').show();
-            $('.numCheque').hide();
-            $('.numVirement').hide();
-
-            $('#front_bundlechoix_payment_type_payment_0').click(function () {
-                $('.numCheque').hide();
-                $('.numVirement').hide();
-            });
-            $('#front_bundlechoix_payment_type_payment_1').click(function () {
-                $('.numCB').hide();
-                $('.numVirement').hide();
-                $('.numCheque').show();
-            });
-            $('#front_bundlechoix_payment_type_payment_2').click(function () {
-                $('.numCB').hide();
-                $('.numVirement').show();
-                $('.numCheque').hide();
-            });
-        </script>
-
-
-    {% endblock %}
 

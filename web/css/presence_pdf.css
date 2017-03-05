@@ -27,3 +27,13 @@ tbody {
 p {
     font-size: 12px;
 }
+
+thead {
+    display: table-header-group;
+}
+tfoot {
+    display: table-row-group;
+}
+tr {
+    page-break-inside: avoid;
+}

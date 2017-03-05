@@ -105,7 +105,7 @@ class DefaultController extends Controller
 			200,
 			array(
 				'Content-Type'          => 'application/pdf',
-				'Content-Disposition'   => 'attachment; filename="file.pdf"'
+				'Content-Disposition'   => 'attachment; filename="'.$formation->getNomCourt().'.pdf"'
 			)
 		);
 	}
@@ -116,8 +116,14 @@ class DefaultController extends Controller
     public function mentionsLegalesAction()
     {
         return $this->render('@Front/Default/mentionsLegales.html.twig');
+    }
 
-
+    /**
+     * @Route("/cgv", name="cgv")
+     */
+    public function cgvAction()
+    {
+        return $this->render('@Front/Default/cgv.html.twig');
     }
 
     /**

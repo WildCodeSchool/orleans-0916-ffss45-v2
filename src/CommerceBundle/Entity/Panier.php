@@ -27,6 +27,18 @@ class Panier
      * @ORM\Column(name="numeroReservation", type="string", length=255)
      */
     private $numeroReservation;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="information", type="text")
+     */
+    private $information;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="price", type="decimal")
+     */
+    private $price;
 
     /**
      * @return string
@@ -71,6 +83,12 @@ class Panier
      * @ORM\Column(name="type", type="string", nullable = true)
      */
     private $type;
+
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="AdminBundle\Entity\User" )
+     */
+    private $user;
 
 
 
@@ -168,5 +186,76 @@ class Panier
 
 
 
-}
 
+    /**
+     * Set information
+     *
+     * @param string $information
+     *
+     * @return Panier
+     */
+    public function setInformation($information)
+    {
+        $this->information = $information;
+
+        return $this;
+    }
+
+    /**
+     * Get information
+     *
+     * @return string
+     */
+    public function getInformation()
+    {
+        return $this->information;
+    }
+
+    /**
+     * Set price
+     *
+     * @param string $price
+     *
+     * @return Panier
+     */
+    public function setPrice($price)
+    {
+        $this->price = $price;
+
+        return $this;
+    }
+
+    /**
+     * Get price
+     *
+     * @return string
+     */
+    public function getPrice()
+    {
+        return $this->price;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \AdminBundle\Entity\User $user
+     *
+     * @return Panier
+     */
+    public function setUser(\AdminBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \AdminBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+}

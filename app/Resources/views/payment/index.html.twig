@@ -3,7 +3,7 @@
 {% block body %}
 
     <div class="container">
-        <h1>Liste des payments en attente
+        <h1>Liste des paiements en attente
         </h1>
         <a class="btn btn-primary btn-lg" href="{{ path('payment_index') }}">Voir tous les paiements</a>
         <table class="table table-hover table-condensed table-striped">
@@ -12,6 +12,9 @@
                 <th>Numero Commande</th>
                 <th>Statut</th>
                 <th>Type paiement</th>
+                <th>Utilisateur</th>
+                <th>Prix</th>
+                <th>Infos</th>
             </tr>
             </thead>
             <tbody>
@@ -22,10 +25,13 @@
                         {% if payment.paid %}
                             Payé
                         {% else %}
-                            En attente de payment
+                            En attente de paiement
                         {% endif %}
                     </td>
                     <td>{{ payment.type }}</td>
+                    <td>{{ payment.user.prenom }} {{ payment.user.nom }}</td>
+                    <td>{{ payment.price }}€</td>
+                    <td>{{ payment.information }}</td>
                     <td>
                         {% if payment.paid  is null %}
 

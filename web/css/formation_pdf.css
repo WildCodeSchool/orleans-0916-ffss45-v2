@@ -1,23 +1,19 @@
-h1, tr{
+h1{
     color: white;
     padding: 0.4em;
     text-align: center;
+    padding-left: 3.5em;
 
 }
-td{
-    background-color: #E2E3E4;
-    color: grey;
-    border: 1px solid white;
-    text-align: center;
-    font-size: 0.8em;
-    padding-bottom: 5px;
-    padding-top: 5px;
-}
-tr{
-    font-size: 1em;
-}
+
 h1, h2, h3{
-    margin-bottom: 0.5em;
+    margin-bottom: 0.3em;
+}
+h2 {
+    font-size:2em;
+}
+h3 {
+    font-size:1.5em;
 }
 p{
     padding-left: 2em;
@@ -25,8 +21,22 @@ p{
 .logo-pdf{
    padding-top: 1.8em;
     padding-left: 2em;
+    width:8em;
 }
 
-h1{
-    padding-left: 3.5em;
+table {
+    font-size:0.7em;
+}
+th {
+    font-size: 0.8em;
+}
+
+thead {
+    display: table-header-group;
+}
+tfoot {
+    display: table-row-group;
+}
+tr {
+    page-break-inside: avoid;
 }

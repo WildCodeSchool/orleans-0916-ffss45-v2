@@ -27,18 +27,18 @@
 }
 
 
-input[type="text"] {
-    width: 300px;
-}
+/*input[type="text"] {*/
+    /*width: 300px;*/
+/*}*/
 
 input{
     margin-bottom: 10px;
 }
 
-textarea {
-    width: 450px;
-    height: 100px;
-}
+/*textarea {*/
+    /*width: 450px;*/
+    /*height: 100px;*/
+/*}*/
 
 .flow-form dl dt {
     float: left;
@@ -72,9 +72,9 @@ p {
 }
 
 
-.form-control{
-    width: 200px;
-}
+/*.form-control{*/
+    /*width: 200px;*/
+/*}*/
 
 
  label input[type="radio"]:checked   {
@@ -83,3 +83,13 @@ p {
 	color:#24731B;
 	box-shadow:0px 0px 6px #24731B inset;
 }
+
+ .dateDeb {
+     margin-bottom:1em;
+ }
+
+ .autreSecours:before {
+     content:'Choisissez les autres secours présents : ';
+     display: block;
+     font-weight:bold;
+ }

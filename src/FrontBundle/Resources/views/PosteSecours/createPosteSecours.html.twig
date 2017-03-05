@@ -1,5 +1,5 @@
 {% extends '@Front/Default/frontLayout.html.twig' %}
-{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
+{% form_theme form 'bootstrap_3_layout.html.twig' %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -18,7 +18,7 @@
 					{{ form_row(form.nomManif) }}
 					{{ form_row(form.PresentationManif) }}
 					</fieldset>
-					<fieldset>
+					<fieldset class="dateDeb">
 						{{ form_label(form.dateDebutManif) }}
 						{{ form_widget(form.dateDebutManif) }}
 						{{ form_widget(form.heureDebutManif) }}
@@ -28,7 +28,7 @@
 						{{ form_widget(form.dateFinManif) }}
 						{{ form_widget(form.heureFinManif) }}
 					</fieldset>
-				
+
 					<fieldset>
 						{{ form_row(form.adresseManif) }}
 						{{ form_row(form.villeManif) }}
@@ -40,7 +40,7 @@
 						{{ form_row(form.nomRep) }}
 						{{ form_row(form.telRep) }}
 						{{ form_row(form.mailRep) }}
-			
+
 					</fieldset>
 					<fieldset>
 						{{ form_row(form.nomChef) }}
@@ -49,7 +49,8 @@
 					</fieldset>
 					{{ form_row(form.siteWeb) }}
 					{{ form_row(form.typeManif) }}
-					{% endif %}
+				{% endif %}
+
 				<br/>
 				<p>Merci de nous joindre tous les documents relatifs à votre manifestation (cartographie, programme, …) :</p><br/>
 				{{ form_rest(form) }}
