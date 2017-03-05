@@ -8,6 +8,7 @@
 
 namespace FrontBundle\Form;
 
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -64,18 +65,15 @@ class CreatePosteSecoursStep12Form extends AbstractType
                 'choices_as_values' => true,
             ))
             ->add('communicationSecours', TextType::class, array('label'=>'Quel moyen de communication est prévu pour joindre les secours ?'))
-            ->add('autresSecours', ChoiceType::class, array('label'=>'Autres services présents',
-                'choices'=> array(
-                    'SAMU/SMUR'=>'samu',
-                    'Ambulance privée'=>'ambulance',
-                    'Sapeurs pompiers'=>'pompiers',
-                    'Police/gendarmerie'=>'police/gendarmerie',
-                    'Police municipale'=>'police municipale',
-                    'Société privée de sécurité'=>'société privée',
-                    'Aucun'=>'aucun',
-                ),
-                'choices_as_values' => true,
-            ))
+            ->add('autresSecoursSamu', CheckboxType::class, ['required'=>false, 'label'=>'SAMU/SMUR', 'label_attr'=> ['class'=>'autreSecours']])
+            ->add('autresSecoursAmbulance', CheckboxType::class, ['required'=>false, 'label'=>'Ambulance privée'])
+            ->add('autresSecoursPompiers', CheckboxType::class, ['required'=>false, 'label'=>'Sapeurs pompiers'])
+            ->add('autresSecoursGendarmerie', CheckboxType::class, ['required'=>false, 'label'=>'Police/gendarmerie'])
+            ->add('autresSecoursPolice', CheckboxType::class, ['required'=>false, 'label'=>'Police municipale'])
+            ->add('autresSecoursSociete', CheckboxType::class, ['required'=>false, 'label'=>'Société privée de sécurité'])
+            ->add('autresSecoursAutre', CheckboxType::class, ['required'=>false, 'label'=>'Autres secours'])
+
+
             ->add('infosCompl', TextareaType::class, array('label'=>'Infos complémentaires','required'=>false))
         ;
     }

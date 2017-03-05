@@ -98,6 +98,10 @@ input:checked + label {
     display: block;
 }
 
+.tab-pane {
+    color:black;
+}
+
 @media screen and (max-width: 650px) {
     label {
         font-size: 0;

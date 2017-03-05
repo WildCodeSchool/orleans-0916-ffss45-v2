@@ -87,3 +87,9 @@ p {
  .dateDeb {
      margin-bottom:1em;
  }
+
+ .autreSecours:before {
+     content:'Choisissez les autres secours présents : ';
+     display: block;
+     font-weight:bold;
+ }

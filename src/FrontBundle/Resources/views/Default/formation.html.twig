@@ -27,7 +27,29 @@
                 </div>
             </div>
 
-                 <input id="tab1" type="radio" name="tabs" checked >
+
+            <div>
+
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li  role="presentation" class="active"><a  href="#actualisation" aria-controls="actualisation" role="tab" data-toggle="tab">Actualisation</a></li>
+                    <li role="presentation"><a href="#validation" aria-controls="validation" role="tab" data-toggle="tab">Validation de la formation</a></li>
+                    <li role="presentation"><a href="#dureeFormation" aria-controls="dureeFormation" role="tab" data-toggle="tab">Durée</a></li>
+                    <li role="presentation"><a href="#contenuFormation" aria-controls="contenuFormation" role="tab" data-toggle="tab">Contenu de la formation</a></li>
+                    <li role="presentation"><a href="#methodePedagogique" aria-controls="methodePedagogique" role="tab" data-toggle="tab">Méthode pédagogique</a></li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="actualisation"><p>{{ formation.actualisation }}</p></div>
+                    <div role="tabpanel" class="tab-pane" id="validation"><p>{{ formation.validation }}</p></div>
+                    <div role="tabpanel" class="tab-pane" id="dureeFormation"><p>{{ formation.dureeFormation }}</p></div>
+                    <div role="tabpanel" class="tab-pane" id="contenuFormation"><p>{{ formation.contenuFormation }}</p></div>
+                    <div role="tabpanel" class="tab-pane" id="methodePedagogique"><p>{{ formation.methodePedagogique }}</p></div>
+                </div>
+
+            </div>
+                 {#<input id="tab1" type="radio" name="tabs" checked >
                  <label for="tab1"><i class="fa fa-refresh fa-2x"></i><h3>Actualisation</h3></label>
 
                  <input id="tab2" type="radio" name="tabs">
@@ -59,7 +81,7 @@
                  </section>
                 <section id="content5">
                     <p>{{ formation.methodePedagogique }}</p>
-                </section>
+                </section>#}
             <div class="row box">
                 <div class="col-md-12 centered">
                     <a  class="button" style="background-color:{{ formation.categorie.couleur }}; border-color:{{ formation.categorie.couleur }}" href="{{ path('formation_pdf', {'id':formation.id}) }}">Télécharger le PDF</a>
@@ -68,7 +90,7 @@
         </main>
         <div class="container">
             <h2 class="text-left"><span class="agenda" style="color:{{ formation.categorie.couleur }}">Agenda</span></h2>
-            <table class="table  ">
+            <table class="hidden-xs table table-condensed ">
                 <thead style="background-color:{{ formation.categorie.couleur }}">
                 <tr >
                     <th><h4>Date de début</h4></th>
@@ -77,6 +99,7 @@
                     <th><h4>Horaires après-midi</h4></th>
                     <th><h4>Adresse</h4></th>
                     <th><h4>Remarques</h4></th>
+                    <th><h4>Inscription</h4></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -93,6 +116,26 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <div class="visible-xs">
+                {% for agenda in formation.agendas %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="background-color:{{ formation.categorie.couleur }}; color:white">
+                            <h3 class="panel-title" >
+                                Du {{ agenda.dateDeDebut|date('d-m-Y') }} au {{ agenda.dateDeFin |date('d-m-Y')}}
+                                <a class="btn btn-default " style="color:{{ formation.categorie.couleur }};" href="{{ path('add_panier', {'id' : agenda.id }) }}">S'inscrire</a>
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <ul class="list-group">
+                                <li class="list-group-item">Horaires : {{ agenda.heureDeDebutAm |date('H:i')}}-{{ agenda.heureDeFinAm |date('H:i')}}  {{ agenda.heureDeDebutPm |date('H:i')}}-{{ agenda.heureDeFinPm |date('H:i')}}</li>
+                                <li class="list-group-item">{{ agenda.adresse }}</li>
+                                <li class="list-group-item">{{ agenda.remarque }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                {% endfor %}
+
+            </div>
 
             {#<a class="button" style="background-color:{{ formation.categorie.couleur }}; border-color:{{ formation.categorie.couleur }}" href="{{ path('panier', {'id' : formation.id }) }}"  ><span>Je m'inscris !</span></a>#}
 

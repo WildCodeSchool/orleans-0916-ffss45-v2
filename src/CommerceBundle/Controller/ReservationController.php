@@ -52,7 +52,7 @@ class ReservationController extends Controller
 			200,
 			array(
 				'Content-Type'          => 'application/pdf',
-				'Content-Disposition'   => 'attachment; filename="file.pdf"'
+				'Content-Disposition'   => 'attachment; filename="feuille_emargement.pdf"'
 			)
 		);
 	}
@@ -75,7 +75,7 @@ class ReservationController extends Controller
 			200,
 			array(
 				'Content-Type'          => 'application/pdf',
-				'Content-Disposition'   => 'attachment; filename="file.pdf"'
+				'Content-Disposition'   => 'attachment; filename="convocation.pdf"'
 			)
 		);
 	}
@@ -95,7 +95,29 @@ class ReservationController extends Controller
 			200,
 			array(
 				'Content-Type'          => 'application/pdf',
-				'Content-Disposition'   => 'attachment; filename="file.pdf"'
+				'Content-Disposition'   => 'attachment; filename="attestation_presence.pdf"'
+			)
+		);
+	}
+
+	/**
+	 * @Route("/attestation_presence_pdf_all/{id}/pdf", name="attestation_presence_pdf_all")
+	 *
+	 */
+	public function attestationPresencePdfAllAction(Agenda $agenda)
+	{
+	    $html='';
+        foreach ($agenda->getReservations() as $reservation) {
+            $html .= $this->renderView('AdminBundle:Default:attestation_presence_pdf.html.twig', array(
+                'reservation' => $reservation,
+            ));
+        }
+		return new Response(
+			$this->get('knp_snappy.pdf')->getOutputFromHtml($html),
+			200,
+			array(
+				'Content-Type'          => 'application/pdf',
+				'Content-Disposition'   => 'attachment; filename="attestation_presence_all.pdf"'
 			)
 		);
 	}
