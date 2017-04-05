@@ -4,9 +4,13 @@
 {% block body %}
     <h1>Mise à jour demande de Poste de Secours</h1>
     <h2>{{ formulaireSecours.nomManif }} du {{ formulaireSecours.dateDebutManif | date('d m Y') }}
-        par {{ formulaireSecours.user.prenom }} {{ formulaireSecours.user.nom }} <a class="btn btn-info"
-                                                                                    href="{{ path('formulairesecours_show', { 'id': formulaireSecour.id }) }}">Detail
-            de la demande</a>
+        par {{ formulaireSecours.user.prenom }} {{ formulaireSecours.user.nom }}
+        <a class="btn btn-info" href="{{ path('formulairesecours_show', { 'id': formulaireSecour.id }) }}">
+            Detail de la demande
+        </a>
+        <a class="btn btn-info" href="{{ path('ps_edit', { 'id': formulaireSecour.id }) }}">
+            Editer la demande
+        </a>
     </h2>
     <div class="container-fluid">
         {{ form_start(edit_form) }}

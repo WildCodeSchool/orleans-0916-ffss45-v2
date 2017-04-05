@@ -1,0 +1,24 @@
+{% extends 'AdminBundle::adminLayout.html.twig' %}
+{% form_theme edit_form 'bootstrap_3_horizontal_layout.html.twig' %}
+
+{% block body %}
+<div class="container edit-formation">
+    <h1>Mise à jour Poste de secours</h1>
+
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+
+    <div class="row">
+        <div class="col-sm-4 col-sm-offset-4">
+            <input class="btn btn-info  btn-lg btn-block" type="submit" value="Editer" />
+        </div>
+    </div>
+    {{ form_end(edit_form) }}
+
+    <a class="btn btn-primary btn-sm" href="{{ path('formulairesecours_index') }}">Retour à la liste</a>
+
+    {{ form_start(delete_form) }}
+    <input class="btn btn-danger pull-right" type="submit" value="Supprimer">
+    {{ form_end(delete_form) }}
+
+    {% endblock %}

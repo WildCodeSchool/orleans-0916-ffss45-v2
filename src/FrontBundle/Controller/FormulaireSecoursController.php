@@ -27,7 +27,7 @@ class FormulaireSecoursController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $formulaireSecours = $em->getRepository('FrontBundle:FormulaireSecours')->findAll();
+        $formulaireSecours = $em->getRepository('FrontBundle:FormulaireSecours')->findBy([], ['id'=>'DESC']);
 
         return $this->render('formulairesecours/index.html.twig', array(
             'formulaireSecours' => $formulaireSecours,
@@ -90,6 +90,30 @@ class FormulaireSecoursController extends Controller
         ));
     }
 
+    /**
+     * Displays a form to edit an existing posteSecours entity.
+     *
+     * @Route("/{id}/ps-edit-admin", name="ps_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function adminEditAction(Request $request, FormulaireSecours $formulaireSecours)
+    {
+        $deleteForm = $this->createDeleteForm($formulaireSecours);
+        $editForm = $this->createForm('FrontBundle\Form\FormulaireSecoursType', $formulaireSecours);
+        $editForm->handleRequest($request);
+
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('ps_edit', array('id' => $formulaireSecours->getId()));
+        }
+
+        return $this->render('formulairesecours/adminEdit.html.twig', array(
+            'formulaireSecours' => $formulaireSecours,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
     /**
      * Displays a form to edit an existing FormulaireSecours entity.
      *

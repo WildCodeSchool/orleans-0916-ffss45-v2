@@ -32,11 +32,11 @@ class PosteSecoursController extends Controller
         $flow = $this->get('form.flow.createPosteSecours'); // must match the flow's service id
         $flow->bind($formData);
 
-       // form of the current step
+        // form of the current step
         $form = $flow->createForm();
         $form->getData()->setUser($this->get('security.token_storage')->getToken()->getUser());
         $form->getData()->setStatut('1');
-      //  var_dump($form->getData());Die;
+        //  var_dump($form->getData());Die;
         if ($flow->isValid($form)) {
             $flow->saveCurrentStepData($form);
 
@@ -47,17 +47,16 @@ class PosteSecoursController extends Controller
                 // flow finished
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($formData);
-
-
+                $em->flush();
+                $flow->reset(); // remove step data from the session
+                dump($formData->getId());
                 $message = \Swift_Message::newInstance()
                     ->setSubject('Vous avez une nouvelle demande de Poste de Secours')
                     ->setFrom('site@secourisme45.com')
                     ->setTo('site@secourisme45.com')
                     ->setBody(
                         $this->renderView(
-
-                            '@Front/PosteSecours/eMailPosteSecours.html.twig'
-
+                            '@Front/PosteSecours/eMailPosteSecours.html.twig', ['id' => $form->getData()->getId()]
                         ),
                         'text/html'
                     )/*
@@ -72,8 +71,6 @@ class PosteSecoursController extends Controller
                     */
                 ;
                 $this->get('mailer')->send($message);
-                $em->flush();
-                $flow->reset(); // remove step data from the session
 
                 return $this->redirect($this->generateUrl('succes')); // redirect when done
             }
@@ -84,4 +81,6 @@ class PosteSecoursController extends Controller
             'flow' => $flow,
         ));
     }
+
+
 }
