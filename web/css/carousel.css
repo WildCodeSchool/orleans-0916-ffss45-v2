@@ -40,10 +40,13 @@
         margin-top: -15px;
 
     }
-}
-@media screen and (min-width: 768px) {
     .carousel-control .fa-chevron-left {
         margin-left: -15px;
+    }
+    .carousel-caption {
+        right: 20%;
+        left: 20%;
+        bottom: 20%;
     }
 }
 /**
@@ -51,7 +54,7 @@
  */
 .carousel-caption h2 {
     color: #fff;
-
+    font-size:calc(1.5vw + 20px);
     margin-bottom: 20px;
     text-transform: uppercase;
 }
@@ -60,13 +63,7 @@
 
     margin-bottom: 50px;
 }
-@media screen and (min-width: 768px) {
-    .carousel-caption {
-        right: 20%;
-        left: 20%;
-        bottom: 20%;
-    }
-}
+
 
 /**
  * Button

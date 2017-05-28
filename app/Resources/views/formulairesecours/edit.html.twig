@@ -8,7 +8,7 @@
         <a class="btn btn-info" href="{{ path('formulairesecours_show', { 'id': formulaireSecour.id }) }}">
             Detail de la demande
         </a>
-        <a class="btn btn-info" href="{{ path('ps_edit', { 'id': formulaireSecour.id }) }}">
+        <a class="btn btn-info" href="{{ path('formulaire_edit', { 'id': formulaireSecour.id }) }}">
             Editer la demande
         </a>
     </h2>
@@ -28,7 +28,7 @@
         {{ form_end(edit_form) }}
 
         <hr/>
-        <a class="btn btn-lg btn-default" href="{{ path('admin') }}">Retour</a>
+        <a class="btn btn-primary " href="{{ path('formulairesecours_index') }}">Retour à la liste</a>
         <div class="pull-right">
             {{ form_start(delete_form) }}
             <input class="btn btn-danger" type="submit" value="Supprimer">

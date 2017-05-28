@@ -2,30 +2,29 @@
 {% form_theme edit_form 'bootstrap_3_layout.html.twig' %}
 {% block body %}
 
-<div class="container-fluid">
+    <div class="container-fluid">
 
-    <h1>Edition agenda</h1>
-{#
-    {{ include ('AdminBundle:Default:listAgenda.html.twig') }}
-#}
+        <h1>Edition agenda</h1>
 
 
-    {{ form_start(edit_form) }}
-    {{ include('AdminBundle:Default:agendaForm.html.twig', {'form':edit_form}) }}
+        {{ form_start(edit_form) }}
+        {{ include('AdminBundle:Default:agendaForm.html.twig', {'form':edit_form}) }}
 
-    <div class="row">
+        <div class="row">
             <div class="col-sm-4 col-sm-offset-4">
-                <input class="btn btn-info  btn-lg btn-block" type="submit" value="Editer" />
+                <input class="btn btn-info  btn-lg btn-block" type="submit" value="Editer"/>
             </div>
-        </div>    {{ form_end(edit_form) }}
+        </div>
+        {{ form_end(edit_form) }}
 
 
 
         {{ form_start(delete_form) }}
-            <input class="btn btn-danger pull-right" type="submit" value="Supprimer">
+        <input class="btn btn-danger pull-right" type="submit" value="Supprimer">
         {{ form_end(delete_form) }}
 
-        <a class="btn btn-primary" href="{{ path('formation_agendas', {'id':agenda.formation.id}) }}">Retour aux agendas</a>
+        <a class="btn btn-primary" href="{{ path('formation_agendas', {'id':agenda.formation.id}) }}">Retour aux
+            agendas</a>
 
     </div>
 {% endblock %}

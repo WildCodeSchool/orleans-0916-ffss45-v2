@@ -1,14 +1,36 @@
 {% extends 'AdminBundle::adminLayout.html.twig' %}
-
 {% block body %}
 
     <div class="container">
         <h1>Liste des paiements en attente
         </h1>
-        <a class="btn btn-primary btn-lg" href="{{ path('payment_index') }}">Voir tous les paiements</a>
+
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    {{ form_label(form.waitingPayment) }}
+                    {{ form_widget(form.waitingPayment, {'attr': {'class':'form-control'}}) }}
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    {{ form_label(form.input) }}
+                    {{ form_widget(form.input, {'attr': {'class':'form-control'}}) }}
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <input type="submit" value="Filtrer" class="btn btn-primary"/>
+                </div>
+            </div>
+        </div>
+        {{ form_end(form) }}
+
         <table class="table table-hover table-condensed table-striped">
             <thead>
             <tr>
+                <th>Type</th>
                 <th>Numero Commande</th>
                 <th>Statut</th>
                 <th>Type paiement</th>
@@ -20,7 +42,18 @@
             <tbody>
             {% for payment in payments %}
                 <tr>
-                    <td>{{ payment.numeroReservation }}</a></td>
+                    <td>
+                        <span class="label label-default">
+                        {% if payment.posteDeSecours %}
+                            Poste secours
+                        {% else %}
+                            Formation
+                        {% endif %}
+                        </span>
+                    </td>
+                    <td>
+                        {{ payment.numeroReservation }}
+                    </td>
                     <td>
                         {% if payment.paid %}
                             Payé
@@ -35,7 +68,8 @@
                     <td>
                         {% if payment.paid  is null %}
 
-                        <a class="btn btn-success" href="{{ path('payment_validation', { 'id': payment.id }) }}">Valider le paiement</a>
+                            <a class="btn btn-success" href="{{ path('payment_validation', { 'id': payment.id }) }}">Valider
+                                le paiement</a>
                         {% endif %}
                     </td>
                 </tr>

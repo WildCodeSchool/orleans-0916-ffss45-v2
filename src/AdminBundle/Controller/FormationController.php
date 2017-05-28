@@ -45,7 +45,7 @@ class FormationController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         //recupération des agendas en cours pour une formation
-        $agendas = $em->getRepository('AdminBundle:Agenda')->findByFormation($formation);
+        $agendas = $em->getRepository('AdminBundle:Agenda')->findByFormation(['formation'=>$formation->getId()], ['dateDeFin'=>'DESC']);
 
         // form pour ajouter un nouvel agenda à la formation sélectionnée
         $agenda = new Agenda();

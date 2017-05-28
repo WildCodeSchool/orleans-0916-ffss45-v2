@@ -49,39 +49,7 @@
                 </div>
 
             </div>
-                 {#<input id="tab1" type="radio" name="tabs" checked >
-                 <label for="tab1"><i class="fa fa-refresh fa-2x"></i><h3>Actualisation</h3></label>
 
-                 <input id="tab2" type="radio" name="tabs">
-                 <label for="tab2"><i class="fa fa-check fa-2x"></i><h3>Validation de la formation </h3></label>
-
-                 <input id="tab3" type="radio" name="tabs">
-                 <label for="tab3"><i class="fa fa-hourglass-o fa-2x"></i><h3>Durée</h3></label>
-
-                 <input id="tab4" type="radio" name="tabs">
-                 <label for="tab4"><i class="fa fa-list fa-2x"></i><h3>Contenu de la formation</h3></label>
-
-                 <input id="tab5" type="radio" name="tabs">
-                 <label for="tab5"><i class="fa fa-user fa-2x"></i><h3>Méthode pédagogique</h3></label>
-
-                 <section id="content1">
-                     <p>{{ formation.actualisation }}</p>
-                 </section>
-
-                 <section id="content2">
-                     <p>{{ formation.validation }}</p>
-                 </section>
-
-                 <section id="content3">
-                     <p>{{ formation.dureeFormation }}</p>
-                 </section>
-
-                 <section id="content4">
-                     <p>{{ formation.contenuFormation }}</p>
-                 </section>
-                <section id="content5">
-                    <p>{{ formation.methodePedagogique }}</p>
-                </section>#}
             <div class="row box">
                 <div class="col-md-12 centered">
                     <a  class="button" style="background-color:{{ formation.categorie.couleur }}; border-color:{{ formation.categorie.couleur }}" href="{{ path('formation_pdf', {'id':formation.id}) }}">Télécharger le PDF</a>
@@ -103,7 +71,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                    {% for agenda in formation.agendas %}
+                    {% for agenda in formation.agendas if agenda.dateDeFin |date('Ymd') > "now"|date('Ymd') %}
                         <tr>
                             <td>{{ agenda.dateDeDebut|date('d-m-Y') }}</td>
                             <td>{{ agenda.dateDeFin |date('d-m-Y')}}</td>

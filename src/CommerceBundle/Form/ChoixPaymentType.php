@@ -28,7 +28,7 @@ class ChoixPaymentType extends AbstractType
         ])
             ->add('organism_info', TextareaType::class, [
                 'required' => false,
-                'label'=>'Inforrmations organisme'
+                'label'=>'Informations organisme'
             ])
         ;
     }

@@ -21,6 +21,7 @@ class PrixType extends AbstractType
             ->add('devis', MoneyType :: class)
             ->add('statut', ChoiceType:: class, [
                 'choices' => [
+                    0 => 'Devis à préparer',
                     1 => 'Devis envoyé',
                     2 => 'Paiement effectué, attente validation',
                     3 => 'Paiement validé',

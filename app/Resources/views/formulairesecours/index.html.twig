@@ -1,14 +1,26 @@
 {% extends 'AdminBundle::adminLayout.html.twig' %}
-
+{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
 {% block body %}
     <div class="container">
         <h1>Liste des demandes de Poste de Secours</h1>
+
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                    {{ form_widget(form) }}
+            </div>
+            <div class="col-sm-3">
+                    <input type="submit" value="Filtrer" class="btn btn-primary"/>
+            </div>
+        </div>
+        {{ form_end(form) }}
 
         <table class="table table-hover table-condensed table-striped">
             <thead>
             <tr>
                 <th>Id</th>
                 <th>Nom de la manifestation</th>
+                <th>Raison sociale</th>
                 <th>Client</th>
                 <th>Status</th>
                 <th>Actions</th>
@@ -21,6 +33,7 @@
                         <a href="{{ path('formulairesecours_show', { 'id': formulaireSecour.id }) }}">{{ formulaireSecour.id }}</a>
                     </td>
                     <td>{{ formulaireSecour.nomManif }}</td>
+                    <td>{{ formulaireSecour.raisonSociale }}</td>
                     <td>{{ formulaireSecour.user.prenom }} {{ formulaireSecour.user.nom }}</td>
                     <td>
                         {% if formulaireSecour.statut %}
@@ -40,14 +53,7 @@
                         <span class="label  label-{{ class }}">{{ label }}</span>
                     </td>
                     <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('formulairesecours_show', { 'id': formulaireSecour.id }) }}">voir</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('formulairesecours_edit', { 'id': formulaireSecour.id }) }}">éditer</a>
-                            </li>
-                        </ul>
+                        <a class="btn btn-primary" href="{{ path('formulairesecours_edit', { 'id': formulaireSecour.id }) }}">Traiter</a>
                     </td>
                 </tr>
             {% endfor %}

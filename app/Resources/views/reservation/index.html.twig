@@ -43,9 +43,19 @@
                                 <td> {{ reservation.user.ville }}</td>
                                 <td> {{ reservation.user.tel }}</td>
                                 <td>{{ reservation.statusLabel }}</td>
-                                <td>{% if reservation.user.imageName %}<img style="width: 75px;" class="smallPic" src="{{ asset('upload/identite/'~reservation.user.imageName) }}" alt="{{ user.titre }}"/>{% endif %}</td>
+                                <td>{% if reservation.user.imageName %}
+                                        <a href="{{ asset('upload/identite/'~reservation.user.imageName) }} ">
+                                            <img class="smallPic"
+                                                 src="{{ asset('upload/identite/'~reservation.user.imageName) }}"
+                                                 alt="{{ user.titre }}"
+                                            />
+                                        </a>
+                                    {% endif %}
+                                </td>
                                 <td>{% if reservation.delaiExpiration %}{{ reservation.delaiExpiration|date('Y-m-d H:i:s') }}{% endif %}</td>
-                                <td>{% if reservation.imageName %}<img style="width: 75px;" class="smallPic" src="{{ asset('upload/diplome/'~reservation.imageName) }}" alt="{{ img.titre }}"/>{% endif %}</td>
+                                <td>{% if reservation.imageName %}<img style="width: 75px;" class="smallPic"
+                                                                       src="{{ asset('upload/diplome/'~reservation.imageName) }}"
+                                                                       alt="{{ img.titre }}"/>{% endif %}</td>
                                 <td>
                                     <ul>
                                         <li>
@@ -91,7 +101,8 @@
                     </div>
                     <div class="col-xs-4">
 
-                        <a class="btn btn-primary" href="{{ path('attestation_presence_pdf_all', {'id':agenda.id}) }}">Toutes les attestations
+                        <a class="btn btn-primary" href="{{ path('attestation_presence_pdf_all', {'id':agenda.id}) }}">Toutes
+                            les attestations
                         </a>
 
                     </div>

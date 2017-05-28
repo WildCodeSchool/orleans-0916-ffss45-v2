@@ -12,4 +12,21 @@ use Doctrine\ORM\EntityRepository;
  */
 class FormulaireSecoursRepository extends EntityRepository
 {
+    public function filterPS($input)
+    {
+        $qb = $this->createQueryBuilder('p');
+        if ($input) {
+            $qb->join('p.user', 'u')
+                ->where('p.nomManif LIKE :input')
+                ->orWhere('u.nom LIKE :input')
+                ->orWhere('u.prenom LIKE :input')
+                ->orWhere('p.raisonSociale LIKE :input')
+                ->setParameter('input', '%' . $input . '%');
+
+        }
+        $qb->orderBy('p.id', 'DESC');
+
+        return $qb->getQuery()->getResult();
+    }
+
 }

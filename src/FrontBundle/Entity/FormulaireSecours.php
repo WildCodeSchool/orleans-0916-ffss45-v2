@@ -2630,6 +2630,7 @@ class FormulaireSecours
     public function getStatutLabel()
     {
         $statuses = [
+            0 => 'Devis en préparation',
             1 => 'En attente de paiement',
             2 => 'Paiement en cours de validation',
             3 => 'Paiement validé',

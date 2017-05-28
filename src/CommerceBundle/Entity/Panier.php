@@ -40,21 +40,6 @@ class Panier
      */
     private $price;
 
-    /**
-     * @return string
-     */
-    public function getPosteDeSecours()
-    {
-        return $this->posteDeSecours;
-    }
-
-    /**
-     * @param string $posteDeSecours
-     */
-    public function setPosteDeSecours($posteDeSecours)
-    {
-        $this->posteDeSecours = $posteDeSecours;
-    }
 
     /**
      * @var string
@@ -90,6 +75,21 @@ class Panier
      */
     private $user;
 
+    /**
+     * @return string
+     */
+    public function getPosteDeSecours()
+    {
+        return $this->posteDeSecours;
+    }
+
+    /**
+     * @param string $posteDeSecours
+     */
+    public function setPosteDeSecours($posteDeSecours)
+    {
+        $this->posteDeSecours = $posteDeSecours;
+    }
 
 
     /**

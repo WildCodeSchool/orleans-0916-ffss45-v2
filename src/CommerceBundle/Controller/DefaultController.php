@@ -76,16 +76,6 @@ class DefaultController extends Controller
         $user = $this->getUser();
         $formulaireSecours = $em->getRepository('FrontBundle:FormulaireSecours')->findByUser($user);
         $reservations =  $em->getRepository('CommerceBundle:Reservation')->findByUser($user);
-        dump($reservations);
-//        $agendas = $em->getRepository('AdminBundle:Agenda')->findAll();
-//        foreach ($agendas as $agenda) {
-//            foreach ($agenda->getReservations() as $item) {
-//                if ($item->getUser()->getId() == $userId) {
-//                    $formations[] = $agenda;
-//                }
-//            }
-//        }
-//        var_dump($formations[0]->getDateDeDebut());
         return $this->render('CommerceBundle:Default:user.html.twig', array(
             'formulaireSecours' => $formulaireSecours,
             'reservations' => $reservations,

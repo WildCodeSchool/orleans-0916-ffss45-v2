@@ -10,4 +10,23 @@ namespace CommerceBundle\Repository;
  */
 class PanierRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAllPaymentSorted($waiting, $input)
+    {
+        $qb = $this->createQueryBuilder('p');
+        if ($waiting=='wait') {
+            $qb->where('p.paid IS NULL');
+        }
+        if ($input) {
+
+            $qb->join('p.user', 'u')
+                ->andWhere('p.numeroReservation LIKE :input')
+                ->orWhere('u.nom LIKE :input')
+                ->orWhere('u.prenom LIKE :input')
+                ->setParameter('input', '%' . $input . '%');
+
+        }
+        $qb->orderBy('p.id', 'DESC');
+
+        return $qb->getQuery()->getResult();
+    }
 }

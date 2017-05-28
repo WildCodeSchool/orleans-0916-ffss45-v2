@@ -2,6 +2,7 @@
 
 namespace FrontBundle\Controller;
 
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -14,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * FormulaireSecours controller.
  *
- * @Route("/formulairesecours")
+ * @Route("admin/formulairesecours")
  */
 class FormulaireSecoursController extends Controller
 {
@@ -24,13 +25,34 @@ class FormulaireSecoursController extends Controller
      * @Route("/", name="formulairesecours_index")
      * @Method("GET")
      */
-    public function indexAction()
+    public function indexAction(Request $request)
     {
+        $form = $this->createFormBuilder()
+            ->setMethod('GET')
+            ->add('input', TextType::class, [
+                    'required' => false,
+                    'label'    => 'Filtrer',
+                    'attr'     => [
+                        'placeholder' => 'par nom manifestation, raison sociale, prénom, nom',
+                    ],
+                ]
+            )
+            ->getForm();
+
+        $form->handleRequest($request);
+        $input = null;
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $input = $data['input'];
+        }
+
+
         $em = $this->getDoctrine()->getManager();
-        $formulaireSecours = $em->getRepository('FrontBundle:FormulaireSecours')->findBy([], ['id'=>'DESC']);
+        $formulaireSecours = $em->getRepository('FrontBundle:FormulaireSecours')->filterPS($input);
 
         return $this->render('formulairesecours/index.html.twig', array(
             'formulaireSecours' => $formulaireSecours,
+            'form' => $form->createView(),
         ));
     }
 

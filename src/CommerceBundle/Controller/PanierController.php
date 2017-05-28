@@ -466,6 +466,15 @@ class PanierController extends Controller
                 $formulaireSecours->setNumeroReservation($numCheque);
 
                 $em->persist($formulaireSecours);
+                $panier = new Panier();
+                $panier->setNumeroReservation($numCheque);
+                $panier->setJson($formulaireSecours->getId());
+                $panier->setPosteDeSecours(1);
+                $panier->setInformation($formulaireSecours->getNomManif());
+                $panier->setPrice($formulaireSecours->getDevis());
+
+                $em->persist($panier);
+
                 $em->flush();
                 $this->addFlash(
                     'success',

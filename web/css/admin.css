@@ -78,3 +78,7 @@ body{
 .imgInscription{
     max-width: 30px;
 }
+
+.smallPic {
+    width:75px;
+}
