@@ -12,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 /**
  * Reservation controller.
@@ -158,6 +159,7 @@ class ReservationController extends Controller
 	 *
 	 * @Route("/agenda/{id}", name="reservation_agenda_index")
 	 * @Method("GET")
+     * @security("has_role('ROLE_ADMIN')")
 	 */
 	public function resaAgendaAction(Agenda $agenda)
 	{
@@ -173,6 +175,7 @@ class ReservationController extends Controller
      *
      * @Route("/new/{id}", name="reservation_new")
      * @Method({"GET", "POST"})
+     * @security("has_role('ROLE_ADMIN')")
      */
     public function newAction(Agenda $agenda, Request $request)
     {
@@ -201,6 +204,7 @@ class ReservationController extends Controller
      *
      * @Route("/{id}", name="reservation_show")
      * @Method("GET")
+     * @security("has_role('ROLE_ADMIN')")
      */
     public function showAction(Reservation $reservation)
     {
@@ -209,8 +213,6 @@ class ReservationController extends Controller
 //        $alt = $reservation->getAlt();
         return $this->render('reservation/show.html.twig', array(
             'reservation' => $reservation,
-//            'webPath' => $webPath,
-//            'alt' => $alt,
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -219,6 +221,7 @@ class ReservationController extends Controller
      * Displays a form to edit an existing reservation entity.
      *
      * @Route("/{id}/edit", name="reservation_edit")
+     * @security("has_role('ROLE_ADMIN')")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Reservation $reservation)
@@ -226,12 +229,6 @@ class ReservationController extends Controller
         $deleteForm = $this->createDeleteForm($reservation);
         $editForm = $this->createForm('CommerceBundle\Form\ReservationType', $reservation);
         $editForm->handleRequest($request);
-//        $webPath = $reservation->getWebPath();
-//        $alt = $reservation->getAlt();
-//        var_dump($editForm->getData());
-//        if($editForm->getData()->getAlt()){
-//
-//        }
 
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $this->getDoctrine()->getManager()->flush();
@@ -253,6 +250,7 @@ class ReservationController extends Controller
      *
      * @Route("/{id}", name="reservation_delete")
      * @Method("DELETE")
+     * @security("has_role('ROLE_ADMIN')")
      */
     public function deleteAction(Request $request, Reservation $reservation)
     {
