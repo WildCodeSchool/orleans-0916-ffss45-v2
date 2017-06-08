@@ -54,19 +54,19 @@ class FormationController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $file = $formation->getPhoto();
-            // Generate a unique name for the file before saving it
-            if ($file)
-            {
-				$fileName = md5(uniqid()).'.'.$file->guessExtension();
-				// Move the file to the directory where brochures are stored
-				$file->move(
-					$this->getParameter('upload_directory'),
-					$fileName
-				);
-
-				$formation->setPhoto($fileName);
-			}
+//            $file = $formation->getPhoto();
+//            // Generate a unique name for the file before saving it
+//            if ($file)
+//            {
+//				$fileName = md5(uniqid()).'.'.$file->guessExtension();
+//				// Move the file to the directory where brochures are stored
+//				$file->move(
+//					$this->getParameter('upload_directory'),
+//					$fileName
+//				);
+//
+//				$formation->setPhoto($fileName);
+//			}
             $agenda->setFormation($formation);
             $em->persist($agenda);
             $em->flush();
@@ -203,6 +203,7 @@ class FormationController extends Controller
      */
     private function createDeleteForm(Formation $formation)
     {
+
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('formation_delete', array('id' => $formation->getId())))
             ->setMethod('DELETE')

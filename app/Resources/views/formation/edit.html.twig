@@ -20,7 +20,12 @@
 
 
             {{ form_start(delete_form) }}
-        <input class="btn btn-danger pull-right" type="submit" value="Supprimer">
+
+        <input class="btn btn-danger pull-right" type="submit" value="Supprimer"
+                {% if formation.agendas|length %}
+                    disabled="disabled"
+                {% endif %}
+        >
             {{ form_end(delete_form) }}
         <a class="btn btn-primary btn-sm" href="{{ path('formation_index') }}">Retour aux formations</a>
 

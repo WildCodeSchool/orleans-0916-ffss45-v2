@@ -35,7 +35,6 @@ class AgendaController extends Controller
     }
 
 
-
     /**
      * Creates a new Agenda entity.
      *
@@ -49,7 +48,7 @@ class AgendaController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-$form->
+
             $em = $this->getDoctrine()->getManager();
             $em->persist($agenda);
             $em->flush();
@@ -59,7 +58,7 @@ $form->
 
         return $this->render('agenda/new.html.twig', array(
             'agenda' => $agenda,
-            'form' => $form->createView(),
+            'form'   => $form->createView(),
         ));
     }
 
@@ -74,9 +73,25 @@ $form->
         $deleteForm = $this->createDeleteForm($agenda);
 
         return $this->render('agenda/show.html.twig', array(
-            'agenda' => $agenda,
+            'agenda'      => $agenda,
             'delete_form' => $deleteForm->createView(),
         ));
+    }
+
+    /**
+     * Creates a form to delete a Agenda entity.
+     *
+     * @param Agenda $agenda The Agenda entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createDeleteForm(Agenda $agenda)
+    {
+
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('agenda_delete', array('id' => $agenda->getId())))
+            ->setMethod('DELETE')
+            ->getForm();
     }
 
     /**
@@ -105,9 +120,9 @@ $form->
         }
 
         return $this->render('agenda/edit.html.twig', array(
-            'agenda' => $agenda,
-            'agendas' => $agendas,
-            'edit_form' => $editForm->createView(),
+            'agenda'      => $agenda,
+            'agendas'     => $agendas,
+            'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -129,46 +144,32 @@ $form->
             $em->flush();
         }
 
-        return $this->redirectToRoute('formation_agendas', array('formation', $formation->getId()));
+        return $this->redirectToRoute('formation_agendas', [
+                'id', $formation->getId(),
+            ]
+        );
     }
 
     /**
-     * Creates a form to delete a Agenda entity.
+     * Displays a form to edit an existing Agenda entity.
      *
-     * @param Agenda $agenda The Agenda entity
-     *
-     * @return \Symfony\Component\Form\Form The form
+     * @Route("/{id}/inscription", name="agenda_inscription")
+     * @Method({"GET", "POST"})
      */
-    private function createDeleteForm(Agenda $agenda)
+    public function inscriptionAction(Agenda $agenda)
     {
+        $em = $this->getDoctrine()->getManager();
 
-        return $this->createFormBuilder()
-            ->setAction($this->generateUrl('agenda_delete', array('id' => $agenda->getId())))
-            ->setMethod('DELETE')
-            ->getForm();
+        //recupération des agendas en cours pour une formation
+
+        $reservations = $em->getRepository('CommerceBundle:Reservation')->findByAgenda($agenda);
+
+
+        return $this->render('agenda/inscription.html.twig', array(
+            'reservations' => $reservations,
+
+        ));
     }
-
-	/**
-	 * Displays a form to edit an existing Agenda entity.
-	 *
-	 * @Route("/{id}/inscription", name="agenda_inscription")
-	 * @Method({"GET", "POST"})
-	 */
-	public function inscriptionAction(Agenda $agenda)
-	{
-		$em = $this->getDoctrine()->getManager();
-
-		//recupération des agendas en cours pour une formation
-
-		$reservations = $em->getRepository('CommerceBundle:Reservation')->findByAgenda($agenda);
-
-
-
-		return $this->render('agenda/inscription.html.twig', array(
-			'reservations' => $reservations,
-
-		));
-	}
 
 
 }
