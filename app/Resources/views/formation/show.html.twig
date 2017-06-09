@@ -1,7 +1,7 @@
 {% extends 'AdminBundle::adminLayout.html.twig' %}
-{% form_theme form 'bootstrap_3_horizontal_layout.html.twig' %}
 
 {% block body %}
+    <div class="container-fluid">
     <h1>Formation</h1>
 
     <table>
@@ -28,18 +28,15 @@
             </tr>
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('formation_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('formation_edit', { 'id': formation.id }) }}">Edit</a>
-        </li>
-        <li>
+        <div class="pull-right">
             {{ form_start(delete_form) }}
-                <input type="submit" value="Supprimer">
+            <input class="btn btn-danger" type="submit" value="Supprimer">
             {{ form_end(delete_form) }}
-        </li>
-    </ul>
+
+        </div>
+
+            <a class="btn btn-info" href="{{ path('formation_edit', { 'id': formation.id }) }}">Edit</a>
+    <hr/>
+    <a class="btn btn-primary" href="{{ path('formation_index') }}">Back to the list</a>
+    </div>
 {% endblock %}

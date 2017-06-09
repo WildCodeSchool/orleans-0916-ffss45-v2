@@ -142,12 +142,12 @@ class Formation
      */
     private $prix;
 
-    /**
-     * @var text
-     *
-     * @ORM\Column(name="user", type="text")
-     */
-    private $user;
+//    /**
+//     * @var text
+//     *
+//     * @ORM\Column(name="user", type="text")
+//     */
+//    private $user;
 
 
 
