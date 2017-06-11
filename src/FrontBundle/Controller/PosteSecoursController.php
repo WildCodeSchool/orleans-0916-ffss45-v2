@@ -49,6 +49,7 @@ class PosteSecoursController extends Controller
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($formData);
                 $em->flush();
+                
                 $flow->reset(); // remove step data from the session
                 $message = \Swift_Message::newInstance()
                     ->setSubject('Vous avez une nouvelle demande de Poste de Secours')
@@ -56,7 +57,7 @@ class PosteSecoursController extends Controller
                     ->setTo('site@secourisme45.com')
                     ->setBody(
                         $this->renderView(
-                            '@Front/PosteSecours/eMailPosteSecours.html.twig', ['id' => $form->getData()->getId()]
+                            '@Front/PosteSecours/eMailPosteSecours.html.twig', ['id' => $formData->getId()]
                         ),
                         'text/html'
                     )/*
