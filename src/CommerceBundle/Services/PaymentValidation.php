@@ -12,14 +12,16 @@ use CommerceBundle\Entity\Reservation;
 class PaymentValidation
 {
 
-    public function __construct($doctrine, $templating, $mailer, $fos, $email)
+    public function __construct($doctrine, $templating, $mailer, $fos, $email, $emailContact)
     {
         $this->em = $doctrine;
         $this->templating = $templating;
         $this->mailer = $mailer;
         $this->fos = $fos;
         $this->mailFrom = $email;
+        $this->mailContact = $emailContact;
     }
+
     // enregistrement de la reservation, des users inscrit et envoie du mail de confirmation
     public function saveReservation($panier, $orderId) {
         $em = $this->em;
@@ -51,14 +53,14 @@ class PaymentValidation
                     $reservation->setnumeroReservation($orderId);
 
                     $em->persist($reservation);
-
                     $message = \Swift_Message::newInstance()
                         ->setSubject('FFSS45 : Finaliser votre inscription')
                         ->setFrom($this->mailFrom)
                         ->setTo($email)
+                        ->addBcc($this->mailContact)
                         ->setBody(
                             $this->templating->render('emailMember.html.twig', array('nom'    => $nom,
-                                                                             'prenom' => $prenom,
+                                                                             'prenom' => $prenom, 'formation'=>$formation,
                             ),
                                 'text/html'
                             ));
@@ -100,15 +102,17 @@ class PaymentValidation
                         ->setSubject('FFSS45 : Finaliser votre inscription')
                         ->setFrom($this->mailFrom)
                         ->setTo($email)
+                        ->addBcc($this->mailContact)
                         ->setBody(
-                            $this->templating->render('emailSubscription.html.twig', array('nom'    => $nom,
-                                                                                   'prenom' => $prenom, 'password' => $password,
+                            $this->templating->render('emailSubscription.html.twig', array('nom'    => $nom, 'formation'=>$formation,
+                                                                                   'username'=> $username, 'prenom' => $prenom, 'password' => $password,
 
                             ),
                                 'text/html'
                             ));
                     $this->mailer->send($message);
                 }
+
             }
 
         }

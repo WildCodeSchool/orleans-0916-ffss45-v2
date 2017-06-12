@@ -522,6 +522,9 @@ class PanierController extends Controller
 
         $panier1 = new Panier();
         $panier1->setNumeroReservation($orderId);
+        $panier1->setInformation('');
+        $panier1->setPrice($totalfinal);
+        $panier1->setUser($this->getUser());
 
         $panier1->setJson(json_encode($panier));
 

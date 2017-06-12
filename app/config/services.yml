@@ -29,7 +29,7 @@ services:
 
       commerce.payment.validation:
           class: CommerceBundle\Services\PaymentValidation
-          arguments: [ @doctrine.orm.entity_manager, @templating, @mailer, @fos_user.user_manager, %mail_from% ]
+          arguments: [ @doctrine.orm.entity_manager, @templating, @mailer, @fos_user.user_manager, %mail_from%, %mail_contact% ]
 
 
         #      app.doctrine_image_uploader:

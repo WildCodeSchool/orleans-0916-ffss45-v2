@@ -21,13 +21,13 @@
             </div>
         </div>
         <h1>Attestation de présence</h1>
-        <P>Je soussigné Jocelyne PHILIPPEAU, Président de l'association FFSS : </P>
+        <P>Je soussigné Joël JACQUARD, Président de l'association FFSS : </P>
         <p class="adresse">Secouristes du Loiret<br/>
         15 Quai du Roi<br/>
         45000 ORLEANS</P>
         <p>atteste que :</p>
         <p class="eleve">{{ reservation.user.prenom }} {{ reservation.user.nom }}</p>
-        <p>a suivi l'ansemble de la Formation continue {{ reservation.agenda.formation.nomCourt }}<br/>
+        <p>a suivi l'ensemble de la Formation continue {{ reservation.agenda.formation.nomCourt }}<br/>
         qui s'est déroulée à {{ reservation.agenda.adresse }} du {{ reservation.agenda.dateDeDebut | date('d/m/Y') }} au {{ reservation.agenda.dateDeFin | date('d/m/Y') }}.</p>
         <p>Fait le {{ 'now' | date ('d/m/Y') }}</p>
     </div>

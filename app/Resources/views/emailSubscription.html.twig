@@ -1,15 +1,12 @@
-
-
 Bonjour {{ prenom }} {{ nom }},
 
-Vous venez d'être inscrit à une formation organisée par la FÉDÉRATION FRANÇAISE
+Vous venez d'être inscrit à la formation  {{ formation.nomLong }} organisée par la FÉDÉRATION FRANÇAISE
 DE SAUVETAGE ET DE SECOURISME du Loiret.
 
-Votre mot de passe provisoire est {{ password }}.
+Votre identifiant est {{ username }} et votre mot de passe provisoire est {{ password }}.
 
-Pour finaliser votre inscription, merci de compléter votre compte personnelle en suivant ce lien :
+Pour finaliser votre inscription, merci de compléter votre compte personnel en suivant ce lien :
 
-
-<a href="">Finaliser mon inscription</a>
+<a href="{{ absolute_url(path('fos_user_profile_edit')) }}">Finaliser mon inscription</a>
 
 
