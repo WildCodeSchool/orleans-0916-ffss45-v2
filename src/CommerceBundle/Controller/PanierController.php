@@ -386,6 +386,10 @@ class PanierController extends Controller
 
                 }
 
+
+
+
+
                 if ($data['payment']=='cb') {
                     return $this->redirectToRoute('pay_online');
                 }
@@ -403,6 +407,7 @@ class PanierController extends Controller
                     foreach ($panier as $id => $article) {
 
                         $agenda = $em->getRepository('AdminBundle:Agenda')->find($id);
+
                         $panier[$agenda->getId()]['totalitem'] = $agenda->getFormation()->getPrix() * $article['quantity'];
                         $totalLivraison=0;
                         if ($session->get('totalLivraison')) {
@@ -410,6 +415,20 @@ class PanierController extends Controller
                         }
                         $totalfinal += $panier[$agenda->getId()]['totalitem'] + $totalLivraison;
                         $infos[]=$agenda->getFormation()->getNomCourt();
+
+                        // envoi d'un mail à l'admin
+                        $message = \Swift_Message::newInstance()
+                            ->setSubject('FFSS45 Admin : Nouvelle demande de paiement à traiter')
+                            ->setFrom($this->getParameter('mailer_user'))
+                            ->setTo($this->getParameter('mailer_user'))
+                            ->setBody('Nouvelle demande de paiement ('.$numCheque.') par : '.
+                                $this->getUser()->getNom() .' '.
+                                $this->getUser()->getPrenom().
+                                ' pour la formation : '. $agenda->getFormation()->getNomCourt() .
+                                'pour un montant de : '. $totalfinal .'€'
+                            );
+                        $this->get('mailer')->send($message);
+
                     }
                     $payment->setPrice($totalfinal);
                     if ($data['organism_info']) {

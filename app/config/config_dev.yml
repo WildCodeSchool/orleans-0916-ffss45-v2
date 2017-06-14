@@ -13,9 +13,8 @@ web_profiler:
 
 swiftmailer:
     delivery_addresses: ['sylvain@wildcodeschool.fr']
-#    spool:
-#        type: file
-#        path: %kernel.root_dir%/app/spool
+
+
 monolog:
     handlers:
         main:

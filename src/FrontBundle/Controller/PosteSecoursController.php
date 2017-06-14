@@ -128,16 +128,7 @@ class PosteSecoursController extends Controller
                             '@Front/PosteSecours/eMailPosteSecours.html.twig', ['id' => $form->getData()->getId()]
                         ),
                         'text/html'
-                    )/*
-                     * If you also want to include a plaintext version of the message
-                    ->addPart(
-                        $this->renderView(
-                            'Emails/registration.txt.twig',
-                            array('name' => $name)
-                        ),
-                        'text/plain'
                     )
-                    */
                 ;
                 $this->get('mailer')->send($message);
 
