@@ -76,7 +76,7 @@ class DefaultController extends Controller
     {
         $actualites = $this->getDoctrine()
             ->getRepository('ActualiteBundle:Actualite')
-            ->findAll();
+            ->findBy([], ['date'=>'DESC']);
 
         return $this->render('@Front/Default/pageActus.html.twig', array('actualites' => $actualites));
     }
