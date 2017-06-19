@@ -203,15 +203,24 @@ class PanierController extends Controller
             $panier = json_decode($res->getJson(), true);
             $orderId = $res->getNumeroReservation();
 
-            if ($panier && $paid) {
+            if ($res && $panier && $paid) {
+            // on passe le statut du panier à payé car CB (pas besoin de validation)
+                $res->setType('cb');
+                $res->setPaid(1);
+                $em->persist($res);
+                dump($res);die('stop');
+                $em->flush();
+            // service permettant de créer les différents users liés à la réservation et de leur envoyer
+            // un mail avec leur identifiants
                 $validRes = $this->get('commerce.payment.validation');
                 $validRes->saveReservation($panier, $orderId);
+                $session->getFlashBag()->add('success', "Le paiement a été validé");
 
             } else {
                 $session->getFlashBag()->add('danger', "Problème dans le traitement du panier");
             }
         }
-        return $this->redirect($this->generateUrl('page_accueil_principale'));
+        return $this->redirect($this->generateUrl('paiement_retour'));
     }
 
 
@@ -235,7 +244,11 @@ class PanierController extends Controller
             $id_ps = json_decode($res->getJson(), true);
             $orderId = $res->getNumeroReservation();
 
-            if ($id_ps && $paid) {
+            if ($res && $id_ps && $paid) {
+                $res->setType('cb');
+                $res->setPaid(1);
+                $em->persist($res);
+
                 $formSecours = $em->getRepository('FrontBundle:FormulaireSecours')>find($id_ps);
                 $formSecours->setTypePayment('cb');
                 $formSecours->setNumReservation($orderId);
@@ -246,7 +259,7 @@ class PanierController extends Controller
                 $session->getFlashBag()->add('danger', "Problème dans le traitement du panier");
             }
         }
-        return $this->redirect($this->generateUrl('page_accueil_principale'));
+        return $this->redirect($this->generateUrl('paiement_retour'));
     }
 
     /**
@@ -610,17 +623,25 @@ class PanierController extends Controller
 
         $em = $this->getDoctrine()->getManager();
         $commandePS = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($id_systempay);
+        if ($commandePS) {
+            if ($commandePS->getPosteDeSecours() == 1) {
 
-        if ($commandePS->getPosteDeSecours() == 1) {
+                return $this->redirectToRoute('final_subscriptionPS', [
+                    'id_systempay' => $id_systempay,
+                ]);
+            } else {
 
-            return $this->redirectToRoute('final_subscriptionPS', [
-                'id_systempay' => $id_systempay,
-            ]);
+                return $this->redirectToRoute('final_subscription', [
+                    'id_systempay' => $id_systempay,
+                ]);
+            }
         } else {
+            $this->addFlash(
+                'danger',
+                'Problème lors de la validation du panier, veuillez recommencer'
+            );
+            return $this->redirectToRoute('page_accueil_principale');
 
-            return $this->redirectToRoute('final_subscription', [
-                'id_systempay' => $id_systempay,
-            ]);
         }
     }
 

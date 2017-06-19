@@ -24,8 +24,8 @@ parameters:
     # Systempay
     site_id: 123456
     key_dev: 123456789
-    key_prod: 987654321
-    url_return: http://193.70.38.206/ffss45/commerce/paiementRetour
+    key_prod: ~
+    url_return: <addresse>/commerce/paiementRetour
     ctx_mode: TEST
 
 
