@@ -615,16 +615,17 @@ class PanierController extends Controller
      */
     public function paymentVerificationAction(Request $request)
     {
-
+        $logger = $this->get('logger');
         $this->get('tlconseil.systempay')
             ->responseHandler($request);
         $query = $request->request->all();
+        $logger->info(var_dump($query));
         $id_systempay = (int)$query['vads_trans_id'];
 
         $em = $this->getDoctrine()->getManager();
-        $commandePS = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($id_systempay);
-        if ($commandePS) {
-            if ($commandePS->getPosteDeSecours() == 1) {
+        $commande = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($id_systempay);
+        if ($commande) {
+            if ($commande->getPosteDeSecours() == 1) {
 
                 return $this->redirectToRoute('final_subscriptionPS', [
                     'id_systempay' => $id_systempay,
@@ -640,7 +641,7 @@ class PanierController extends Controller
                 'danger',
                 'Problème lors de la validation du panier, veuillez recommencer'
             );
-            return $this->redirectToRoute('page_accueil_principale');
+            return $this->redirectToRoute('panier');
 
         }
     }
