@@ -208,7 +208,7 @@ class PanierController extends Controller
                 $res->setType('cb');
                 $res->setPaid(1);
                 $em->persist($res);
-                dump($res);die('stop');
+//                dump($res);die('stop');
                 $em->flush();
             // service permettant de créer les différents users liés à la réservation et de leur envoyer
             // un mail avec leur identifiants
@@ -615,11 +615,9 @@ class PanierController extends Controller
      */
     public function paymentVerificationAction(Request $request)
     {
-        $logger = $this->get('logger');
         $this->get('tlconseil.systempay')
             ->responseHandler($request);
         $query = $request->request->all();
-        $logger->info('test');
 
         $id_systempay = (int)$query['vads_trans_id'];
 
