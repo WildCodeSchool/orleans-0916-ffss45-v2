@@ -619,7 +619,8 @@ class PanierController extends Controller
         $this->get('tlconseil.systempay')
             ->responseHandler($request);
         $query = $request->request->all();
-        $logger->info(var_dump($query));
+        $logger->info('test');
+
         $id_systempay = (int)$query['vads_trans_id'];
 
         $em = $this->getDoctrine()->getManager();
