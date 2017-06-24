@@ -27,6 +27,7 @@ use AdminBundle\Form\AgendaType;
 use Symfony\Component\HttpFoundation\File\File;
 use AdminBundle\Entity\User;
 use CommerceBundle\Entity\Reservation;
+use Symfony\Component\Security\Acl\Exception\Exception;
 use Tlconseil\SystempayBundle\Service\SystemPay;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Session\SessionBagInterface;
@@ -620,9 +621,14 @@ class PanierController extends Controller
             ->responseHandler($request);
         $query = $request->request->all();
 
-//        $id_systempay = '1594d2c9d22635';
-        $id_systempay = (int)$query['vads_trans_id'];
 
+        $logger = $this->get('logger');
+        foreach($query as $key=>$value) {
+            $logger->info($key.' '.$value);
+        }
+        die();
+        $id_systempay = (int)$query['vads_trans_id'];
+//$id_systempay=1;
         $em = $this->getDoctrine()->getManager();
         $commande = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($id_systempay);
         if ($commande) {
