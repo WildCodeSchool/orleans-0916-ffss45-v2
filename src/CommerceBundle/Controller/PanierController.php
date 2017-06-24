@@ -31,6 +31,7 @@ use Tlconseil\SystempayBundle\Service\SystemPay;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Session\SessionBagInterface;
 use CommerceBundle\Entity\Panier;
+use Tlconseil\SystempayBundle\TlconseilSystempayBundle;
 
 class PanierController extends Controller
 {
@@ -191,19 +192,19 @@ class PanierController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $session = $request->getSession();
-
         // connexion à la table systempay, avec parameter=identifiant de la transaction
-        $transaction = $em->getRepository('TlconseilSystempayBundle:Transaction')->find($id_systempay);
-        if ($transaction) {
-            $log = json_decode($transaction->getLogResponse());
-            $paid = $transaction->isPaid();
-            $systempayOrderId = $log->vads_order_id;
+//        $transaction = $em->getRepository('TlconseilSystempayBundle:Transaction')->find($id_systempay);
+        $res = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($id_systempay);
+        if ($res) {
+//            $log = json_decode($transaction->getLogResponse());
+//            $paid = $transaction->isPaid();
 
-            $res = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($systempayOrderId);
+//            $systempayOrderId = $log->vads_order_id;
+
             $panier = json_decode($res->getJson(), true);
             $orderId = $res->getNumeroReservation();
 
-            if ($res && $panier && $paid) {
+            if ($res && $panier) {
             // on passe le statut du panier à payé car CB (pas besoin de validation)
                 $res->setType('cb');
                 $res->setPaid(1);
@@ -619,7 +620,8 @@ class PanierController extends Controller
             ->responseHandler($request);
         $query = $request->request->all();
 
-        $id_systempay = (int)$query['vads_trans_id'];
+        $id_systempay = '1594d2c9d22635';
+//        $id_systempay = (int)$query['vads_trans_id'];
 
         $em = $this->getDoctrine()->getManager();
         $commande = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($id_systempay);
