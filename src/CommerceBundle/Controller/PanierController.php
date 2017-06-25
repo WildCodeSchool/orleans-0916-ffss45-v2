@@ -603,7 +603,6 @@ class PanierController extends Controller
                 'shop_url' => $this->getParameter('shop_url'),
                 'order_id' => $numDevis,
             ));
-
         return $this->render('@Commerce/Panier/payOnline.html.twig', array(
             'paymentUrl' => $systempay->getPaymentUrl(),
             'fields'     => $systempay->getResponse(),
@@ -619,16 +618,12 @@ class PanierController extends Controller
     {
         $this->get('tlconseil.systempay')
             ->responseHandler($request);
+
         $query = $request->request->all();
 
+//        $id_systempay = (int)$query['vads_trans_id'];
+        $id_systempay = (int)$query['vads_order_id'];
 
-        $logger = $this->get('logger');
-        foreach($query as $key=>$value) {
-            $logger->info($key.' '.$value);
-        }
-        die();
-        $id_systempay = (int)$query['vads_trans_id'];
-//$id_systempay=1;
         $em = $this->getDoctrine()->getManager();
         $commande = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($id_systempay);
         if ($commande) {
