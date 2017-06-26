@@ -620,7 +620,9 @@ class PanierController extends Controller
             ->responseHandler($request);
 
         $query = $request->request->all();
-
+        $f = fopen('log.txt', 'w');
+        fwrite($f, json_encode($query));
+        fclose($f);
 //        $id_systempay = (int)$query['vads_trans_id'];
         $id_systempay = (int)$query['vads_order_id'];
 
