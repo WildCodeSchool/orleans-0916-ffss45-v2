@@ -194,16 +194,17 @@ class PanierController extends Controller
         $em = $this->getDoctrine()->getManager();
         $session = $request->getSession();
         // connexion à la table systempay, avec parameter=identifiant de la transaction
-//        $transaction = $em->getRepository('TlconseilSystempayBundle:Transaction')->find($id_systempay);
-        $res = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($id_systempay);
-        if ($res) {
-//            $log = json_decode($transaction->getLogResponse());
-//            $paid = $transaction->isPaid();
+        $transaction = $em->getRepository('TlconseilSystempayBundle:Transaction')->find($id_systempay);
+        if ($transaction) {
+            $log = json_decode($transaction->getLogResponse());
+            $paid = $transaction->isPaid();
+            $systempayOrderId = $log->vads_order_id;
 
-//            $systempayOrderId = $log->vads_order_id;
+            $res = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($systempayOrderId);
 
             $panier = json_decode($res->getJson(), true);
             $orderId = $res->getNumeroReservation();
+
 
             if ($res && $panier) {
             // on passe le statut du panier à payé car CB (pas besoin de validation)
@@ -616,15 +617,15 @@ class PanierController extends Controller
      */
     public function paymentVerificationAction(Request $request)
     {
-        $f = fopen('log.txt', 'w');
-        fwrite($f, json_encode($request->request));
-        fclose($f);
 
         $this->get('tlconseil.systempay')
             ->responseHandler($request);
 
         $query = $request->request->all();
-//        $id_systempay = (int)$query['vads_trans_id'];
+        $f = fopen('log.txt', 'w');
+        fwrite($f, print_r($request->request->all(), true));
+        fclose($f);
+        die;//        $id_systempay = (int)$query['vads_trans_id'];
         $id_systempay = (int)$query['vads_order_id'];
 
         $em = $this->getDoctrine()->getManager();
