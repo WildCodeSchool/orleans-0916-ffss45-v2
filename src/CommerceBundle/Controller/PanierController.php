@@ -594,6 +594,7 @@ class PanierController extends Controller
         $panier->setNumeroReservation($numDevis);
         $panier->setJson($id_ps);
         $panier->setPosteDeSecours(1);
+        $panier->setInformation('');
 
         $em->persist($panier);
         $em->flush();
