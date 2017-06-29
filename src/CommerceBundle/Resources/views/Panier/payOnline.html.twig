@@ -6,6 +6,7 @@
             <h3>Redirection vers la page de paiement en cours...</h3>
             <form action="{{ paymentUrl }}" method="POST" id="systempay-form">
                 {{ systempayForm(fields) | raw }}
+                {#<input type="submit" value="Payer"/>#}
             </form>
         </div>
     </div>
@@ -13,5 +14,3 @@
 <script type="text/javascript">
     document.getElementById('systempay-form').submit();
 </script>
-
-
