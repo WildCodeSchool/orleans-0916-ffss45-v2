@@ -573,10 +573,10 @@ class PanierController extends Controller
                 'order_id' => $orderId,
             ));
 
-        return array(
+        return $this->render('@Commerce/Panier/payOnline.html.twig', array(
             'paymentUrl' => $systempay->getPaymentUrl(),
             'fields'     => $systempay->getResponse(),
-        );
+        ));
     }
 
     /**
@@ -625,7 +625,7 @@ class PanierController extends Controller
         $f = fopen('log.txt', 'w');
         fwrite($f, print_r($_REQUEST, true));
         fclose($f);
-        die;//        $id_systempay = (int)$query['vads_trans_id'];
+       // die;//
         $id_systempay = (int)$query['vads_order_id'];
 
         $em = $this->getDoctrine()->getManager();
