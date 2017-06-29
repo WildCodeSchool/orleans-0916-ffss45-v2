@@ -104,6 +104,24 @@ class PaymentController extends Controller
         return $this->redirectToRoute('payment_index');
 
     }
+    /**
+     * @Route("/{id}/refuse", name="payment_refuse")
+     *
+     */
+    public function refusePaymentAction(Panier $payment)
+    {
+        $em = $this->getDoctrine()->getManager();
+//        $validRes = $this->get('commerce.payment.validation');
+        //$panier = json_decode($payment->getJson(), true);
+        //$validRes->saveReservation($panier, $payment->getNumeroReservation());
+        $payment->setPaid(2);
+        $em->persist($payment);
+        $em->flush();
+        $this->addFlash('success', 'Le paiement a été refusé');
+
+        return $this->redirectToRoute('payment_index');
+
+    }
 
 //    /**
 //     * @Route("/{id}", name="payment_show")

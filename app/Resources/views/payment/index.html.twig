@@ -55,8 +55,10 @@
                         {{ payment.numeroReservation }}
                     </td>
                     <td>
-                        {% if payment.paid %}
-                            Payé
+                        {% if payment.paid == 1 %}
+                        <span class="text-success">Payé</span>
+                        {% elseif payment.paid == 2 %}
+                            <span class="text-danger">Refusé</span>
                         {% else %}
                             En attente de paiement
                         {% endif %}
@@ -69,6 +71,8 @@
                         {% if payment.paid  is null %}
 
                             <a class="btn btn-success" href="{{ path('payment_validation', { 'id': payment.id }) }}">Valider
+                                le paiement</a>
+                            <a class="btn btn-danger btn-xs " href="{{ path('payment_refuse', { 'id': payment.id }) }}">Refuser
                                 le paiement</a>
                         {% endif %}
                     </td>

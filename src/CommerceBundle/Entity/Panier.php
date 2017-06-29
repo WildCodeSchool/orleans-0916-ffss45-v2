@@ -58,7 +58,7 @@ class Panier
     /**
      * @var int
      *
-     * @ORM\Column(name="paid", type="boolean", nullable = true)
+     * @ORM\Column(name="paid", type="integer", nullable = true)
      */
     private $paid;
 
