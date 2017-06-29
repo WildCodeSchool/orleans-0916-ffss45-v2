@@ -595,6 +595,8 @@ class PanierController extends Controller
         $panier->setJson($id_ps);
         $panier->setPosteDeSecours(1);
         $panier->setInformation('');
+        $panier->setPrice($montantPS);
+        $panier->setUser($this->getUser());
 
         $em->persist($panier);
         $em->flush();
