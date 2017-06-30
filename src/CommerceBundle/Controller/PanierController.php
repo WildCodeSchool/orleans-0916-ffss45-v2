@@ -626,12 +626,12 @@ class PanierController extends Controller
             ->responseHandler($request);
 
         $query = $request->request->all();
+        $f = fopen('log.txt', 'w');
+        fwrite($f, 'id:'.$query);
+        fclose($f);
 
        // die;//
         $id_systempay = (int)$query['vads_trans_id'];
-        $f = fopen('log.txt', 'w');
-        fwrite($f, 'id:'.$id_systempay);
-        fclose($f);
         $em = $this->getDoctrine()->getManager();
         $commande = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($id_systempay);
         if ($commande) {
