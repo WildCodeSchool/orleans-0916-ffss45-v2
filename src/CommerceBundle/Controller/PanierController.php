@@ -625,16 +625,13 @@ class PanierController extends Controller
         $this->get('tlconseil.systempay')
             ->responseHandler($request);
 
+
+        $id_systempay = (int)$request->request->get('vads_trans_id');
         $f = fopen('log.txt', 'w');
-        fwrite($f, 'deuz');
+        fwrite($f, $id_systempay);
         fclose($f);
         die();
-        $id_systempay = (int)$request->request->get('vads_trans_id');
-//        $query = $request->request->all();
-       // fwrite($f, 'id:'.$id_systempay);
 
-       // die;//
-       // $id_systempay = (int)$query['vads_trans_id'];
         $em = $this->getDoctrine()->getManager();
         $commande = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($id_systempay);
         if ($commande) {
