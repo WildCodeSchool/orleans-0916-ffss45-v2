@@ -620,14 +620,14 @@ class PanierController extends Controller
      */
     public function paymentVerificationAction(Request $request)
     {
-
-
-        $this->get('tlconseil.systempay')
-            ->responseHandler($request);
         $f = fopen('log.txt', 'w');
         fwrite($f, 'first');
         fclose($f);
-die();
+        die();
+
+        $this->get('tlconseil.systempay')
+            ->responseHandler($request);
+
         $id_systempay = (int)$request->request->get('vads_trans_id');
 //        $query = $request->request->all();
        // fwrite($f, 'id:'.$id_systempay);
