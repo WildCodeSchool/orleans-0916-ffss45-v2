@@ -627,7 +627,7 @@ class PanierController extends Controller
         $f = fopen('log.txt', 'w');
         fwrite($f, 'first');
         fclose($f);
-die()
+die();
         $id_systempay = (int)$request->request->get('vads_trans_id');
 //        $query = $request->request->all();
        // fwrite($f, 'id:'.$id_systempay);
