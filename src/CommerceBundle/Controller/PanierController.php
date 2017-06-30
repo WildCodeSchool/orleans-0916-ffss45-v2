@@ -197,6 +197,7 @@ class PanierController extends Controller
         $transaction = $em->getRepository('TlconseilSystempayBundle:Transaction')->find($id_systempay);
         if ($transaction) {
             $log = json_decode($transaction->getLogResponse());
+
             $paid = $transaction->isPaid();
             $systempayOrderId = $log->vads_order_id;
 
@@ -206,12 +207,12 @@ class PanierController extends Controller
             $orderId = $res->getNumeroReservation();
 
 
-            if ($res && $panier) {
+            if ($res && $panier && $paid) {
             // on passe le statut du panier à payé car CB (pas besoin de validation)
                 $res->setType('cb');
                 $res->setPaid(1);
                 $em->persist($res);
-//                dump($res);die('stop');
+
                 $em->flush();
             // service permettant de créer les différents users liés à la réservation et de leur envoyer
             // un mail avec leur identifiants
@@ -623,9 +624,9 @@ class PanierController extends Controller
 //        $_POST['vads_trans_id']='00044';
 //        $_POST['vads_order_id']='15941295aa9da2';
 //        $request->initialize([], $_POST);
-//        $request->createFromGlobals();
 
-            $this->get('tlconseil.systempay')
+
+        $this->get('tlconseil.systempay')
             ->responseHandler($request);
 
 
