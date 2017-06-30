@@ -626,11 +626,11 @@ class PanierController extends Controller
             ->responseHandler($request);
         $f = fopen('log.txt', 'w');
         fwrite($f, 'first');
-
+        fclose($f);
+die()
         $id_systempay = (int)$request->request->get('vads_trans_id');
 //        $query = $request->request->all();
-        fwrite($f, 'id:'.$id_systempay);
-        fclose($f);
+       // fwrite($f, 'id:'.$id_systempay);
 
        // die;//
        // $id_systempay = (int)$query['vads_trans_id'];
