@@ -620,20 +620,26 @@ class PanierController extends Controller
      */
     public function paymentVerificationAction(Request $request)
     {
+//        $_POST['vads_trans_id']='00044';
+//        $_POST['vads_order_id']='15941295aa9da2';
+//        $request->initialize([], $_POST);
+//        $request->createFromGlobals();
 
-
-        $this->get('tlconseil.systempay')
+            $this->get('tlconseil.systempay')
             ->responseHandler($request);
 
 
         $id_systempay = (int)$request->request->get('vads_trans_id');
-        $f = fopen('log.txt', 'w');
-        fwrite($f, $id_systempay);
-        fclose($f);
-        die();
+        $order_id = $request->request->get('vads_order_id');
+
 
         $em = $this->getDoctrine()->getManager();
-        $commande = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($id_systempay);
+        $commande = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($order_id);
+
+//        $f = fopen('log.txt', 'w');
+//        fwrite($f, print_r($commande, true));
+//        fclose($f);
+        //die();
         if ($commande) {
             if ($commande->getPosteDeSecours() == 1) {
 
