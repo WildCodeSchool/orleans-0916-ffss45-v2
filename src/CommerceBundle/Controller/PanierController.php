@@ -334,7 +334,7 @@ class PanierController extends Controller
     {
         $session = $request->getSession();
         $panier = $session->get('panier');
-        //dump($panier);
+
         $id = $agenda->getId();
         if (isset($panier[$id]['inscrits'][$key])) {
             unset($panier[$id]['inscrits'][$key]);
@@ -637,10 +637,6 @@ class PanierController extends Controller
         $em = $this->getDoctrine()->getManager();
         $commande = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($order_id);
 
-        $f = fopen('log.txt', 'w');
-        fwrite($f, print_r($request, true));
-        fclose($f);
-//        die();
         if ($commande) {
             if ($commande->getPosteDeSecours() == 1) {
 
@@ -683,11 +679,8 @@ class PanierController extends Controller
      */
     public function stopSessionAction(Request $request)
     {
-        $session = $request->getSession();
 
-        $session->remove('panier');
-
-        return $this->redirectToRoute('page_accueil_principale');
+        return $this->redirectToRoute('paiement_validation');
     }
 
 
