@@ -637,10 +637,10 @@ class PanierController extends Controller
         $em = $this->getDoctrine()->getManager();
         $commande = $em->getRepository('CommerceBundle:Panier')->findOneByNumeroReservation($order_id);
 
-//        $f = fopen('log.txt', 'w');
-//        fwrite($f, print_r($commande, true));
-//        fclose($f);
-        //die();
+        $f = fopen('log.txt', 'w');
+        fwrite($f, print_r($request, true));
+        fclose($f);
+//        die();
         if ($commande) {
             if ($commande->getPosteDeSecours() == 1) {
 
