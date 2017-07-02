@@ -83,9 +83,6 @@ swiftmailer:
     auth_mode: "%mailer_auth_mode%"
     spool:     { type: memory }
 #    disable_delivery:  true
-#    transport: gmail
-#    username:  'sylvain@wildcodeschool.fr'
-#    password:  'WP01r0tL'
 
 # app/config/config.yml
 fos_user:

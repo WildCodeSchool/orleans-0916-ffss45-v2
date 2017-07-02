@@ -677,7 +677,7 @@ class PanierController extends Controller
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function stopSessionAction(Request $request)
+    public function stopSessionAction()
     {
 
         return $this->redirectToRoute('paiement_validation');
