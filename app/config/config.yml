@@ -115,7 +115,7 @@ tlconseil_systempay:
     site_id: "%site_id%"
     # Keys
     key_dev: "%key_dev%"
-    key_prod:
+    key_prod: "%key_prod%"
     # Return
     url_return: "%url_return%"
     # Optionnal fields (here the fields have their default values) :
