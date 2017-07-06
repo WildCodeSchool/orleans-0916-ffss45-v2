@@ -543,10 +543,10 @@ class PanierController extends Controller
         $totalLivraison = 0;
         $prixLivraison = 5;
         $totalfinal = 0;
-
+        $formations = [];
         foreach ($panier as $id => $article) {
-
             $agenda = $em->getRepository('AdminBundle:Agenda')->find($id);
+            $formations[] = $agenda->getFormation()->getNomCourt();
             $panier[$agenda->getId()]['totalitem'] = $agenda->getFormation()->getPrix() * $article['quantity'];
             if ($session->get('totalLivraison')) {
                 $totalLivraison = $prixLivraison * $article['quantity'];
@@ -558,7 +558,7 @@ class PanierController extends Controller
 
         $panier1 = new Panier();
         $panier1->setNumeroReservation($orderId);
-        $panier1->setInformation('');
+        $panier1->setInformation(implode(', ',$formations));
         $panier1->setPrice($totalfinal);
         $panier1->setUser($this->getUser());
 
